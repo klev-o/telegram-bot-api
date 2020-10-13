@@ -79,4 +79,24 @@ class Poll extends BaseType
      * @var int|null
      */
     public ?int $close_date;
+
+    protected function bindObjects($key, $data)
+    {
+        switch ($key) {
+            case 'options':
+                $result = [];
+                foreach ($data as $entity) {
+                    $result[] = new PollOption($entity);
+                }
+                return $result;
+            case 'explanation_entities':
+                $result = [];
+                foreach ($data as $entity) {
+                    $result[] = new MessageEntity($entity);
+                }
+                return $result;
+        }
+
+        return null;
+    }
 }

@@ -24,9 +24,9 @@ abstract class BaseType
     /**
      * @param $key
      * @param $data
-     * @return object|null
+     * @return object|array|null
      */
-    protected function bindObjects($key, $data): ?object
+    protected function bindObjects($key, $data)
     {
         return null;
     }
