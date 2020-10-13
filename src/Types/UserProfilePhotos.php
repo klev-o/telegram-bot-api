@@ -22,4 +22,22 @@ class UserProfilePhotos extends BaseType
      * @var PhotoSize[][]
      */
     public array $photos;
+
+    protected function bindObjects($key, $data)
+    {
+        switch ($key) { //todo check
+            case 'photos':
+                $result = [];
+                foreach ($data as $entity) {
+                    $inner = [];
+                    foreach ($entity as $item) {
+                        $inner[] = new PhotoSize($item);
+                    }
+                    $result[] = $inner;
+                }
+                return $result;
+        }
+
+        return null;
+    }
 }
