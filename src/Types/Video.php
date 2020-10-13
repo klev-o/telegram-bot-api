@@ -53,4 +53,14 @@ class Video extends BaseType
      * @var int
      */
     public ?int $file_size;
+
+    protected function bindObjects($key, $data): ?object
+    {
+        switch ($key) {
+            case 'thumb':
+                return new PhotoSize($data);
+        }
+
+        return null;
+    }
 }
