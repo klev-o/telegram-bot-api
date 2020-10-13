@@ -3,6 +3,10 @@
 namespace Klev\TelegramBotApi\Types;
 
 /**
+ * This object represents a chat.
+ *
+ * @see https://core.telegram.org/bots/api#chat
+ *
  * Class Chat
  * @package Klev\TelegramBotApi\Types
  */
@@ -83,4 +87,16 @@ class Chat extends BaseType
      * @var bool|null
      */
     public ?bool $can_set_sticker_set;
+
+    protected function bindObjects($key, $data): ?object
+    {
+        switch ($key) {
+            case 'photo':
+                return new ChatPhoto($data);
+            case 'permissions':
+                return new ChatPermissions($data);
+        }
+
+        return null;
+    }
 }
