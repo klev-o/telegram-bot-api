@@ -27,4 +27,14 @@ class PollAnswer extends BaseType
      * @var int[]
      */
     public array $option_ids;
+
+    protected function bindObjects($key, $data): ?object
+    {
+        switch ($key) {
+            case 'user':
+                return new User($data);
+        }
+
+        return null;
+    }
 }
