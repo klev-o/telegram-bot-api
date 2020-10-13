@@ -48,4 +48,14 @@ class Animation extends BaseType
      * @var int|null
      */
     public ?int $file_size;
+
+    protected function bindObjects($key, $data): ?object
+    {
+        switch ($key) {
+            case 'thumb':
+                return new PhotoSize($data);
+        }
+
+        return null;
+    }
 }
