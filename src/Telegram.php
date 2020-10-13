@@ -2,6 +2,8 @@
 
 namespace Klev\TelegramBotApi;
 
+use Klev\TelegramBotApi\Types\Update;
+
 class Telegram
 {
     const BOT_API_URL = 'https://api.telegram.org/bot';
@@ -17,6 +19,12 @@ class Telegram
     {
         $out = $this->request('setWebhook', ['url' => $url]);
         return $out;
+    }
+
+    public function getUpdates():? Update
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        return $data ?: null;
     }
 
     public function getToken()
