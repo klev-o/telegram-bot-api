@@ -13,7 +13,7 @@ namespace Klev\TelegramBotApi\Types;
  *
  * @see https://core.telegram.org/bots/api#file
  */
-class File
+class File extends BaseType
 {
     /**
      * Identifier for this file, which can be used to download or reuse the file
