@@ -71,7 +71,7 @@ class InlineKeyboardButton
         $this->text = $text;
     }
 
-    public function setUrl($url)
+    public function setUrl($url) //todo
     {
         $this->url = $url;
     }
@@ -79,7 +79,7 @@ class InlineKeyboardButton
     /**
      * @param mixed $login_url
      */
-    public function setLoginUrl($login_url)
+    public function setLoginUrl($login_url) //todo
     {
         $this->login_url = $login_url;
     }
@@ -87,7 +87,7 @@ class InlineKeyboardButton
     /**
      * @param mixed $callback_data
      */
-    public function setCallbackData($callback_data)
+    public function setCallbackData($callback_data) //todo
     {
         $this->callback_data = $callback_data;
     }
@@ -95,7 +95,7 @@ class InlineKeyboardButton
     /**
      * @param mixed $switch_inline_query
      */
-    public function setSwitchInlineQuery($switch_inline_query)
+    public function setSwitchInlineQuery($switch_inline_query) //todo
     {
         $this->switch_inline_query = $switch_inline_query;
     }
@@ -103,7 +103,7 @@ class InlineKeyboardButton
     /**
      * @param mixed $switch_inline_query_current_chat
      */
-    public function setSwitchInlineQueryCurrentChat($switch_inline_query_current_chat)
+    public function setSwitchInlineQueryCurrentChat($switch_inline_query_current_chat) //todo
     {
         $this->switch_inline_query_current_chat = $switch_inline_query_current_chat;
     }
@@ -111,7 +111,7 @@ class InlineKeyboardButton
     /**
      * @param mixed $callback_game
      */
-    public function setCallbackGame($callback_game)
+    public function setCallbackGame($callback_game) //todo
     {
         $this->callback_game = $callback_game;
     }
@@ -119,7 +119,7 @@ class InlineKeyboardButton
     /**
      * @param mixed $pay
      */
-    public function setPay($pay)
+    public function setPay($pay) //todo
     {
         $this->pay = $pay;
     }
