@@ -43,11 +43,12 @@ class KeyboardButton extends BaseType
      */
     public ?KeyboardButtonPollType $request_poll;
 
-    public function __construct($text, $request_contact = false) //todo
+    public function __construct($text, $request_contact = false, $request_location = false) //todo
     {
+        parent::__construct();
         $this->text = $text;
         $this->request_contact = $request_contact;
-        //$this->request_poll = new KeyboardButtonPollType(); //todo
+        $this->request_location = $request_location;
     }
 
     /**
