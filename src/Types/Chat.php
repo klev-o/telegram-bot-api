@@ -5,10 +5,10 @@ namespace Klev\TelegramBotApi\Types;
 /**
  * This object represents a chat.
  *
- * @see https://core.telegram.org/bots/api#chat
- *
  * Class Chat
  * @package Klev\TelegramBotApi\Types
+ *
+ * @see https://core.telegram.org/bots/api#chat
  */
 class Chat extends BaseType
 {
@@ -87,14 +87,37 @@ class Chat extends BaseType
      * @var bool|null
      */
     public ?bool $can_set_sticker_set;
+    /**
+     * Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice
+     * versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming
+     * languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64
+     * bit integer or double-precision float type are safe for storing this identifier. Returned only in getChat.
+     * @var int|null
+     */
+    public ?int $linked_chat_id;
 
+    /**
+     * Optional. For supergroups, the location to which the supergroup is connected. Returned only in getChat.
+     * @var ChatLocation|null
+     */
+    public ?ChatLocation $location;
+
+    /**
+     * @param $key
+     * @param $data
+     * @return object|null
+     */
     protected function bindObjects($key, $data): ?object
     {
         switch ($key) {
             case 'photo':
                 return new ChatPhoto($data);
+            case 'pinned_message':
+                return new Message($data);
             case 'permissions':
                 return new ChatPermissions($data);
+            case 'location':
+                return new ChatLocation($data);
         }
 
         return null;
