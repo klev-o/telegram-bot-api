@@ -279,6 +279,11 @@ class Message extends BaseType
      */
     public ?PassportData $passport_data;
     /**
+     * Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.
+     * @var ProximityAlertTriggered|null
+     */
+    public ?ProximityAlertTriggered $proximity_alert_triggered;
+    /**
      * Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.
      * @var InlineKeyboardMarkup|null
      */
