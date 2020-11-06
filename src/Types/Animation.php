@@ -64,7 +64,7 @@ class Animation extends BaseType
      * @param $data
      * @return object|null
      */
-    protected function bindObjects($key, $data): ?object
+    protected function bindObjects($key, $data)
     {
         switch ($key) {
             case 'thumb':
