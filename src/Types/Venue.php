@@ -38,6 +38,16 @@ class Venue extends BaseType
      * @var string|null
      */
     public ?string $foursquare_type;
+    /**
+     * Optional. Google Places identifier of the venue
+     * @var string|null
+     */
+    public ?string $google_place_id;
+    /**
+     * Optional. Google Places type of the venue. (See supported types.)
+     * @var string|null
+     */
+    public ?string $google_place_type;
 
     protected function bindObjects($key, $data): ?object
     {
