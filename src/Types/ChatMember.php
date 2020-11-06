@@ -28,10 +28,10 @@ class ChatMember extends BaseType
      */
     public ?string $custom_title;
     /**
-     * Optional. Restricted and kicked only. Date when restrictions will be lifted for this user; unix time
-     * @var int|null
+     * Optional. Owner and administrators only. True, if the user's presence in the chat is hidden
+     * @var bool|null
      */
-    public ?int $until_date;
+    public ?bool $is_anonymous;
     /**
      * Optional. Administrators only. True, if the bot is allowed to edit administrator privileges of that user
      * @var bool|null
@@ -113,6 +113,11 @@ class ChatMember extends BaseType
      * @var bool|null
      */
     public ?bool $can_add_web_page_previews;
+    /**
+     * Optional. Restricted and kicked only. Date when restrictions will be lifted for this user; unix time
+     * @var int|null
+     */
+    public ?int $until_date;
 
 
 }
