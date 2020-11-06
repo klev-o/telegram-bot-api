@@ -18,7 +18,7 @@ class ForceReply extends BaseType
      * Shows reply interface to the user, as if they manually selected the bot's message and tapped 'Reply'
      * @var bool
      */
-    public bool $force_reply = true;
+    public bool $force_reply = true; //todo check
     /**
      * Optional. Use this parameter if you want to force reply from specific users only. Targets:
      * 1) users that are @mentioned in the text of the Message object;
