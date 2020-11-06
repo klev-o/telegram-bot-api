@@ -2,6 +2,7 @@
 
 namespace Klev\TelegramBotApi\Types;
 
+use Klev\TelegramBotApi\Types\Games\Game;
 use Klev\TelegramBotApi\Types\Payments\SuccessfulPayment;
 use Klev\TelegramBotApi\Types\TelegramPassport\PassportData;
 
@@ -286,9 +287,9 @@ class Message extends BaseType
     /**
      * @param $key
      * @param $data
-     * @return array|Chat|Contact|Location|User|null
+     * @return array|Audio|Chat|Contact|Game|Invoice|Poll|Sticker|PassportData|User|Venue|Video|VideoNote|Voice|object|null
      */
-    protected function bindObjects($key, $data): ?object
+    protected function bindObjects($key, $data)
     {
         //todo InlineKeyboardMarkup ???
         switch ($key) {

@@ -59,6 +59,11 @@ class Animation extends BaseType
      */
     public ?int $file_size;
 
+    /**
+     * @param $key
+     * @param $data
+     * @return object|null
+     */
     protected function bindObjects($key, $data): ?object
     {
         switch ($key) {
