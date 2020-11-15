@@ -3,6 +3,7 @@
 namespace Klev\TelegramBotApi;
 
 use CURLFile;
+use Klev\TelegramBotApi\Methods\DeleteWebhook;
 use Klev\TelegramBotApi\Methods\SendMessage;
 use Klev\TelegramBotApi\Methods\SendPhoto;
 use Klev\TelegramBotApi\Methods\SetWebhook;
@@ -25,10 +26,16 @@ class Telegram
         return $out;
     }
 
-    public function getUpdates():? Update
+    public function deleteWebhook(DeleteWebhook $deleteWebhook)
+    {
+        $out = $this->request('deleteWebhook', (array)$deleteWebhook);
+        return $out;
+    }
+
+    public function getWebhookUpdates():? Update
     {
         $data = json_decode(file_get_contents('php://input'), true);
-        return $data ?: null;
+        return $data ? new Update($data) : null;
     }
 
     public function getToken()
