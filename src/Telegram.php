@@ -5,6 +5,7 @@ namespace Klev\TelegramBotApi;
 use CURLFile;
 use Klev\TelegramBotApi\Methods\SendMessage;
 use Klev\TelegramBotApi\Methods\SendPhoto;
+use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Types\Update;
 
 class Telegram
@@ -18,9 +19,9 @@ class Telegram
         $this->token = $token;
     }
 
-    public function setWebhook($url)
+    public function setWebhook(SetWebhook $setWebhook)
     {
-        $out = $this->request('setWebhook', ['url' => $url]);
+        $out = $this->request('setWebhook', (array)$setWebhook);
         return $out;
     }
 
@@ -91,7 +92,7 @@ class Telegram
             return $out; //todo обработка в объект (возможно, не здесь)
         }
 
-        throw new \Exception('Unexpected response: ' . $response );
+        throw new TelegramException('Unexpected response: ' . $response );
     }
 
 
