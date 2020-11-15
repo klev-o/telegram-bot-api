@@ -2,6 +2,9 @@
 
 namespace Klev\TelegramBotApi;
 
+use CURLFile;
+use Klev\TelegramBotApi\Methods\SendMessage;
+use Klev\TelegramBotApi\Methods\SendPhoto;
 use Klev\TelegramBotApi\Types\Update;
 
 class Telegram
