@@ -31,21 +31,21 @@ class WebhookInfo extends BaseType
      * Optional. Unix time for the most recent error that happened when trying to deliver an update via webhook
      * @var int|null
      */
-    public ?int $last_error_date;
+    public ?int $last_error_date = null;
     /**
      * Optional. Error message in human-readable format for the most recent error that happened when trying to deliver
      * an update via webhook
      * @var string|null
      */
-    public ?string $last_error_message;
+    public ?string $last_error_message = null;
     /**
      * Optional. Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery
      * @var int|null
      */
-    public ?int $max_connections;
+    public ?int $max_connections = null;
     /**
      * Optional. A list of update types the bot is subscribed to. Defaults to all update types
      * @var array|null
      */
-    public ?array $allowed_updates;
+    public ?array $allowed_updates = null;
 }

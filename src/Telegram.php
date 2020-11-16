@@ -3,12 +3,16 @@
 namespace Klev\TelegramBotApi;
 
 use CURLFile;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use Klev\TelegramBotApi\Methods\DeleteWebhook;
 use Klev\TelegramBotApi\Methods\SendMessage;
 use Klev\TelegramBotApi\Methods\SendPhoto;
 use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Types\Update;
+use Klev\TelegramBotApi\Types\User;
 use Klev\TelegramBotApi\Types\WebhookInfo;
+use Psr\Http\Client\ClientInterface;
 
 /**
  * Class Telegram
@@ -16,28 +20,33 @@ use Klev\TelegramBotApi\Types\WebhookInfo;
  */
 class Telegram
 {
-    const BOT_API_URL = 'https://api.telegram.org/bot';
-
     private string $token;
+    private string $apiEndpoint = 'https://api.telegram.org/bot';
 
-    public function __construct($token)
+    private ClientInterface $apiClient;
+
+    public function __construct($token, ClientInterface $apiClient = null)
     {
         $this->token = $token;
+        $this->apiClient = $apiClient ?? new Client();
     }
 
     /**
      * @param SetWebhook $setWebhook
      * @return array
      * @throws TelegramException
+     * @throws GuzzleException
      */
     public function setWebhook(SetWebhook $setWebhook): array
     {
-        return $this->request('setWebhook', (array)$setWebhook);
+        //todo load certificate
+        return $this->request('setWebhook', ['json' => (array)$setWebhook]);
     }
 
     /**
      * @param DeleteWebhook $deleteWebhook
-     * @return mixed
+     * @return array
+     * @throws GuzzleException
      * @throws TelegramException
      */
     public function deleteWebhook(DeleteWebhook $deleteWebhook): array
@@ -47,12 +56,13 @@ class Telegram
 
     /**
      * @return WebhookInfo
+     * @throws GuzzleException
      * @throws TelegramException
      */
     public function getWebhookInfo(): WebhookInfo
     {
         $out = $this->request('getWebhookInfo');
-        return new WebhookInfo($out);
+        return new WebhookInfo($out['result']); //todo check?
     }
 
     /**
@@ -64,9 +74,15 @@ class Telegram
         return $data ? new Update($data) : null;
     }
 
-    public function getMe()
+    /**
+     * @return User
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function getMe(): User
     {
-        return $this->request('getMe');
+        $out = $this->request('getMe');
+        return new User($out['result']); //todo check?
     }
 
     public function sendMessage(SendMessage $message)
@@ -84,9 +100,15 @@ class Telegram
         return $this->request('sendPhoto', (array)$photo);
     }
 
+
     public function getToken()
     {
         return $this->token;
+    }
+
+    public function setApiEndpoint(string $url)
+    {
+        $this->apiEndpoint = $url;
     }
 
 
@@ -95,36 +117,20 @@ class Telegram
      * @param array $data
      * @return mixed
      * @throws TelegramException
+     * @throws GuzzleException
      */
     private function request($method, $data = [])
     {
-        $curlOptions = [
-            CURLOPT_URL => self::BOT_API_URL . $this->token .  '/' . $method,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POST        => true,
-            CURLOPT_POSTFIELDS => $data,
-            CURLOPT_TIMEOUT => 5,
-        ];
+        $uri = $this->apiEndpoint . $this->token .  '/' . $method;
 
-        $curl = curl_init();
-        curl_setopt_array($curl, $curlOptions);
-
-        $response = curl_exec($curl);
-        $out = json_decode($response,true);
-
-        if (curl_errno($curl)) {
-            throw new TelegramException(curl_error($curl));
-        }
-
-        curl_close($curl);
+        $response = $this->apiClient->post($uri, $data);
+        $body = (string)$response->getBody();
+        $out = json_decode($body,true);
 
         if (isset($out['ok']) && $out['ok'] === true) {
             return $out;
         }
 
-        throw new TelegramException('Unexpected response: ' . $response );
+        throw new TelegramException('Unexpected  response: ' . $body);
     }
-
-
 }
