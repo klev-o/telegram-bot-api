@@ -8,6 +8,7 @@ use Klev\TelegramBotApi\Methods\SendMessage;
 use Klev\TelegramBotApi\Methods\SendPhoto;
 use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Types\Update;
+use Klev\TelegramBotApi\Types\WebhookInfo;
 
 /**
  * Class Telegram
@@ -31,8 +32,7 @@ class Telegram
      */
     public function setWebhook(SetWebhook $setWebhook): array
     {
-        $out = $this->request('setWebhook', (array)$setWebhook);
-        return $out;
+        return $this->request('setWebhook', (array)$setWebhook);
     }
 
     /**
@@ -40,10 +40,19 @@ class Telegram
      * @return mixed
      * @throws TelegramException
      */
-    public function deleteWebhook(DeleteWebhook $deleteWebhook)
+    public function deleteWebhook(DeleteWebhook $deleteWebhook): array
     {
-        $out = $this->request('deleteWebhook', (array)$deleteWebhook);
-        return $out;
+        return $this->request('deleteWebhook', (array)$deleteWebhook);
+    }
+
+    /**
+     * @return WebhookInfo
+     * @throws TelegramException
+     */
+    public function getWebhookInfo(): WebhookInfo
+    {
+        $out = $this->request('getWebhookInfo');
+        return new WebhookInfo($out);
     }
 
     /**
