@@ -9,6 +9,10 @@ use Klev\TelegramBotApi\Methods\SendPhoto;
 use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Types\Update;
 
+/**
+ * Class Telegram
+ * @package Klev\TelegramBotApi
+ */
 class Telegram
 {
     const BOT_API_URL = 'https://api.telegram.org/bot';
@@ -20,27 +24,35 @@ class Telegram
         $this->token = $token;
     }
 
-    public function setWebhook(SetWebhook $setWebhook)
+    /**
+     * @param SetWebhook $setWebhook
+     * @return array
+     * @throws TelegramException
+     */
+    public function setWebhook(SetWebhook $setWebhook): array
     {
         $out = $this->request('setWebhook', (array)$setWebhook);
         return $out;
     }
 
+    /**
+     * @param DeleteWebhook $deleteWebhook
+     * @return mixed
+     * @throws TelegramException
+     */
     public function deleteWebhook(DeleteWebhook $deleteWebhook)
     {
         $out = $this->request('deleteWebhook', (array)$deleteWebhook);
         return $out;
     }
 
+    /**
+     * @return Update|null
+     */
     public function getWebhookUpdates():? Update
     {
         $data = json_decode(file_get_contents('php://input'), true);
         return $data ? new Update($data) : null;
-    }
-
-    public function getToken()
-    {
-        return $this->token;
     }
 
     public function getMe()
@@ -55,7 +67,6 @@ class Telegram
         return $out;
     }
 
-
     public function sendPhoto(SendPhoto $photo)
     {
         if (!filter_var($photo->getPhoto(), FILTER_VALIDATE_URL)) {
@@ -64,11 +75,17 @@ class Telegram
         return $this->request('sendPhoto', (array)$photo);
     }
 
-    /**\
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+
+    /**
      * @param $method
      * @param array $data
      * @return mixed
-     * @throws \Exception
+     * @throws TelegramException
      */
     private function request($method, $data = [])
     {
@@ -81,8 +98,6 @@ class Telegram
             CURLOPT_TIMEOUT => 5,
         ];
 
-        //$curlOptions += $options;
-
         $curl = curl_init();
         curl_setopt_array($curl, $curlOptions);
 
@@ -90,13 +105,13 @@ class Telegram
         $out = json_decode($response,true);
 
         if (curl_errno($curl)) {
-            throw new \Exception(curl_error($curl));
+            throw new TelegramException(curl_error($curl));
         }
 
         curl_close($curl);
 
         if (isset($out['ok']) && $out['ok'] === true) {
-            return $out; //todo обработка в объект (возможно, не здесь)
+            return $out;
         }
 
         throw new TelegramException('Unexpected response: ' . $response );
