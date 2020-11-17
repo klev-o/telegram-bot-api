@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Klev\TelegramBotApi\Methods\BaseMethod;
 use Klev\TelegramBotApi\Methods\DeleteWebhook;
+use Klev\TelegramBotApi\Methods\ForwardMessage;
 use Klev\TelegramBotApi\Methods\SendMessage;
 use Klev\TelegramBotApi\Methods\SendPhoto;
 use Klev\TelegramBotApi\Methods\SetWebhook;
@@ -96,6 +97,18 @@ class Telegram
     {
         $sendMessage->preparation();
         $out = $this->request('sendMessage', (array)$sendMessage);
+        return new Message($out['result']);
+    }
+
+    /**
+     * @param ForwardMessage $forwardMessage
+     * @return Message
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function forwardMessage(ForwardMessage $forwardMessage): Message
+    {
+        $out = $this->request('sendMessage', (array)$forwardMessage);
         return new Message($out['result']);
     }
 
