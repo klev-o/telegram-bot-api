@@ -5,12 +5,14 @@ namespace Klev\TelegramBotApi;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Klev\TelegramBotApi\Methods\BaseMethod;
+use Klev\TelegramBotApi\Methods\CopyMessage;
 use Klev\TelegramBotApi\Methods\DeleteWebhook;
 use Klev\TelegramBotApi\Methods\ForwardMessage;
 use Klev\TelegramBotApi\Methods\SendMessage;
 use Klev\TelegramBotApi\Methods\SendPhoto;
 use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Types\Message;
+use Klev\TelegramBotApi\Types\MessageId;
 use Klev\TelegramBotApi\Types\Update;
 use Klev\TelegramBotApi\Types\User;
 use Klev\TelegramBotApi\Types\WebhookInfo;
@@ -108,8 +110,21 @@ class Telegram
      */
     public function forwardMessage(ForwardMessage $forwardMessage): Message
     {
-        $out = $this->request('sendMessage', (array)$forwardMessage);
+        $out = $this->request('forwardMessage', (array)$forwardMessage);
         return new Message($out['result']);
+    }
+
+    /**
+     * @param CopyMessage $copyMessage
+     * @return MessageId
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function copyMessage(CopyMessage $copyMessage): MessageId
+    {
+        $copyMessage->preparation();
+        $out = $this->request('copyMessage', (array)$copyMessage);
+        return new MessageId($out['result']);
     }
 
     /**
