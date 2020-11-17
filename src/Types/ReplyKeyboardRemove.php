@@ -13,7 +13,7 @@ namespace Klev\TelegramBotApi\Types;
  *
  * @see https://core.telegram.org/bots/api#replykeyboardremove
  */
-class ReplyKeyboardRemove
+class ReplyKeyboardRemove implements KeyboardInterface
 {
     /**
      * Requests clients to remove the custom keyboard (user will not be able to summon this keyboard; if you want to

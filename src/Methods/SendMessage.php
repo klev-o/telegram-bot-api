@@ -62,7 +62,7 @@ class SendMessage extends BaseMethod
      * instructions to remove reply keyboard or to force a reply from the user.
      * @var KeyboardInterface|string
      */
-    public ?string $reply_markup = '';
+    public $reply_markup = '';
 
     public function __construct(string $chat_id, string $text)
     {

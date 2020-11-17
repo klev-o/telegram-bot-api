@@ -2,9 +2,9 @@
 
 namespace Klev\TelegramBotApi;
 
-use CURLFile;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use Klev\TelegramBotApi\Methods\BaseMethod;
 use Klev\TelegramBotApi\Methods\DeleteWebhook;
 use Klev\TelegramBotApi\Methods\SendMessage;
 use Klev\TelegramBotApi\Methods\SendPhoto;
@@ -99,12 +99,24 @@ class Telegram
         return new Message($out['result']);
     }
 
-    public function sendPhoto(SendPhoto $photo)
+    /**
+     * @param SendPhoto $sendPhoto
+     * @return Message
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function sendPhoto(SendPhoto $sendPhoto)
     {
-        if (!filter_var($photo->getPhoto(), FILTER_VALIDATE_URL)) {
-            $photo->setPhoto(new CURLFile(realpath($photo->getPhoto()))); //todo clone ???
+        $sendPhoto->preparation();
+        $data = BaseMethod::getDataForMultipart($sendPhoto);
+
+        if (!empty($data)) {
+            $out = $this->request('sendPhoto', ['multipart' => $data]);
+        } else {
+            $out = $this->request('sendPhoto', ['json' =>(array)$sendPhoto]);
         }
-        return $this->request('sendPhoto', (array)$photo);
+
+        return new Message($out['result']);
     }
 
 
