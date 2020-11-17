@@ -8,6 +8,7 @@ use Klev\TelegramBotApi\Methods\BaseMethod;
 use Klev\TelegramBotApi\Methods\CopyMessage;
 use Klev\TelegramBotApi\Methods\DeleteWebhook;
 use Klev\TelegramBotApi\Methods\ForwardMessage;
+use Klev\TelegramBotApi\Methods\SendAudio;
 use Klev\TelegramBotApi\Methods\SendMessage;
 use Klev\TelegramBotApi\Methods\SendPhoto;
 use Klev\TelegramBotApi\Methods\SetWebhook;
@@ -130,19 +131,36 @@ class Telegram
     /**
      * @param SendPhoto $sendPhoto
      * @return Message
+     *
      * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendPhoto(SendPhoto $sendPhoto)
     {
         $sendPhoto->preparation();
-        $data = BaseMethod::getDataForMultipart($sendPhoto);
 
-        if (!empty($data)) {
-            $out = $this->request('sendPhoto', ['multipart' => $data]);
-        } else {
-            $out = $this->request('sendPhoto', ['json' =>(array)$sendPhoto]);
-        }
+        $data = BaseMethod::getDataForMultipart($sendPhoto);
+        $requestData = !empty($data) ? ['multipart' => $data] : ['json' =>(array)$sendPhoto];
+
+        $out = $this->request('sendPhoto', $requestData);
+
+        return new Message($out['result']);
+    }
+
+    /**
+     * @param SendAudio $sendAudio
+     * @return Message
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function sendAudio(SendAudio $sendAudio)
+    {
+        $sendAudio->preparation();
+
+        $data = BaseMethod::getDataForMultipart($sendAudio);
+        $requestData = !empty($data) ? ['multipart' => $data] : ['json' =>(array)$sendAudio];
+
+        $out = $this->request('sendAudio', $requestData);
 
         return new Message($out['result']);
     }

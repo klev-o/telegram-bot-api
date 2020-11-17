@@ -11,7 +11,13 @@ use Klev\TelegramBotApi\TelegramException;
 abstract class BaseMethod
 {
     private static array $mapClassFileFields = [
-        SendPhoto::class => 'photo'
+        SendPhoto::class => [
+            'photo'
+        ],
+        SendAudio::class => [
+            'audio',
+            'thumb'
+        ],
     ];
 
     public function preparation()
@@ -40,23 +46,48 @@ abstract class BaseMethod
         $fileField = self::$mapClassFileFields[get_class($object)] ?? null;
         if(is_null($fileField)) throw new TelegramException("No find mapping for "  . get_class($object));
 
-        if (!filter_var($object->$fileField, FILTER_VALIDATE_URL)) {
-            if (file_exists($object->$fileField)) {
-                if (!is_readable($object->$fileField)) {
-                    throw new TelegramException("File " . $object->$fileField . " is not readable.");
-                }
-                $fields = get_object_vars($object);
-                $fields[$fileField] = fopen($object->$fileField, 'r');
+        $isIssetLocalFiles = false;
 
-                foreach ($fields as $name => $value) {
-                    $data[] = [
-                        'name' => $name,
-                        'contents' => $value
-                    ];
-                }
+        foreach ($fileField as $field) {
+            if (self::isLocalFile($object->$field)) {
+                $isIssetLocalFiles = true;
+            }
+        }
+
+        if ($isIssetLocalFiles) {
+            $fields = get_object_vars($object);
+
+            foreach ($fileField as $field) {
+                $fields[$field] = fopen($object->$field, 'r');
+            }
+
+            foreach ($fields as $name => $value) {
+                $data[] = [
+                    'name' => $name,
+                    'contents' => $value
+                ];
             }
         }
 
         return $data;
+    }
+
+    /**
+     * @param string $file
+     * @return bool
+     * @throws TelegramException
+     */
+    private static function isLocalFile(string $file)
+    {
+        if (!filter_var($file, FILTER_VALIDATE_URL)) {
+            if (file_exists($file)) {
+                if (is_readable($file)) {
+                    return true;
+                } else {
+                    throw new TelegramException("File " . $file. " is not readable.");
+                }
+            }
+        }
+        return false;
     }
 }
