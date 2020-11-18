@@ -12,14 +12,9 @@ abstract class BaseMethod
 {
     private static array $mapClassFileFields = [
         SendPhoto::class => 'photo',
-        SendAudio::class => [
-            'audio',
-            'thumb'
-        ],
-        SendDocument::class => [
-            'document',
-            'thumb'
-        ],
+        SendAudio::class => ['audio', 'thumb'],
+        SendDocument::class => ['document', 'thumb'],
+        SendVideo::class => ['video', 'thumb']
     ];
 
     public function preparation()
