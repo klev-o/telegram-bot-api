@@ -9,6 +9,7 @@ use Klev\TelegramBotApi\Methods\CopyMessage;
 use Klev\TelegramBotApi\Methods\DeleteWebhook;
 use Klev\TelegramBotApi\Methods\ForwardMessage;
 use Klev\TelegramBotApi\Methods\SendAudio;
+use Klev\TelegramBotApi\Methods\SendDocument;
 use Klev\TelegramBotApi\Methods\SendMessage;
 use Klev\TelegramBotApi\Methods\SendPhoto;
 use Klev\TelegramBotApi\Methods\SetWebhook;
@@ -161,6 +162,24 @@ class Telegram
         $requestData = !empty($data) ? ['multipart' => $data] : ['json' =>(array)$sendAudio];
 
         $out = $this->request('sendAudio', $requestData);
+
+        return new Message($out['result']);
+    }
+
+    /**
+     * @param SendDocument $sendDocument
+     * @return Message
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function sendDocument(SendDocument $sendDocument)
+    {
+        $sendDocument->preparation();
+
+        $data = BaseMethod::getDataForMultipart($sendDocument);
+        $requestData = !empty($data) ? ['multipart' => $data] : ['json' =>(array)$sendDocument];
+
+        $out = $this->request('sendDocument', $requestData);
 
         return new Message($out['result']);
     }

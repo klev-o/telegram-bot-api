@@ -11,11 +11,13 @@ use Klev\TelegramBotApi\TelegramException;
 abstract class BaseMethod
 {
     private static array $mapClassFileFields = [
-        SendPhoto::class => [
-            'photo'
-        ],
+        SendPhoto::class => 'photo',
         SendAudio::class => [
             'audio',
+            'thumb'
+        ],
+        SendDocument::class => [
+            'document',
             'thumb'
         ],
     ];
@@ -44,7 +46,9 @@ abstract class BaseMethod
         $data = [];
 
         $fileField = self::$mapClassFileFields[get_class($object)] ?? null;
+
         if(is_null($fileField)) throw new TelegramException("No find mapping for "  . get_class($object));
+        if(is_string($fileField)) $fileField = [$fileField];
 
         $isIssetLocalFiles = false;
 
@@ -58,7 +62,7 @@ abstract class BaseMethod
             $fields = get_object_vars($object);
 
             foreach ($fileField as $field) {
-                $fields[$field] = fopen($object->$field, 'r');
+                $fields[$field] = !is_null($object->$field) ? fopen($object->$field, 'r') : $object->$field;
             }
 
             foreach ($fields as $name => $value) {
@@ -73,13 +77,13 @@ abstract class BaseMethod
     }
 
     /**
-     * @param string $file
+     * @param string|null $file
      * @return bool
      * @throws TelegramException
      */
-    private static function isLocalFile(string $file)
+    private static function isLocalFile(?string $file)
     {
-        if (!filter_var($file, FILTER_VALIDATE_URL)) {
+        if ($file && !filter_var($file, FILTER_VALIDATE_URL)) {
             if (file_exists($file)) {
                 if (is_readable($file)) {
                     return true;
