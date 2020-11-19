@@ -14,6 +14,7 @@ use Klev\TelegramBotApi\Methods\SendDocument;
 use Klev\TelegramBotApi\Methods\SendMessage;
 use Klev\TelegramBotApi\Methods\SendPhoto;
 use Klev\TelegramBotApi\Methods\SendVideo;
+use Klev\TelegramBotApi\Methods\SendVoice;
 use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Types\Message;
 use Klev\TelegramBotApi\Types\MessageId;
@@ -218,6 +219,24 @@ class Telegram
         $requestData = !empty($data) ? ['multipart' => $data] : ['json' =>(array)$sendAnimation];
 
         $out = $this->request('sendAnimation', $requestData);
+
+        return new Message($out['result']);
+    }
+
+    /**
+     * @param SendVoice $sendVoice
+     * @return Message
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function sendVoice(SendVoice $sendVoice)
+    {
+        $sendVoice->preparation();
+
+        $data = BaseMethod::getDataForMultipart($sendVoice);
+        $requestData = !empty($data) ? ['multipart' => $data] : ['json' =>(array)$sendVoice];
+
+        $out = $this->request('sendVoice', $requestData);
 
         return new Message($out['result']);
     }
