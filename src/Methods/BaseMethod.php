@@ -14,7 +14,8 @@ abstract class BaseMethod
         SendPhoto::class => 'photo',
         SendAudio::class => ['audio', 'thumb'],
         SendDocument::class => ['document', 'thumb'],
-        SendVideo::class => ['video', 'thumb']
+        SendVideo::class => ['video', 'thumb'],
+        SendAnimation::class => ['animation', 'thumb'],
     ];
 
     public function preparation()
