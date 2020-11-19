@@ -17,6 +17,7 @@ abstract class BaseMethod
         SendVideo::class => ['video', 'thumb'],
         SendAnimation::class => ['animation', 'thumb'],
         SendVoice::class => 'voice',
+        SendVideoNote::class => ['video_note', 'thumb'],
     ];
 
     public function preparation()
