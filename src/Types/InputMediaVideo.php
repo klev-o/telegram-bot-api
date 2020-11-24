@@ -10,7 +10,7 @@ namespace Klev\TelegramBotApi\Types;
  *
  * @see https://core.telegram.org/bots/api#inputmediavideo
  */
-class InputMediaVideo implements InputMedia //todo добавить сверху динамическое определение параметров
+class InputMediaVideo implements InputMedia
 {
     /**
      * Type of the result, must be video
@@ -73,78 +73,4 @@ class InputMediaVideo implements InputMedia //todo добавить сверху
     {
         $this->media = $media;
     }
-
-    /**
-     * @param mixed $media
-     */
-    public function setMedia($media): void
-    {
-        $this->media = $media;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMedia()
-    {
-        return $this->media;
-    }
-
-    /**
-     * @param mixed $thumb
-     */
-    public function setThumb($thumb): void
-    {
-        $this->thumb = $thumb;
-    }
-
-    /**
-     * @param string $caption
-     */
-    public function setCaption(string $caption): void
-    {
-        $this->caption = $caption;
-    }
-
-    /**
-     * @param string $parse_mode
-     */
-    public function setParseMode(string $parse_mode): void
-    {
-        $this->parse_mode = $parse_mode;
-    }
-
-    /**
-     * @param int $width
-     */
-    public function setWidth(int $width): void
-    {
-        $this->width = $width;
-    }
-
-    /**
-     * @param int $height
-     */
-    public function setHeight(int $height): void
-    {
-        $this->height = $height;
-    }
-
-    /**
-     * @param int $duration
-     */
-    public function setDuration(int $duration): void
-    {
-        $this->duration = $duration;
-    }
-
-    /**
-     * @param bool $supports_streaming
-     */
-    public function setSupportsStreaming(bool $supports_streaming): void
-    {
-        $this->supports_streaming = $supports_streaming;
-    }
-
-
 }

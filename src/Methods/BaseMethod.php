@@ -3,6 +3,12 @@
 namespace Klev\TelegramBotApi\Methods;
 
 use Klev\TelegramBotApi\TelegramException;
+use Klev\TelegramBotApi\Types\InputMedia;
+use Klev\TelegramBotApi\Types\InputMediaAnimation;
+use Klev\TelegramBotApi\Types\InputMediaAudio;
+use Klev\TelegramBotApi\Types\InputMediaDocument;
+use Klev\TelegramBotApi\Types\InputMediaPhoto;
+use Klev\TelegramBotApi\Types\InputMediaVideo;
 
 /**
  * Class BaseMethod
@@ -18,6 +24,11 @@ abstract class BaseMethod
         SendAnimation::class => ['animation', 'thumb'],
         SendVoice::class => 'voice',
         SendVideoNote::class => ['video_note', 'thumb'],
+        InputMediaAudio::class => ['media', 'thumb'],
+        InputMediaPhoto::class => 'media',
+        InputMediaDocument::class => 'media',
+        InputMediaVideo::class => ['media', 'thumb'],
+        InputMediaAnimation::class => ['media', 'thumb'],
     ];
 
     public function preparation()
@@ -43,10 +54,7 @@ abstract class BaseMethod
     {
         $data = [];
 
-        $fileField = self::$mapClassFileFields[get_class($object)] ?? null;
-
-        if(is_null($fileField)) throw new TelegramException("No find mapping for "  . get_class($object));
-        if(is_string($fileField)) $fileField = [$fileField];
+        $fileField = $fileField = self::getMappingFields($object);;
 
         $isIssetLocalFiles = false;
 
@@ -72,6 +80,64 @@ abstract class BaseMethod
         }
 
         return $data;
+    }
+
+    /**
+     * @param SendMediaGroup $object
+     * @return array
+     * @throws TelegramException
+     */
+    public static function getDataForMediaGroup(SendMediaGroup $object)
+    {
+        $medias = $object->media;
+
+        $data = [];
+
+        /**@var InputMedia $media*/
+        foreach ($medias as $media) {
+            $fileField = self::getMappingFields($media);
+
+            foreach ($fileField as $field) {
+                if (self::isLocalFile($media->$field)) {
+                    $name = basename($media->$field);
+                    $data[] = [
+                        'name' => $name,
+                        'contents' => fopen($media->$field, 'r'),
+                    ];
+                    $media->$field = "attach://" . $name;
+                }
+            }
+
+        }
+
+        if (!empty($data)) {
+            $fields = get_object_vars($object);
+
+            foreach ($fields as $name => $value) {
+                $data[] = [
+                    'name' => $name,
+                    'contents' => $name === 'media' ? json_encode($value) : $value
+                ];
+            }
+        }
+
+        return $data;
+
+    }
+
+    /**
+     * @param object $object
+     * @return string[]
+     * @throws TelegramException
+     */
+    private static function getMappingFields(object $object): array
+    {
+        $fileField = self::$mapClassFileFields[get_class($object)] ?? null;
+
+        if(is_null($fileField)) throw new TelegramException("No find mapping for "  . get_class($object));
+        if(is_string($fileField)) $fileField = [$fileField];
+
+        return $fileField;
     }
 
     /**

@@ -10,7 +10,7 @@ namespace Klev\TelegramBotApi\Types;
  *
  * @see https://core.telegram.org/bots/api#inputmediaaudio
  */
-class InputMediaAudio extends BaseType
+class InputMediaAudio implements InputMedia
 {
     /**
      * Type of the result, must be audio
@@ -32,49 +32,56 @@ class InputMediaAudio extends BaseType
      * was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files »
      * @var string|null
      */
-    public ?string $thumb;
+    public ?string $thumb = '';
     /**
      * Optional. Caption of the animation to be sent, 0-1024 characters after entities parsing
      * @var string|null
      */
-    public ?string $caption;
+    public ?string $caption = '';
     /**
      * Optional. Mode for parsing entities in the animation caption. See formatting options for more details.
      * @var string|null
      */
-    public ?string $parse_mode;
+    public ?string $parse_mode = 'html';
     /**
      * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
      * @var MessageEntity[]|null
      */
-    public ?array $caption_entities;
+    public ?array $caption_entities = null;
     /**
      * Optional. Duration of the audio in seconds
      * @var int|null
      */
-    public ?int $duration;
+    public ?int $duration = 0;
     /**
      * Optional. Performer of the audio
      * @var string|null
      */
-    public ?string $performer;
+    public ?string $performer = '';
     /**
      * Optional. Title of the audio
      * @var string|null
      */
-    public ?string $title;
+    public ?string $title = '';
 
-    protected function bindObjects($key, $data)
+    public function __construct(string $media)
     {
-        switch ($key) {
-            case 'caption_entities':
-                $result = [];
-                foreach ($data as $entity) {
-                    $result[] = new MessageEntity($entity);
-                }
-                return $result;
-        }
-
-        return null;
+        $this->media = $media;
     }
+
+
+
+//    protected function bindObjects($key, $data)
+//    {
+//        switch ($key) {
+//            case 'caption_entities':
+//                $result = [];
+//                foreach ($data as $entity) {
+//                    $result[] = new MessageEntity($entity);
+//                }
+//                return $result;
+//        }
+//
+//        return null;
+//    }
 }

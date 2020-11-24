@@ -11,6 +11,7 @@ use Klev\TelegramBotApi\Methods\ForwardMessage;
 use Klev\TelegramBotApi\Methods\SendAnimation;
 use Klev\TelegramBotApi\Methods\SendAudio;
 use Klev\TelegramBotApi\Methods\SendDocument;
+use Klev\TelegramBotApi\Methods\SendMediaGroup;
 use Klev\TelegramBotApi\Methods\SendMessage;
 use Klev\TelegramBotApi\Methods\SendPhoto;
 use Klev\TelegramBotApi\Methods\SendVideo;
@@ -258,6 +259,35 @@ class Telegram
         $out = $this->request('sendVideoNote', $requestData);
 
         return new Message($out['result']);
+    }
+
+    /**
+     * @param SendMediaGroup $sendMediaGroup
+     * @return Message[]
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function sendMediaGroup(SendMediaGroup $sendMediaGroup): array
+    {
+        $sendMediaGroup->validation();
+
+        $data = BaseMethod::getDataForMediaGroup($sendMediaGroup);
+
+        if (!empty($data)) {
+            $requestData = ['multipart' => $data];
+        } else {
+            $sendMediaGroup->preparation();
+            $requestData = ['json' =>(array)$sendMediaGroup];
+        }
+
+        $out = $this->request('sendMediaGroup', $requestData);
+
+        $result = [];
+        foreach ($out['result'] as $item) {
+            $result[] = new Message($item);
+        }
+
+        return $result;
     }
 
 

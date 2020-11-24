@@ -23,7 +23,7 @@ class InputMediaPhoto implements InputMedia
      * using multipart/form-data under <file_attach_name> name. More info on Sending Files »
      * @var string
      */
-    public string $media;
+    public $media;
     /**
      * Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing
      * @var string|null
@@ -38,40 +38,10 @@ class InputMediaPhoto implements InputMedia
      * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
      * @var array|null
      */
-    public ?array $caption_entities;
+    public ?array $caption_entities = null;
 
-
-    public function __construct(string $media) //todo
+    public function __construct(string $media)
     {
         $this->media = $media;
-    }
-
-    /**
-     * @param mixed $media
-     */
-    public function setMedia($media): void
-    {
-        $this->media = $media;
-    }
-
-    public function getMedia()
-    {
-        return $this->media;
-    }
-
-    /**
-     * @param string $caption
-     */
-    public function setCaption(string $caption): void
-    {
-        $this->caption = $caption;
-    }
-
-    /**
-     * @param string $parse_mode
-     */
-    public function setParseMode(string $parse_mode): void
-    {
-        $this->parse_mode = $parse_mode;
     }
 }
