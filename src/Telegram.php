@@ -7,6 +7,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Klev\TelegramBotApi\Methods\BaseMethod;
 use Klev\TelegramBotApi\Methods\CopyMessage;
 use Klev\TelegramBotApi\Methods\DeleteWebhook;
+use Klev\TelegramBotApi\Methods\EditMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\ForwardMessage;
 use Klev\TelegramBotApi\Methods\SendAnimation;
 use Klev\TelegramBotApi\Methods\SendAudio;
@@ -302,6 +303,23 @@ class Telegram
         $sendLocation->preparation();
         $out = $this->request('sendLocation', ['json' => (array)$sendLocation]);
         return new Message($out['result']);
+    }
+
+    /**
+     * @param EditMessageLiveLocation $editMessageLiveLocation
+     * @return Message|bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function editMessageLiveLocation(EditMessageLiveLocation $editMessageLiveLocation) //todo проверить
+    {
+        $editMessageLiveLocation->preparation();
+        $out = $this->request('editMessageLiveLocation', ['json' => (array)$editMessageLiveLocation]);
+        if ($editMessageLiveLocation->inline_message_id === null) {
+            return new Message($out['result']);
+        } else {
+            return $out['result']; //todo true?
+        }
     }
 
 
