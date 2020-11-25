@@ -11,6 +11,7 @@ use Klev\TelegramBotApi\Methods\EditMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\ForwardMessage;
 use Klev\TelegramBotApi\Methods\SendAnimation;
 use Klev\TelegramBotApi\Methods\SendAudio;
+use Klev\TelegramBotApi\Methods\SendChatAction;
 use Klev\TelegramBotApi\Methods\SendContact;
 use Klev\TelegramBotApi\Methods\SendDice;
 use Klev\TelegramBotApi\Methods\SendDocument;
@@ -394,6 +395,18 @@ class Telegram
         $sendDice->preparation();
         $out = $this->request('sendDice', ['json' => (array)$sendDice]);
         return new Message($out['result']);
+    }
+
+    /**
+     * @param SendChatAction $sendChatAction
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function sendChatAction(SendChatAction $sendChatAction): bool
+    {
+        $out = $this->request('sendChatAction', ['json' => (array)$sendChatAction]);
+        return $out['result'];
     }
 
 
