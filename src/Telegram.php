@@ -9,6 +9,7 @@ use Klev\TelegramBotApi\Methods\CopyMessage;
 use Klev\TelegramBotApi\Methods\DeleteWebhook;
 use Klev\TelegramBotApi\Methods\EditMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\ForwardMessage;
+use Klev\TelegramBotApi\Methods\GetUserProfilePhotos;
 use Klev\TelegramBotApi\Methods\SendAnimation;
 use Klev\TelegramBotApi\Methods\SendAudio;
 use Klev\TelegramBotApi\Methods\SendChatAction;
@@ -30,6 +31,7 @@ use Klev\TelegramBotApi\Types\Message;
 use Klev\TelegramBotApi\Types\MessageId;
 use Klev\TelegramBotApi\Types\Update;
 use Klev\TelegramBotApi\Types\User;
+use Klev\TelegramBotApi\Types\UserProfilePhotos;
 use Klev\TelegramBotApi\Types\WebhookInfo;
 use Psr\Http\Client\ClientInterface;
 
@@ -407,6 +409,18 @@ class Telegram
     {
         $out = $this->request('sendChatAction', ['json' => (array)$sendChatAction]);
         return $out['result'];
+    }
+
+    /**
+     * @param GetUserProfilePhotos $getUserProfilePhotos
+     * @return UserProfilePhotos
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function getUserProfilePhotos(GetUserProfilePhotos $getUserProfilePhotos)
+    {
+        $out = $this->request('getUserProfilePhotos', ['json' => (array)$getUserProfilePhotos]);
+        return new UserProfilePhotos($out['result']);
     }
 
 
