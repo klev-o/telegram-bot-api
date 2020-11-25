@@ -16,9 +16,9 @@ class SendPoll extends BaseMethod
     public string $question;
     /**
      * A JSON-serialized list of answer options, 2-10 strings 1-100 characters each
-     * @var string
+     * @var string[]|string
      */
-    public string $options;
+    public $options;
     public ?bool $is_anonymous;
     public ?string $type;
     public ?bool $allows_multiple_answers;
@@ -39,5 +39,13 @@ class SendPoll extends BaseMethod
         $this->chat_id = $chat_id;
         $this->question = $question;
         $this->options = $options;
+    }
+
+    public function preparation()
+    {
+        if (is_array($this->options)) {
+            $this->options = json_encode($this->options);
+        }
+        return parent::preparation();
     }
 }

@@ -12,6 +12,7 @@ use Klev\TelegramBotApi\Methods\ForwardMessage;
 use Klev\TelegramBotApi\Methods\SendAnimation;
 use Klev\TelegramBotApi\Methods\SendAudio;
 use Klev\TelegramBotApi\Methods\SendContact;
+use Klev\TelegramBotApi\Methods\SendDice;
 use Klev\TelegramBotApi\Methods\SendDocument;
 use Klev\TelegramBotApi\Methods\SendLocation;
 use Klev\TelegramBotApi\Methods\SendMediaGroup;
@@ -381,6 +382,20 @@ class Telegram
         $out = $this->request('sendPoll', ['json' => (array)$sendPoll]);
         return new Message($out['result']);
     }
+
+    /**
+     * @param SendDice $sendDice
+     * @return Message
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function sendDice(SendDice $sendDice): Message
+    {
+        $sendDice->preparation();
+        $out = $this->request('sendDice', ['json' => (array)$sendDice]);
+        return new Message($out['result']);
+    }
+
 
 
     public function getToken()
