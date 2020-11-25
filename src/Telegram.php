@@ -20,6 +20,7 @@ use Klev\TelegramBotApi\Methods\SendVideo;
 use Klev\TelegramBotApi\Methods\SendVideoNote;
 use Klev\TelegramBotApi\Methods\SendVoice;
 use Klev\TelegramBotApi\Methods\SetWebhook;
+use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
 use Klev\TelegramBotApi\Types\Message;
 use Klev\TelegramBotApi\Types\MessageId;
 use Klev\TelegramBotApi\Types\Update;
@@ -311,11 +312,28 @@ class Telegram
      * @throws GuzzleException
      * @throws TelegramException
      */
-    public function editMessageLiveLocation(EditMessageLiveLocation $editMessageLiveLocation) //todo проверить
+    public function editMessageLiveLocation(EditMessageLiveLocation $editMessageLiveLocation)
     {
         $editMessageLiveLocation->preparation();
         $out = $this->request('editMessageLiveLocation', ['json' => (array)$editMessageLiveLocation]);
         if ($editMessageLiveLocation->inline_message_id === null) {
+            return new Message($out['result']);
+        } else {
+            return $out['result']; //todo true?
+        }
+    }
+
+    /**
+     * @param StopMessageLiveLocation $stopMessageLiveLocation
+     * @return Message|bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function stopMessageLiveLocation(StopMessageLiveLocation $stopMessageLiveLocation)
+    {
+        $stopMessageLiveLocation->preparation();
+        $out = $this->request('stopMessageLiveLocation', ['json' => (array)$stopMessageLiveLocation]);
+        if ($stopMessageLiveLocation->inline_message_id === null) {
             return new Message($out['result']);
         } else {
             return $out['result']; //todo true?
