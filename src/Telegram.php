@@ -27,6 +27,7 @@ use Klev\TelegramBotApi\Methods\SendVideoNote;
 use Klev\TelegramBotApi\Methods\SendVoice;
 use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
+use Klev\TelegramBotApi\Types\File;
 use Klev\TelegramBotApi\Types\Message;
 use Klev\TelegramBotApi\Types\MessageId;
 use Klev\TelegramBotApi\Types\Update;
@@ -43,6 +44,7 @@ class Telegram
 {
     private string $token;
     private string $apiEndpoint = 'https://api.telegram.org/bot';
+    private string $fileApiEndpoint = 'https://api.telegram.org/file/bot';
 
     private ClientInterface $apiClient;
 
@@ -423,6 +425,29 @@ class Telegram
         return new UserProfilePhotos($out['result']);
     }
 
+    /**
+     * @param string $file_id
+     * @return File
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function getFile(string $file_id)
+    {
+        $out = $this->request('getFile', ['json' => ['file_id' => $file_id]]);
+        return new File($out['result']);
+    }
+
+    public function downloadFile($fileIdOrPath, $savePath)
+    {
+        $path = $fileIdOrPath;
+        if (!filter_var($fileIdOrPath, FILTER_VALIDATE_URL)) {
+            $file = $this->getFile($fileIdOrPath);
+            $path = $file->file_path;
+        }
+        $this->requestForDownload($path, ['sink' => $savePath]);
+    }
+
+
 
 
     public function getToken()
@@ -435,17 +460,32 @@ class Telegram
         $this->apiEndpoint = $url;
     }
 
+    public function setFileApiEndpoint(string $url)
+    {
+        $this->fileApiEndpoint = $url;
+    }
+
+
+    private function getApiUri($method)
+    {
+        return $this->apiEndpoint . $this->token . '/' . $method;
+    }
+
+    private function getFileApiUri($pathInfo)
+    {
+        return $this->fileApiEndpoint . $this->token . '/' . $pathInfo;
+    }
 
     /**
      * @param $method
      * @param array $data
      * @return mixed
-     * @throws TelegramException
      * @throws GuzzleException
+     * @throws TelegramException
      */
     private function request($method, $data = [])
     {
-        $uri = $this->apiEndpoint . $this->token .  '/' . $method;
+        $uri = $this->getApiUri($method);
 
         $response = $this->apiClient->post($uri, $data);
         $body = (string)$response->getBody();
@@ -456,5 +496,16 @@ class Telegram
         }
 
         throw new TelegramException('Unexpected  response: ' . $body);
+    }
+
+    /**
+     * @param $pathInfo
+     * @param array $data
+     * @throws GuzzleException
+     */
+    private function requestForDownload($pathInfo, $data = [])
+    {
+        $uri = $this->getFileApiUri($pathInfo);
+        $this->apiClient->get($uri, $data);
     }
 }
