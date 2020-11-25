@@ -17,6 +17,7 @@ use Klev\TelegramBotApi\Methods\SendLocation;
 use Klev\TelegramBotApi\Methods\SendMediaGroup;
 use Klev\TelegramBotApi\Methods\SendMessage;
 use Klev\TelegramBotApi\Methods\SendPhoto;
+use Klev\TelegramBotApi\Methods\SendPoll;
 use Klev\TelegramBotApi\Methods\SendVenue;
 use Klev\TelegramBotApi\Methods\SendVideo;
 use Klev\TelegramBotApi\Methods\SendVideoNote;
@@ -365,6 +366,19 @@ class Telegram
     {
         $sendContact->preparation();
         $out = $this->request('sendContact', ['json' => (array)$sendContact]);
+        return new Message($out['result']);
+    }
+
+    /**
+     * @param SendPoll $sendPoll
+     * @return Message
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function sendPoll(SendPoll $sendPoll): Message
+    {
+        $sendPoll->preparation();
+        $out = $this->request('sendPoll', ['json' => (array)$sendPoll]);
         return new Message($out['result']);
     }
 
