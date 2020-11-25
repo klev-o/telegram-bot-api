@@ -11,6 +11,7 @@ use Klev\TelegramBotApi\Methods\EditMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\ForwardMessage;
 use Klev\TelegramBotApi\Methods\SendAnimation;
 use Klev\TelegramBotApi\Methods\SendAudio;
+use Klev\TelegramBotApi\Methods\SendContact;
 use Klev\TelegramBotApi\Methods\SendDocument;
 use Klev\TelegramBotApi\Methods\SendLocation;
 use Klev\TelegramBotApi\Methods\SendMediaGroup;
@@ -351,6 +352,19 @@ class Telegram
     {
         $sendVenue->preparation();
         $out = $this->request('sendVenue', ['json' => (array)$sendVenue]);
+        return new Message($out['result']);
+    }
+
+    /**
+     * @param SendContact $sendContact
+     * @return Message
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function sendContact(SendContact $sendContact): Message
+    {
+        $sendContact->preparation();
+        $out = $this->request('sendContact', ['json' => (array)$sendContact]);
         return new Message($out['result']);
     }
 
