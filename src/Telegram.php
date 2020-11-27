@@ -544,7 +544,7 @@ class Telegram
      * invite link as String on success.
      *
      * @param string $chat_id
-     * @return mixed
+     * @return string
      * @throws GuzzleException
      * @throws TelegramException
      */
@@ -556,15 +556,32 @@ class Telegram
 
     /**
      * @param SetChatPhoto $setChatPhoto
-     * @return Message
+     * @return bool
      * @throws GuzzleException
      * @throws TelegramException
      */
-    public function setChatPhoto(SetChatPhoto $setChatPhoto)
+    public function setChatPhoto(SetChatPhoto $setChatPhoto): bool
     {
         $data = BaseMethod::getDataForMultipart($setChatPhoto);
-        $out = $this->request('sendVideoNote',  ['multipart' => $data]);
+        $out = $this->request('setChatPhoto',  ['multipart' => $data]);
 
+        return $out['result'];
+    }
+
+    /**
+     * Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an
+     * administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.
+     *
+     * @param string $chat_id - Unique identifier for the target chat or username of the target channel
+     * (in the format @channelusername)
+     *
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function deleteChatPhoto(string $chat_id): bool
+    {
+        $out = $this->request('deleteChatPhoto',  ['json' => ['chat_id' => $chat_id]]);
         return $out['result'];
     }
 
