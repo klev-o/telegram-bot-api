@@ -10,6 +10,7 @@ use Klev\TelegramBotApi\Methods\DeleteWebhook;
 use Klev\TelegramBotApi\Methods\EditMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\ForwardMessage;
 use Klev\TelegramBotApi\Methods\GetUserProfilePhotos;
+use Klev\TelegramBotApi\Methods\KickChatMember;
 use Klev\TelegramBotApi\Methods\SendAnimation;
 use Klev\TelegramBotApi\Methods\SendAudio;
 use Klev\TelegramBotApi\Methods\SendChatAction;
@@ -426,6 +427,12 @@ class Telegram
     }
 
     /**
+     * Use this method to get basic info about a file and prepare it for downloading. For the moment, bots can download
+     * files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the
+     * link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response.
+     * It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be
+     * requested by calling getFile again.
+     *
      * @param string $file_id
      * @return File
      * @throws GuzzleException
@@ -437,6 +444,12 @@ class Telegram
         return new File($out['result']);
     }
 
+    /**
+     * @param $fileIdOrPath
+     * @param $savePath
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
     public function downloadFile($fileIdOrPath, $savePath)
     {
         $path = $fileIdOrPath;
@@ -445,6 +458,18 @@ class Telegram
             $path = $file->file_path;
         }
         $this->requestForDownload($path, ['sink' => $savePath]);
+    }
+
+    /**
+     * @param KickChatMember $kickChatMember
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function kickChatMember(KickChatMember $kickChatMember): bool
+    {
+        $out = $this->request('kickChatMember', ['json' => (array)$kickChatMember]);
+        return $out['result'];
     }
 
 
