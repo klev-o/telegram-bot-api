@@ -2,6 +2,7 @@
 
 namespace Klev\TelegramBotApi\Methods;
 
+use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageMedia;
 use Klev\TelegramBotApi\TelegramException;
 use Klev\TelegramBotApi\Types\InputMedia;
 use Klev\TelegramBotApi\Types\InputMediaAnimation;
@@ -30,6 +31,7 @@ abstract class BaseMethod
         InputMediaVideo::class => ['media', 'thumb'],
         InputMediaAnimation::class => ['media', 'thumb'],
         SetChatPhoto::class =>'photo',
+        EditMessageMedia::class =>'media',
     ];
 
     public function preparation()
@@ -84,15 +86,19 @@ abstract class BaseMethod
     }
 
     /**
-     * @param SendMediaGroup $object
+     * @param SendMedia $object
      * @return array
      * @throws TelegramException
      */
-    public static function getDataForMediaGroup(SendMediaGroup $object)
+    public static function getDataForMediaGroup(SendMedia $object)
     {
         $medias = $object->media;
 
         $data = [];
+
+        if (!is_array($medias)) {
+            $medias = [$medias];
+        }
 
         /**@var InputMedia $media*/
         foreach ($medias as $media) {

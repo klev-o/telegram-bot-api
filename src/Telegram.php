@@ -43,6 +43,7 @@ use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\UnbanChatMember;
 use Klev\TelegramBotApi\Methods\UnpinChatMessage;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageCaption;
+use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageMedia;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageText;
 use Klev\TelegramBotApi\Types\BotCommand;
 use Klev\TelegramBotApi\Types\Chat;
@@ -869,6 +870,28 @@ class Telegram
         } else {
             return $out['result']; //todo true?
         }
+    }
+
+    /**
+     * @param EditMessageMedia $editMessageMedia
+     * @return array
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function editMessageMedia(EditMessageMedia $editMessageMedia): array
+    {
+        $data = BaseMethod::getDataForMediaGroup($editMessageMedia);
+
+        if (!empty($data)) {
+            $requestData = ['multipart' => $data];
+        } else {
+            $editMessageMedia->preparation();
+            $requestData = ['json' =>(array)$editMessageMedia];
+        }
+
+        $out = $this->request('editMessageMedia', $requestData);
+
+        return $out['result']; //todo condition?
     }
 
 

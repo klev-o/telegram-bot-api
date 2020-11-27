@@ -6,6 +6,15 @@ use Klev\TelegramBotApi\Methods\BaseMethod;
 use Klev\TelegramBotApi\Types\InlineKeyboardMarkup;
 use Klev\TelegramBotApi\Types\MessageEntity;
 
+/**
+ * Use this method to edit captions of messages. On success, if the edited message is not an inline message, the
+ * edited Message is returned, otherwise True is returned.
+ *
+ * Class EditMessageCaption
+ * @package Klev\TelegramBotApi\Methods\UpdatingMessages
+ *
+ * @see https://core.telegram.org/bots/api#editmessagecaption
+ */
 class EditMessageCaption extends BaseMethod
 {
     /**

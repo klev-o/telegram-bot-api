@@ -12,7 +12,7 @@ use Klev\TelegramBotApi\Types\InputMedia;
  * Class SendMediaGroup
  * @package Klev\TelegramBotApi\Methods
  */
-class SendMediaGroup extends BaseMethod
+class SendMediaGroup extends BaseMethod implements SendMedia
 {
     /**
      * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
