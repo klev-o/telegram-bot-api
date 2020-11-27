@@ -42,6 +42,7 @@ use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\UnbanChatMember;
 use Klev\TelegramBotApi\Methods\UnpinChatMessage;
+use Klev\TelegramBotApi\Types\BotCommand;
 use Klev\TelegramBotApi\Types\Chat;
 use Klev\TelegramBotApi\Types\ChatMember;
 use Klev\TelegramBotApi\Types\File;
@@ -817,6 +818,22 @@ class Telegram
         return new $out['result'];
     }
 
+    /**
+     * @return array
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function getMyCommands(): array
+    {
+        $out = $this->request('getMyCommands');
+
+        $result = [];
+        foreach ($out['result'] as $command) {
+            $result[] = new BotCommand($command);
+        }
+
+        return $result;
+    }
 
 
 
