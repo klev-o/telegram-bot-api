@@ -34,6 +34,7 @@ use Klev\TelegramBotApi\Methods\SetChatAdministratorCustomTitle;
 use Klev\TelegramBotApi\Methods\SetChatDescription;
 use Klev\TelegramBotApi\Methods\SetChatPermissions;
 use Klev\TelegramBotApi\Methods\SetChatPhoto;
+use Klev\TelegramBotApi\Methods\SetChatStickerSet;
 use Klev\TelegramBotApi\Methods\SetChatTitle;
 use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
@@ -755,6 +756,18 @@ class Telegram
     {
         $out = $this->request('getChatMember', ['json' => (array)$getChatMember]);
         return new ChatMember($out['result']);
+    }
+
+    /**
+     * @param SetChatStickerSet $setChatStickerSet
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function setChatStickerSet(SetChatStickerSet $setChatStickerSet): bool
+    {
+        $out = $this->request('setChatStickerSet', ['json' => (array)$setChatStickerSet]);
+        return new $out['result'];
     }
 
 
