@@ -9,6 +9,7 @@ use Klev\TelegramBotApi\Methods\CopyMessage;
 use Klev\TelegramBotApi\Methods\DeleteWebhook;
 use Klev\TelegramBotApi\Methods\EditMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\ForwardMessage;
+use Klev\TelegramBotApi\Methods\GetChatMember;
 use Klev\TelegramBotApi\Methods\GetUserProfilePhotos;
 use Klev\TelegramBotApi\Methods\KickChatMember;
 use Klev\TelegramBotApi\Methods\PinChatMessage;
@@ -38,6 +39,8 @@ use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\UnbanChatMember;
 use Klev\TelegramBotApi\Methods\UnpinChatMessage;
+use Klev\TelegramBotApi\Types\Chat;
+use Klev\TelegramBotApi\Types\ChatMember;
 use Klev\TelegramBotApi\Types\File;
 use Klev\TelegramBotApi\Types\Message;
 use Klev\TelegramBotApi\Types\MessageId;
@@ -625,6 +628,12 @@ class Telegram
         return $out['result'];
     }
 
+    /**
+     * @param UnpinChatMessage $unpinChatMessage
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
     public function unpinChatMessage(UnpinChatMessage $unpinChatMessage): bool
     {
         $out = $this->request('unpinChatMessage', ['json' => (array)$unpinChatMessage]);
@@ -642,11 +651,110 @@ class Telegram
      * @return bool
      * @throws GuzzleException
      * @throws TelegramException
+     *
+     * @see https://core.telegram.org/bots/api#unpinchatmessage
      */
     public function unpinAllChatMessages(string $chat_id): bool
     {
         $out = $this->request('unpinAllChatMessages',  ['json' => ['chat_id' => $chat_id]]);
         return $out['result'];
+    }
+
+    /**
+     * Use this method for your bot to leave a group, supergroup or channel. Returns True on success.
+     *
+     * @param string $chat_id
+     * Unique identifier for the target chat or username of the target supergroup or channel
+     * (in the format @channelusername)
+     *
+     * @see https://core.telegram.org/bots/api#leavechat
+     *
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function leaveChat(string $chat_id): bool
+    {
+        $out = $this->request('leaveChat',  ['json' => ['chat_id' => $chat_id]]);
+        return $out['result'];
+    }
+
+    /**
+     * Use this method to get up to date information about the chat (current name of the user for one-on-one
+     * conversations, current username of a user, group or channel, etc.). Returns a Chat object on success.
+     *
+     * @param string $chat_id
+     * Unique identifier for the target chat or username of the target supergroup or channel
+     * (in the format @channelusername)
+     *
+     * @see https://core.telegram.org/bots/api#getchat
+     *
+     * @return Chat
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function getChat(string $chat_id): Chat
+    {
+        $out = $this->request('getChat',  ['json' => ['chat_id' => $chat_id]]);
+        return new Chat($out['result']);
+    }
+
+    /**
+     * Use this method to get a list of administrators in a chat. On success, returns an Array of ChatMember objects
+     * that contains information about all chat administrators except other bots. If the chat is a group or a
+     * supergroup and no administrators were appointed, only the creator will be returned.
+     *
+     * @param string $chat_id
+     * Unique identifier for the target chat or username of the target supergroup or channel
+     * (in the format @channelusername)
+     *
+     * @see https://core.telegram.org/bots/api#getchatadministrators
+     *
+     * @return ChatMember[]
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function getChatAdministrators(string $chat_id): array
+    {
+        $out = $this->request('getChatAdministrators',  ['json' => ['chat_id' => $chat_id]]);
+
+        $result = [];
+        foreach ($out['result'] as $member) {
+            $result[] = new ChatMember($member);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Use this method to get the number of members in a chat. Returns Int on success.
+     *
+     * @param string $chat_id
+     * Unique identifier for the target chat or username of the target supergroup or channel
+     * (in the format @channelusername)
+     *
+     * @see https://core.telegram.org/bots/api#getchatmemberscount
+     *
+     * @return int
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function getChatMembersCount(string $chat_id): int
+    {
+        $out = $this->request('getChatMembersCount',  ['json' => ['chat_id' => $chat_id]]);
+        return new $out['result'];
+    }
+
+    /**
+     * @param GetChatMember $getChatMember
+     * @return ChatMember
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function getChatMember(GetChatMember $getChatMember): ChatMember
+    {
+        $out = $this->request('getChatMember', ['json' => (array)$getChatMember]);
+        return new ChatMember($out['result']);
     }
 
 
