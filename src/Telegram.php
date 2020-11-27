@@ -31,6 +31,7 @@ use Klev\TelegramBotApi\Methods\SendVoice;
 use Klev\TelegramBotApi\Methods\SetChatAdministratorCustomTitle;
 use Klev\TelegramBotApi\Methods\SetChatPermissions;
 use Klev\TelegramBotApi\Methods\SetChatPhoto;
+use Klev\TelegramBotApi\Methods\SetChatTitle;
 use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\UnbanChatMember;
@@ -582,6 +583,18 @@ class Telegram
     public function deleteChatPhoto(string $chat_id): bool
     {
         $out = $this->request('deleteChatPhoto',  ['json' => ['chat_id' => $chat_id]]);
+        return $out['result'];
+    }
+
+    /**
+     * @param SetChatTitle $setChatTitle
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function setChatTitle(SetChatTitle $setChatTitle): bool
+    {
+        $out = $this->request('setChatTitle', ['json' => (array)$setChatTitle]);
         return $out['result'];
     }
 
