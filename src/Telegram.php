@@ -11,6 +11,7 @@ use Klev\TelegramBotApi\Methods\EditMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\ForwardMessage;
 use Klev\TelegramBotApi\Methods\GetUserProfilePhotos;
 use Klev\TelegramBotApi\Methods\KickChatMember;
+use Klev\TelegramBotApi\Methods\PinChatMessage;
 use Klev\TelegramBotApi\Methods\PromoteChatMember;
 use Klev\TelegramBotApi\Methods\RestrictChatMember;
 use Klev\TelegramBotApi\Methods\SendAnimation;
@@ -608,6 +609,18 @@ class Telegram
     public function setChatDescription(SetChatDescription $setChatDescription): bool
     {
         $out = $this->request('setChatDescription', ['json' => (array)$setChatDescription]);
+        return $out['result'];
+    }
+
+    /**
+     * @param PinChatMessage $pinChatMessage
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function pinChatMessage(PinChatMessage $pinChatMessage): bool
+    {
+        $out = $this->request('pinChatMessage', ['json' => (array)$pinChatMessage]);
         return $out['result'];
     }
 
