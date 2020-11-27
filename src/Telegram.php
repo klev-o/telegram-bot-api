@@ -28,6 +28,7 @@ use Klev\TelegramBotApi\Methods\SendVideoNote;
 use Klev\TelegramBotApi\Methods\SendVoice;
 use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
+use Klev\TelegramBotApi\Methods\UnbanChatMember;
 use Klev\TelegramBotApi\Types\File;
 use Klev\TelegramBotApi\Types\Message;
 use Klev\TelegramBotApi\Types\MessageId;
@@ -471,6 +472,19 @@ class Telegram
         $out = $this->request('kickChatMember', ['json' => (array)$kickChatMember]);
         return $out['result'];
     }
+
+    /**
+     * @param UnbanChatMember $unbanChatMember
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function unbanChatMember(UnbanChatMember $unbanChatMember): bool
+    {
+        $out = $this->request('unbanChatMember', ['json' => (array)$unbanChatMember]);
+        return $out['result'];
+    }
+
 
 
 
