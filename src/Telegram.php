@@ -4,6 +4,7 @@ namespace Klev\TelegramBotApi;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use Klev\TelegramBotApi\Methods\AnswerCallbackQuery;
 use Klev\TelegramBotApi\Methods\BaseMethod;
 use Klev\TelegramBotApi\Methods\CopyMessage;
 use Klev\TelegramBotApi\Methods\DeleteWebhook;
@@ -36,6 +37,7 @@ use Klev\TelegramBotApi\Methods\SetChatPermissions;
 use Klev\TelegramBotApi\Methods\SetChatPhoto;
 use Klev\TelegramBotApi\Methods\SetChatStickerSet;
 use Klev\TelegramBotApi\Methods\SetChatTitle;
+use Klev\TelegramBotApi\Methods\SetMyCommands;
 use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\UnbanChatMember;
@@ -787,6 +789,31 @@ class Telegram
     public function deleteChatStickerSet(string $chat_id): bool
     {
         $out = $this->request('deleteChatStickerSet',  ['json' => ['chat_id' => $chat_id]]);
+        return new $out['result'];
+    }
+
+    /**
+     * @param AnswerCallbackQuery $answerCallbackQuery
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function answerCallbackQuery(AnswerCallbackQuery $answerCallbackQuery): bool
+    {
+        $out = $this->request('answerCallbackQuery', ['json' => (array)$answerCallbackQuery]);
+        return $out['result'];
+    }
+
+    /**
+     * @param SetMyCommands $setMyCommands
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function setMyCommands(SetMyCommands $setMyCommands): bool
+    {
+        $setMyCommands->preparation();
+        $out = $this->request('setMyCommands',  ['json' => (array)$setMyCommands]);
         return new $out['result'];
     }
 
