@@ -37,6 +37,7 @@ use Klev\TelegramBotApi\Methods\SetChatTitle;
 use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\UnbanChatMember;
+use Klev\TelegramBotApi\Methods\UnpinChatMessage;
 use Klev\TelegramBotApi\Types\File;
 use Klev\TelegramBotApi\Types\Message;
 use Klev\TelegramBotApi\Types\MessageId;
@@ -621,6 +622,30 @@ class Telegram
     public function pinChatMessage(PinChatMessage $pinChatMessage): bool
     {
         $out = $this->request('pinChatMessage', ['json' => (array)$pinChatMessage]);
+        return $out['result'];
+    }
+
+    public function unpinChatMessage(UnpinChatMessage $unpinChatMessage): bool
+    {
+        $out = $this->request('unpinChatMessage', ['json' => (array)$unpinChatMessage]);
+        return $out['result'];
+    }
+
+    /**
+     * Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must
+     * be an administrator in the chat for this to work and must have the 'can_pin_messages' admin right in a supergroup
+     * or 'can_edit_messages' admin right in a channel. Returns True on success.
+     *
+     * @param string $chat_id - Unique identifier for the target chat or username of the target channel
+     * (in the format @channelusername)
+     *
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function unpinAllChatMessages(string $chat_id): bool
+    {
+        $out = $this->request('unpinAllChatMessages',  ['json' => ['chat_id' => $chat_id]]);
         return $out['result'];
     }
 
