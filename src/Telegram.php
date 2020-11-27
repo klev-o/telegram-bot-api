@@ -44,6 +44,7 @@ use Klev\TelegramBotApi\Methods\UnbanChatMember;
 use Klev\TelegramBotApi\Methods\UnpinChatMessage;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageCaption;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageMedia;
+use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageReplyMarkup;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageText;
 use Klev\TelegramBotApi\Types\BotCommand;
 use Klev\TelegramBotApi\Types\Chat;
@@ -892,6 +893,23 @@ class Telegram
         $out = $this->request('editMessageMedia', $requestData);
 
         return $out['result']; //todo condition?
+    }
+
+    /**
+     * @param EditMessageReplyMarkup $editMessageReplyMarkup
+     * @return Message|mixed
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function editMessageReplyMarkup(EditMessageReplyMarkup $editMessageReplyMarkup)
+    {
+        $editMessageReplyMarkup->preparation();
+        $out = $this->request('editMessageText', ['json' => (array)$editMessageReplyMarkup]);
+        if ($editMessageReplyMarkup->inline_message_id === null) {
+            return new Message($out['result']);
+        } else {
+            return $out['result'];
+        }
     }
 
 
