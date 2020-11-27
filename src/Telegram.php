@@ -42,6 +42,7 @@ use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\UnbanChatMember;
 use Klev\TelegramBotApi\Methods\UnpinChatMessage;
+use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageText;
 use Klev\TelegramBotApi\Types\BotCommand;
 use Klev\TelegramBotApi\Types\Chat;
 use Klev\TelegramBotApi\Types\ChatMember;
@@ -833,6 +834,23 @@ class Telegram
         }
 
         return $result;
+    }
+
+    /**
+     * @param EditMessageText $editMessageText
+     * @return Message|mixed
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function editMessageText(EditMessageText $editMessageText)
+    {
+        $editMessageText->preparation();
+        $out = $this->request('editMessageText', (array)$editMessageText);
+        if ($editMessageText->inline_message_id === null) {
+            return new Message($out['result']);
+        } else {
+            return $out['result']; //todo true?
+        }
     }
 
 
