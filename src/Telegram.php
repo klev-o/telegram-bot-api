@@ -11,6 +11,7 @@ use Klev\TelegramBotApi\Methods\EditMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\ForwardMessage;
 use Klev\TelegramBotApi\Methods\GetUserProfilePhotos;
 use Klev\TelegramBotApi\Methods\KickChatMember;
+use Klev\TelegramBotApi\Methods\RestrictChatMember;
 use Klev\TelegramBotApi\Methods\SendAnimation;
 use Klev\TelegramBotApi\Methods\SendAudio;
 use Klev\TelegramBotApi\Methods\SendChatAction;
@@ -482,6 +483,18 @@ class Telegram
     public function unbanChatMember(UnbanChatMember $unbanChatMember): bool
     {
         $out = $this->request('unbanChatMember', ['json' => (array)$unbanChatMember]);
+        return $out['result'];
+    }
+
+    /**
+     * @param RestrictChatMember $restrictChatMember
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function restrictChatMember(RestrictChatMember $restrictChatMember): bool
+    {
+        $out = $this->request('restrictChatMember', ['json' => (array)$restrictChatMember]);
         return $out['result'];
     }
 
