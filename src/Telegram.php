@@ -136,7 +136,7 @@ class Telegram
     public function sendMessage(SendMessage $sendMessage): Message
     {
         $sendMessage->preparation();
-        $out = $this->request('sendMessage', (array)$sendMessage);
+        $out = $this->request('sendMessage', ['json' => (array)$sendMessage]);
         return new Message($out['result']);
     }
 
@@ -845,7 +845,7 @@ class Telegram
     public function editMessageText(EditMessageText $editMessageText)
     {
         $editMessageText->preparation();
-        $out = $this->request('editMessageText', (array)$editMessageText);
+        $out = $this->request('editMessageText', ['json' => (array)$editMessageText]);
         if ($editMessageText->inline_message_id === null) {
             return new Message($out['result']);
         } else {

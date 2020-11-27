@@ -21,18 +21,18 @@ class InlineKeyboardButton
      * Optional. HTTP or tg:// url to be opened when button is pressed
      * @var string
      */
-    public ?string $url;
+    public ?string $url = '';
     /**
      * Optional. An HTTP URL used to automatically authorize the user. Can be used as a replacement for
      * the Telegram Login Widget.
      * @var LoginUrl
      */
-    public ?LoginUrl $login_url;
+    public ?LoginUrl $login_url = null;
     /**
      * Optional. Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes
      * @var string
      */
-    public ?string $callback_data;
+    public ?string $callback_data = '';
     /**
      * Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and
      * insert the bot's username and the specified inline query in the input field. Can be empty, in which case just
@@ -43,7 +43,7 @@ class InlineKeyboardButton
      * automatically returned to the chat they switched from, skipping the chat selection screen.
      * @var string
      */
-    public ?string $switch_inline_query;
+    public ?string $switch_inline_query = '';
     /**
      * Optional. If set, pressing the button will insert the bot's username and the specified inline query in
      * the current chat's input field. Can be empty, in which case only the bot's username will be inserted.
@@ -52,13 +52,13 @@ class InlineKeyboardButton
      * something from multiple options.
      * @var string
      */
-    public ?string $switch_inline_query_current_chat;
+    public ?string $switch_inline_query_current_chat = '';
     /**
      * Optional. Description of the game that will be launched when the user presses the button.
      * NOTE: This type of button must always be the first button in the first row.
      * @var
      */
-    public ?CallbackGame $callback_game;
+    public ?CallbackGame $callback_game = null;
     /**
      * Optional. Specify True, to send a Pay button.
      * NOTE: This type of button must always be the first button in the first row.
@@ -66,61 +66,8 @@ class InlineKeyboardButton
      */
     public ?bool $pay = false;
 
-    public function __construct($text) //todo
+    public function __construct($text)
     {
         $this->text = $text;
-    }
-
-    public function setUrl($url) //todo
-    {
-        $this->url = $url;
-    }
-
-    /**
-     * @param mixed $login_url
-     */
-    public function setLoginUrl($login_url) //todo
-    {
-        $this->login_url = $login_url;
-    }
-
-    /**
-     * @param mixed $callback_data
-     */
-    public function setCallbackData($callback_data) //todo
-    {
-        $this->callback_data = $callback_data;
-    }
-
-    /**
-     * @param mixed $switch_inline_query
-     */
-    public function setSwitchInlineQuery($switch_inline_query) //todo
-    {
-        $this->switch_inline_query = $switch_inline_query;
-    }
-
-    /**
-     * @param mixed $switch_inline_query_current_chat
-     */
-    public function setSwitchInlineQueryCurrentChat($switch_inline_query_current_chat) //todo
-    {
-        $this->switch_inline_query_current_chat = $switch_inline_query_current_chat;
-    }
-
-    /**
-     * @param mixed $callback_game
-     */
-    public function setCallbackGame($callback_game) //todo
-    {
-        $this->callback_game = $callback_game;
-    }
-
-    /**
-     * @param mixed $pay
-     */
-    public function setPay($pay) //todo
-    {
-        $this->pay = $pay;
     }
 }
