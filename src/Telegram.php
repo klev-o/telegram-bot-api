@@ -30,6 +30,7 @@ use Klev\TelegramBotApi\Methods\SendVideoNote;
 use Klev\TelegramBotApi\Methods\SendVoice;
 use Klev\TelegramBotApi\Methods\SetChatAdministratorCustomTitle;
 use Klev\TelegramBotApi\Methods\SetChatPermissions;
+use Klev\TelegramBotApi\Methods\SetChatPhoto;
 use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\UnbanChatMember;
@@ -550,6 +551,20 @@ class Telegram
     public function exportChatInviteLink(string $chat_id): string
     {
         $out = $this->request('exportChatInviteLink', ['json' => ['chat_id' => $chat_id]]);
+        return $out['result'];
+    }
+
+    /**
+     * @param SetChatPhoto $setChatPhoto
+     * @return Message
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function setChatPhoto(SetChatPhoto $setChatPhoto)
+    {
+        $data = BaseMethod::getDataForMultipart($setChatPhoto);
+        $out = $this->request('sendVideoNote',  ['multipart' => $data]);
+
         return $out['result'];
     }
 

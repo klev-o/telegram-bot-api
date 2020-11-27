@@ -29,6 +29,7 @@ abstract class BaseMethod
         InputMediaDocument::class => 'media',
         InputMediaVideo::class => ['media', 'thumb'],
         InputMediaAnimation::class => ['media', 'thumb'],
+        SetChatPhoto::class =>'photo',
     ];
 
     public function preparation()
