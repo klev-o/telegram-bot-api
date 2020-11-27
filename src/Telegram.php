@@ -28,6 +28,7 @@ use Klev\TelegramBotApi\Methods\SendVenue;
 use Klev\TelegramBotApi\Methods\SendVideo;
 use Klev\TelegramBotApi\Methods\SendVideoNote;
 use Klev\TelegramBotApi\Methods\SendVoice;
+use Klev\TelegramBotApi\Methods\SetChatAdministratorCustomTitle;
 use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\UnbanChatMember;
@@ -508,6 +509,18 @@ class Telegram
     public function promoteChatMember(PromoteChatMember $promoteChatMember): bool
     {
         $out = $this->request('promoteChatMember', ['json' => (array)$promoteChatMember]);
+        return $out['result'];
+    }
+
+    /**
+     * @param SetChatAdministratorCustomTitle $setChatAdministratorCustomTitle
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function setChatAdministratorCustomTitle(SetChatAdministratorCustomTitle $setChatAdministratorCustomTitle): bool
+    {
+        $out = $this->request('setChatAdministratorCustomTitle', ['json' => (array)$setChatAdministratorCustomTitle]);
         return $out['result'];
     }
 
