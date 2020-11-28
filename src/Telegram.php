@@ -42,6 +42,7 @@ use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\UnbanChatMember;
 use Klev\TelegramBotApi\Methods\UnpinChatMessage;
+use Klev\TelegramBotApi\Methods\UpdatingMessages\DeleteMessage;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageCaption;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageMedia;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageReplyMarkup;
@@ -920,11 +921,23 @@ class Telegram
      * @throws GuzzleException
      * @throws TelegramException
      */
-    public function stopPoll(StopPoll $stopPoll)
+    public function stopPoll(StopPoll $stopPoll): Poll
     {
         $stopPoll->preparation();
         $out = $this->request('stopPoll', ['json' => (array)$stopPoll]);
         return new Poll($out['result']);
+    }
+
+    /**
+     * @param DeleteMessage $deleteMessage
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function deleteMessage(DeleteMessage $deleteMessage): bool
+    {
+        $out = $this->request('deleteMessage', ['json' => (array)$deleteMessage]);
+        return $out['result'];
     }
 
 
