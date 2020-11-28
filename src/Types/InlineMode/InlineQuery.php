@@ -30,7 +30,7 @@ class InlineQuery extends BaseType
      * Optional. Sender location, only for bots that request user location
      * @var Location|null
      */
-    public ?Location $location;
+    public ?Location $location = null;
     /**
      * Text of the query (up to 256 characters)
      * @var string

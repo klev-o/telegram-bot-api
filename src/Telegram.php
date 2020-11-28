@@ -12,6 +12,7 @@ use Klev\TelegramBotApi\Methods\EditMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\ForwardMessage;
 use Klev\TelegramBotApi\Methods\GetChatMember;
 use Klev\TelegramBotApi\Methods\GetUserProfilePhotos;
+use Klev\TelegramBotApi\Methods\InlineMode\AnswerInlineQuery;
 use Klev\TelegramBotApi\Methods\KickChatMember;
 use Klev\TelegramBotApi\Methods\PinChatMessage;
 use Klev\TelegramBotApi\Methods\PromoteChatMember;
@@ -1074,6 +1075,18 @@ class Telegram
 
         $out = $this->request('uploadStickerFile', $requestData);
         return new File($out['result']);
+    }
+
+    /**
+     * @param AnswerInlineQuery $answerInlineQuery
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function answerInlineQuery(AnswerInlineQuery $answerInlineQuery): bool
+    {
+        $out = $this->request('answerInlineQuery', ['json' => (array)$answerInlineQuery]);
+        return $out['result'];
     }
 
 
