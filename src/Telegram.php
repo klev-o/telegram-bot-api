@@ -42,6 +42,7 @@ use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\Stickers\AddStickerToSet;
 use Klev\TelegramBotApi\Methods\Stickers\CreateNewStickerSet;
 use Klev\TelegramBotApi\Methods\Stickers\SendSticker;
+use Klev\TelegramBotApi\Methods\Stickers\SetStickerPositionInSet;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\UnbanChatMember;
 use Klev\TelegramBotApi\Methods\UnpinChatMessage;
@@ -1010,6 +1011,18 @@ class Telegram
         $requestData = !empty($data) ? ['multipart' => $data] : ['json' =>(array)$addStickerToSet];
 
         $out = $this->request('addStickerToSet', $requestData);
+        return $out['result'];
+    }
+
+    /**
+     * @param SetStickerPositionInSet $setStickerPositionInSet
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function setStickerPositionInSet(SetStickerPositionInSet $setStickerPositionInSet): bool
+    {
+        $out = $this->request('setStickerPositionInSet', ['json' => (array)$setStickerPositionInSet]);
         return $out['result'];
     }
 
