@@ -2,6 +2,7 @@
 
 namespace Klev\TelegramBotApi\Methods;
 
+use Klev\TelegramBotApi\Methods\Stickers\AddStickerToSet;
 use Klev\TelegramBotApi\Methods\Stickers\CreateNewStickerSet;
 use Klev\TelegramBotApi\Methods\Stickers\SendSticker;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageMedia;
@@ -35,7 +36,8 @@ abstract class BaseMethod
         SetChatPhoto::class =>'photo',
         EditMessageMedia::class =>'media',
         SendSticker::class => 'sticker',
-        CreateNewStickerSet::class => ['png_sticker', 'tgs_sticker']
+        CreateNewStickerSet::class => ['png_sticker', 'tgs_sticker'],
+        AddStickerToSet::class => ['png_sticker', 'tgs_sticker'],
     ];
 
     public function preparation()

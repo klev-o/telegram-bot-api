@@ -39,6 +39,7 @@ use Klev\TelegramBotApi\Methods\SetChatStickerSet;
 use Klev\TelegramBotApi\Methods\SetChatTitle;
 use Klev\TelegramBotApi\Methods\SetMyCommands;
 use Klev\TelegramBotApi\Methods\SetWebhook;
+use Klev\TelegramBotApi\Methods\Stickers\AddStickerToSet;
 use Klev\TelegramBotApi\Methods\Stickers\CreateNewStickerSet;
 use Klev\TelegramBotApi\Methods\Stickers\SendSticker;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
@@ -992,6 +993,23 @@ class Telegram
         $requestData = !empty($data) ? ['multipart' => $data] : ['json' =>(array)$createNewStickerSet];
 
         $out = $this->request('createNewStickerSet', $requestData);
+        return $out['result'];
+    }
+
+    /**
+     * @param AddStickerToSet $addStickerToSet
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function addStickerToSet(AddStickerToSet $addStickerToSet): bool
+    {
+        $addStickerToSet->preparation();
+
+        $data = BaseMethod::getDataForMultipart($addStickerToSet);
+        $requestData = !empty($data) ? ['multipart' => $data] : ['json' =>(array)$addStickerToSet];
+
+        $out = $this->request('addStickerToSet', $requestData);
         return $out['result'];
     }
 
