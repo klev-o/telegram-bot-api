@@ -2,6 +2,7 @@
 
 namespace Klev\TelegramBotApi\Methods;
 
+use Klev\TelegramBotApi\Methods\Stickers\SendSticker;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageMedia;
 use Klev\TelegramBotApi\TelegramException;
 use Klev\TelegramBotApi\Types\InputMedia;
@@ -32,6 +33,7 @@ abstract class BaseMethod
         InputMediaAnimation::class => ['media', 'thumb'],
         SetChatPhoto::class =>'photo',
         EditMessageMedia::class =>'media',
+        SendSticker::class => 'sticker'
     ];
 
     public function preparation()

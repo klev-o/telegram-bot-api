@@ -39,6 +39,7 @@ use Klev\TelegramBotApi\Methods\SetChatStickerSet;
 use Klev\TelegramBotApi\Methods\SetChatTitle;
 use Klev\TelegramBotApi\Methods\SetMyCommands;
 use Klev\TelegramBotApi\Methods\SetWebhook;
+use Klev\TelegramBotApi\Methods\Stickers\SendSticker;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\UnbanChatMember;
 use Klev\TelegramBotApi\Methods\UnpinChatMessage;
@@ -938,6 +939,23 @@ class Telegram
     {
         $out = $this->request('deleteMessage', ['json' => (array)$deleteMessage]);
         return $out['result'];
+    }
+
+    /**
+     * @param SendSticker $sendSticker
+     * @return Message
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function sendSticker(SendSticker $sendSticker): Message
+    {
+        $sendSticker->preparation();
+
+        $data = BaseMethod::getDataForMultipart($sendSticker);
+        $requestData = !empty($data) ? ['multipart' => $data] : ['json' =>(array)$sendSticker];
+
+        $out = $this->request('sendSticker', $requestData);
+        return new Message($out['result']);
     }
 
 
