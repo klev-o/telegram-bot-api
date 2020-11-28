@@ -46,12 +46,14 @@ use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageCaption;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageMedia;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageReplyMarkup;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageText;
+use Klev\TelegramBotApi\Methods\UpdatingMessages\StopPoll;
 use Klev\TelegramBotApi\Types\BotCommand;
 use Klev\TelegramBotApi\Types\Chat;
 use Klev\TelegramBotApi\Types\ChatMember;
 use Klev\TelegramBotApi\Types\File;
 use Klev\TelegramBotApi\Types\Message;
 use Klev\TelegramBotApi\Types\MessageId;
+use Klev\TelegramBotApi\Types\Poll;
 use Klev\TelegramBotApi\Types\Update;
 use Klev\TelegramBotApi\Types\User;
 use Klev\TelegramBotApi\Types\UserProfilePhotos;
@@ -367,7 +369,7 @@ class Telegram
         if ($stopMessageLiveLocation->inline_message_id === null) {
             return new Message($out['result']);
         } else {
-            return $out['result']; //todo true?
+            return $out['result'];
         }
     }
 
@@ -910,6 +912,19 @@ class Telegram
         } else {
             return $out['result'];
         }
+    }
+
+    /**
+     * @param StopPoll $stopPoll
+     * @return Poll
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function stopPoll(StopPoll $stopPoll)
+    {
+        $stopPoll->preparation();
+        $out = $this->request('stopPoll', ['json' => (array)$stopPoll]);
+        return new Poll($out['result']);
     }
 
 
