@@ -44,6 +44,7 @@ use Klev\TelegramBotApi\Methods\Stickers\CreateNewStickerSet;
 use Klev\TelegramBotApi\Methods\Stickers\SendSticker;
 use Klev\TelegramBotApi\Methods\Stickers\SetStickerPositionInSet;
 use Klev\TelegramBotApi\Methods\Stickers\SetStickerSetThumb;
+use Klev\TelegramBotApi\Methods\Stickers\UploadStickerFile;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\UnbanChatMember;
 use Klev\TelegramBotApi\Methods\UnpinChatMessage;
@@ -1060,6 +1061,20 @@ class Telegram
         return $out['result'];
     }
 
+    /**
+     * @param UploadStickerFile $uploadStickerFile
+     * @return File
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function uploadStickerFile(UploadStickerFile $uploadStickerFile): File
+    {
+        $data = BaseMethod::getDataForMultipart($uploadStickerFile);
+        $requestData = !empty($data) ? ['multipart' => $data] : ['json' =>(array)$uploadStickerFile];
+
+        $out = $this->request('uploadStickerFile', $requestData);
+        return new File($out['result']);
+    }
 
 
 
