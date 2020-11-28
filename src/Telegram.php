@@ -56,6 +56,7 @@ use Klev\TelegramBotApi\Types\File;
 use Klev\TelegramBotApi\Types\Message;
 use Klev\TelegramBotApi\Types\MessageId;
 use Klev\TelegramBotApi\Types\Poll;
+use Klev\TelegramBotApi\Types\Stickers\StickerSet;
 use Klev\TelegramBotApi\Types\Update;
 use Klev\TelegramBotApi\Types\User;
 use Klev\TelegramBotApi\Types\UserProfilePhotos;
@@ -956,6 +957,24 @@ class Telegram
 
         $out = $this->request('sendSticker', $requestData);
         return new Message($out['result']);
+    }
+
+    /**
+     * Use this method to get a sticker set. On success, a StickerSet object is returned.
+     *
+     * @param string $name
+     * Name of the sticker set
+     *
+     * @see https://core.telegram.org/bots/api#getstickerset
+     *
+     * @return StickerSet
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function getStickerSet(string $name): StickerSet
+    {
+        $out = $this->request('getStickerSet', ['json' => ['name' => $name]]);
+        return new StickerSet($out['result']);
     }
 
 

@@ -16,4 +16,20 @@ class StickerSet extends BaseType
      */
     public array $stickers;
     public ?PhotoSize $thumb;
+
+    protected function bindObjects($key, $data)
+    {
+        switch ($key) {
+            case 'stickers':
+                $result = [];
+                foreach ($data as $entity) {
+                    $result[] = new Sticker($entity);
+                }
+                return $result;
+            case 'thumb':
+                return new PhotoSize($data);
+        }
+
+        return null;
+    }
 }
