@@ -5,6 +5,7 @@ namespace Klev\TelegramBotApi\Methods;
 use Klev\TelegramBotApi\Methods\Stickers\AddStickerToSet;
 use Klev\TelegramBotApi\Methods\Stickers\CreateNewStickerSet;
 use Klev\TelegramBotApi\Methods\Stickers\SendSticker;
+use Klev\TelegramBotApi\Methods\Stickers\SetStickerSetThumb;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageMedia;
 use Klev\TelegramBotApi\TelegramException;
 use Klev\TelegramBotApi\Types\InputMedia;
@@ -38,6 +39,7 @@ abstract class BaseMethod
         SendSticker::class => 'sticker',
         CreateNewStickerSet::class => ['png_sticker', 'tgs_sticker'],
         AddStickerToSet::class => ['png_sticker', 'tgs_sticker'],
+        SetStickerSetThumb::class => 'thumb'
     ];
 
     public function preparation()

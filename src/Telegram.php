@@ -43,6 +43,7 @@ use Klev\TelegramBotApi\Methods\Stickers\AddStickerToSet;
 use Klev\TelegramBotApi\Methods\Stickers\CreateNewStickerSet;
 use Klev\TelegramBotApi\Methods\Stickers\SendSticker;
 use Klev\TelegramBotApi\Methods\Stickers\SetStickerPositionInSet;
+use Klev\TelegramBotApi\Methods\Stickers\SetStickerSetThumb;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\UnbanChatMember;
 use Klev\TelegramBotApi\Methods\UnpinChatMessage;
@@ -1041,6 +1042,21 @@ class Telegram
     public function deleteStickerFromSet(string $sticker)
     {
         $out = $this->request('deleteStickerFromSet', ['json' => ['sticker' => $sticker]]);
+        return $out['result'];
+    }
+
+    /**
+     * @param SetStickerSetThumb $setStickerSetThumb
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function setStickerSetThumb(SetStickerSetThumb $setStickerSetThumb): bool
+    {
+        $data = BaseMethod::getDataForMultipart($setStickerSetThumb);
+        $requestData = !empty($data) ? ['multipart' => $data] : ['json' =>(array)$setStickerSetThumb];
+
+        $out = $this->request('setStickerSetThumb', $requestData);
         return $out['result'];
     }
 
