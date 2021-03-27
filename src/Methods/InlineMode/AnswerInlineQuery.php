@@ -1,6 +1,8 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Methods\InlineMode;
+
 
 use Klev\TelegramBotApi\Methods\BaseMethod;
 use Klev\TelegramBotApi\Types\InlineMode\InlineQueryResult;
@@ -9,10 +11,10 @@ use Klev\TelegramBotApi\Types\InlineMode\InlineQueryResult;
  * Use this method to send answers to an inline query. On success, True is returned. No more than 50 results
  * per query are allowed.
  *
+ * @see https://core.telegram.org/bots/api#answerinlinequery
+ *
  * Class AnswerInlineQuery
  * @package Klev\TelegramBotApi\Methods\InlineMode
- *
- * @see https://core.telegram.org/bots/api#answerinlinequery
  */
 class AnswerInlineQuery extends BaseMethod
 {

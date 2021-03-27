@@ -1,6 +1,8 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Methods;
+
 
 use Klev\TelegramBotApi\Methods\Stickers\AddStickerToSet;
 use Klev\TelegramBotApi\Methods\Stickers\CreateNewStickerSet;
@@ -44,13 +46,16 @@ abstract class BaseMethod
         UploadStickerFile::class => 'png_sticker',
     ];
 
-    public function preparation()
+    /**
+     * @return $this
+     */
+    public function preparation(): self
     {
         if (!empty($this->reply_markup)) {
             $this->reply_markup = json_encode($this->reply_markup);
         }
 
-        //todo при строгой типизации нельзя потом масси в строку, надо придумать что-то
+        //todo при строгой типизации нельзя потом массив в строку, надо придумать что-то
         if (!empty($this->prices)) {
             $this->prices = json_encode($this->prices);
         }
@@ -100,7 +105,7 @@ abstract class BaseMethod
      * @return array
      * @throws TelegramException
      */
-    public static function getDataForMediaGroup(SendMedia $object)
+    public static function getDataForMediaGroup(SendMedia $object): array
     {
         $medias = $object->media;
 
@@ -162,7 +167,7 @@ abstract class BaseMethod
      * @return bool
      * @throws TelegramException
      */
-    private static function isLocalFile(?string $file)
+    private static function isLocalFile(?string $file): bool
     {
         if ($file && !filter_var($file, FILTER_VALIDATE_URL)) {
             if (file_exists($file)) {

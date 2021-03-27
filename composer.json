@@ -1,6 +1,6 @@
 {
     "name": "klev/telegram-bot-api",
-    "description": "Simple implementation Telegram bot API with php version 7.4 support",
+    "description": "Simple and convenient implementation Telegram bot API with php version ^7.4 support",
     "type": "library",
     "keywords": ["telegram", "bot", "api", "tg", "php"],
     "license": "MIT",

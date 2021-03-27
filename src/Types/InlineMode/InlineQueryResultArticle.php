@@ -2,10 +2,9 @@
 
 namespace Klev\TelegramBotApi\Types\InlineMode;
 
-use Klev\TelegramBotApi\Types\BaseType;
 use Klev\TelegramBotApi\Types\InlineKeyboardMarkup;
 
-class InlineQueryResultArticle extends BaseType implements InlineQueryResult
+class InlineQueryResultArticle implements InlineQueryResult
 {
     public string $type = 'article';
     public string $id;

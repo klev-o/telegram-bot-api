@@ -7,7 +7,8 @@ use Klev\TelegramBotApi\Types\Location;
 use Klev\TelegramBotApi\Types\User;
 
 /**
- * This object represents an incoming inline query. When the user sends an empty query, your bot could return some default or trending results.
+ * This object represents an incoming inline query. When the user sends an empty query, your bot could return some
+ * default or trending results.
  *
  * @see https://core.telegram.org/bots/api#inlinequery
  *

@@ -26,59 +26,59 @@ class Update extends BaseType
      * Optional. New incoming message of any kind — text, photo, sticker, etc
      * @var Message|null
      */
-    public ?Message $message;
+    public ?Message $message = null;
     /**
      * Optional. New version of a message that is known to the bot and was edited
      * @var Message|null
      */
-    public ?Message $edited_message;
+    public ?Message $edited_message = null;
     /**
      * Optional. New incoming channel post of any kind — text, photo, sticker, etc.
      * @var Message|null
      */
-    public ?Message $channel_post;
+    public ?Message $channel_post = null;
     /**
      * Optional. New version of a channel post that is known to the bot and was edited
      * @var Message|null
      */
-    public ?Message $edited_channel_post;
+    public ?Message $edited_channel_post = null;
     /**
      * Optional. New incoming inline query
      * @var InlineQuery|null
      */
-    public ?InlineQuery $inline_query;
+    public ?InlineQuery $inline_query = null;
     /**
      * Optional. The result of an inline query that was chosen by a user and sent to their chat partner.
      * Please see our documentation on the feedback collecting for details on how to enable these updates for your bot.
      * @var ChosenInlineResult|null
      */
-    public ?ChosenInlineResult $chosen_inline_result;
+    public ?ChosenInlineResult $chosen_inline_result = null;
     /**
      * Optional. New incoming callback query
      * @var CallbackQuery|null
      */
-    public ?CallbackQuery $callback_query;
+    public ?CallbackQuery $callback_query = null;
     /**
      * Optional. New incoming shipping query. Only for invoices with flexible price
      * @var ShippingQuery|null
      */
-    public ?ShippingQuery $shipping_query;
+    public ?ShippingQuery $shipping_query = null;
     /**
      * Optional. New incoming pre-checkout query. Contains full information about checkout
      * @var PreCheckoutQuery|null
      */
-    public ?PreCheckoutQuery $pre_checkout_query;
+    public ?PreCheckoutQuery $pre_checkout_query = null;
     /**
      * Optional. New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot
      * @var Poll|null
      */
-    public ?Poll $poll;
+    public ?Poll $poll = null;
     /**
      * Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were
      * sent by the bot itself.
      * @var PollAnswer|null
      */
-    public ?PollAnswer $poll_answer;
+    public ?PollAnswer $poll_answer = null;
 
     protected function bindObjects($key, $data): ?object
     {
