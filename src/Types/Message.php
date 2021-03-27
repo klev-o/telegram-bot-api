@@ -3,6 +3,7 @@
 namespace Klev\TelegramBotApi\Types;
 
 use Klev\TelegramBotApi\Types\Games\Game;
+use Klev\TelegramBotApi\Types\Payments\Invoice;
 use Klev\TelegramBotApi\Types\Payments\SuccessfulPayment;
 use Klev\TelegramBotApi\Types\Stickers\Sticker;
 use Klev\TelegramBotApi\Types\TelegramPassport\PassportData;
