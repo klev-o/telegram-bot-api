@@ -2,6 +2,8 @@
 
 namespace Klev\TelegramBotApi\Types;
 
+use Klev\TelegramBotApi\Types\Games\CallbackGame;
+
 /**
  * This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
  *
