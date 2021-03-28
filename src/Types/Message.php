@@ -29,6 +29,13 @@ class Message extends BaseType
      */
     public ?User $from = null;
     /**
+     * Optional. Sender of the message, sent on behalf of a chat. The channel itself for channel messages.
+     * The supergroup itself for messages from anonymous group administrators. The linked channel for messages
+     * automatically forwarded to the discussion group
+     * @var Chat|null
+     */
+    public ?Chat $sender_chat = null;
+    /**
      * Date the message was sent in Unix time
      * @var int
      */
@@ -50,23 +57,23 @@ class Message extends BaseType
     public ?Chat $forward_from_chat = null;
     /**
      * Optional. For messages forwarded from channels, identifier of the original message in the channel
-     * @var int
+     * @var int|null
      */
     public ?int $forward_from_message_id = null;
     /**
      * Optional. For messages forwarded from channels, signature of the post author if present
-     * @var string
+     * @var string|null
      */
     public ?string $forward_signature = null;
     /**
      * Optional. Sender's name for messages forwarded from users who disallow adding a link to their account in
      * forwarded messages
-     * @var string
+     * @var string|null
      */
     public ?string $forward_sender_name = null;
     /**
      * Optional. For forwarded messages, date the original message was sent in Unix time
-     * @var int
+     * @var int|null
      */
     public ?int $forward_date = null;
     /**
@@ -79,10 +86,10 @@ class Message extends BaseType
      * Optional. Bot through which the message was sent
      * @var User|null
      */
-    public ?User $via_bot = null; //todo new
+    public ?User $via_bot = null;
     /**
      * Optional. Date the message was last edited in Unix time
-     * @var int
+     * @var int|null
      */
     public ?int $edit_date = null;
     /**
@@ -235,6 +242,11 @@ class Message extends BaseType
      */
     public ?bool $channel_chat_created = null;
     /**
+     * Optional. Service message: auto-delete timer settings changed in the chat
+     * @var MessageAutoDeleteTimerChanged|null
+     */
+    public ?MessageAutoDeleteTimerChanged $message_auto_delete_timer_changed = null;
+    /**
      * Optional. The group has been migrated to a supergroup with the specified identifier. This number may be greater
      * than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is
      * smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this
@@ -286,6 +298,21 @@ class Message extends BaseType
      */
     public ?ProximityAlertTriggered $proximity_alert_triggered = null;
     /**
+     * Optional. Service message: voice chat started
+     * @var VoiceChatStarted|null
+     */
+    public ?VoiceChatStarted $voice_chat_started = null;
+    /**
+     * Optional. Service message: voice chat ended
+     * @var VoiceChatEnded|null
+     */
+    public ?VoiceChatEnded $voice_chat_ended = null;
+    /**
+     * Optional. Service message: new participants invited to a voice chat
+     * @var VoiceChatParticipantsInvited|null
+     */
+    public ?VoiceChatParticipantsInvited $voice_chat_participants_invited = null;
+    /**
      * Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.
      * @var InlineKeyboardMarkup|null
      */
@@ -307,6 +334,7 @@ class Message extends BaseType
                 return new User($data);
             case 'chat':
             case 'forward_from_chat':
+            case 'sender_chat':
                 return new Chat($data);
             case 'reply_to_message':
             case 'pinned_message':
@@ -363,6 +391,14 @@ class Message extends BaseType
                     $result[] = new MessageEntity($entity);
                 }
                 return $result;
+            case 'voice_chat_started':
+                return new VoiceChatStarted($data);
+            case 'voice_chat_ended':
+                return new VoiceChatEnded($data);
+            case 'voice_chat_participants_invited':
+                return new VoiceChatParticipantsInvited($data);
+            case 'message_auto_delete_timer_changed':
+                return new MessageAutoDeleteTimerChanged($data);
         }
 
         return null;

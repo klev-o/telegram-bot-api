@@ -23,7 +23,12 @@ class UserProfilePhotos extends BaseType
      */
     public array $photos;
 
-    protected function bindObjects($key, $data)
+    /**
+     * @param $key
+     * @param $data
+     * @return array|null
+     */
+    protected function bindObjects($key, $data): ?array
     {
         switch ($key) { //todo check
             case 'photos':
