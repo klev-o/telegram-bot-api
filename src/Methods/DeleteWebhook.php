@@ -12,6 +12,10 @@ namespace Klev\TelegramBotApi\Methods;
  */
 class DeleteWebhook extends BaseMethod
 {
+    /**
+     * Pass True to drop all pending updates
+     * @var bool|null
+     */
     public ?bool $drop_pending_updates;
 
     public function __construct(bool $drop_pending_updates = false)
