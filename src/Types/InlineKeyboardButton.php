@@ -21,18 +21,18 @@ class InlineKeyboardButton
     public string $text;
     /**
      * Optional. HTTP or tg:// url to be opened when button is pressed
-     * @var string
+     * @var string|null
      */
     public ?string $url = '';
     /**
      * Optional. An HTTP URL used to automatically authorize the user. Can be used as a replacement for
      * the Telegram Login Widget.
-     * @var LoginUrl
+     * @var LoginUrl|null
      */
     public ?LoginUrl $login_url = null;
     /**
      * Optional. Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes
-     * @var string
+     * @var string|null
      */
     public ?string $callback_data = '';
     /**
@@ -43,7 +43,7 @@ class InlineKeyboardButton
      * Note: This offers an easy way for users to start using your bot in inline mode when they are currently in a
      * private chat with it. Especially useful when combined with switch_pm… actions – in this case the user will be
      * automatically returned to the chat they switched from, skipping the chat selection screen.
-     * @var string
+     * @var string|null
      */
     public ?string $switch_inline_query = '';
     /**
@@ -52,7 +52,7 @@ class InlineKeyboardButton
      *
      * This offers a quick way for the user to open your bot in inline mode in the same chat – good for selecting
      * something from multiple options.
-     * @var string
+     * @var string|null
      */
     public ?string $switch_inline_query_current_chat = '';
     /**

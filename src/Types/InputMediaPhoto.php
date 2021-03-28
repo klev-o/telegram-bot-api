@@ -1,14 +1,16 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Types;
+
 
 /**
  * Represents a photo to be sent.
  *
+ * @see https://core.telegram.org/bots/api#inputmediaphoto
+ *
  * Class InputMediaPhoto
  * @package Klev\TelegramBotApi\Types
- *
- * @see https://core.telegram.org/bots/api#inputmediaphoto
  */
 class InputMediaPhoto implements InputMedia
 {
@@ -23,7 +25,7 @@ class InputMediaPhoto implements InputMedia
      * using multipart/form-data under <file_attach_name> name. More info on Sending Files »
      * @var string
      */
-    public $media;
+    public string $media;
     /**
      * Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing
      * @var string|null
