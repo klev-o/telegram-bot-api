@@ -10,10 +10,15 @@ use Klev\TelegramBotApi\Methods\CopyMessage;
 use Klev\TelegramBotApi\Methods\DeleteWebhook;
 use Klev\TelegramBotApi\Methods\EditMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\ForwardMessage;
+use Klev\TelegramBotApi\Methods\Games\SendGame;
+use Klev\TelegramBotApi\Methods\Games\SetGameScore;
 use Klev\TelegramBotApi\Methods\GetChatMember;
 use Klev\TelegramBotApi\Methods\GetUserProfilePhotos;
 use Klev\TelegramBotApi\Methods\InlineMode\AnswerInlineQuery;
 use Klev\TelegramBotApi\Methods\KickChatMember;
+use Klev\TelegramBotApi\Methods\Payments\AnswerPreCheckoutQuery;
+use Klev\TelegramBotApi\Methods\Payments\AnswerShippingQuery;
+use Klev\TelegramBotApi\Methods\Payments\SendInvoice;
 use Klev\TelegramBotApi\Methods\PinChatMessage;
 use Klev\TelegramBotApi\Methods\PromoteChatMember;
 use Klev\TelegramBotApi\Methods\RestrictChatMember;
@@ -47,6 +52,7 @@ use Klev\TelegramBotApi\Methods\Stickers\SetStickerPositionInSet;
 use Klev\TelegramBotApi\Methods\Stickers\SetStickerSetThumb;
 use Klev\TelegramBotApi\Methods\Stickers\UploadStickerFile;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
+use Klev\TelegramBotApi\Methods\TelegramPassport\SetPassportDataErrors;
 use Klev\TelegramBotApi\Methods\UnbanChatMember;
 use Klev\TelegramBotApi\Methods\UnpinChatMessage;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\DeleteMessage;
@@ -59,6 +65,7 @@ use Klev\TelegramBotApi\Types\BotCommand;
 use Klev\TelegramBotApi\Types\Chat;
 use Klev\TelegramBotApi\Types\ChatMember;
 use Klev\TelegramBotApi\Types\File;
+use Klev\TelegramBotApi\Types\Games\GameHighScore;
 use Klev\TelegramBotApi\Types\Message;
 use Klev\TelegramBotApi\Types\MessageId;
 use Klev\TelegramBotApi\Types\Poll;
@@ -139,6 +146,28 @@ class Telegram
     {
         $out = $this->request('getMe');
         return new User($out['result']);
+    }
+
+    /**
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function logOut(): bool
+    {
+        $out = $this->request('logOut');
+        return $out['result'];
+    }
+
+    /**
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function close(): bool
+    {
+        $out = $this->request('close');
+        return $out['result'];
     }
 
     /**
@@ -1089,31 +1118,145 @@ class Telegram
         return $out['result'];
     }
 
+    /**
+     * @param SendInvoice $sendInvoice
+     * @return Message
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function sendInvoice(SendInvoice $sendInvoice): Message //todo check
+    {
+        $sendInvoice->preparation();
 
+        $out = $this->request('sendInvoice', ['json' => (array)$sendInvoice]);
+        return new Message($out['result']);
+    }
 
+    /**
+     * @param AnswerShippingQuery $answerShippingQuery
+     * @return mixed
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function answerShippingQuery(AnswerShippingQuery $answerShippingQuery): bool //todo check
+    {
+        $answerShippingQuery->preparation();
 
-    public function getToken()
+        $out = $this->request('answerShippingQuery', ['json' => (array)$answerShippingQuery]);
+        return $out['result'];
+    }
+
+    /**
+     * @param AnswerPreCheckoutQuery $answerPreCheckoutQuery
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function answerPreCheckoutQuery(AnswerPreCheckoutQuery $answerPreCheckoutQuery): bool //todo check
+    {
+        $answerPreCheckoutQuery->preparation();
+
+        $out = $this->request('answerPreCheckoutQuery', ['json' => (array)$answerPreCheckoutQuery]);
+        return $out['result'];
+    }
+
+    /**
+     * @param SetPassportDataErrors $setPassportDataErrors
+     * @return bool
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function setPassportDataErrors(SetPassportDataErrors $setPassportDataErrors): bool //todo check
+    {
+        $setPassportDataErrors->preparation();
+
+        $out = $this->request('setPassportDataErrors', ['json' => (array)$setPassportDataErrors]);
+        return $out['result'];
+    }
+
+    /**
+     * @param SendGame $sendGame
+     * @return Message
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function sendGame(SendGame $sendGame): Message //todo check
+    {
+        $sendGame->preparation();
+
+        $out = $this->request('sendGame', ['json' => (array)$sendGame]);
+        return new Message($out['result']);
+    }
+
+    /**
+     * @param SetGameScore $setGameScore
+     * @return array
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function setGameScore(SetGameScore $setGameScore): array //todo check, много условий и разные типы возвращаются
+    {
+        $setGameScore->preparation();
+
+        $out = $this->request('setGameScore', ['json' => (array)$setGameScore]);
+        return $out['result'];
+    }
+
+    /**
+     * @return GameHighScore[]
+     * @throws GuzzleException
+     * @throws TelegramException
+     */
+    public function getGameHighScores(): array //todo check,
+    {
+        $out = $this->request('getGameHighScores');
+
+        $result = [];
+        foreach ($out['result'] as $item) {
+            $result[] = new GameHighScore($item);
+        }
+
+        return $result;
+    }
+
+    /**
+     * @return string
+     */
+    public function getToken(): string
     {
         return $this->token;
     }
 
-    public function setApiEndpoint(string $url)
+    /**
+     * @param string $url
+     */
+    public function setApiEndpoint(string $url): void
     {
         $this->apiEndpoint = $url;
     }
 
-    public function setFileApiEndpoint(string $url)
+    /**
+     * @param string $url
+     */
+    public function setFileApiEndpoint(string $url): void
     {
         $this->fileApiEndpoint = $url;
     }
 
-
-    private function getApiUri($method)
+    /**
+     * @param $method
+     * @return string
+     */
+    private function getApiUri($method): string
     {
         return $this->apiEndpoint . $this->token . '/' . $method;
     }
 
-    private function getFileApiUri($pathInfo)
+    /**
+     * @param $pathInfo
+     * @return string
+     */
+    private function getFileApiUri($pathInfo): string
     {
         return $this->fileApiEndpoint . $this->token . '/' . $pathInfo;
     }
@@ -1125,7 +1268,7 @@ class Telegram
      * @throws GuzzleException
      * @throws TelegramException
      */
-    private function request($method, $data = [])
+    private function request($method, $data = []): array
     {
         $uri = $this->getApiUri($method);
 

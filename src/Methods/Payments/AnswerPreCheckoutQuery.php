@@ -37,5 +37,5 @@ class AnswerPreCheckoutQuery extends BaseMethod
      * message to the user.
      * @var string|null
      */
-    public ?string $error_message;
+    public ?string $error_message = null;
 }

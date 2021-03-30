@@ -32,5 +32,11 @@ class SetPassportDataErrors extends BaseMethod
      * A JSON-serialized array describing the errors
      * @var PassportElementError[]
      */
-    public array $errors;
+    public $errors = '';
+
+    public function __construct(int $user_id, array $errors)
+    {
+        $this->user_id = $user_id;
+        $this->errors = $errors;
+    }
 }

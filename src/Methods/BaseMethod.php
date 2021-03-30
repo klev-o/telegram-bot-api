@@ -51,13 +51,25 @@ abstract class BaseMethod
      */
     public function preparation(): self
     {
+        //todo при строгой типизации нельзя потом массив в строку, надо придумать что-то
         if (!empty($this->reply_markup)) {
             $this->reply_markup = json_encode($this->reply_markup);
         }
 
-        //todo при строгой типизации нельзя потом массив в строку, надо придумать что-то
+        if (!empty($this->results)) {
+            $this->results = json_encode($this->results);
+        }
+
         if (!empty($this->prices)) {
             $this->prices = json_encode($this->prices);
+        }
+
+        if (!empty($this->shipping_options)) {
+            $this->shipping_options = json_encode($this->shipping_options);
+        }
+
+        if (!empty($this->errors)) {
+            $this->errors = json_encode($this->errors);
         }
 
         return $this;

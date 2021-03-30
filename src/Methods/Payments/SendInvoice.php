@@ -18,9 +18,9 @@ class SendInvoice extends BaseMethod
     public string $start_parameter;
     public string $currency;
     /**
-     * @var LabeledPrice[]
+     * @var LabeledPrice[]|string
      */
-    public array $prices;
+    public $prices = '';
     public ?string $provider_data = null;
     public ?string $photo_url = null;
     public ?int $photo_size = null;
