@@ -42,7 +42,7 @@ class ChatMemberUpdated extends BaseType
      * Optional. Chat invite link, which was used by the user to join the chat; for joining by invite link events only.
      * @var ChatInviteLink|null
      */
-    public ?ChatInviteLink $invite_link;
+    public ?ChatInviteLink $invite_link = null;
 
     protected function bindObjects($key, $data): ?object
     {

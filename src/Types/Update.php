@@ -79,6 +79,18 @@ class Update extends BaseType
      * @var PollAnswer|null
      */
     public ?PollAnswer $poll_answer = null;
+    /**
+     * Optional. The bot's chat member status was updated in a chat. For private chats, this update is received only
+     * when the bot is blocked or unblocked by the user.
+     * @var ChatMemberUpdated|null
+     */
+    public ?ChatMemberUpdated $my_chat_member = null;
+    /**
+     * Optional. A chat member's status was updated in a chat. The bot must be an administrator in the chat and must
+     * explicitly specify “chat_member” in the list of allowed_updates to receive these updates.
+     * @var ChatMemberUpdated|null
+     */
+    public ?ChatMemberUpdated $chat_member = null;
 
     protected function bindObjects($key, $data): ?object
     {
@@ -102,6 +114,9 @@ class Update extends BaseType
                 return new Poll($data);
             case 'poll_answer':
                 return new PollAnswer($data);
+            case 'my_chat_member':
+            case 'chat_member':
+                return new ChatMemberUpdated($data);
         }
 
         return null;

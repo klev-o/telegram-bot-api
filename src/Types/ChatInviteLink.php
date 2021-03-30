@@ -38,13 +38,13 @@ class ChatInviteLink extends BaseType
      * Optional. Point in time (Unix timestamp) when the link will expire or has been expired
      * @var int|null
      */
-    public ?int $expire_date;
+    public ?int $expire_date = null;
     /**
      * Optional. Maximum number of users that can be members of the chat simultaneously after joining the chat via this
      * invite link; 1-99999
      * @var int|null
      */
-    public ?int $member_limit;
+    public ?int $member_limit = null;
 
     protected function bindObjects($key, $data): ?User
     {
