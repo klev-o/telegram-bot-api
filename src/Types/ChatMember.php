@@ -119,5 +119,13 @@ class ChatMember extends BaseType
      */
     public ?int $until_date;
 
+    protected function bindObjects($key, $data): ?User
+    {
+        switch ($key) {
+            case 'user':
+                return new User($data);
+        }
 
+        return null;
+    }
 }

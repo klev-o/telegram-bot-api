@@ -46,10 +46,7 @@ abstract class BaseMethod
         UploadStickerFile::class => 'png_sticker',
     ];
 
-    /**
-     * @return $this
-     */
-    public function preparation(): self
+    public function preparation(): void
     {
         //todo при строгой типизации нельзя потом массив в строку, надо придумать что-то
         if (!empty($this->reply_markup)) {
@@ -71,8 +68,6 @@ abstract class BaseMethod
         if (!empty($this->errors)) {
             $this->errors = json_encode($this->errors);
         }
-
-        return $this;
     }
 
     /**

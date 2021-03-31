@@ -41,11 +41,10 @@ class CreateNewStickerSet extends BaseMethod
         $this->emojis = $emojis;
     }
 
-    public function preparation()
+    public function preparation(): void
     {
         if (!empty($this->contains_masks)) {
             $this->contains_masks = json_encode($this->contains_masks);
         }
-        return $this;
     }
 }

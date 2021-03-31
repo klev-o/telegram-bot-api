@@ -32,11 +32,10 @@ class SetChatPermissions extends BaseMethod
         $this->permissions = $permissions;
     }
 
-    public function preparation()
+    public function preparation(): void
     {
         if (!empty($this->permissions)) {
             $this->$this->permissions = json_encode($this->permissions);
         }
-        return $this;
     }
 }

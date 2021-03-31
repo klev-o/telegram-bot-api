@@ -26,9 +26,8 @@ class SetMyCommands extends BaseMethod
         $this->commands = $commands;
     }
 
-    public function preparation()
+    public function preparation(): void
     {
         $this->commands = json_encode($this->commands);
-        return $this;
     }
 }

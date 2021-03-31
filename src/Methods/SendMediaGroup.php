@@ -46,10 +46,9 @@ class SendMediaGroup extends BaseMethod implements SendMedia
         $this->media = $media;
     }
 
-    public function preparation()
+    public function preparation(): void
     {
         $this->media = json_encode($this->media);
-        return $this;
     }
 
     /**
