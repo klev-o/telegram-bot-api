@@ -3,7 +3,6 @@
 namespace Klev\TelegramBotApi;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
 use Klev\TelegramBotApi\Methods\AnswerCallbackQuery;
 use Klev\TelegramBotApi\Methods\BaseMethod;
 use Klev\TelegramBotApi\Methods\CopyMessage;
@@ -85,6 +84,7 @@ class Telegram
     private string $token;
     private string $apiEndpoint = 'https://api.telegram.org/bot';
     private string $fileApiEndpoint = 'https://api.telegram.org/file/bot';
+    private ?string $webhookUpdatesRaw = null;
 
     private ClientInterface $apiClient;
 
@@ -98,7 +98,7 @@ class Telegram
      * @param SetWebhook $setWebhook
      * @return array
      * @throws TelegramException
-     * @throws GuzzleException
+     
      */
     public function setWebhook(SetWebhook $setWebhook): array
     {
@@ -109,7 +109,6 @@ class Telegram
     /**
      * @param DeleteWebhook $deleteWebhook
      * @return array
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function deleteWebhook(DeleteWebhook $deleteWebhook): array
@@ -119,7 +118,6 @@ class Telegram
 
     /**
      * @return WebhookInfo
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function getWebhookInfo(): WebhookInfo
@@ -133,13 +131,21 @@ class Telegram
      */
     public function getWebhookUpdates():? Update
     {
-        $data = json_decode(file_get_contents('php://input'), true);
+        $this->webhookUpdatesRaw = file_get_contents('php://input');
+        $data = json_decode($this->webhookUpdatesRaw, true);
         return $data ? new Update($data) : null;
     }
 
     /**
+     * @return string|null
+     */
+    public function getWebhookUpdatesRaw():? string
+    {
+        return $this->webhookUpdatesRaw;
+    }
+
+    /**
      * @return User
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function getMe(): User
@@ -150,7 +156,6 @@ class Telegram
 
     /**
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function logOut(): bool
@@ -161,7 +166,6 @@ class Telegram
 
     /**
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function close(): bool
@@ -173,7 +177,6 @@ class Telegram
     /**
      * @param SendMessage $sendMessage
      * @return Message
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendMessage(SendMessage $sendMessage): Message
@@ -186,7 +189,6 @@ class Telegram
     /**
      * @param ForwardMessage $forwardMessage
      * @return Message
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function forwardMessage(ForwardMessage $forwardMessage): Message
@@ -198,7 +200,6 @@ class Telegram
     /**
      * @param CopyMessage $copyMessage
      * @return MessageId
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function copyMessage(CopyMessage $copyMessage): MessageId
@@ -211,8 +212,6 @@ class Telegram
     /**
      * @param SendPhoto $sendPhoto
      * @return Message
-     *
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendPhoto(SendPhoto $sendPhoto)
@@ -230,7 +229,6 @@ class Telegram
     /**
      * @param SendAudio $sendAudio
      * @return Message
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendAudio(SendAudio $sendAudio)
@@ -248,7 +246,6 @@ class Telegram
     /**
      * @param SendDocument $sendDocument
      * @return Message
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendDocument(SendDocument $sendDocument)
@@ -266,7 +263,6 @@ class Telegram
     /**
      * @param SendVideo $sendVideo
      * @return Message
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendVideo(SendVideo $sendVideo)
@@ -284,7 +280,6 @@ class Telegram
     /**
      * @param SendAnimation $sendAnimation
      * @return Message
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendAnimation(SendAnimation $sendAnimation)
@@ -302,7 +297,6 @@ class Telegram
     /**
      * @param SendVoice $sendVoice
      * @return Message
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendVoice(SendVoice $sendVoice)
@@ -320,7 +314,6 @@ class Telegram
     /**
      * @param SendVideoNote $sendVideoNote
      * @return Message
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendVideoNote(SendVideoNote $sendVideoNote)
@@ -338,7 +331,6 @@ class Telegram
     /**
      * @param SendMediaGroup $sendMediaGroup
      * @return Message[]
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendMediaGroup(SendMediaGroup $sendMediaGroup): array
@@ -367,7 +359,6 @@ class Telegram
     /**
      * @param SendLocation $sendLocation
      * @return Message
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendLocation(SendLocation $sendLocation): Message
@@ -380,7 +371,6 @@ class Telegram
     /**
      * @param EditMessageLiveLocation $editMessageLiveLocation
      * @return Message|bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function editMessageLiveLocation(EditMessageLiveLocation $editMessageLiveLocation)
@@ -397,7 +387,6 @@ class Telegram
     /**
      * @param StopMessageLiveLocation $stopMessageLiveLocation
      * @return Message|bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function stopMessageLiveLocation(StopMessageLiveLocation $stopMessageLiveLocation)
@@ -414,7 +403,6 @@ class Telegram
     /**
      * @param SendVenue $sendVenue
      * @return Message
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendVenue(SendVenue $sendVenue): Message
@@ -427,7 +415,6 @@ class Telegram
     /**
      * @param SendContact $sendContact
      * @return Message
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendContact(SendContact $sendContact): Message
@@ -440,7 +427,6 @@ class Telegram
     /**
      * @param SendPoll $sendPoll
      * @return Message
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendPoll(SendPoll $sendPoll): Message
@@ -453,7 +439,6 @@ class Telegram
     /**
      * @param SendDice $sendDice
      * @return Message
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendDice(SendDice $sendDice): Message
@@ -466,7 +451,6 @@ class Telegram
     /**
      * @param SendChatAction $sendChatAction
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendChatAction(SendChatAction $sendChatAction): bool
@@ -478,7 +462,6 @@ class Telegram
     /**
      * @param GetUserProfilePhotos $getUserProfilePhotos
      * @return UserProfilePhotos
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function getUserProfilePhotos(GetUserProfilePhotos $getUserProfilePhotos)
@@ -496,7 +479,6 @@ class Telegram
      *
      * @param string $file_id
      * @return File
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function getFile(string $file_id)
@@ -508,7 +490,6 @@ class Telegram
     /**
      * @param $fileIdOrPath
      * @param $savePath
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function downloadFile($fileIdOrPath, $savePath)
@@ -524,7 +505,6 @@ class Telegram
     /**
      * @param KickChatMember $kickChatMember
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function kickChatMember(KickChatMember $kickChatMember): bool
@@ -536,7 +516,6 @@ class Telegram
     /**
      * @param UnbanChatMember $unbanChatMember
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function unbanChatMember(UnbanChatMember $unbanChatMember): bool
@@ -548,7 +527,6 @@ class Telegram
     /**
      * @param RestrictChatMember $restrictChatMember
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function restrictChatMember(RestrictChatMember $restrictChatMember): bool
@@ -560,7 +538,6 @@ class Telegram
     /**
      * @param PromoteChatMember $promoteChatMember
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function promoteChatMember(PromoteChatMember $promoteChatMember): bool
@@ -572,7 +549,6 @@ class Telegram
     /**
      * @param SetChatAdministratorCustomTitle $setChatAdministratorCustomTitle
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function setChatAdministratorCustomTitle(SetChatAdministratorCustomTitle $setChatAdministratorCustomTitle): bool
@@ -584,7 +560,6 @@ class Telegram
     /**
      * @param SetChatPermissions $setChatPermissions
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function setChatPermissions(SetChatPermissions $setChatPermissions): bool
@@ -600,7 +575,6 @@ class Telegram
      *
      * @param string $chat_id
      * @return string
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function exportChatInviteLink(string $chat_id): string
@@ -612,7 +586,6 @@ class Telegram
     /**
      * @param SetChatPhoto $setChatPhoto
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function setChatPhoto(SetChatPhoto $setChatPhoto): bool
@@ -631,7 +604,6 @@ class Telegram
      * (in the format @channelusername)
      *
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function deleteChatPhoto(string $chat_id): bool
@@ -643,7 +615,6 @@ class Telegram
     /**
      * @param SetChatTitle $setChatTitle
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function setChatTitle(SetChatTitle $setChatTitle): bool
@@ -655,7 +626,6 @@ class Telegram
     /**
      * @param SetChatDescription $setChatDescription
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function setChatDescription(SetChatDescription $setChatDescription): bool
@@ -667,7 +637,6 @@ class Telegram
     /**
      * @param PinChatMessage $pinChatMessage
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function pinChatMessage(PinChatMessage $pinChatMessage): bool
@@ -679,7 +648,6 @@ class Telegram
     /**
      * @param UnpinChatMessage $unpinChatMessage
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function unpinChatMessage(UnpinChatMessage $unpinChatMessage): bool
@@ -697,7 +665,6 @@ class Telegram
      * (in the format @channelusername)
      *
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      *
      * @see https://core.telegram.org/bots/api#unpinchatmessage
@@ -718,7 +685,6 @@ class Telegram
      * @see https://core.telegram.org/bots/api#leavechat
      *
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function leaveChat(string $chat_id): bool
@@ -738,7 +704,6 @@ class Telegram
      * @see https://core.telegram.org/bots/api#getchat
      *
      * @return Chat
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function getChat(string $chat_id): Chat
@@ -759,7 +724,6 @@ class Telegram
      * @see https://core.telegram.org/bots/api#getchatadministrators
      *
      * @return ChatMember[]
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function getChatAdministrators(string $chat_id): array
@@ -784,7 +748,6 @@ class Telegram
      * @see https://core.telegram.org/bots/api#getchatmemberscount
      *
      * @return int
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function getChatMembersCount(string $chat_id): int
@@ -796,7 +759,6 @@ class Telegram
     /**
      * @param GetChatMember $getChatMember
      * @return ChatMember
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function getChatMember(GetChatMember $getChatMember): ChatMember
@@ -808,7 +770,6 @@ class Telegram
     /**
      * @param SetChatStickerSet $setChatStickerSet
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function setChatStickerSet(SetChatStickerSet $setChatStickerSet): bool
@@ -828,7 +789,6 @@ class Telegram
      * @see https://core.telegram.org/bots/api#deletechatstickerset
      *
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function deleteChatStickerSet(string $chat_id): bool
@@ -840,7 +800,6 @@ class Telegram
     /**
      * @param AnswerCallbackQuery $answerCallbackQuery
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function answerCallbackQuery(AnswerCallbackQuery $answerCallbackQuery): bool
@@ -852,7 +811,6 @@ class Telegram
     /**
      * @param SetMyCommands $setMyCommands
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function setMyCommands(SetMyCommands $setMyCommands): bool
@@ -864,7 +822,6 @@ class Telegram
 
     /**
      * @return array
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function getMyCommands(): array
@@ -882,7 +839,6 @@ class Telegram
     /**
      * @param EditMessageText $editMessageText
      * @return Message|mixed
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function editMessageText(EditMessageText $editMessageText)
@@ -899,7 +855,6 @@ class Telegram
     /**
      * @param EditMessageCaption $editMessageCaption
      * @return Message|mixed
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function editMessageCaption(EditMessageCaption $editMessageCaption) //todo incorrect method
@@ -916,7 +871,6 @@ class Telegram
     /**
      * @param EditMessageMedia $editMessageMedia
      * @return array
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function editMessageMedia(EditMessageMedia $editMessageMedia): array
@@ -938,7 +892,6 @@ class Telegram
     /**
      * @param EditMessageReplyMarkup $editMessageReplyMarkup
      * @return Message|mixed
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function editMessageReplyMarkup(EditMessageReplyMarkup $editMessageReplyMarkup)
@@ -955,7 +908,6 @@ class Telegram
     /**
      * @param StopPoll $stopPoll
      * @return Poll
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function stopPoll(StopPoll $stopPoll): Poll
@@ -968,7 +920,6 @@ class Telegram
     /**
      * @param DeleteMessage $deleteMessage
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function deleteMessage(DeleteMessage $deleteMessage): bool
@@ -980,7 +931,6 @@ class Telegram
     /**
      * @param SendSticker $sendSticker
      * @return Message
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendSticker(SendSticker $sendSticker): Message
@@ -1003,7 +953,6 @@ class Telegram
      * @see https://core.telegram.org/bots/api#getstickerset
      *
      * @return StickerSet
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function getStickerSet(string $name): StickerSet
@@ -1015,7 +964,6 @@ class Telegram
     /**
      * @param CreateNewStickerSet $createNewStickerSet
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function createNewStickerSet(CreateNewStickerSet $createNewStickerSet): bool
@@ -1032,7 +980,6 @@ class Telegram
     /**
      * @param AddStickerToSet $addStickerToSet
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function addStickerToSet(AddStickerToSet $addStickerToSet): bool
@@ -1049,7 +996,7 @@ class Telegram
     /**
      * @param SetStickerPositionInSet $setStickerPositionInSet
      * @return bool
-     * @throws GuzzleException
+     
      * @throws TelegramException
      */
     public function setStickerPositionInSet(SetStickerPositionInSet $setStickerPositionInSet): bool
@@ -1067,7 +1014,6 @@ class Telegram
      * @see https://core.telegram.org/bots/api#deletestickerfromset
      *
      * @return mixed
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function deleteStickerFromSet(string $sticker)
@@ -1079,7 +1025,6 @@ class Telegram
     /**
      * @param SetStickerSetThumb $setStickerSetThumb
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function setStickerSetThumb(SetStickerSetThumb $setStickerSetThumb): bool
@@ -1094,7 +1039,6 @@ class Telegram
     /**
      * @param UploadStickerFile $uploadStickerFile
      * @return File
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function uploadStickerFile(UploadStickerFile $uploadStickerFile): File
@@ -1109,7 +1053,6 @@ class Telegram
     /**
      * @param AnswerInlineQuery $answerInlineQuery
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function answerInlineQuery(AnswerInlineQuery $answerInlineQuery): bool
@@ -1121,7 +1064,6 @@ class Telegram
     /**
      * @param SendInvoice $sendInvoice
      * @return Message
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendInvoice(SendInvoice $sendInvoice): Message //todo check
@@ -1135,7 +1077,6 @@ class Telegram
     /**
      * @param AnswerShippingQuery $answerShippingQuery
      * @return mixed
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function answerShippingQuery(AnswerShippingQuery $answerShippingQuery): bool //todo check
@@ -1149,7 +1090,6 @@ class Telegram
     /**
      * @param AnswerPreCheckoutQuery $answerPreCheckoutQuery
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function answerPreCheckoutQuery(AnswerPreCheckoutQuery $answerPreCheckoutQuery): bool //todo check
@@ -1163,7 +1103,6 @@ class Telegram
     /**
      * @param SetPassportDataErrors $setPassportDataErrors
      * @return bool
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function setPassportDataErrors(SetPassportDataErrors $setPassportDataErrors): bool //todo check
@@ -1177,7 +1116,6 @@ class Telegram
     /**
      * @param SendGame $sendGame
      * @return Message
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function sendGame(SendGame $sendGame): Message //todo check
@@ -1191,7 +1129,6 @@ class Telegram
     /**
      * @param SetGameScore $setGameScore
      * @return array
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function setGameScore(SetGameScore $setGameScore): array //todo check, много условий и разные типы возвращаются
@@ -1204,7 +1141,6 @@ class Telegram
 
     /**
      * @return GameHighScore[]
-     * @throws GuzzleException
      * @throws TelegramException
      */
     public function getGameHighScores(): array //todo check,
@@ -1265,32 +1201,40 @@ class Telegram
      * @param $method
      * @param array $data
      * @return mixed
-     * @throws GuzzleException
      * @throws TelegramException
      */
     private function request($method, $data = []): array
     {
-        $uri = $this->getApiUri($method);
+        try {
+            $uri = $this->getApiUri($method);
 
-        $response = $this->apiClient->post($uri, $data);
-        $body = (string)$response->getBody();
-        $out = json_decode($body,true);
+            $response = $this->apiClient->post($uri, $data);
+            $body = (string)$response->getBody();
 
-        if (isset($out['ok']) && $out['ok'] === true) {
-            return $out;
+            $out = json_decode($body,true, 512, JSON_THROW_ON_ERROR);
+
+            if (isset($out['ok']) && $out['ok'] === true && isset($out['result'])) {
+                return $out;
+            }
+            
+            throw new \Exception('Unexpected response: ' . $body);
+        } catch (\Exception $e) {
+            throw new TelegramException($e->getMessage());
         }
-
-        throw new TelegramException('Unexpected  response: ' . $body);
     }
 
     /**
      * @param $pathInfo
      * @param array $data
-     * @throws GuzzleException
+     * @throws TelegramException
      */
     private function requestForDownload($pathInfo, $data = [])
     {
-        $uri = $this->getFileApiUri($pathInfo);
-        $this->apiClient->get($uri, $data);
+        try {
+            $uri = $this->getFileApiUri($pathInfo);
+            $this->apiClient->get($uri, $data);
+        } catch (\Exception $e) {
+            throw new TelegramException($e->getMessage());
+        }
     }
 }
