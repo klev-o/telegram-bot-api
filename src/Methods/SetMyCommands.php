@@ -1,16 +1,18 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Methods;
+
 
 use Klev\TelegramBotApi\Types\BotCommand;
 
 /**
  * Use this method to change the list of the bot's commands. Returns True on success.
  *
+ * @see https://core.telegram.org/bots/api#setmycommands
+ *
  * Class SetMyCommands
  * @package Klev\TelegramBotApi\Methods
- *
- * @see https://core.telegram.org/bots/api#setmycommands
  */
 class SetMyCommands extends BaseMethod
 {
@@ -19,9 +21,9 @@ class SetMyCommands extends BaseMethod
      * can be specified.
      * @var BotCommand[]
      */
-    public $commands;
+    public $commands = '';
 
-    public function __construct(BotCommand $commands)
+    public function __construct(array $commands)
     {
         $this->commands = $commands;
     }

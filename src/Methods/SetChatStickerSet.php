@@ -1,5 +1,6 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Methods;
 
 /**
@@ -7,10 +8,10 @@ namespace Klev\TelegramBotApi\Methods;
  * this to work and must have the appropriate admin rights. Use the field can_set_sticker_set optionally returned in
  * getChat requests to check if the bot can use this method. Returns True on success.
  *
+ * @see https://core.telegram.org/bots/api#setchatstickerset
+ *
  * Class SetChatStickerSet
  * @package Klev\TelegramBotApi\Methods
- *
- * @see https://core.telegram.org/bots/api#setchatstickerset
  */
 class SetChatStickerSet extends BaseMethod
 {
@@ -25,7 +26,7 @@ class SetChatStickerSet extends BaseMethod
      */
     public string $sticker_set_name;
 
-    public function __construct($chat_id, $sticker_set_name)
+    public function __construct($chat_id, string $sticker_set_name)
     {
         $this->chat_id = $chat_id;
         $this->sticker_set_name = $sticker_set_name;

@@ -761,7 +761,7 @@ class Telegram
     public function getChatMembersCount(string $chat_id): int
     {
         $out = $this->request('getChatMembersCount',  ['json' => ['chat_id' => $chat_id]]);
-        return new $out['result'];
+        return $out['result'];
     }
 
     /**
@@ -783,7 +783,7 @@ class Telegram
     public function setChatStickerSet(SetChatStickerSet $setChatStickerSet): bool
     {
         $out = $this->request('setChatStickerSet', ['json' => (array)$setChatStickerSet]);
-        return new $out['result'];
+        return $out['result'];
     }
 
     /**
@@ -802,7 +802,7 @@ class Telegram
     public function deleteChatStickerSet(string $chat_id): bool
     {
         $out = $this->request('deleteChatStickerSet',  ['json' => ['chat_id' => $chat_id]]);
-        return new $out['result'];
+        return $out['result'];
     }
 
     /**
@@ -825,7 +825,7 @@ class Telegram
     {
         $setMyCommands->preparation();
         $out = $this->request('setMyCommands',  ['json' => (array)$setMyCommands]);
-        return new $out['result'];
+        return $out['result'];
     }
 
     /**

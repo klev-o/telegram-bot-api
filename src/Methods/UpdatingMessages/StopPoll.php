@@ -1,6 +1,8 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Methods\UpdatingMessages;
+
 
 use Klev\TelegramBotApi\Methods\BaseMethod;
 use Klev\TelegramBotApi\Types\InlineKeyboardMarkup;
@@ -9,10 +11,10 @@ use Klev\TelegramBotApi\Types\InlineKeyboardMarkup;
  * Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results
  * is returned.
  *
+ * @see https://core.telegram.org/bots/api#stoppoll
+ *
  * Class StopPoll
  * @package Klev\TelegramBotApi\Methods\UpdatingMessages
- *
- * @see https://core.telegram.org/bots/api#stoppoll
  */
 class StopPoll extends BaseMethod
 {
