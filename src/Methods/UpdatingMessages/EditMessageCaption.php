@@ -1,6 +1,8 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Methods\UpdatingMessages;
+
 
 use Klev\TelegramBotApi\Methods\BaseMethod;
 use Klev\TelegramBotApi\Types\InlineKeyboardMarkup;
@@ -10,10 +12,10 @@ use Klev\TelegramBotApi\Types\MessageEntity;
  * Use this method to edit captions of messages. On success, if the edited message is not an inline message, the
  * edited Message is returned, otherwise True is returned.
  *
+ * @see https://core.telegram.org/bots/api#editmessagecaption
+ *
  * Class EditMessageCaption
  * @package Klev\TelegramBotApi\Methods\UpdatingMessages
- *
- * @see https://core.telegram.org/bots/api#editmessagecaption
  */
 class EditMessageCaption extends BaseMethod
 {
@@ -35,9 +37,9 @@ class EditMessageCaption extends BaseMethod
     public ?string $inline_message_id = null;
     /**
      * New caption of the message, 0-1024 characters after entities parsing
-     * @var string
+     * @var string|null
      */
-    public ?string $text = ''; //todo работает только с таким параметром
+    public ?string $text = '';
     /**
      * Mode for parsing entities in the message text. See formatting options for more details.
      * @var string

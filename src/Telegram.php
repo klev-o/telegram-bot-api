@@ -865,14 +865,14 @@ class Telegram
      * @return Message|mixed
      * @throws TelegramException
      */
-    public function editMessageCaption(EditMessageCaption $editMessageCaption) //todo incorrect method
+    public function editMessageCaption(EditMessageCaption $editMessageCaption)
     {
         $editMessageCaption->preparation();
-        $out = $this->request('editMessageText', ['json' => (array)$editMessageCaption]);
+        $out = $this->request('editMessageCaption', ['json' => (array)$editMessageCaption]);
         if ($editMessageCaption->inline_message_id === null) {
             return new Message($out['result']);
         } else {
-            return $out['result']; //todo true?
+            return $out['result'];
         }
     }
 
