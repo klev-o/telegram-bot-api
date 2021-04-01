@@ -1,14 +1,16 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Types;
+
 
 /**
  * This object represent a user's profile pictures.
  *
+ * @see https://core.telegram.org/bots/api#userprofilephotos
+ *
  * Class UserProfilePhotos
  * @package Klev\TelegramBotApi\Types
- *
- * @see https://core.telegram.org/bots/api#userprofilephotos
  */
 class UserProfilePhotos extends BaseType
 {
@@ -30,7 +32,7 @@ class UserProfilePhotos extends BaseType
      */
     protected function bindObjects($key, $data): ?array
     {
-        switch ($key) { //todo check
+        switch ($key) {
             case 'photos':
                 $result = [];
                 foreach ($data as $entity) {

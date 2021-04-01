@@ -1,5 +1,6 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Methods;
 
 /**
@@ -8,10 +9,10 @@ namespace Klev\TelegramBotApi\Methods;
  * The bot must be an administrator in the chat for this to work and must have the appropriate admin rights.
  * Returns True on success.
  *
+ * @see https://core.telegram.org/bots/api#kickchatmember
+ *
  * Class KickChatMember
  * @package Klev\TelegramBotApi\Methods
- *
- * @see https://core.telegram.org/bots/api#kickchatmember
  */
 class KickChatMember extends BaseMethod
 {
@@ -33,7 +34,7 @@ class KickChatMember extends BaseMethod
      */
     public ?int $until_date;
 
-    public function __construct($chat_id, $user_id)
+    public function __construct($chat_id, int $user_id)
     {
         $this->chat_id = $chat_id;
         $this->user_id = $user_id;

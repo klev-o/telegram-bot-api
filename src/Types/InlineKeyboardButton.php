@@ -1,16 +1,18 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Types;
+
 
 use Klev\TelegramBotApi\Types\Games\CallbackGame;
 
 /**
  * This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
  *
+ * @see https://core.telegram.org/bots/api#inlinekeyboardbutton
+ *
  * Class InlineKeyboardButton
  * @package Klev\TelegramBotApi\Types
- *
- * @see https://core.telegram.org/bots/api#inlinekeyboardbutton
  */
 class InlineKeyboardButton
 {

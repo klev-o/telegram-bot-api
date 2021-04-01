@@ -41,9 +41,9 @@ class KeyboardButton extends BaseType
      * pressed. Available in private chats only
      * @var KeyboardButtonPollType|null
      */
-    public ?KeyboardButtonPollType $request_poll = null;
+    public ?KeyboardButtonPollType $request_poll = null; //todo проверить эту кнопку
 
-    public function __construct($text, $request_contact = false, $request_location = false) //todo
+    public function __construct($text, $request_contact = false, $request_location = false)
     {
         parent::__construct();
         $this->text = $text;

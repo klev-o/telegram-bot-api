@@ -31,4 +31,9 @@ class CreateChatInviteLink extends BaseMethod
      * @var int|null
      */
     public ?int $member_limit;
+
+    public function __construct($chat_id)
+    {
+        $this->chat_id = $chat_id;
+    }
 }

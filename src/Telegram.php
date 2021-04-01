@@ -115,12 +115,13 @@ class Telegram
 
     /**
      * @param DeleteWebhook $deleteWebhook
-     * @return array
+     * @return bool
      * @throws TelegramException
      */
-    public function deleteWebhook(DeleteWebhook $deleteWebhook): array
+    public function deleteWebhook(DeleteWebhook $deleteWebhook): bool
     {
-        return $this->request('deleteWebhook', (array)$deleteWebhook);
+        $out = $this->request('deleteWebhook', ['json' => (array)$deleteWebhook]);
+        return $out['result'];
     }
 
     /**
@@ -200,7 +201,7 @@ class Telegram
      */
     public function forwardMessage(ForwardMessage $forwardMessage): Message
     {
-        $out = $this->request('forwardMessage', (array)$forwardMessage);
+        $out = $this->request('forwardMessage', ['json' => (array)$forwardMessage]);
         return new Message($out['result']);
     }
 
@@ -212,7 +213,7 @@ class Telegram
     public function copyMessage(CopyMessage $copyMessage): MessageId
     {
         $copyMessage->preparation();
-        $out = $this->request('copyMessage', (array)$copyMessage);
+        $out = $this->request('copyMessage', ['json' => (array)$copyMessage]);
         return new MessageId($out['result']);
     }
 

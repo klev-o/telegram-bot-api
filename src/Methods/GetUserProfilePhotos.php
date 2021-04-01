@@ -1,14 +1,15 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Methods;
 
 /**
  * Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
  *
+ * @see https://core.telegram.org/bots/api#getuserprofilephotos
+ *
  * Class GetUserProfilePhotos
  * @package Klev\TelegramBotApi\Methods
- *
- * @see https://core.telegram.org/bots/api#getuserprofilephotos
  */
 class GetUserProfilePhotos extends BaseMethod
 {
@@ -18,7 +19,7 @@ class GetUserProfilePhotos extends BaseMethod
      */
     public string $user_id;
     /**
-     * 	Sequential number of the first photo to be returned. By default, all photos are returned.
+     * Sequential number of the first photo to be returned. By default, all photos are returned.
      * @var int|null
      */
     public ?int $offset;
