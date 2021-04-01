@@ -1,5 +1,5 @@
 {
-    "name": "klev/telegram-bot-api",
+    "name": "klev-o/telegram-bot-api",
     "description": "Simple and convenient implementation Telegram bot API with php version ^7.4 support",
     "type": "library",
     "keywords": ["telegram", "bot", "api", "tg", "php"],
