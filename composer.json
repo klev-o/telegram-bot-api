@@ -1,0 +1,24 @@
+{
+    "name": "klev-o/telegram-bot-api",
+    "description": "Simple and convenient implementation Telegram bot API with php version ^7.4 support",
+    "type": "library",
+    "keywords": ["telegram", "bot", "api", "tg", "php"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Konstantin Lev",
+            "email": "x-stels@bk.ru"
+        }
+    ],
+    "require": {
+        "php": "^7.4.0",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "guzzlehttp/guzzle": "^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Klev\\TelegramBotApi\\": "src/"
+        }
+    }
+}
