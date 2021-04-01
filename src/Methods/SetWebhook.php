@@ -18,10 +18,11 @@ class SetWebhook extends BaseMethod
      */
     public string $url;
     /**
-     * Upload your public key certificate so that the root certificate in use can be checked. See our self-signed guide for details.
+     * Upload your public key certificate so that the root certificate in use can be checked. See our self-signed guide
+     * for details.
      * @var string|null
      */
-    public ?string $certificate; //todo
+    public ?string $certificate = null;
     /**
      * The fixed IP address which will be used to send webhook requests instead of the IP address resolved through DNS
      * @var string|null
@@ -32,7 +33,7 @@ class SetWebhook extends BaseMethod
      * 40. Use lower values to limit the load on your bot's server, and higher values to increase your bot's throughput.
      * @var int|null
      */
-    public ?int $max_connections;
+    public ?int $max_connections = null;
     /**
      * A JSON-serialized list of the update types you want your bot to receive. For example, specify [“message”,
      * “edited_channel_post”, “callback_query”] to only receive updates of these types. See Update for a complete list
@@ -43,7 +44,7 @@ class SetWebhook extends BaseMethod
      *
      * @var string[]|null
      */
-    public ?array $allowed_updates;
+    public ?array $allowed_updates = null;
 
     /**
      * SetWebhook constructor.

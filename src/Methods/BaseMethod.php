@@ -25,6 +25,7 @@ use Klev\TelegramBotApi\Types\InputMediaVideo;
 abstract class BaseMethod
 {
     private static array $mapClassFileFields = [
+        SetWebhook::class => 'certificate',
         SendPhoto::class => 'photo',
         SendAudio::class => ['audio', 'thumb'],
         SendDocument::class => ['document', 'thumb'],

@@ -100,14 +100,17 @@ class Telegram
 
     /**
      * @param SetWebhook $setWebhook
-     * @return array
+     * @return bool
      * @throws TelegramException
-     
      */
-    public function setWebhook(SetWebhook $setWebhook): array
+    public function setWebhook(SetWebhook $setWebhook): bool
     {
-        //todo load certificate
-        return $this->request('setWebhook', ['json' => (array)$setWebhook]);
+        $data = BaseMethod::getDataForMultipart($setWebhook);
+        $requestData = !empty($data) ? ['setWebhook' => $data] : ['json' =>(array)$setWebhook];
+
+        $out = $this->request('setWebhook', $requestData);
+
+        return $out['result'];
     }
 
     /**
