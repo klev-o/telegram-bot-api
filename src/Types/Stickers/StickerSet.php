@@ -1,21 +1,52 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Types\Stickers;
+
 
 use Klev\TelegramBotApi\Types\BaseType;
 use Klev\TelegramBotApi\Types\PhotoSize;
 
+/**
+ * This object represents a sticker set.
+ *
+ * @see https://core.telegram.org/bots/api#stickerset
+ *
+ * Class StickerSet
+ * @package Klev\TelegramBotApi\Types\Stickers
+ */
 class StickerSet extends BaseType
 {
+    /**
+     * Sticker set name
+     * @var string
+     */
     public string $name;
+    /**
+     * Sticker set title
+     * @var string
+     */
     public string $title;
+    /**
+     * True, if the sticker set contains animated stickers
+     * @var bool
+     */
     public bool $is_animated;
+    /**
+     * True, if the sticker set contains masks
+     * @var bool
+     */
     public bool $contains_masks;
     /**
+     * List of all set stickers
      * @var Sticker[]
      */
     public array $stickers;
-    public ?PhotoSize $thumb;
+    /**
+     * Optional. Sticker set thumbnail in the .WEBP or .TGS format
+     * @var PhotoSize|null
+     */
+    public ?PhotoSize $thumb = null;
 
     protected function bindObjects($key, $data)
     {

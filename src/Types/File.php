@@ -1,5 +1,6 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Types;
 
 /**
@@ -8,10 +9,10 @@ namespace Klev\TelegramBotApi\Types;
  * 1 hour. When the link expires, a new one can be requested by calling getFile.
  * Maximum file size to download is 20 MB
  *
+ * @see https://core.telegram.org/bots/api#file
+ *
  * Class File
  * @package Klev\TelegramBotApi\Types
- *
- * @see https://core.telegram.org/bots/api#file
  */
 class File extends BaseType
 {
@@ -30,10 +31,10 @@ class File extends BaseType
      * Optional. File size, if known
      * @var int|null
      */
-    public ?int $file_size;
+    public ?int $file_size = null;
     /**
      * Optional. File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
      * @var string|null
      */
-    public ?string $file_path;
+    public ?string $file_path = null;
 }
