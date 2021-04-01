@@ -6,7 +6,9 @@ use GuzzleHttp\Client;
 use Klev\TelegramBotApi\Methods\AnswerCallbackQuery;
 use Klev\TelegramBotApi\Methods\BaseMethod;
 use Klev\TelegramBotApi\Methods\CopyMessage;
+use Klev\TelegramBotApi\Methods\CreateChatInviteLink;
 use Klev\TelegramBotApi\Methods\DeleteWebhook;
+use Klev\TelegramBotApi\Methods\EditChatInviteLink;
 use Klev\TelegramBotApi\Methods\EditMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\ForwardMessage;
 use Klev\TelegramBotApi\Methods\Games\SendGame;
@@ -21,6 +23,7 @@ use Klev\TelegramBotApi\Methods\Payments\SendInvoice;
 use Klev\TelegramBotApi\Methods\PinChatMessage;
 use Klev\TelegramBotApi\Methods\PromoteChatMember;
 use Klev\TelegramBotApi\Methods\RestrictChatMember;
+use Klev\TelegramBotApi\Methods\RevokeChatInviteLink;
 use Klev\TelegramBotApi\Methods\SendAnimation;
 use Klev\TelegramBotApi\Methods\SendAudio;
 use Klev\TelegramBotApi\Methods\SendChatAction;
@@ -62,6 +65,7 @@ use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageText;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\StopPoll;
 use Klev\TelegramBotApi\Types\BotCommand;
 use Klev\TelegramBotApi\Types\Chat;
+use Klev\TelegramBotApi\Types\ChatInviteLink;
 use Klev\TelegramBotApi\Types\ChatMember;
 use Klev\TelegramBotApi\Types\File;
 use Klev\TelegramBotApi\Types\Games\GameHighScore;
@@ -1153,6 +1157,39 @@ class Telegram
         }
 
         return $result;
+    }
+
+    /**
+     * @param CreateChatInviteLink $createChatInviteLink
+     * @return ChatInviteLink
+     * @throws TelegramException
+     */
+    public function createChatInviteLink(CreateChatInviteLink $createChatInviteLink): ChatInviteLink //todo check,
+    {
+        $out = $this->request('createChatInviteLink', ['json' => (array)$createChatInviteLink]);
+        return new ChatInviteLink($out['result']);
+    }
+
+    /**
+     * @param EditChatInviteLink $editChatInviteLink
+     * @return ChatInviteLink
+     * @throws TelegramException
+     */
+    public function editChatInviteLink(EditChatInviteLink $editChatInviteLink): ChatInviteLink //todo check,
+    {
+        $out = $this->request('editChatInviteLink', ['json' => (array)$editChatInviteLink]);
+        return new ChatInviteLink($out['result']);
+    }
+
+    /**
+     * @param RevokeChatInviteLink $revokeChatInviteLink
+     * @return ChatInviteLink
+     * @throws TelegramException
+     */
+    public function revokeChatInviteLink(RevokeChatInviteLink $revokeChatInviteLink): ChatInviteLink //todo check,
+    {
+        $out = $this->request('revokeChatInviteLink', ['json' => (array)$revokeChatInviteLink]);
+        return new ChatInviteLink($out['result']);
     }
 
     /**
