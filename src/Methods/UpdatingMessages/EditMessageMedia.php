@@ -1,6 +1,8 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Methods\UpdatingMessages;
+
 
 use Klev\TelegramBotApi\Methods\BaseMethod;
 use Klev\TelegramBotApi\Methods\SendMedia;
@@ -14,10 +16,10 @@ use Klev\TelegramBotApi\Types\InputMedia;
  * uploaded file via its file_id or specify a URL. On success, if the edited message was sent by the bot, the edited
  * Message is returned, otherwise True is returned.
  *
+ * @see https://core.telegram.org/bots/api#editmessagemedia
+ *
  * Class EditMessageMedia
  * @package Klev\TelegramBotApi\Methods\UpdatingMessages
- *
- * @see https://core.telegram.org/bots/api#editmessagemedia
  */
 class EditMessageMedia extends BaseMethod implements SendMedia
 {

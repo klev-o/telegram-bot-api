@@ -1004,7 +1004,6 @@ class Telegram
     /**
      * @param SetStickerPositionInSet $setStickerPositionInSet
      * @return bool
-     
      * @throws TelegramException
      */
     public function setStickerPositionInSet(SetStickerPositionInSet $setStickerPositionInSet): bool
@@ -1021,10 +1020,10 @@ class Telegram
      *
      * @see https://core.telegram.org/bots/api#deletestickerfromset
      *
-     * @return mixed
+     * @return bool
      * @throws TelegramException
      */
-    public function deleteStickerFromSet(string $sticker)
+    public function deleteStickerFromSet(string $sticker): bool
     {
         $out = $this->request('deleteStickerFromSet', ['json' => ['sticker' => $sticker]]);
         return $out['result'];

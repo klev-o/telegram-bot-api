@@ -1,16 +1,18 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Methods\Stickers;
+
 
 use Klev\TelegramBotApi\Methods\BaseMethod;
 
 /**
  * Use this method to move a sticker in a set created by the bot to a specific position. Returns True on success.
  *
+ * @see https://core.telegram.org/bots/api#setstickerpositioninset
+ *
  * Class SetStickerPositionInSet
  * @package Klev\TelegramBotApi\Methods\Stickers
- *
- * @see https://core.telegram.org/bots/api#setstickerpositioninset
  */
 class SetStickerPositionInSet extends BaseMethod
 {
@@ -25,7 +27,7 @@ class SetStickerPositionInSet extends BaseMethod
      */
     public int $position;
 
-    public function __construct($sticker, $position)
+    public function __construct(string $sticker, int $position)
     {
         $this->sticker = $sticker;
         $this->position = $position;

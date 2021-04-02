@@ -1,6 +1,8 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Methods\Stickers;
+
 
 use Klev\TelegramBotApi\Methods\BaseMethod;
 
@@ -8,10 +10,10 @@ use Klev\TelegramBotApi\Methods\BaseMethod;
  * Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only.
  * Returns True on success.
  *
+ * @see https://core.telegram.org/bots/api#deletestickerfromset
+ *
  * Class SetStickerSetThumb
  * @package Klev\TelegramBotApi\Methods\Stickers
- *
- * @see https://core.telegram.org/bots/api#deletestickerfromset
  */
 class SetStickerSetThumb extends BaseMethod
 {
@@ -37,7 +39,7 @@ class SetStickerSetThumb extends BaseMethod
      */
     public ?string $thumb = null;
 
-    public function __construct($name, $user_id)
+    public function __construct(string $name, int $user_id)
     {
         $this->name = $name;
         $this->user_id = $user_id;
