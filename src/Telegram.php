@@ -1064,6 +1064,7 @@ class Telegram
      */
     public function answerInlineQuery(AnswerInlineQuery $answerInlineQuery): bool
     {
+        $answerInlineQuery->preparation();
         $out = $this->request('answerInlineQuery', ['json' => (array)$answerInlineQuery]);
         return $out['result'];
     }

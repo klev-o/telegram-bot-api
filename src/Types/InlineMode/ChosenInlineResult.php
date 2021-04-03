@@ -1,6 +1,8 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Types\InlineMode;
+
 
 use Klev\TelegramBotApi\Types\BaseType;
 use Klev\TelegramBotApi\Types\Location;

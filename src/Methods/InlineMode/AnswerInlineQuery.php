@@ -45,13 +45,13 @@ class AnswerInlineQuery extends BaseMethod
      * empty string if there are no more results or if you don't support pagination. Offset length can't exceed 64 bytes.
      * @var string|null
      */
-    public ?string $next_offset = null;
+    public ?string $next_offset = '';
     /**
      * If passed, clients will display a button with specified text that switches the user to a private chat with the
      * bot and sends the bot a start message with the parameter switch_pm_parameter
      * @var string|null
      */
-    public ?string $switch_pm_text = null;
+    public ?string $switch_pm_text = '';
     /**
      * Deep-linking parameter for the /start message sent to the bot when user presses the switch button. 1-64
      * characters, only A-Z, a-z, 0-9, _ and - are allowed.
