@@ -1126,7 +1126,7 @@ class Telegram
      * @return Message
      * @throws TelegramException
      */
-    public function sendGame(SendGame $sendGame): Message //todo check
+    public function sendGame(SendGame $sendGame): Message
     {
         $sendGame->preparation();
 
@@ -1139,7 +1139,7 @@ class Telegram
      * @return array
      * @throws TelegramException
      */
-    public function setGameScore(SetGameScore $setGameScore): array //todo check, много условий и разные типы возвращаются
+    public function setGameScore(SetGameScore $setGameScore): array
     {
         $setGameScore->preparation();
 
@@ -1151,7 +1151,7 @@ class Telegram
      * @return GameHighScore[]
      * @throws TelegramException
      */
-    public function getGameHighScores(): array //todo check,
+    public function getGameHighScores(): array
     {
         $out = $this->request('getGameHighScores');
 
