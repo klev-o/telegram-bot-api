@@ -38,4 +38,10 @@ class AnswerPreCheckoutQuery extends BaseMethod
      * @var string|null
      */
     public ?string $error_message = null;
+
+    public function __construct(string $pre_checkout_query_id, bool $ok)
+    {
+        $this->pre_checkout_query_id = $pre_checkout_query_id;
+        $this->ok = $ok;
+    }
 }

@@ -49,7 +49,6 @@ abstract class BaseMethod
 
     public function preparation(): void
     {
-        //todo при строгой типизации нельзя потом массив в строку, надо придумать что-то
         if (!empty($this->reply_markup)) {
             $this->reply_markup = json_encode($this->reply_markup);
         }

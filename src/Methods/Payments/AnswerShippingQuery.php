@@ -42,4 +42,10 @@ class AnswerShippingQuery extends BaseMethod
      * @var string|null
      */
     public ?string $error_message = null;
+
+    public function __construct(string $shipping_query_id, bool $ok)
+    {
+        $this->shipping_query_id = $shipping_query_id;
+        $this->ok = $ok;
+    }
 }

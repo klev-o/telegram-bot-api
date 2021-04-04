@@ -1074,7 +1074,7 @@ class Telegram
      * @return Message
      * @throws TelegramException
      */
-    public function sendInvoice(SendInvoice $sendInvoice): Message //todo check
+    public function sendInvoice(SendInvoice $sendInvoice): Message
     {
         $sendInvoice->preparation();
 
@@ -1087,7 +1087,7 @@ class Telegram
      * @return mixed
      * @throws TelegramException
      */
-    public function answerShippingQuery(AnswerShippingQuery $answerShippingQuery): bool //todo check
+    public function answerShippingQuery(AnswerShippingQuery $answerShippingQuery): bool
     {
         $answerShippingQuery->preparation();
 
@@ -1100,7 +1100,7 @@ class Telegram
      * @return bool
      * @throws TelegramException
      */
-    public function answerPreCheckoutQuery(AnswerPreCheckoutQuery $answerPreCheckoutQuery): bool //todo check
+    public function answerPreCheckoutQuery(AnswerPreCheckoutQuery $answerPreCheckoutQuery): bool
     {
         $answerPreCheckoutQuery->preparation();
 
