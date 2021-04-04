@@ -1113,7 +1113,7 @@ class Telegram
      * @return bool
      * @throws TelegramException
      */
-    public function setPassportDataErrors(SetPassportDataErrors $setPassportDataErrors): bool //todo check
+    public function setPassportDataErrors(SetPassportDataErrors $setPassportDataErrors): bool
     {
         $setPassportDataErrors->preparation();
 
