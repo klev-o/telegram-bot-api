@@ -325,7 +325,6 @@ class Message extends BaseType
      */
     protected function bindObjects($key, $data)
     {
-        //todo InlineKeyboardMarkup ???
         switch ($key) {
             case 'from':
             case 'forward_from':

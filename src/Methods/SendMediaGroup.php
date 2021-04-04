@@ -1,6 +1,8 @@
 <?php
 
+
 namespace Klev\TelegramBotApi\Methods;
+
 
 use Klev\TelegramBotApi\TelegramException;
 use Klev\TelegramBotApi\Types\InputMedia;
@@ -8,6 +10,8 @@ use Klev\TelegramBotApi\Types\InputMedia;
 /**
  * Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be
  * only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
+ *
+ * @see https://core.telegram.org/bots/api#sendmediagroup
  *
  * Class SendMediaGroup
  * @package Klev\TelegramBotApi\Methods
@@ -23,7 +27,7 @@ class SendMediaGroup extends BaseMethod implements SendMedia
      * A JSON-serialized array describing messages to be sent, must include 2-10 items
      * @var InputMedia[]
      */
-    public $media; //todo
+    public $media = '';
     /**
      * Sends messages silently. Users will receive a notification with no sound.
      * @var bool|null

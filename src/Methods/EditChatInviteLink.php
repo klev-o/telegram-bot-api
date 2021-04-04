@@ -36,4 +36,10 @@ class EditChatInviteLink extends BaseMethod
      * @var int|null
      */
     public ?int $member_limit;
+
+    public function __construct(string $chat_id, string $invite_link)
+    {
+        $this->chat_id = $chat_id;
+        $this->invite_link = $invite_link;
+    }
 }

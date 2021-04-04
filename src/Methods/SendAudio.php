@@ -69,7 +69,7 @@ class SendAudio extends BaseMethod
      * multipart/form-data under <file_attach_name>. More info on Sending Files »
      * @var string|null
      */
-    public ?string $thumb = null; //todo
+    public ?string $thumb = null;
     /**
      * Sends the message silently. Users will receive a notification with no sound.
      * @var bool|null

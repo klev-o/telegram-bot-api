@@ -388,7 +388,7 @@ class Telegram
         if ($editMessageLiveLocation->inline_message_id === null) {
             return new Message($out['result']);
         } else {
-            return $out['result']; //todo true?
+            return $out['result'];
         }
     }
 
@@ -846,7 +846,7 @@ class Telegram
 
     /**
      * @param EditMessageText $editMessageText
-     * @return Message|mixed
+     * @return Message|bool
      * @throws TelegramException
      */
     public function editMessageText(EditMessageText $editMessageText)
@@ -856,7 +856,7 @@ class Telegram
         if ($editMessageText->inline_message_id === null) {
             return new Message($out['result']);
         } else {
-            return $out['result']; //todo true?
+            return $out['result'];
         }
     }
 
@@ -894,7 +894,7 @@ class Telegram
 
         $out = $this->request('editMessageMedia', $requestData);
 
-        return $out['result']; //todo condition?
+        return $out['result'];
     }
 
     /**
@@ -1168,7 +1168,7 @@ class Telegram
      * @return ChatInviteLink
      * @throws TelegramException
      */
-    public function createChatInviteLink(CreateChatInviteLink $createChatInviteLink): ChatInviteLink //todo check,
+    public function createChatInviteLink(CreateChatInviteLink $createChatInviteLink): ChatInviteLink
     {
         $out = $this->request('createChatInviteLink', ['json' => (array)$createChatInviteLink]);
         return new ChatInviteLink($out['result']);
@@ -1179,7 +1179,7 @@ class Telegram
      * @return ChatInviteLink
      * @throws TelegramException
      */
-    public function editChatInviteLink(EditChatInviteLink $editChatInviteLink): ChatInviteLink //todo check,
+    public function editChatInviteLink(EditChatInviteLink $editChatInviteLink): ChatInviteLink
     {
         $out = $this->request('editChatInviteLink', ['json' => (array)$editChatInviteLink]);
         return new ChatInviteLink($out['result']);
@@ -1190,7 +1190,7 @@ class Telegram
      * @return ChatInviteLink
      * @throws TelegramException
      */
-    public function revokeChatInviteLink(RevokeChatInviteLink $revokeChatInviteLink): ChatInviteLink //todo check,
+    public function revokeChatInviteLink(RevokeChatInviteLink $revokeChatInviteLink): ChatInviteLink
     {
         $out = $this->request('revokeChatInviteLink', ['json' => (array)$revokeChatInviteLink]);
         return new ChatInviteLink($out['result']);
