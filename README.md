@@ -7,6 +7,7 @@ Simple and convenient implementation Telegram bot API with php version ^7.4 supp
 [![License](https://img.shields.io/github/license/klev-o/telegram-bot-api)](https://github.com/klev-o/telegram-bot-api/blob/master/LICENSE)
 ![Packagist Downloads](https://img.shields.io/packagist/dt/klev-o/telegram-bot-api)
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/klev-o/telegram-bot-api?include_prereleases)
+![Scrutinizer code quality (GitHub/Bitbucket)](https://img.shields.io/scrutinizer/quality/g/klev-o/telegram-bot-api)
 ![GitHub last commit](https://img.shields.io/github/last-commit/klev-o/telegram-bot-api)
 
 ## Intro
