@@ -71,9 +71,9 @@ class SendInvoice extends BaseMethod
     public $suggested_tip_amounts = '';
     /**
      * Unique deep-linking parameter that can be used to generate this invoice when used as a start parameter
-     * @var string
+     * @var string|null
      */
-    public string $start_parameter;
+    public ?string $start_parameter = null;
     /**
      * A JSON-serialized data about the invoice, which will be shared with the payment provider. A detailed description
      * of required fields should be provided by the payment provider.
@@ -164,7 +164,6 @@ class SendInvoice extends BaseMethod
         string $description,
         string $payload,
         string $provider_token,
-        string $start_parameter,
         string $currency,
         array $prices
     ){
@@ -173,7 +172,6 @@ class SendInvoice extends BaseMethod
         $this->description = $description;
         $this->payload = $payload;
         $this->provider_token = $provider_token;
-        $this->start_parameter = $start_parameter;
         $this->currency = $currency;
         $this->prices = $prices;
     }
