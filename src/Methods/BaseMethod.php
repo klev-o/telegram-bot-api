@@ -61,6 +61,10 @@ abstract class BaseMethod
             $this->prices = json_encode($this->prices);
         }
 
+        if (!empty($this->suggested_tip_amounts)) {
+            $this->suggested_tip_amounts = json_encode($this->suggested_tip_amounts);
+        }
+
         if (!empty($this->shipping_options)) {
             $this->shipping_options = json_encode($this->shipping_options);
         }
