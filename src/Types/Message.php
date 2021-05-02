@@ -298,6 +298,11 @@ class Message extends BaseType
      */
     public ?ProximityAlertTriggered $proximity_alert_triggered = null;
     /**
+     * Optional. Service message: voice chat scheduled
+     * @var VoiceChatScheduled|null
+     */
+    public ?VoiceChatScheduled $voice_chat_scheduled = null;
+    /**
      * Optional. Service message: voice chat started
      * @var VoiceChatStarted|null
      */
