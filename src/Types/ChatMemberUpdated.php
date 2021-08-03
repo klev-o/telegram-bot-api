@@ -3,6 +3,8 @@
 
 namespace Klev\TelegramBotApi\Types;
 
+use Klev\TelegramBotApi\TelegramHelper;
+
 /**
  * This object represents changes in the status of a chat member.
  *
@@ -53,7 +55,7 @@ class ChatMemberUpdated extends BaseType
                 return new User($data);
             case 'old_chat_member':
             case 'new_chat_member':
-                return new ChatMember($data);
+                return TelegramHelper::getChatMember($data);
             case 'invite_link':
                 return new ChatInviteLink($data);
         }

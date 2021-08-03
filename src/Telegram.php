@@ -4,9 +4,11 @@ namespace Klev\TelegramBotApi;
 
 use GuzzleHttp\Client;
 use Klev\TelegramBotApi\Methods\AnswerCallbackQuery;
+use Klev\TelegramBotApi\Methods\BanChatMember;
 use Klev\TelegramBotApi\Methods\BaseMethod;
 use Klev\TelegramBotApi\Methods\CopyMessage;
 use Klev\TelegramBotApi\Methods\CreateChatInviteLink;
+use Klev\TelegramBotApi\Methods\DeleteMyCommands;
 use Klev\TelegramBotApi\Methods\DeleteWebhook;
 use Klev\TelegramBotApi\Methods\EditChatInviteLink;
 use Klev\TelegramBotApi\Methods\EditMessageLiveLocation;
@@ -14,9 +16,9 @@ use Klev\TelegramBotApi\Methods\ForwardMessage;
 use Klev\TelegramBotApi\Methods\Games\SendGame;
 use Klev\TelegramBotApi\Methods\Games\SetGameScore;
 use Klev\TelegramBotApi\Methods\GetChatMember;
+use Klev\TelegramBotApi\Methods\GetMyCommands;
 use Klev\TelegramBotApi\Methods\GetUserProfilePhotos;
 use Klev\TelegramBotApi\Methods\InlineMode\AnswerInlineQuery;
-use Klev\TelegramBotApi\Methods\KickChatMember;
 use Klev\TelegramBotApi\Methods\Payments\AnswerPreCheckoutQuery;
 use Klev\TelegramBotApi\Methods\Payments\AnswerShippingQuery;
 use Klev\TelegramBotApi\Methods\Payments\SendInvoice;
@@ -511,13 +513,13 @@ class Telegram
     }
 
     /**
-     * @param KickChatMember $kickChatMember
+     * @param BanChatMember $banChatMember
      * @return bool
      * @throws TelegramException
      */
-    public function kickChatMember(KickChatMember $kickChatMember): bool
+    public function banChatMember(BanChatMember $banChatMember): bool
     {
-        $out = $this->request('kickChatMember', ['json' => (array)$kickChatMember]);
+        $out = $this->request('banChatMember', ['json' => (array)$banChatMember]);
         return $out['result'];
     }
 
@@ -740,7 +742,7 @@ class Telegram
 
         $result = [];
         foreach ($out['result'] as $member) {
-            $result[] = new ChatMember($member);
+            $result[] = TelegramHelper::getChatMember($member);
         }
 
         return $result;
@@ -758,9 +760,9 @@ class Telegram
      * @return int
      * @throws TelegramException
      */
-    public function getChatMembersCount(string $chat_id): int
+    public function getChatMemberCount(string $chat_id): int
     {
-        $out = $this->request('getChatMembersCount',  ['json' => ['chat_id' => $chat_id]]);
+        $out = $this->request('getChatMemberCount',  ['json' => ['chat_id' => $chat_id]]);
         return $out['result'];
     }
 
@@ -772,7 +774,7 @@ class Telegram
     public function getChatMember(GetChatMember $getChatMember): ChatMember
     {
         $out = $this->request('getChatMember', ['json' => (array)$getChatMember]);
-        return new ChatMember($out['result']);
+        return TelegramHelper::getChatMember($out['result']);
     }
 
     /**
@@ -829,12 +831,14 @@ class Telegram
     }
 
     /**
+     * @param GetMyCommands $getMyCommands
      * @return array
      * @throws TelegramException
      */
-    public function getMyCommands(): array
+    public function getMyCommands(GetMyCommands $getMyCommands): array
     {
-        $out = $this->request('getMyCommands');
+        $getMyCommands->preparation();
+        $out = $this->request('getMyCommands', ['json' => (array)$getMyCommands]);
 
         $result = [];
         foreach ($out['result'] as $command) {
@@ -842,6 +846,13 @@ class Telegram
         }
 
         return $result;
+    }
+
+    public function deleteMyCommands(DeleteMyCommands $deleteMyCommands): bool
+    {
+        $deleteMyCommands->preparation();
+        $out = $this->request('deleteMyCommands', ['json' => (array)$deleteMyCommands]);
+        return $out['result'];
     }
 
     /**

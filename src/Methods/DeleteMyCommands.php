@@ -4,26 +4,20 @@
 namespace Klev\TelegramBotApi\Methods;
 
 
-use Klev\TelegramBotApi\Types\BotCommand;
 use Klev\TelegramBotApi\Types\BotCommandScope;
 use Klev\TelegramBotApi\Types\BotCommandScopeDefault;
 
 /**
- * Use this method to change the list of the bot's commands. Returns True on success.
+ * Use this method to delete the list of the bot's commands for the given scope and user language. After deletion,
+ * higher level commands will be shown to affected users. Returns True on success.
  *
- * @see https://core.telegram.org/bots/api#setmycommands
+ * @see https://core.telegram.org/bots/api#deletemycommands
  *
- * Class SetMyCommands
+ * Class GetMyCommands
  * @package Klev\TelegramBotApi\Methods
  */
-class SetMyCommands extends BaseMethod
+class DeleteMyCommands extends BaseMethod
 {
-    /**
-     * A JSON-serialized list of bot commands to be set as the list of the bot's commands. At most 100 commands
-     * can be specified.
-     * @var BotCommand[]
-     */
-    public $commands = '';
     /**
      * A JSON-serialized object, describing scope of users for which the commands are relevant.
      * Defaults to BotCommandScopeDefault.
@@ -37,14 +31,8 @@ class SetMyCommands extends BaseMethod
      */
     public ?string $language_code = '';
 
-    public function __construct(array $commands)
-    {
-        $this->commands = $commands;
-    }
-
     public function preparation(): void
     {
-        $this->commands = json_encode($this->commands);
         $this->scope = $this->scope ?? new BotCommandScopeDefault();
         $this->scope = json_encode($this->scope);
     }
