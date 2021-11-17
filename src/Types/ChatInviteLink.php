@@ -25,6 +25,11 @@ class ChatInviteLink extends BaseType
      */
     public User $creator;
     /**
+     * True, if users joining the chat via the link need to be approved by chat administrators
+     * @var bool
+     */
+    public bool $creates_join_request;
+    /**
      * True, if the link is primary
      * @var bool
      */
@@ -45,6 +50,11 @@ class ChatInviteLink extends BaseType
      * @var int|null
      */
     public ?int $member_limit = null;
+    /**
+     * Optional. Number of pending join requests created using this link
+     * @var int|null
+     */
+    public ?int $pending_join_request_count = null;
 
     protected function bindObjects($key, $data): ?User
     {
