@@ -1208,6 +1208,48 @@ class Telegram
     }
 
     /**
+     * Use this method to approve a chat join request. The bot must be an administrator in the chat for this to work
+     * and must have the can_invite_users administrator right. Returns True on success.
+     *
+     * @see https://core.telegram.org/bots/api#approvechatjoinrequest
+     *
+     * @param string $chat_id
+     * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     *
+     * @param int $user_id
+     * Unique identifier of the target user
+     *
+     * @return bool
+     * @throws TelegramException
+     */
+    public function approveChatJoinRequest(string $chat_id, int $user_id): bool
+    {
+        $out = $this->request('approveChatJoinRequest', ['json' => ['chat_id' => $chat_id, 'user_id' => $user_id]]);
+        return $out['result'];
+    }
+
+    /**
+     * Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work
+     * and must have the can_invite_users administrator right. Returns True on success.
+     *
+     * @see https://core.telegram.org/bots/api#declinechatjoinrequest
+     *
+     * @param string $chat_id
+     * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     *
+     * @param int $user_id
+     * Unique identifier of the target user
+     *
+     * @return bool
+     * @throws TelegramException
+     */
+    public function declineChatJoinRequest(string $chat_id, int $user_id): bool
+    {
+        $out = $this->request('declineChatJoinRequest', ['json' => ['chat_id' => $chat_id, 'user_id' => $user_id]]);
+        return $out['result'];
+    }
+
+    /**
      * @return string
      */
     public function getToken(): string
@@ -1230,6 +1272,7 @@ class Telegram
     {
         $this->fileApiEndpoint = $url;
     }
+
 
     /**
      * @param $method
