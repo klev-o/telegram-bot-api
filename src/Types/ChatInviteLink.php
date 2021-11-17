@@ -40,6 +40,11 @@ class ChatInviteLink extends BaseType
      */
     public bool $is_revoked;
     /**
+     * Optional. Invite link name
+     * @var string|null
+     */
+    public ?string $name;
+    /**
      * Optional. Point in time (Unix timestamp) when the link will expire or has been expired
      * @var int|null
      */
