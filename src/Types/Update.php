@@ -91,6 +91,12 @@ class Update extends BaseType
      * @var ChatMemberUpdated|null
      */
     public ?ChatMemberUpdated $chat_member = null;
+    /**
+     * Optional. A request to join the chat has been sent. The bot must have the can_invite_users administrator right
+     * in the chat to receive these updates.
+     * @var ChatJoinRequest|null
+     */
+    public ?ChatJoinRequest $chat_join_request = null;
 
     protected function bindObjects($key, $data): ?object
     {
@@ -117,6 +123,8 @@ class Update extends BaseType
             case 'my_chat_member':
             case 'chat_member':
                 return new ChatMemberUpdated($data);
+            case 'chat_join_request':
+                return new ChatJoinRequest($data);
         }
 
         return null;
