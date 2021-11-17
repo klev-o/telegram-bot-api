@@ -26,6 +26,11 @@ class EditChatInviteLink extends BaseMethod
      */
     public string $invite_link;
     /**
+     * Invite link name; 0-32 characters
+     * @var string|null
+     */
+    public ?string $name;
+    /**
      * Point in time (Unix timestamp) when the link will expire
      * @var int|null
      */
@@ -36,6 +41,12 @@ class EditChatInviteLink extends BaseMethod
      * @var int|null
      */
     public ?int $member_limit;
+    /**
+     * True, if users joining the chat via the link need to be approved by chat administrators. If True,
+     * member_limit can't be specified
+     * @var bool|null
+     */
+    public ?bool $creates_join_request;
 
     public function __construct(string $chat_id, string $invite_link)
     {
