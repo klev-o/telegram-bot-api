@@ -77,6 +77,12 @@ class Message extends BaseType
      */
     public ?int $forward_date = null;
     /**
+     * Optional. True, if the message is a channel post that was automatically forwarded to the connected discussion
+     * group
+     * @var bool|null
+     */
+    public ?bool $is_automatic_forward = null;
+    /**
      * Optional. For replies, the original message. Note that the Message object in this field will not contain
      * further reply_to_message fields even if it itself is a reply.
      * @var Message|null
@@ -92,6 +98,11 @@ class Message extends BaseType
      * @var int|null
      */
     public ?int $edit_date = null;
+    /**
+     * Optional. True, if the message can't be forwarded
+     * @var bool|null
+     */
+    public ?bool $has_protected_content = null;
     /**
      * Optional. The unique identifier of a media message group this message belongs to
      * @var string|null
