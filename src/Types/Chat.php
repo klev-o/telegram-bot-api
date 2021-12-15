@@ -50,6 +50,17 @@ class Chat extends BaseType
      */
     public ?ChatPhoto $photo = null;
     /**
+     * Optional. Bio of the other party in a private chat. Returned only in getChat.
+     * @var string|null
+     */
+    public ?string $bio = null;
+    /**
+     * Optional. True, if privacy settings of the other party in the private chat allows to use
+     * tg://user?id=<user_id> links only in chats with the user. Returned only in getChat.
+     * @var bool|null
+     */
+    public ?bool $has_private_forwards = null;
+    /**
      * Optional. Description, for groups, supergroups and channel chats. Returned only in getChat.
      * @var string|null
      */
@@ -77,6 +88,17 @@ class Chat extends BaseType
      * @var int|null
      */
     public ?int $slow_mode_delay = null;
+    /**
+     * Optional. The time after which all messages sent to the chat will be automatically deleted; in seconds.
+     * Returned only in getChat.
+     * @var int|null
+     */
+    public ?int $message_auto_delete_time = null;
+    /**
+     * Optional. True, if messages from the chat can't be forwarded to other chats. Returned only in getChat.
+     * @var bool|null
+     */
+    public ?bool $has_protected_content = null;
     /**
      * Optional. For supergroups, name of group sticker set. Returned only in getChat.
      * @var string|null
