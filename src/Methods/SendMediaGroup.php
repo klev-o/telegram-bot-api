@@ -34,6 +34,11 @@ class SendMediaGroup extends BaseMethod implements SendMedia
      */
     public ?bool $disable_notification = false;
     /**
+     * Protects the contents of the sent message from forwarding and saving
+     * @var bool|null
+     */
+    public ?bool $protect_content = null;
+    /**
      * If the messages are a reply, ID of the original message
      * @var int|null
      */

@@ -53,6 +53,11 @@ class CopyMessage extends BaseMethod
      */
     public ?bool $disable_notification = false;
     /**
+     * Protects the contents of the sent message from forwarding and saving
+     * @var bool|null
+     */
+    public ?bool $protect_content = null;
+    /**
      * Sends the message silently. Users will receive a notification with no sound.
      * @var int|null
      */

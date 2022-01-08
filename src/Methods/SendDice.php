@@ -33,6 +33,11 @@ class SendDice extends BaseMethod
      */
     public ?bool $disable_notification;
     /**
+     * Protects the contents of the sent message from forwarding and saving
+     * @var bool|null
+     */
+    public ?bool $protect_content = null;
+    /**
      * If the message is a reply, ID of the original message
      * @var int|null
      */
