@@ -50,6 +50,12 @@ class CreateNewStickerSet extends BaseMethod
      */
     public ?string $tgs_sticker = null;
     /**
+     * WEBM video with the sticker, uploaded using multipart/form-data.
+     * See https://core.telegram.org/stickers#video-sticker-requirements for technical requirements
+     * @var string|null
+     */
+    public ?string $webm_sticker = null;
+    /**
      * One or more emoji corresponding to the sticker
      * @var string
      */

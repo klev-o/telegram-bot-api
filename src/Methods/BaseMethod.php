@@ -41,8 +41,8 @@ abstract class BaseMethod
         SetChatPhoto::class =>'photo',
         EditMessageMedia::class =>'media',
         SendSticker::class => 'sticker',
-        CreateNewStickerSet::class => ['png_sticker', 'tgs_sticker'],
-        AddStickerToSet::class => ['png_sticker', 'tgs_sticker'],
+        CreateNewStickerSet::class => ['png_sticker', 'tgs_sticker', 'webm_sticker'],
+        AddStickerToSet::class => ['png_sticker', 'tgs_sticker', 'webm_sticker'],
         SetStickerSetThumb::class => 'thumb',
         UploadStickerFile::class => 'png_sticker',
     ];
@@ -83,7 +83,7 @@ abstract class BaseMethod
     {
         $data = [];
 
-        $fileField = $fileField = self::getMappingFields($object);;
+        $fileField = self::getMappingFields($object);;
 
         $isIssetLocalFiles = false;
 

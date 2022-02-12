@@ -33,6 +33,13 @@ class StickerSet extends BaseType
      */
     public bool $is_animated;
     /**
+     * True, if the sticker set contains video stickers
+     *
+     * @see https://telegram.org/blog/video-stickers-better-reactions
+     * @var bool
+     */
+    public bool $is_video;
+    /**
      * True, if the sticker set contains masks
      * @var bool
      */

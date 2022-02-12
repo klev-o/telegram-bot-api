@@ -44,6 +44,13 @@ class Sticker extends BaseType
      */
     public bool $is_animated;
     /**
+     * True, if the sticker is a video sticker
+     *
+     * @see https://telegram.org/blog/video-stickers-better-reactions
+     * @var bool
+     */
+    public bool $is_video;
+    /**
      * Optional. Sticker thumbnail in the .WEBP or .JPG format
      * @var PhotoSize|null
      */
