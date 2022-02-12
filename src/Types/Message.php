@@ -334,11 +334,6 @@ class Message extends BaseType
      */
     public ?InlineKeyboardMarkup $reply_markup = null;
 
-    /**
-     * @param $key
-     * @param $data
-     * @return array|Audio|Chat|Contact|Game|Invoice|Poll|Sticker|PassportData|User|Venue|Video|VideoNote|Voice|object|null
-     */
     protected function bindObjects($key, $data)
     {
         switch ($key) {
@@ -414,8 +409,10 @@ class Message extends BaseType
                 return new VoiceChatParticipantsInvited($data);
             case 'message_auto_delete_timer_changed':
                 return new MessageAutoDeleteTimerChanged($data);
+            case 'reply_markup':
+                return new InlineKeyboardMarkup($data);
         }
 
-        return null;
+        return parent::bindObjects($key, $data);
     }
 }

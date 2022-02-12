@@ -14,7 +14,7 @@ use Klev\TelegramBotApi\Types\Games\CallbackGame;
  * Class InlineKeyboardButton
  * @package Klev\TelegramBotApi\Types
  */
-class InlineKeyboardButton
+class InlineKeyboardButton extends BaseType
 {
     /**
      * Label text on the button
@@ -60,7 +60,7 @@ class InlineKeyboardButton
     /**
      * Optional. Description of the game that will be launched when the user presses the button.
      * NOTE: This type of button must always be the first button in the first row.
-     * @var
+     * @var CallbackGame|null
      */
     public ?CallbackGame $callback_game = null;
     /**
@@ -70,8 +70,14 @@ class InlineKeyboardButton
      */
     public ?bool $pay = false;
 
-    public function __construct($text)
+    public function bindObjects($key, $data)
     {
-        $this->text = $text;
+        switch ($key) {
+            case 'login_url':
+                return new LoginUrl($data);
+            case 'callback_game':
+                return new CallbackGame($data);
+        }
+        return parent::bindObjects($key, $data);
     }
 }

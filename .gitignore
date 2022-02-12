@@ -1,2 +1,5 @@
 .idea
 /vendor/
+/info.txt
+/dev
+/var
