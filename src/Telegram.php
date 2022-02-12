@@ -3,6 +3,8 @@
 namespace Klev\TelegramBotApi;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
+use Klev\TelegramBotApi\Events\Event;
 use Klev\TelegramBotApi\Methods\AnswerCallbackQuery;
 use Klev\TelegramBotApi\Methods\BanChatMember;
 use Klev\TelegramBotApi\Methods\BaseMethod;
@@ -82,22 +84,58 @@ use Klev\TelegramBotApi\Types\WebhookInfo;
 use Psr\Http\Client\ClientInterface;
 
 /**
+ * The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram.
+ *
+ * @see https://core.telegram.org/bots
+ * @see https://core.telegram.org/bots/faq
+ *
  * Class Telegram
  * @package Klev\TelegramBotApi
  */
 class Telegram
 {
+    /**
+     * The token of your bot created via https://t.me/botfather. The token is a string along
+     * the lines of 110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw that is required to authorize the bot and send
+     * requests to the Bot API
+     * @var string
+     */
     private string $token;
+    /**
+     * Main api endpoint
+     * @var string
+     */
     private string $apiEndpoint = 'https://api.telegram.org/bot';
+    /**
+     * File endpoint
+     * @var string
+     */
     private string $fileApiEndpoint = 'https://api.telegram.org/file/bot';
+    /**
+     * Webhook request body (unparsed JSON string)
+     * @var string|null
+     */
     private ?string $webhookUpdatesRaw = null;
-
+    /**
+     * HTTP Client
+     * @var ClientInterface|Client
+     */
     private ClientInterface $apiClient;
+    /**
+     * Array of listeners for webhook updates
+     * @var array
+     */
+    private array $listeners = [];
+    /**
+     * Enable events, disabled by default
+     * @var bool
+     */
+    private bool $enableEvents = false;
 
-    public function __construct($token, ClientInterface $apiClient = null)
+    public function __construct(string $token)
     {
         $this->token = $token;
-        $this->apiClient = $apiClient ?? new Client();
+        $this->apiClient = new Client();
     }
 
     /**
@@ -137,20 +175,49 @@ class Telegram
     }
 
     /**
+     * Getting webhook updates
      * @return Update|null
+     * @throws TelegramException
      */
     public function getWebhookUpdates():? Update
     {
-        $this->webhookUpdatesRaw = file_get_contents('php://input');
-        $data = json_decode($this->webhookUpdatesRaw, true);
-        return $data ? new Update($data) : null;
+        $updates = null;
+        if ($this->getWebhookUpdatesRaw()) {
+            $data = json_decode($this->getWebhookUpdatesRaw(), true);
+            $updates = $data ? new Update($data) : null;
+            if ($updates && $this->isEnableEvents()) {
+                $this->triggerEvents($updates);
+            }
+        }
+        return $updates;
     }
 
     /**
+     * Attach an event handler
+     *
+     * @param string $eventName
+     * Event name, full class name is used
+     *
+     * @param callable $callback
+     * Event handler. In the simplest case, it can be an anonymous function. Can also be an invocable object
+     *
+     * @return void
+     */
+    public function on(string $eventName, callable $callback)
+    {
+        $this->listeners[$eventName][] = $callback;
+    }
+
+    /**
+     * Getting request body (unparsed JSON string)
      * @return string|null
      */
     public function getWebhookUpdatesRaw():? string
     {
+        if (!$this->webhookUpdatesRaw) {
+            $this->webhookUpdatesRaw = file_get_contents('php://input') ?: null;
+
+        }
         return $this->webhookUpdatesRaw;
     }
 
@@ -193,6 +260,7 @@ class Telegram
     {
         $sendMessage->preparation();
         $out = $this->request('sendMessage', ['json' => (array)$sendMessage]);
+        var_dump($out['result']);
         return new Message($out['result']);
     }
 
@@ -224,7 +292,7 @@ class Telegram
      * @return Message
      * @throws TelegramException
      */
-    public function sendPhoto(SendPhoto $sendPhoto)
+    public function sendPhoto(SendPhoto $sendPhoto): Message
     {
         $sendPhoto->preparation();
 
@@ -241,7 +309,7 @@ class Telegram
      * @return Message
      * @throws TelegramException
      */
-    public function sendAudio(SendAudio $sendAudio)
+    public function sendAudio(SendAudio $sendAudio): Message
     {
         $sendAudio->preparation();
 
@@ -258,7 +326,7 @@ class Telegram
      * @return Message
      * @throws TelegramException
      */
-    public function sendDocument(SendDocument $sendDocument)
+    public function sendDocument(SendDocument $sendDocument): Message
     {
         $sendDocument->preparation();
 
@@ -275,7 +343,7 @@ class Telegram
      * @return Message
      * @throws TelegramException
      */
-    public function sendVideo(SendVideo $sendVideo)
+    public function sendVideo(SendVideo $sendVideo): Message
     {
         $sendVideo->preparation();
 
@@ -292,7 +360,7 @@ class Telegram
      * @return Message
      * @throws TelegramException
      */
-    public function sendAnimation(SendAnimation $sendAnimation)
+    public function sendAnimation(SendAnimation $sendAnimation): Message
     {
         $sendAnimation->preparation();
 
@@ -309,7 +377,7 @@ class Telegram
      * @return Message
      * @throws TelegramException
      */
-    public function sendVoice(SendVoice $sendVoice)
+    public function sendVoice(SendVoice $sendVoice): Message
     {
         $sendVoice->preparation();
 
@@ -326,7 +394,7 @@ class Telegram
      * @return Message
      * @throws TelegramException
      */
-    public function sendVideoNote(SendVideoNote $sendVideoNote)
+    public function sendVideoNote(SendVideoNote $sendVideoNote): Message
     {
         $sendVideoNote->preparation();
 
@@ -1321,6 +1389,21 @@ class Telegram
         $this->fileApiEndpoint = $url;
     }
 
+    /**
+     * @return bool
+     */
+    public function isEnableEvents(): bool
+    {
+        return $this->enableEvents;
+    }
+
+    /**
+     * @param bool $enableEvents
+     */
+    public function setEnableEvents(bool $enableEvents): void
+    {
+        $this->enableEvents = $enableEvents;
+    }
 
     /**
      * @param $method
@@ -1346,7 +1429,7 @@ class Telegram
      * @return mixed
      * @throws TelegramException
      */
-    private function request($method, $data = []): array
+    private function request($method, array $data = []): array
     {
         try {
             $uri = $this->getApiUri($method);
@@ -1361,6 +1444,8 @@ class Telegram
             }
             
             throw new \Exception('Unexpected response: ' . $body);
+        } catch (GuzzleException $e) {
+            throw new TelegramException('GuzzleException: ' . $e->getMessage());
         } catch (\Exception $e) {
             throw new TelegramException($e->getMessage());
         }
@@ -1371,13 +1456,55 @@ class Telegram
      * @param array $data
      * @throws TelegramException
      */
-    private function requestForDownload($pathInfo, $data = [])
+    private function requestForDownload($pathInfo, array $data = [])
     {
         try {
             $uri = $this->getFileApiUri($pathInfo);
             $this->apiClient->get($uri, $data);
+        } catch (GuzzleException $e) {
+            throw new TelegramException('GuzzleException: ' . $e->getMessage());
         } catch (\Exception $e) {
             throw new TelegramException($e->getMessage());
+        }
+    }
+
+    private function dispatch(Event $event): void
+    {
+        $eventClass = get_class($event);
+
+        if (isset($this->listeners[$eventClass])) {
+            foreach ($this->listeners[$eventClass] as $listener) {
+                $listener($event);
+            }
+        }
+    }
+
+    /**
+     * @param Update $updates
+     * @return void
+     * @throws TelegramException
+     */
+    private function triggerEvents(Update $updates)
+    {
+        $options = array_filter(get_object_vars($updates), static function($v) {
+            return is_object($v);
+        });
+        if (count($options) === 1) {
+            $fieldName = key($options);
+            $update_id = $updates->update_id;
+            $eventClassName = str_replace(
+                    ' ',
+                    '',
+                    ucwords(str_replace('_', ' ', $fieldName))
+                ) . 'Event';
+
+            if (class_exists($class = Event::getNamespace() . '\\' .  $eventClassName)) {
+                $this->dispatch(new $class($update_id, $updates->$fieldName));
+            } else {
+                throw new TelegramException($class . ' does not exist');
+            }
+        } else {
+            throw new TelegramException('Update object from webhook contains more than one optional field');
         }
     }
 }

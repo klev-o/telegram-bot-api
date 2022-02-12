@@ -14,7 +14,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class InlineKeyboardMarkup
  * @package Klev\TelegramBotApi\Types
  */
-class InlineKeyboardMarkup implements KeyboardInterface
+class InlineKeyboardMarkup extends BaseType implements KeyboardInterface
 {
     /**
      * Array of button rows, each represented by an Array of InlineKeyboardButton objects
@@ -25,5 +25,23 @@ class InlineKeyboardMarkup implements KeyboardInterface
     public function addItem($item)
     {
         $this->inline_keyboard[] = $item;
+    }
+
+    protected function bindObjects($key, $data)
+    {
+        switch ($key) {
+            case 'inline_keyboard':
+                $result = [];
+                foreach ($data as $array) {
+                    $items = [];
+                    foreach ($array as $item) {
+                        $items[] = new InlineKeyboardButton($item);
+                    }
+                    $result[] = $items;
+                }
+                return $result;
+        }
+
+        return parent::bindObjects($key, $data);
     }
 }
