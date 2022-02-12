@@ -4,7 +4,9 @@
 
 # klev-o/telegram-bot-api
 
-Simple and convenient implementation Telegram bot API with php version ^7.4 support. Based on the [Official Telegram api](https://core.telegram.org/bots/api)
+Simple and convenient implementation Telegram bot API with php version ^7.4 support. You'll like it) 
+
+Based on the [Official Telegram api](https://core.telegram.org/bots/api)
 
 [![License](https://img.shields.io/github/license/klev-o/telegram-bot-api)](https://github.com/klev-o/telegram-bot-api/blob/master/LICENSE)
 ![Packagist Downloads](https://img.shields.io/packagist/dt/klev-o/telegram-bot-api)
@@ -12,20 +14,22 @@ Simple and convenient implementation Telegram bot API with php version ^7.4 supp
 ![Scrutinizer code quality (GitHub/Bitbucket)](https://img.shields.io/scrutinizer/quality/g/klev-o/telegram-bot-api)
 ![GitHub last commit](https://img.shields.io/github/last-commit/klev-o/telegram-bot-api)
 
-## Intro
+## 📖Intro
 
-This bot is full support [Official Telegram api](https://core.telegram.org/bots/api). All available types and methods are described using classes with documentation of all fields. You don't even need to refer to the official documentation - all descriptions are present in the bot! But still, for each class, the url to the documentation is indicated, where you can study the nuances, etc.
+This bot is full support [Official Telegram api](https://core.telegram.org/bots/api). Fully object-oriented and simple code. All available types and methods are described using classes with documentation of all fields. You don't even need to refer to the official documentation - all descriptions are present in the bot! But still, for each class, the url to the documentation is indicated, where you can study the nuances, etc.
+
+You just have to relax and create super bots!
 
 **Attention!** At the moment, the bot only supports receiving updates through Webhook. Webhook is more efficient than Long-Polling, reduces server load and guarantees almost instant data refresh for your application. But it is worth considering some of the nuances, in more detail [here](https://core.telegram.org/bots/faq#im-having-problems-with-webhooks)
 
-## Installation
+## 🛠 Installation
 
 Run this command in your command line:
 ```
 composer require klev-o/telegram-bot-api
 ```
 
-## Usage
+## 🔌Usage
 
 ### Setting up a webhook
 
@@ -165,7 +169,52 @@ $msg->reply_to_message_id = $messageId;
 $bot->sendMessage($msg);
 ```
 
-## Advanced
+### Sending files
+
+Sending files is very simple: you need to specify the path to the file or url in the field (if the method supports accepting files by url, see the description). Next, it will automatically check if the file exists locally and add all the necessary headers.
+
+If the file is unreadable, you will get the error "File -filename- is not readable."
+
+
+In the example below, the bot sends a local document if the user writes *"doc"* to the bot:
+
+```php
+<?php
+
+use Klev\TelegramBotApi\Telegram;
+use Klev\TelegramBotApi\TelegramException;
+use \Klev\TelegramBotApi\Methods\SendDocument;
+
+require 'vendor/autoload.php';
+
+try {
+    $bot = new Telegram('your personal token');
+    
+    /**@var \Klev\TelegramBotApi\Types\Update $update*/
+    $update = $bot->getWebhookUpdates();
+    
+    if ($update->message && $update->message->text === 'doc') {
+        $chatId = $update->message->chat->id;
+        $path = 'pat/to/local/doc';
+    
+        $doc = new SendDocument($chatId, $path);
+        $doc->disable_notification = true;
+        
+        /**@var \Klev\TelegramBotApi\Types\Message $result*/
+        $result = $bot->sendDocument($doc);
+    }
+} catch (TelegramException $e) {
+    // log errors
+}
+```
+
+Also, nothing prevents passing a link to the file instead of a local file - the code will be absolutely the same, only this part will change:
+
+```php
+$path = 'https://link/to/file';
+```
+
+## 📟Advanced
 
 
 As you can see, the `$bot->getWebhookUpdates()` method returns the result as an [Update](https://github.com/klev-o/telegram-bot-api/blob/master/src/Types/Update.php) object. In the simplest case, we can check which field is filled in this object and, on this basis, implement further logic. But this may not be very convenient if we have any medium or large project.
@@ -277,6 +326,22 @@ $bot->on(MessageEvent::class, $container->get(MessageReceivedListener::class));
 $bot->getWebhookUpdates();
 ```
 
-## Troubleshooting
+## 🎁Dontations
+
+Support the project if you like it. Funds will go towards food.
+
+| Network                     | Currency          | Wallet                                                                                                                             |
+|-----------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| Bitcoin                     | `BTC`             | `1M1qhSE6sN34a4d7ZtCh6y17Vf3LtdoW62`<br/>or<br/>`14cvXywCMucKMhFYDCbmQ1ZHhayDgbD65R`                                               |
+| The Open Network            | `TON`             | `EQAYZK8rWrS9Fhojdc486BpplDmTSLHum440f-L2--SA2Oid` <br/> or<br/> `ton://transfer/UQBVsumSIvsq4PfeFMhxSV9m_zPB31cHJX4X2lAVh9BUJXm3` |
+| Binance Smart Chain – BEP20 | `BNB, BUSD, USDT` | `0x674B09Ab418bb41C075847bde004bb7F492c2121`                                                                                       |
+
+
+
+## 🧨Troubleshooting
 
 Please, if you find any errors or not exactly - report this [problem page](https://github.com/klev-o/telegram-bot-api/issues)
+
+
+## And finally...
+Happy botting 🤖
