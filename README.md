@@ -1,6 +1,8 @@
-<h1 align="center">
-    Telegram Bot API
-</h1>
+<p align="center">
+<img alt="TelegramBotApi"  width="800" src="media/image.jpg"/>
+</p>
+
+# klev-o/telegram-bot-api
 
 Simple and convenient implementation Telegram bot API with php version ^7.4 support. Based on the [Official Telegram api](https://core.telegram.org/bots/api)
 
@@ -92,11 +94,13 @@ try {
     // log errors
 }
 ```
-The $update variable will be an object [Update](https://core.telegram.org/bots/api#update)
+The $update variable will be an object [Update](https://github.com/klev-o/telegram-bot-api/blob/master/src/Types/Update.php)
+
+
 
 In general, by reading the official documentation, you can see the types for the fields of objects, or the return values ​​of methods - all this is completely consistent with the code.
 
-For example, $update->message is of type Message, which corresponds to Klev\TelegramBotApi\Types\Message.
+For example, `$update->message` is of type Message, which corresponds to `Klev\TelegramBotApi\Types\Message`.
 
 Just look at the documentation and call the methods you want!
 
@@ -104,7 +108,7 @@ Just look at the documentation and call the methods you want!
 
 Let's say we want the bot to reply "Hello, *your username*" to every message to the bot.
 
-Let's write the following code::
+Let's write the following code:
 
 ```php
 <?php
@@ -159,6 +163,118 @@ $msg->disable_notification = true;
 $msg->reply_to_message_id = $messageId;
 
 $bot->sendMessage($msg);
+```
+
+## Advanced
+
+
+As you can see, the `$bot->getWebhookUpdates()` method returns the result as an [Update](https://github.com/klev-o/telegram-bot-api/blob/master/src/Types/Update.php) object. In the simplest case, we can check which field is filled in this object and, on this basis, implement further logic. But this may not be very convenient if we have any medium or large project.
+
+Events come to the rescue (`Klev\TelegramBotApi\Events\*`):
+
+| List of events            |
+|---------------------------|
+| `CallbackQueryEvent`      |
+| `ChannelPostEvent`        |
+| `ChatJoinRequestEvent`    |
+| `ChatMemberEvent`         |
+| `ChosenInlineResultEvent` |
+| `EditedChannelPostEvent`  |
+| `EditedMessageEvent`      |
+| `InlineQueryEvent`        |
+| `MessageEvent`            |
+| `MyChatMemberEvent`       |
+| `PollAnswerEvent`         |
+| `PollEvent`               |
+| `PreCheckoutQueryEvent`   |
+| `ShippingQueryEvent`      |
+
+You can register your own handler for any of these events and be sure which update you are responding to.
+By default, events are disabled. To enable them, you need to use the method `$bot->setEnableEvents(true);` Consider an example:
+
+```php
+<?php
+
+use Klev\TelegramBotApi\Telegram;
+use Klev\TelegramBotApi\Events\EditedMessageEvent;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+
+require 'vendor/autoload.php';
+
+//The logger does not have to be created, it is used only for an example
+$logger = new Logger('App');
+$logger->pushHandler(new StreamHandler('../var/logs/app.log'));
+
+$bot = new Telegram('your personal token');
+$bot->setEnableEvents(true);
+
+$bot->on(EditedMessageEvent::class, static function(EditedMessageEvent $event) use ($logger)  {
+    //do something with $event
+    $logger->info('id from event', [$event->update_id])
+    $logger->info('payload from event', [$event->payload])
+});
+```
+Each Event object will have 2 required fields: `update_id` and `payload`. What type of payload will be in the event can be viewed in the class with the desired event
+
+```php
+//For this example, let's assume that the incoming webhook populated the message field in the object
+$updates = $bot->getWebhookUpdates();
+
+//Then the `MessageEvent` will fire and the fields will be filled accordingly:
+$event->update_id  === $updates->update_id
+$event->payload === $updates->message
+```
+Also, as an event handler, you can use anything that corresponds to the callable type. Consider an example:
+
+```php
+<?php
+
+use Klev\TelegramBotApi\Telegram;
+use Klev\TelegramBotApi\Events\MessageEvent;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+
+require 'vendor/autoload.php';
+
+//imagine that you are using some DI
+$builder = new DI\ContainerBuilder();
+
+$builder->addDefinitions([
+    //specify the rules on how to create an object
+    LoggerInterface::class => function(\DI\Container $c) {
+        $log = new Logger('App');
+        $log->pushHandler(new StreamHandler('../var/logs/app.log'));
+        return $log;
+    },
+    //specify the rules on how to create an object
+    MessageReceivedListener::class => function(\DI\Container $c) {
+        return new MessageReceivedListener($c->get(LoggerInterface::class));
+    }
+]);
+$container = $builder->build();
+
+//Instead of using an anonymous function, we can now use a custom class, into which,
+//if necessary, we can pull everything we need (working with the database, sending by mail, etc.)
+class MessageReceivedListener
+{
+    private Logger $logger;
+    public function __construct(Logger $logger)
+    {
+        $this->logger = $logger;
+    }
+    public function __invoke(MessageEvent $event)
+    {
+        $this->log->info('Using invocable class', (array)$event->payload);
+    }
+}
+
+$bot = new Telegram('your personal token');
+$bot->setEnableEvents(true);
+
+$bot->on(MessageEvent::class, $container->get(MessageReceivedListener::class));
+
+$bot->getWebhookUpdates();
 ```
 
 ## Troubleshooting
