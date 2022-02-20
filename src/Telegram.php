@@ -260,7 +260,6 @@ class Telegram
     {
         $sendMessage->preparation();
         $out = $this->request('sendMessage', ['json' => (array)$sendMessage]);
-        var_dump($out['result']);
         return new Message($out['result']);
     }
 
