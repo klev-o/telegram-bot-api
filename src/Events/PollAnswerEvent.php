@@ -4,7 +4,7 @@ namespace Klev\TelegramBotApi\Events;
 
 use Klev\TelegramBotApi\Types\PollAnswer;
 
-class PollAnswerEvent
+class PollAnswerEvent extends Event
 {
     public PollAnswer $payload;
 }
