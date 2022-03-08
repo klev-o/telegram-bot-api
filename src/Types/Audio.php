@@ -32,27 +32,27 @@ class Audio extends BaseType
      * Optional. Performer of the audio as defined by sender or by audio tags
      * @var string|null
      */
-    public ?string $performer;
+    public ?string $performer = null;
     /**
      * Optional. Title of the audio as defined by sender or by audio tags
      * @var string|null
      */
-    public ?string $title;
+    public ?string $title = null;
     /**
      * Optional. MIME type of the file as defined by sender
      * @var string|null
      */
-    public ?string $mime_type;
+    public ?string $mime_type = null;
     /**
      * Optional. File size
      * @var int|null
      */
-    public ?int $file_size;
+    public ?int $file_size = null;
     /**
      * Optional. Thumbnail of the album cover to which the music file belongs
      * @var PhotoSize|null
      */
-    public ?PhotoSize $thumb;
+    public ?PhotoSize $thumb = null;
 
     protected function bindObjects($key, $data): ?object
     {

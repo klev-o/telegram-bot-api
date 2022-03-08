@@ -40,19 +40,19 @@ class Video extends BaseType
     public int $duration;
     /**
      * Optional. Video thumbnail
-     * @var PhotoSize
+     * @var PhotoSize|null
      */
-    public ?PhotoSize $thumb;
+    public ?PhotoSize $thumb = null;
     /**
      * Optional. Mime type of a file as defined by sender
-     * @var string
+     * @var string|null
      */
-    public ?string $mime_type;
+    public ?string $mime_type = null;
     /**
      * Optional. File size
-     * @var int
+     * @var int|null
      */
-    public ?int $file_size;
+    public ?int $file_size = null;
 
     protected function bindObjects($key, $data): ?object
     {

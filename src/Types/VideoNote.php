@@ -35,14 +35,14 @@ class VideoNote extends BaseType
     public string $duration;
     /**
      * Optional. Video thumbnail
-     * @var string
+     * @var PhotoSize|null
      */
-    public ?string $thumb;
+    public ?PhotoSize $thumb = null;
     /**
      * Optional. File size
-     * @var string
+     * @var int|null
      */
-    public ?string $file_size;
+    public ?int $file_size = null;
 
     protected function bindObjects($key, $data): ?object
     {

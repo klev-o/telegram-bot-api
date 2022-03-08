@@ -42,22 +42,22 @@ class Animation extends BaseType
      * Optional. Animation thumbnail as defined by sender
      * @var PhotoSize|null
      */
-    public ?PhotoSize $thumb;
+    public ?PhotoSize $thumb = null;
     /**
      * Optional. Original animation filename as defined by sender
      * @var string|null
      */
-    public ?string $file_name;
+    public ?string $file_name = null;
     /**
      * Optional. MIME type of the file as defined by sender
      * @var string|null
      */
-    public ?string $mime_type;
+    public ?string $mime_type = null;
     /**
      * Optional. File size
      * @var int|null
      */
-    public ?int $file_size;
+    public ?int $file_size = null;
 
     /**
      * @param $key

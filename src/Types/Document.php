@@ -25,24 +25,24 @@ class Document extends BaseType
     public string $file_unique_id;
     /**
      * Optional. Document thumbnail as defined by sender
-     * @var PhotoSize
+     * @var PhotoSize|null
      */
-    public ?PhotoSize $thumb;
+    public ?PhotoSize $thumb = null;
     /**
      * Optional. Original filename as defined by sender
-     * @var string
+     * @var string|null
      */
-    public ?string $file_name;
+    public ?string $file_name = null;
     /**
      * Optional. MIME type of the file as defined by sender
-     * @var string
+     * @var string|null
      */
-    public ?string $mime_type;
+    public ?string $mime_type = null;
     /**
      * Optional. File size
-     * @var int
+     * @var int|null
      */
-    public ?int $file_size;
+    public ?int $file_size = null;
 
     protected function bindObjects($key, $data): ?object
     {
