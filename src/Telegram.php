@@ -51,6 +51,7 @@ use Klev\TelegramBotApi\Methods\SetChatPhoto;
 use Klev\TelegramBotApi\Methods\SetChatStickerSet;
 use Klev\TelegramBotApi\Methods\SetChatTitle;
 use Klev\TelegramBotApi\Methods\SetMyCommands;
+use Klev\TelegramBotApi\Methods\SetMyDefaultAdministratorRights;
 use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\Stickers\AddStickerToSet;
 use Klev\TelegramBotApi\Methods\Stickers\CreateNewStickerSet;
@@ -70,6 +71,7 @@ use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageText;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\StopPoll;
 use Klev\TelegramBotApi\Types\BotCommand;
 use Klev\TelegramBotApi\Types\Chat;
+use Klev\TelegramBotApi\Types\ChatAdministratorRights;
 use Klev\TelegramBotApi\Types\ChatInviteLink;
 use Klev\TelegramBotApi\Types\ChatMember;
 use Klev\TelegramBotApi\Types\File;
@@ -958,6 +960,34 @@ class Telegram
                 return new MenuButtonWebApp($out['result']);
         }
         return null;
+    }
+
+    public function setMyDefaultAdministratorRights(SetMyDefaultAdministratorRights $setMyDefaultAdministratorRights): bool
+    {
+        $setMyDefaultAdministratorRights->preparation();
+        $out = $this->request('setMyDefaultAdministratorRights', [
+            'json' => (array)$setMyDefaultAdministratorRights
+        ]);
+        return $out['result'];
+    }
+
+    /**
+     * Use this method to get the current default administrator rights of the bot.
+     * Returns ChatAdministratorRights on success.
+     *
+     * @link https://core.telegram.org/bots/api#getmydefaultadministratorrights
+     *
+     * @param bool $for_channels
+     * Pass True to get default administrator rights of the bot in channels. Otherwise, default administrator rights
+     * of the bot for groups and supergroups will be returned.
+     *
+     * @return ChatAdministratorRights
+     * @throws TelegramException
+     */
+    public function getMyDefaultAdministratorRights(bool $for_channels = false): ChatAdministratorRights
+    {
+        $out = $this->request('getMyDefaultAdministratorRights', ['json' => ['for_channels' => $for_channels]]);
+        return new ChatAdministratorRights($out['result']);
     }
 
     /**

@@ -23,7 +23,7 @@ class SetChatMenuButton extends BaseMethod
     public ?int $chat_id = null;
     /**
      * A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault
-     * @var MenuButton[]|string
+     * @var MenuButton|string
      */
     public $menu_button = null;
 
