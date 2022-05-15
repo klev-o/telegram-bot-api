@@ -45,6 +45,7 @@ use Klev\TelegramBotApi\Methods\SendVideoNote;
 use Klev\TelegramBotApi\Methods\SendVoice;
 use Klev\TelegramBotApi\Methods\SetChatAdministratorCustomTitle;
 use Klev\TelegramBotApi\Methods\SetChatDescription;
+use Klev\TelegramBotApi\Methods\SetChatMenuButton;
 use Klev\TelegramBotApi\Methods\SetChatPermissions;
 use Klev\TelegramBotApi\Methods\SetChatPhoto;
 use Klev\TelegramBotApi\Methods\SetChatStickerSet;
@@ -73,6 +74,10 @@ use Klev\TelegramBotApi\Types\ChatInviteLink;
 use Klev\TelegramBotApi\Types\ChatMember;
 use Klev\TelegramBotApi\Types\File;
 use Klev\TelegramBotApi\Types\Games\GameHighScore;
+use Klev\TelegramBotApi\Types\MenuButton;
+use Klev\TelegramBotApi\Types\MenuButtonCommands;
+use Klev\TelegramBotApi\Types\MenuButtonDefault;
+use Klev\TelegramBotApi\Types\MenuButtonWebApp;
 use Klev\TelegramBotApi\Types\Message;
 use Klev\TelegramBotApi\Types\MessageId;
 use Klev\TelegramBotApi\Types\Poll;
@@ -920,6 +925,39 @@ class Telegram
         $deleteMyCommands->preparation();
         $out = $this->request('deleteMyCommands', ['json' => (array)$deleteMyCommands]);
         return $out['result'];
+    }
+
+    public function setChatMenuButton(SetChatMenuButton $setChatMenuButton): bool
+    {
+        $setChatMenuButton->preparation();
+        $out = $this->request('setChatMenuButton', ['json' => (array)$setChatMenuButton]);
+        return $out['result'];
+    }
+
+    /**
+     * Use this method to get the current value of the bot's menu button in a private chat, or the default menu button.
+     * Returns MenuButton on success.
+     *
+     * @link https://core.telegram.org/bots/api#setchatmenubutton
+     *
+     * @param int|null $chat_id
+     * Unique identifier for the target private chat. If not specified, default bot's menu button will be returned
+     *
+     * @return MenuButton|null
+     * @throws TelegramException
+     */
+    public function getChatMenuButton(?int $chat_id = null): ?MenuButton
+    {
+        $out = $this->request('getChatMenuButton', ['json' => ['chat_id' => $chat_id]]);
+        switch ($out['result']['type']) {
+            case MenuButton::TYPE_DEFAULT:
+                return new MenuButtonDefault();
+            case MenuButton::TYPE_COMMANDS:
+                return new MenuButtonCommands();
+            case MenuButton::TYPE_WEB_APP:
+                return new MenuButtonWebApp($out['result']);
+        }
+        return null;
     }
 
     /**
