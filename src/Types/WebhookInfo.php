@@ -44,6 +44,12 @@ class WebhookInfo extends BaseType
      */
     public ?int $max_connections = null;
     /**
+     * Optional. Unix time of the most recent error that happened when trying to synchronize available updates with
+     * Telegram datacenters
+     * @var int|null
+     */
+    public ?int $last_synchronization_error_date = null;
+    /**
      * Optional. A list of update types the bot is subscribed to. Defaults to all update types
      * @var array|null
      */
