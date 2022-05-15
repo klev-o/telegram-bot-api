@@ -41,10 +41,16 @@ class ChatMemberAdministrator extends ChatMember
      */
     public bool $can_delete_messages;
     /**
+     * TODO: delete after delete in telegram api
      * True, if the administrator can manage voice chats
      * @var bool
      */
     public bool $can_manage_voice_chats;
+    /**
+     * True, if the administrator can manage video chats
+     * @var bool
+     */
+    public bool $can_manage_video_chats;
     /**
      * True, if the administrator can restrict, ban or unban chat members
      * @var bool
