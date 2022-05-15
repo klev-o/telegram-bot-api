@@ -950,7 +950,8 @@ class Telegram
      */
     public function getChatMenuButton(?int $chat_id = null): ?MenuButton
     {
-        $out = $this->request('getChatMenuButton', ['json' => ['chat_id' => $chat_id]]);
+        $data = $chat_id ? ['json' => ['chat_id' => $chat_id]] : ['json' => []];
+        $out = $this->request('getChatMenuButton', $data);
         switch ($out['result']['type']) {
             case MenuButton::TYPE_DEFAULT:
                 return new MenuButtonDefault();
