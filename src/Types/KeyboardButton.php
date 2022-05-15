@@ -43,6 +43,12 @@ class KeyboardButton extends BaseType
      * @var KeyboardButtonPollType|null
      */
     public ?KeyboardButtonPollType $request_poll = null;
+    /**
+     * Optional. If specified, the described Web App will be launched when the button is pressed. The Web App will be
+     * able to send a “web_app_data” service message. Available in private chats only
+     * @var WebAppInfo|null
+     */
+    public ?WebAppInfo $web_app = null;
 
     public function __construct($text, $request_contact = false, $request_location = false)
     {
