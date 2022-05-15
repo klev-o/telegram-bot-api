@@ -8,10 +8,10 @@ namespace Klev\TelegramBotApi\Types;
  *
  * @link https://core.telegram.org/bots/api#voicechatparticipantsinvited
  *
- * Class VoiceChatParticipantsInvited
+ * Class VideoChatParticipantsInvited
  * @package Klev\TelegramBotApi\Types
  */
-class VoiceChatParticipantsInvited extends BaseType
+class VideoChatParticipantsInvited extends BaseType
 {
     /**
      * Optional. New members that were invited to the voice chat

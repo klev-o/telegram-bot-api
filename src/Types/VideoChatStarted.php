@@ -8,10 +8,10 @@ namespace Klev\TelegramBotApi\Types;
  *
  * @link https://core.telegram.org/bots/api#voicechatstarted
  *
- * Class VoiceChatStarted
+ * Class VideoChatStarted
  * @package Klev\TelegramBotApi\Types
  */
-class VoiceChatStarted extends BaseType
+class VideoChatStarted extends BaseType
 {
     //to be continued...
 }

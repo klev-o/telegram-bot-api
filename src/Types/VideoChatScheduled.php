@@ -8,10 +8,10 @@ namespace Klev\TelegramBotApi\Types;
  *
  * @link https://core.telegram.org/bots/api#voicechatscheduled
  *
- * Class VoiceChatScheduled
+ * Class VideoChatScheduled
  * @package Klev\TelegramBotApi\Types
  */
-class VoiceChatScheduled extends BaseType
+class VideoChatScheduled extends BaseType
 {
     /**
      * Point in time (Unix timestamp) when the voice chat is supposed to be started by a chat administrator

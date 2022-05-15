@@ -309,25 +309,49 @@ class Message extends BaseType
      */
     public ?ProximityAlertTriggered $proximity_alert_triggered = null;
     /**
+     * TODO: delete after delete in telegram api
      * Optional. Service message: voice chat scheduled
-     * @var VoiceChatScheduled|null
+     * @var VideoChatScheduled|null
      */
-    public ?VoiceChatScheduled $voice_chat_scheduled = null;
+    public ?VideoChatScheduled $voice_chat_scheduled = null;
     /**
+     * TODO: delete after delete in telegram api
      * Optional. Service message: voice chat started
-     * @var VoiceChatStarted|null
+     * @var VideoChatStarted|null
      */
-    public ?VoiceChatStarted $voice_chat_started = null;
+    public ?VideoChatStarted $voice_chat_started = null;
     /**
+     * TODO: delete after delete in telegram api
      * Optional. Service message: voice chat ended
-     * @var VoiceChatEnded|null
+     * @var VideoChatEnded|null
      */
-    public ?VoiceChatEnded $voice_chat_ended = null;
+    public ?VideoChatEnded $voice_chat_ended = null;
     /**
+     * TODO: delete after delete in telegram api
      * Optional. Service message: new participants invited to a voice chat
-     * @var VoiceChatParticipantsInvited|null
+     * @var VideoChatParticipantsInvited|null
      */
-    public ?VoiceChatParticipantsInvited $voice_chat_participants_invited = null;
+    public ?VideoChatParticipantsInvited $voice_chat_participants_invited = null;
+    /**
+     * Optional. Service message: video chat scheduled
+     * @var VideoChatScheduled|null
+     */
+    public ?VideoChatScheduled $video_chat_scheduled = null;
+    /**
+     * Optional. Service message: video chat started
+     * @var VideoChatStarted|null
+     */
+    public ?VideoChatStarted $video_chat_started = null;
+    /**
+     * Optional. Service message: video chat ended
+     * @var VideoChatEnded|null
+     */
+    public ?VideoChatEnded $video_chat_ended = null;
+    /**
+     * Optional. Service message: new participants invited to a video chat
+     * @var VideoChatParticipantsInvited|null
+     */
+    public ?VideoChatParticipantsInvited $video_chat_participants_invited = null;
     /**
      * Optional. Service message: data sent by a Web App
      * @var WebAppData|null
@@ -406,12 +430,18 @@ class Message extends BaseType
                     $result[] = new MessageEntity($entity);
                 }
                 return $result;
+            case 'voice_chat_scheduled':
+            case 'video_chat_scheduled':
+                return new VideoChatScheduled($data);
             case 'voice_chat_started':
-                return new VoiceChatStarted($data);
+            case 'video_chat_started':
+                return new VideoChatStarted($data);
             case 'voice_chat_ended':
-                return new VoiceChatEnded($data);
+            case 'video_chat_ended':
+                return new VideoChatEnded($data);
             case 'voice_chat_participants_invited':
-                return new VoiceChatParticipantsInvited($data);
+            case 'video_chat_participants_invited':
+                return new VideoChatParticipantsInvited($data);
             case 'message_auto_delete_timer_changed':
                 return new MessageAutoDeleteTimerChanged($data);
             case 'web_app_data':
