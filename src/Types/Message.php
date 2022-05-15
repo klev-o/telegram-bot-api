@@ -329,6 +329,11 @@ class Message extends BaseType
      */
     public ?VoiceChatParticipantsInvited $voice_chat_participants_invited = null;
     /**
+     * Optional. Service message: data sent by a Web App
+     * @var WebAppData|null
+     */
+    public ?WebAppData $web_app_data = null;
+    /**
      * Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.
      * @var InlineKeyboardMarkup|null
      */
@@ -409,6 +414,8 @@ class Message extends BaseType
                 return new VoiceChatParticipantsInvited($data);
             case 'message_auto_delete_timer_changed':
                 return new MessageAutoDeleteTimerChanged($data);
+            case 'web_app_data':
+                return new WebAppData($data);
             case 'reply_markup':
                 return new InlineKeyboardMarkup($data);
         }
