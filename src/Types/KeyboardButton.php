@@ -12,7 +12,7 @@ namespace Klev\TelegramBotApi\Types;
  * Older clients will display unsupported message. Note: request_poll option will only work in Telegram versions
  * released after 23 January, 2020. Older clients will display unsupported message.
  *
- * @see https://core.telegram.org/bots/api#keyboardbutton
+ * @link https://core.telegram.org/bots/api#keyboardbutton
  *
  * Class KeyboardButton
  * @package Klev\TelegramBotApi\Types

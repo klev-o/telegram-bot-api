@@ -9,7 +9,7 @@ namespace Klev\TelegramBotApi\Types;
  * Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will display
  * unsupported message.
  *
- * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup
+ * @link https://core.telegram.org/bots/api#inlinekeyboardmarkup
  *
  * Class InlineKeyboardMarkup
  * @package Klev\TelegramBotApi\Types

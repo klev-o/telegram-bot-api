@@ -7,7 +7,7 @@ use Klev\TelegramBotApi\Types\BaseType;
 /**
  * This object represents a shipping address.
  *
- * @see https://core.telegram.org/bots/api#shippingaddress
+ * @link https://core.telegram.org/bots/api#shippingaddress
  *
  * Class ShippingAddress
  * @package Klev\TelegramBotApi\Types\Payments

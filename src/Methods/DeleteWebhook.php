@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Methods;
  * Class DeleteWebhook
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#deletewebhook
+ * @link https://core.telegram.org/bots/api#deletewebhook
  */
 class DeleteWebhook extends BaseMethod
 {

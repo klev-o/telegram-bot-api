@@ -11,7 +11,7 @@ use Klev\TelegramBotApi\Types\MessageEntity;
  * Class SendMessage
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#sendmessage
+ * @link https://core.telegram.org/bots/api#sendmessage
  */
 class SendMessage extends BaseMethod
 {
@@ -27,7 +27,7 @@ class SendMessage extends BaseMethod
     public string $text;
     /**
      * Mode for parsing entities in the message text. See formatting options for more details.
-     * @see https://core.telegram.org/bots/api#formatting-options
+     * @link https://core.telegram.org/bots/api#formatting-options
      * @var string
      */
     public string $parse_mode = 'html';

@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class Voice
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#voice
+ * @link https://core.telegram.org/bots/api#voice
  */
 class Voice extends BaseType
 {

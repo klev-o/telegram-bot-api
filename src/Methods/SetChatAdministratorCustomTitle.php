@@ -9,7 +9,7 @@ namespace Klev\TelegramBotApi\Methods;
  * Class SetChatAdministratorCustomTitle
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#setchatadministratorcustomtitle
+ * @link https://core.telegram.org/bots/api#setchatadministratorcustomtitle
  */
 class SetChatAdministratorCustomTitle extends BaseMethod
 {

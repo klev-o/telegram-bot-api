@@ -10,7 +10,7 @@ namespace Klev\TelegramBotApi\Methods;
  * Class PromoteChatMember
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#promotechatmember
+ * @link https://core.telegram.org/bots/api#promotechatmember
  */
 class PromoteChatMember extends BaseMethod
 {

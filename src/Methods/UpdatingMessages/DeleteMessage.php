@@ -10,7 +10,7 @@ use Klev\TelegramBotApi\Methods\BaseMethod;
  * Class DeleteMessage
  * @package Klev\TelegramBotApi\Methods\UpdatingMessages
  *
- * @see https://core.telegram.org/bots/api#deletemessage
+ * @link https://core.telegram.org/bots/api#deletemessage
  */
 class DeleteMessage extends BaseMethod
 {

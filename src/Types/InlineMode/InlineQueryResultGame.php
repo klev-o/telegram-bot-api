@@ -9,7 +9,7 @@ use Klev\TelegramBotApi\Types\InlineKeyboardMarkup;
 /**
  * Represents a Game.
  *
- * @see https://core.telegram.org/bots/api#inlinequeryresultgame
+ * @link https://core.telegram.org/bots/api#inlinequeryresultgame
  *
  * Class InlineQueryResultGame
  * @package Klev\TelegramBotApi\Types\InlineMode

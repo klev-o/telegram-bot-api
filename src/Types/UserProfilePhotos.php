@@ -7,7 +7,7 @@ namespace Klev\TelegramBotApi\Types;
 /**
  * This object represent a user's profile pictures.
  *
- * @see https://core.telegram.org/bots/api#userprofilephotos
+ * @link https://core.telegram.org/bots/api#userprofilephotos
  *
  * Class UserProfilePhotos
  * @package Klev\TelegramBotApi\Types

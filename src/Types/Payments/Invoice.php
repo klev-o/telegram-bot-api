@@ -9,7 +9,7 @@ use Klev\TelegramBotApi\Types\BaseType;
 /**
  * This object contains basic information about an invoice.
  *
- * @see https://core.telegram.org/bots/api#invoice
+ * @link https://core.telegram.org/bots/api#invoice
  *
  * Class Invoice
  * @package Klev\TelegramBotApi\Types\Payments

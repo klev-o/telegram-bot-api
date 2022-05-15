@@ -9,7 +9,7 @@ namespace Klev\TelegramBotApi\Methods;
  * Class AnswerCallbackQuery
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#answercallbackquery
+ * @link https://core.telegram.org/bots/api#answercallbackquery
  */
 class AnswerCallbackQuery extends BaseMethod
 {

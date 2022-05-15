@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class PollAnswer
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#pollanswer
+ * @link https://core.telegram.org/bots/api#pollanswer
  */
 class PollAnswer extends BaseType
 {

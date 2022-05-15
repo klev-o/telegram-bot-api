@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Methods;
  * this to work and must have the appropriate admin rights. The link can be revoked using the method
  * revokeChatInviteLink. Returns the new invite link as ChatInviteLink object.
  *
- * @see https://core.telegram.org/bots/api#createchatinvitelink
+ * @link https://core.telegram.org/bots/api#createchatinvitelink
  *
  * Class CreateChatInviteLink
  * @package Klev\TelegramBotApi\Methods

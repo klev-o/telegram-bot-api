@@ -8,7 +8,7 @@ use Klev\TelegramBotApi\Types\Payments\LabeledPrice;
 /**
  * Represents the content of an invoice message to be sent as the result of an inline query.
  *
- * @see https://core.telegram.org/bots/api#inputinvoicemessagecontent
+ * @link https://core.telegram.org/bots/api#inputinvoicemessagecontent
  *
  * Class InputInvoiceMessageContent
  * @package Klev\TelegramBotApi\Types\InlineMode

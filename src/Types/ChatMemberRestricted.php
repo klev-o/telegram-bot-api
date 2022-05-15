@@ -6,7 +6,7 @@ namespace Klev\TelegramBotApi\Types;
 /**
  * Represents a chat member that is under certain restrictions in the chat. Supergroups only.
  *
- * @see https://core.telegram.org/bots/api#chatmemberrestricted
+ * @link https://core.telegram.org/bots/api#chatmemberrestricted
  *
  * Class ChatMemberRestricted
  * @package Klev\TelegramBotApi\Types

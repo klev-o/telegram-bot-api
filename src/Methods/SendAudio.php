@@ -15,7 +15,7 @@ use Klev\TelegramBotApi\Types\MessageEntity;
  * Class SendAudio
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#sendaudio
+ * @link https://core.telegram.org/bots/api#sendaudio
  */
 class SendAudio extends BaseMethod
 {

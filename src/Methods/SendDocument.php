@@ -11,7 +11,7 @@ use Klev\TelegramBotApi\Types\MessageEntity;
  * Class SendDocument
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#senddocument
+ * @link https://core.telegram.org/bots/api#senddocument
  */
 class SendDocument extends BaseMethod
 {

@@ -12,7 +12,7 @@ use Klev\TelegramBotApi\Types\ChatPermissions;
  * Class RestrictChatMember
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#restrictchatmember
+ * @link https://core.telegram.org/bots/api#restrictchatmember
  */
 class RestrictChatMember extends BaseMethod
 {

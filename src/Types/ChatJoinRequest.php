@@ -6,7 +6,7 @@ namespace Klev\TelegramBotApi\Types;
 /**
  * Represents a join request sent to a chat
  *
- * @see https://core.telegram.org/bots/api#chatjoinrequest
+ * @link https://core.telegram.org/bots/api#chatjoinrequest
  *
  * Class ChatJoinRequest
  * @package Klev\TelegramBotApi\Types

@@ -8,7 +8,7 @@ use Klev\TelegramBotApi\Types\BaseType;
 /**
  * This object contains basic information about a successful payment.
  *
- * @see https://core.telegram.org/bots/api#successfulpayment
+ * @link https://core.telegram.org/bots/api#successfulpayment
  *
  * Class SuccessfulPayment
  * @package Klev\TelegramBotApi\Types\Payments

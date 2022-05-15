@@ -11,7 +11,7 @@ use Klev\TelegramBotApi\Methods\BaseMethod;
  * returns the edited Message, otherwise returns True. Returns an error, if the new score is not greater than the
  * user's current score in the chat and force is False.
  *
- * @see https://core.telegram.org/bots/api#setgamescore
+ * @link https://core.telegram.org/bots/api#setgamescore
  *
  * Class SetGameScore
  * @package Klev\TelegramBotApi\Methods\Games

@@ -11,7 +11,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class ForceReply
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#forcereply
+ * @link https://core.telegram.org/bots/api#forcereply
  */
 class ForceReply extends BaseType implements KeyboardInterface
 {

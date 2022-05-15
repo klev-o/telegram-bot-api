@@ -6,7 +6,7 @@ namespace Klev\TelegramBotApi\Types;
 /**
  * This object represents a service message about a change in auto-delete timer settings.
  *
- * @see https://core.telegram.org/bots/api#messageautodeletetimerchanged
+ * @link https://core.telegram.org/bots/api#messageautodeletetimerchanged
  *
  * Class MessageAutoDeleteTimerChanged
  * @package Klev\TelegramBotApi\Types

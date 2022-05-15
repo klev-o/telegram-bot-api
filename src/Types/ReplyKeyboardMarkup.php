@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class ReplyKeyboardMarkup
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#replykeyboardmarkup
+ * @link https://core.telegram.org/bots/api#replykeyboardmarkup
  */
 class ReplyKeyboardMarkup implements KeyboardInterface
 {

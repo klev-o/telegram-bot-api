@@ -12,7 +12,7 @@ use Klev\TelegramBotApi\Types\MessageEntity;
  * caption. Alternatively, you can use input_message_content to send a message with the specified content instead of
  * the animation.
  *
- * @see https://core.telegram.org/bots/api#inlinequeryresultgif
+ * @link https://core.telegram.org/bots/api#inlinequeryresultgif
  *
  * Class InlineQueryResultGif
  * @package Klev\TelegramBotApi\Types\InlineMode

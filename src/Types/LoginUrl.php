@@ -10,7 +10,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class LoginUrl
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#loginurl
+ * @link https://core.telegram.org/bots/api#loginurl
  */
 class LoginUrl extends BaseType
 {

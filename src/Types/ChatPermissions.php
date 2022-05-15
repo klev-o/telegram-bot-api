@@ -5,7 +5,7 @@ namespace Klev\TelegramBotApi\Types;
 /**
  * Describes actions that a non-administrator user is allowed to take in a chat.
  *
- * @see https://core.telegram.org/bots/api#chatpermissions
+ * @link https://core.telegram.org/bots/api#chatpermissions
  *
  * Class ChatPermissions
  * @package Klev\TelegramBotApi\Types

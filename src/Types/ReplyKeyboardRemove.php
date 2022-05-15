@@ -11,7 +11,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class ReplyKeyboardRemove
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#replykeyboardremove
+ * @link https://core.telegram.org/bots/api#replykeyboardremove
  */
 class ReplyKeyboardRemove implements KeyboardInterface
 {

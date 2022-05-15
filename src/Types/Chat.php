@@ -5,7 +5,7 @@ namespace Klev\TelegramBotApi\Types;
 /**
  * This object represents a chat.
  *
- * @see https://core.telegram.org/bots/api#chat
+ * @link https://core.telegram.org/bots/api#chat
  *
  * Class Chat
  * @package Klev\TelegramBotApi\Types

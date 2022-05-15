@@ -9,7 +9,7 @@ use Klev\TelegramBotApi\Types\MessageEntity;
 /**
  * Represents the content of a location message to be sent as the result of an inline query.
  *
- * @see https://core.telegram.org/bots/api#inputlocationmessagecontent
+ * @link https://core.telegram.org/bots/api#inputlocationmessagecontent
  *
  * Class InputLocationMessageContent
  * @package Klev\TelegramBotApi\Types\InlineMode

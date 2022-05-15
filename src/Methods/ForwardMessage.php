@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Methods;
  * Class ForwardMessage
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#forwardmessage
+ * @link https://core.telegram.org/bots/api#forwardmessage
  */
 class ForwardMessage
 {

@@ -12,7 +12,7 @@ use Klev\TelegramBotApi\Types\MessageEntity;
  * Class SendVideo
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#sendvideo
+ * @link https://core.telegram.org/bots/api#sendvideo
  */
 class SendVideo extends BaseMethod
 {

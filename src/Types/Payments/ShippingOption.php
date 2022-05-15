@@ -9,7 +9,7 @@ use Klev\TelegramBotApi\Types\BaseType;
 /**
  * This object represents one shipping option.
  *
- * @see https://core.telegram.org/bots/api#shippingoption
+ * @link https://core.telegram.org/bots/api#shippingoption
  *
  * Class ShippingOption
  * @package Klev\TelegramBotApi\Types\Payments

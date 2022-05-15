@@ -14,7 +14,7 @@ use Klev\TelegramBotApi\Types\TelegramPassport\PassportData;
  * Class Message
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#message
+ * @link https://core.telegram.org/bots/api#message
  */
 class Message extends BaseType
 {
@@ -187,7 +187,7 @@ class Message extends BaseType
     public ?Dice $dice = null;
     /**
      * Optional. Message is a game, information about the game. More about games >
-     * @see https://core.telegram.org/bots/api#games
+     * @link https://core.telegram.org/bots/api#games
      * @var Game|null
      */
     public ?Game $game = null;
@@ -281,20 +281,20 @@ class Message extends BaseType
     public ?Message $pinned_message = null;
     /**
      * Optional. Message is an invoice for a payment, information about the invoice. More about payments »
-     * @see https://core.telegram.org/bots/api#payments
+     * @link https://core.telegram.org/bots/api#payments
      * @var Invoice|null
      */
     public ?Invoice $invoice = null;
     /**
      * Optional. Message is a service message about a successful payment, information about the payment.
      * More about payments »
-     * @see https://core.telegram.org/bots/api#payments
+     * @link https://core.telegram.org/bots/api#payments
      * @var SuccessfulPayment|null
      */
     public ?SuccessfulPayment $successful_payment = null;
     /**
      * Optional. The domain name of the website on which the user has logged in. More about Telegram Login »
-     * @see https://core.telegram.org/widgets/login
+     * @link https://core.telegram.org/widgets/login
      * @var string|null
      */
     public ?string $connected_website = null;

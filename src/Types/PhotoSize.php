@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class PhotoSize
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#photosize
+ * @link https://core.telegram.org/bots/api#photosize
  */
 class PhotoSize extends BaseType
 {

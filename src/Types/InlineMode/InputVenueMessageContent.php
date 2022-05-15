@@ -6,7 +6,7 @@ namespace Klev\TelegramBotApi\Types\InlineMode;
 /**
  * Represents the content of a venue message to be sent as the result of an inline query.
  *
- * @see https://core.telegram.org/bots/api#inputvenuemessagecontent
+ * @link https://core.telegram.org/bots/api#inputvenuemessagecontent
  *
  * Class InputVenueMessageContent
  * @package Klev\TelegramBotApi\Types\InlineMode

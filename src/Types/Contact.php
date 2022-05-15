@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class Contact
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#contact
+ * @link https://core.telegram.org/bots/api#contact
  */
 class Contact extends BaseType
 {

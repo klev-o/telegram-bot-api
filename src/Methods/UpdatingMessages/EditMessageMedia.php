@@ -16,7 +16,7 @@ use Klev\TelegramBotApi\Types\InputMedia;
  * uploaded file via its file_id or specify a URL. On success, if the edited message was sent by the bot, the edited
  * Message is returned, otherwise True is returned.
  *
- * @see https://core.telegram.org/bots/api#editmessagemedia
+ * @link https://core.telegram.org/bots/api#editmessagemedia
  *
  * Class EditMessageMedia
  * @package Klev\TelegramBotApi\Methods\UpdatingMessages

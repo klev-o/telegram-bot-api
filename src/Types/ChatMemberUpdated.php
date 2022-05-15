@@ -8,7 +8,7 @@ use Klev\TelegramBotApi\TelegramHelper;
 /**
  * This object represents changes in the status of a chat member.
  *
- * @see https://core.telegram.org/bots/api#chatmemberupdated
+ * @link https://core.telegram.org/bots/api#chatmemberupdated
  *
  * Class ChatMemberUpdated
  * @package Klev\TelegramBotApi\Types

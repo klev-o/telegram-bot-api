@@ -12,7 +12,7 @@ use Klev\TelegramBotApi\Types\MessageEntity;
  * Class SendAnimation
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#sendanimation
+ * @link https://core.telegram.org/bots/api#sendanimation
  */
 class SendAnimation extends BaseMethod
 {

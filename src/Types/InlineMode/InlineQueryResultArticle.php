@@ -9,7 +9,7 @@ use Klev\TelegramBotApi\Types\InlineKeyboardMarkup;
 /**
  * Represents a link to an article or web page.
  *
- * @see https://core.telegram.org/bots/api#inlinequeryresultarticle
+ * @link https://core.telegram.org/bots/api#inlinequeryresultarticle
  *
  * Class InlineQueryResultArticle
  * @package Klev\TelegramBotApi\Types\InlineMode

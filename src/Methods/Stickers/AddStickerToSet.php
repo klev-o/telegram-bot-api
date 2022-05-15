@@ -12,7 +12,7 @@ use Klev\TelegramBotApi\Types\Stickers\MaskPosition;
  * or tgs_sticker. Animated stickers can be added to animated sticker sets and only to them. Animated sticker sets can
  * have up to 50 stickers. Static sticker sets can have up to 120 stickers. Returns True on success.
  *
- * @see https://core.telegram.org/bots/api#addstickertoset
+ * @link https://core.telegram.org/bots/api#addstickertoset
  *
  * Class AddStickerToSet
  * @package Klev\TelegramBotApi\Methods\Stickers

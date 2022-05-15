@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class Video
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#video
+ * @link https://core.telegram.org/bots/api#video
  */
 class Video extends BaseType
 {

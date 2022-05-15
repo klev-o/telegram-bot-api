@@ -11,7 +11,7 @@ use Klev\TelegramBotApi\Types\InlineKeyboardMarkup;
  * Class StopMessageLiveLocation
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#stopmessagelivelocation
+ * @link https://core.telegram.org/bots/api#stopmessagelivelocation
  */
 class StopMessageLiveLocation extends BaseMethod
 {

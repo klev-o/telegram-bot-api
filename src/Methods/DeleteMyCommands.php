@@ -11,7 +11,7 @@ use Klev\TelegramBotApi\Types\BotCommandScopeDefault;
  * Use this method to delete the list of the bot's commands for the given scope and user language. After deletion,
  * higher level commands will be shown to affected users. Returns True on success.
  *
- * @see https://core.telegram.org/bots/api#deletemycommands
+ * @link https://core.telegram.org/bots/api#deletemycommands
  *
  * Class GetMyCommands
  * @package Klev\TelegramBotApi\Methods

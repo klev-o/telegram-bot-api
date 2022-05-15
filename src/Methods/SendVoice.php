@@ -14,7 +14,7 @@ use Klev\TelegramBotApi\Types\MessageEntity;
  * Class SendVoice
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#sendvoice
+ * @link https://core.telegram.org/bots/api#sendvoice
  */
 class SendVoice extends BaseMethod
 {

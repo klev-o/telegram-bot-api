@@ -11,7 +11,7 @@ use Klev\TelegramBotApi\Types\BotCommandScopeDefault;
  * Use this method to get the current list of the bot's commands for the given scope and user language. Returns Array of
  * BotCommand on success. If commands aren't set, an empty list is returned.
  *
- * @see https://core.telegram.org/bots/api#getmycommands
+ * @link https://core.telegram.org/bots/api#getmycommands
  *
  * Class GetMyCommands
  * @package Klev\TelegramBotApi\Methods

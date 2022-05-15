@@ -16,7 +16,7 @@ use Klev\TelegramBotApi\Types\TelegramPassport\PassportElementError;
  * For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering,
  * etc. Supply some details in the error message to make sure the user knows how to correct the issues.
  *
- * @see https://core.telegram.org/bots/api#setpassportdataerrors
+ * @link https://core.telegram.org/bots/api#setpassportdataerrors
  *
  * Class SetPassportDataErrors
  * @package Klev\TelegramBotApi\Methods\TelegramPassport

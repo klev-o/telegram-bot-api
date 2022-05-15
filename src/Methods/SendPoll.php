@@ -10,7 +10,7 @@ use Klev\TelegramBotApi\Types\MessageEntity;
 /**
  * Use this method to send a native poll. On success, the sent Message is returned.
  *
- * @see https://core.telegram.org/bots/api#sendpoll
+ * @link https://core.telegram.org/bots/api#sendpoll
  *
  * Class SendPoll
  * @package Klev\TelegramBotApi\Methods

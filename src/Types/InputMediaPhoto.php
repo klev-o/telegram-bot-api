@@ -7,7 +7,7 @@ namespace Klev\TelegramBotApi\Types;
 /**
  * Represents a photo to be sent.
  *
- * @see https://core.telegram.org/bots/api#inputmediaphoto
+ * @link https://core.telegram.org/bots/api#inputmediaphoto
  *
  * Class InputMediaPhoto
  * @package Klev\TelegramBotApi\Types

@@ -9,7 +9,7 @@ use Klev\TelegramBotApi\Types\KeyboardInterface;
 /**
  * Use this method to send phone contacts. On success, the sent Message is returned.
  *
- * @see https://core.telegram.org/bots/api#sendcontact
+ * @link https://core.telegram.org/bots/api#sendcontact
  *
  * Class SendContact
  * @package Klev\TelegramBotApi\Methods

@@ -9,7 +9,7 @@ use Klev\TelegramBotApi\Types\BaseType;
 /**
  * This object represents a portion of the price for goods or services.
  *
- * @see https://core.telegram.org/bots/api#labeledprice
+ * @link https://core.telegram.org/bots/api#labeledprice
  *
  * Class LabeledPrice
  * @package Klev\TelegramBotApi\Types\Payments

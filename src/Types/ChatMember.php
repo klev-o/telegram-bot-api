@@ -14,7 +14,7 @@ namespace Klev\TelegramBotApi\Types;
  * ChatMemberLeft
  * ChatMemberBanned
  *
- * @see https://core.telegram.org/bots/api#chatmember
+ * @link https://core.telegram.org/bots/api#chatmember
  *
  * Class ChatMember
  * @package Klev\TelegramBotApi\Types

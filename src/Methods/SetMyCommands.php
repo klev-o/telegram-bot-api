@@ -11,7 +11,7 @@ use Klev\TelegramBotApi\Types\BotCommandScopeDefault;
 /**
  * Use this method to change the list of the bot's commands. Returns True on success.
  *
- * @see https://core.telegram.org/bots/api#setmycommands
+ * @link https://core.telegram.org/bots/api#setmycommands
  *
  * Class SetMyCommands
  * @package Klev\TelegramBotApi\Methods

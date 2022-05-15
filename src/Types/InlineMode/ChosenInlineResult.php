@@ -11,7 +11,7 @@ use Klev\TelegramBotApi\Types\User;
 /**
  * Represents a result of an inline query that was chosen by the user and sent to their chat partner.
  *
- * @see https://core.telegram.org/bots/api#choseninlineresult
+ * @link https://core.telegram.org/bots/api#choseninlineresult
  *
  * Class ChosenInlineResult
  * @package Klev\TelegramBotApi\Types\InlineMode

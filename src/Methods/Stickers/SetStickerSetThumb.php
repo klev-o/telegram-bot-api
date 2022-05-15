@@ -10,7 +10,7 @@ use Klev\TelegramBotApi\Methods\BaseMethod;
  * Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only.
  * Returns True on success.
  *
- * @see https://core.telegram.org/bots/api#deletestickerfromset
+ * @link https://core.telegram.org/bots/api#deletestickerfromset
  *
  * Class SetStickerSetThumb
  * @package Klev\TelegramBotApi\Methods\Stickers

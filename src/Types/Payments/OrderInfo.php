@@ -7,7 +7,7 @@ use Klev\TelegramBotApi\Types\BaseType;
 /**
  * This object represents information about an order.
  *
- * @see https://core.telegram.org/bots/api#orderinfo
+ * @link https://core.telegram.org/bots/api#orderinfo
  *
  * Class OrderInfo
  * @package Klev\TelegramBotApi\Types\Payments

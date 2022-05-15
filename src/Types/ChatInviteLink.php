@@ -6,7 +6,7 @@ namespace Klev\TelegramBotApi\Types;
 /**
  * Represents an invite link for a chat.
  *
- * @see https://core.telegram.org/bots/api#chatinvitelink
+ * @link https://core.telegram.org/bots/api#chatinvitelink
  *
  * Class ChatInviteLink
  * @package Klev\TelegramBotApi\Types

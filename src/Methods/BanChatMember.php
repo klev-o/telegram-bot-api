@@ -9,7 +9,7 @@ namespace Klev\TelegramBotApi\Methods;
  * The bot must be an administrator in the chat for this to work and must have the appropriate admin rights.
  * Returns True on success.
  *
- * @see https://core.telegram.org/bots/api#kickchatmember
+ * @link https://core.telegram.org/bots/api#kickchatmember
  *
  * Class KickChatMember
  * @package Klev\TelegramBotApi\Methods

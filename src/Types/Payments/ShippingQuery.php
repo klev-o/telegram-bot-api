@@ -8,7 +8,7 @@ use Klev\TelegramBotApi\Types\User;
 /**
  * This object contains information about an incoming shipping query.
  *
- * @see https://core.telegram.org/bots/api#shippingquery
+ * @link https://core.telegram.org/bots/api#shippingquery
  *
  * Class ShippingQuery
  * @package Klev\TelegramBotApi\Types\Payments

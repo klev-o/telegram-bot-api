@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Methods;
  * Class SetWebhook
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#setwebhook
+ * @link https://core.telegram.org/bots/api#setwebhook
  */
 class SetWebhook extends BaseMethod
 {

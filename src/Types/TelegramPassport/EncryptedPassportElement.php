@@ -9,7 +9,7 @@ use Klev\TelegramBotApi\Types\BaseType;
 /**
  * Contains information about documents or other Telegram Passport elements shared with the bot by the user.
  *
- * @see https://core.telegram.org/bots/api#encryptedpassportelement
+ * @link https://core.telegram.org/bots/api#encryptedpassportelement
  *
  * Class EncryptedPassportElement
  * @package Klev\TelegramBotApi\Types\TelegramPassport

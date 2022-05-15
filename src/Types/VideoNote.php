@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class VideoNote
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#videonote
+ * @link https://core.telegram.org/bots/api#videonote
  */
 class VideoNote extends BaseType
 {

@@ -86,8 +86,8 @@ use Psr\Http\Client\ClientInterface;
 /**
  * The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram.
  *
- * @see https://core.telegram.org/bots
- * @see https://core.telegram.org/bots/faq
+ * @link https://core.telegram.org/bots
+ * @link https://core.telegram.org/bots/faq
  *
  * Class Telegram
  * @package Klev\TelegramBotApi
@@ -744,7 +744,7 @@ class Telegram
      * @return bool
      * @throws TelegramException
      *
-     * @see https://core.telegram.org/bots/api#unpinchatmessage
+     * @link https://core.telegram.org/bots/api#unpinchatmessage
      */
     public function unpinAllChatMessages(string $chat_id): bool
     {
@@ -759,7 +759,7 @@ class Telegram
      * Unique identifier for the target chat or username of the target supergroup or channel
      * (in the format @channelusername)
      *
-     * @see https://core.telegram.org/bots/api#leavechat
+     * @link https://core.telegram.org/bots/api#leavechat
      *
      * @return bool
      * @throws TelegramException
@@ -778,7 +778,7 @@ class Telegram
      * Unique identifier for the target chat or username of the target supergroup or channel
      * (in the format @channelusername)
      *
-     * @see https://core.telegram.org/bots/api#getchat
+     * @link https://core.telegram.org/bots/api#getchat
      *
      * @return Chat
      * @throws TelegramException
@@ -798,7 +798,7 @@ class Telegram
      * Unique identifier for the target chat or username of the target supergroup or channel
      * (in the format @channelusername)
      *
-     * @see https://core.telegram.org/bots/api#getchatadministrators
+     * @link https://core.telegram.org/bots/api#getchatadministrators
      *
      * @return ChatMember[]
      * @throws TelegramException
@@ -822,7 +822,7 @@ class Telegram
      * Unique identifier for the target chat or username of the target supergroup or channel
      * (in the format @channelusername)
      *
-     * @see https://core.telegram.org/bots/api#getchatmemberscount
+     * @link https://core.telegram.org/bots/api#getchatmemberscount
      *
      * @return int
      * @throws TelegramException
@@ -863,7 +863,7 @@ class Telegram
      * @param string $chat_id
      * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
      *
-     * @see https://core.telegram.org/bots/api#deletechatstickerset
+     * @link https://core.telegram.org/bots/api#deletechatstickerset
      *
      * @return bool
      * @throws TelegramException
@@ -1036,7 +1036,7 @@ class Telegram
      * @param string $name
      * Name of the sticker set
      *
-     * @see https://core.telegram.org/bots/api#getstickerset
+     * @link https://core.telegram.org/bots/api#getstickerset
      *
      * @return StickerSet
      * @throws TelegramException
@@ -1096,7 +1096,7 @@ class Telegram
      * @param string $sticker
      * File identifier of the sticker
      *
-     * @see https://core.telegram.org/bots/api#deletestickerfromset
+     * @link https://core.telegram.org/bots/api#deletestickerfromset
      *
      * @return bool
      * @throws TelegramException
@@ -1278,7 +1278,7 @@ class Telegram
      * Use this method to approve a chat join request. The bot must be an administrator in the chat for this to work
      * and must have the can_invite_users administrator right. Returns True on success.
      *
-     * @see https://core.telegram.org/bots/api#approvechatjoinrequest
+     * @link https://core.telegram.org/bots/api#approvechatjoinrequest
      *
      * @param string $chat_id
      * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -1299,7 +1299,7 @@ class Telegram
      * Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work
      * and must have the can_invite_users administrator right. Returns True on success.
      *
-     * @see https://core.telegram.org/bots/api#declinechatjoinrequest
+     * @link https://core.telegram.org/bots/api#declinechatjoinrequest
      *
      * @param string $chat_id
      * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -1322,7 +1322,7 @@ class Telegram
      * in the supergroup or channel for this to work and must have the appropriate administrator rights.
      * Returns True on success.
      *
-     * @see https://core.telegram.org/bots/api#banchatsenderchat
+     * @link https://core.telegram.org/bots/api#banchatsenderchat
      *
      * @param string $chat_id
      * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -1345,7 +1345,7 @@ class Telegram
      * Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an
      * administrator for this to work and must have the appropriate administrator rights. Returns True on success.
      *
-     * @see https://core.telegram.org/bots/api#unbanchatsenderchat
+     * @link https://core.telegram.org/bots/api#unbanchatsenderchat
      *
      * @param string $chat_id
      * Unique identifier for the target chat or username of the target channel (in the format @channelusername)

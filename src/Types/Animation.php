@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class Animation
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#animation
+ * @link https://core.telegram.org/bots/api#animation
  */
 class Animation extends BaseType
 {

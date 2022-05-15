@@ -12,7 +12,7 @@ use Klev\TelegramBotApi\Types\InlineKeyboardMarkup;
  * Class EditMessageLiveLocation
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#editmessagelivelocation
+ * @link https://core.telegram.org/bots/api#editmessagelivelocation
  */
 class EditMessageLiveLocation extends BaseMethod
 {

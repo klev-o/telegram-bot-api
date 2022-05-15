@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class User
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#user
+ * @link https://core.telegram.org/bots/api#user
  */
 class User extends BaseType
 {

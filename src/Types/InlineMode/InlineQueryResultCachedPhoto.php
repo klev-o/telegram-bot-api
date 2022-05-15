@@ -12,7 +12,7 @@ use Klev\TelegramBotApi\Types\MessageEntity;
  * optional caption. Alternatively, you can use input_message_content to send a message with the specified content
  * instead of the photo.
  *
- * @see https://core.telegram.org/bots/api#inlinequeryresultcachedphoto
+ * @link https://core.telegram.org/bots/api#inlinequeryresultcachedphoto
  *
  * Class InlineQueryResultCachedPhoto
  * @package Klev\TelegramBotApi\Types\InlineMode

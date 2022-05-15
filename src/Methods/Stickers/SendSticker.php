@@ -10,7 +10,7 @@ use Klev\TelegramBotApi\Types\KeyboardInterface;
 /**
  * Use this method to send static .WEBP or animated .TGS stickers. On success, the sent Message is returned.
  *
- * @see https://core.telegram.org/bots/api#sendsticker
+ * @link https://core.telegram.org/bots/api#sendsticker
  *
  * Class SendSticker
  * @package Klev\TelegramBotApi\Methods\Stickers

@@ -7,7 +7,7 @@ namespace Klev\TelegramBotApi\Types\TelegramPassport;
  * Represents an issue with the reverse side of a document. The error is considered resolved when the file with reverse
  * side of the document changes.
  *
- * @see https://core.telegram.org/bots/api#passportelementerrorreverseside
+ * @link https://core.telegram.org/bots/api#passportelementerrorreverseside
  *
  * Class PassportElementErrorReverseSide
  * @package Klev\TelegramBotApi\Types\TelegramPassport

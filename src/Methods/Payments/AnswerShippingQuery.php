@@ -12,7 +12,7 @@ use Klev\TelegramBotApi\Types\Payments\ShippingOption;
  * send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries. On success,
  * True is returned.
  *
- * @see https://core.telegram.org/bots/api#answershippingquery
+ * @link https://core.telegram.org/bots/api#answershippingquery
  *
  * Class AnswerShippingQuery
  * @package Klev\TelegramBotApi\Methods\Payments

@@ -11,7 +11,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class CallbackQuery
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#callbackquery
+ * @link https://core.telegram.org/bots/api#callbackquery
  */
 class CallbackQuery extends BaseType
 {

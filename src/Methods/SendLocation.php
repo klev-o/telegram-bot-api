@@ -10,7 +10,7 @@ use Klev\TelegramBotApi\Types\KeyboardInterface;
  * Class SendLocation
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#sendlocation
+ * @link https://core.telegram.org/bots/api#sendlocation
  */
 class SendLocation extends BaseMethod
 {

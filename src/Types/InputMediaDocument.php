@@ -9,7 +9,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class InputMediaDocument
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#inputmediadocument
+ * @link https://core.telegram.org/bots/api#inputmediadocument
  */
 class InputMediaDocument implements InputMedia
 {

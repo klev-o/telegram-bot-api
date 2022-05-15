@@ -7,7 +7,7 @@ namespace Klev\TelegramBotApi\Types\TelegramPassport;
  * Represents an issue with one of the files that constitute the translation of a document. The error is considered
  * resolved when the file changes.
  *
- * @see https://core.telegram.org/bots/api#passportelementerrortranslationfile
+ * @link https://core.telegram.org/bots/api#passportelementerrortranslationfile
  *
  * Class PassportElementErrorTranslationFile
  * @package Klev\TelegramBotApi\Types\TelegramPassport

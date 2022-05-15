@@ -11,7 +11,7 @@ use Klev\TelegramBotApi\Types\Stickers\MaskPosition;
  * Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus
  * created. You must use exactly one of the fields png_sticker or tgs_sticker. Returns True on success.
  *
- * @see https://core.telegram.org/bots/api#createnewstickerset
+ * @link https://core.telegram.org/bots/api#createnewstickerset
  *
  * Class CreateNewStickerSet
  * @package Klev\TelegramBotApi\Methods\Stickers

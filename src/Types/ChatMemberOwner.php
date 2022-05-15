@@ -6,7 +6,7 @@ namespace Klev\TelegramBotApi\Types;
 /**
  * Represents a chat member that owns the chat and has all administrator privileges.
  *
- * @see https://core.telegram.org/bots/api#chatmemberowner
+ * @link https://core.telegram.org/bots/api#chatmemberowner
  *
  * Class ChatMemberOwner
  * @package Klev\TelegramBotApi\Types

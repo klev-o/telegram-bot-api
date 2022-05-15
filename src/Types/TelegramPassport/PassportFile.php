@@ -10,7 +10,7 @@ use Klev\TelegramBotApi\Types\BaseType;
  * This object represents a file uploaded to Telegram Passport. Currently all Telegram Passport files are in JPEG
  * format when decrypted and don't exceed 10MB.
  *
- * @see https://core.telegram.org/bots/api#passportfile
+ * @link https://core.telegram.org/bots/api#passportfile
  *
  * Class PassportFile
  * @package Klev\TelegramBotApi\Types\TelegramPassport

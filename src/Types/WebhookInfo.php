@@ -5,7 +5,7 @@ namespace Klev\TelegramBotApi\Types;
 /**
  * Contains information about the current status of a webhook.
  *
- * @see https://core.telegram.org/bots/api#getwebhookinfo
+ * @link https://core.telegram.org/bots/api#getwebhookinfo
  *
  * Class WebhookInfo
  * @package Klev\TelegramBotApi\Types

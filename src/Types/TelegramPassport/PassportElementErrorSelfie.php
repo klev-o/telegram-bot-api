@@ -7,7 +7,7 @@ namespace Klev\TelegramBotApi\Types\TelegramPassport;
  * Represents an issue with the selfie with a document. The error is considered resolved when the file with the selfie
  * changes.
  *
- * @see https://core.telegram.org/bots/api#passportelementerrorselfie
+ * @link https://core.telegram.org/bots/api#passportelementerrorselfie
  *
  * Class PassportElementErrorSelfie
  * @package Klev\TelegramBotApi\Types\TelegramPassport

@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class InputMediaAudio
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#inputmediaaudio
+ * @link https://core.telegram.org/bots/api#inputmediaaudio
  */
 class InputMediaAudio implements InputMedia
 {

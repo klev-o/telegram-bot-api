@@ -14,7 +14,7 @@ namespace Klev\TelegramBotApi\Types;
  * BotCommandScopeChatAdministrators
  * BotCommandScopeChatMember
  *
- * @see https://core.telegram.org/bots/api#botcommandscope
+ * @link https://core.telegram.org/bots/api#botcommandscope
  *
  * Interface BotCommandScope
  * @package Klev\TelegramBotApi\Types

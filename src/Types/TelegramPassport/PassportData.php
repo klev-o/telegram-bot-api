@@ -8,7 +8,7 @@ use Klev\TelegramBotApi\Types\BaseType;
 /**
  * Contains information about Telegram Passport data shared with the bot by the user.
  *
- * @see https://core.telegram.org/bots/api#passportdata
+ * @link https://core.telegram.org/bots/api#passportdata
  *
  * Class PassportData
  * @package Klev\TelegramBotApi\Types\TelegramPassport

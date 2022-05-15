@@ -12,7 +12,7 @@ use Klev\TelegramBotApi\Types\MessageEntity;
  * Class CopyMessage
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#copymessage
+ * @link https://core.telegram.org/bots/api#copymessage
  */
 class CopyMessage extends BaseMethod
 {

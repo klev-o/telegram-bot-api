@@ -12,7 +12,7 @@ use Klev\TelegramBotApi\Types\MessageEntity;
  * optional caption. Alternatively, you can use input_message_content to send a message with the specified content
  * instead of the file.
  *
- * @see https://core.telegram.org/bots/api#inlinequeryresultcacheddocument
+ * @link https://core.telegram.org/bots/api#inlinequeryresultcacheddocument
  *
  * Class InlineQueryResultCachedDocument
  * @package Klev\TelegramBotApi\Types\InlineMode

@@ -10,7 +10,7 @@ use Klev\TelegramBotApi\Types\InlineKeyboardMarkup;
  * Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use input_message_content
  * to send a message with the specified content instead of the venue.
  *
- * @see https://core.telegram.org/bots/api#inlinequeryresultvenue
+ * @link https://core.telegram.org/bots/api#inlinequeryresultvenue
  *
  * Class InlineQueryResultVenue
  * @package Klev\TelegramBotApi\Types\InlineMode

@@ -13,7 +13,7 @@ use Klev\TelegramBotApi\Types\MessageEntity;
  * Class EditMessageText
  * @package Klev\TelegramBotApi\Methods\UpdatingMessages
  *
- * @see https://core.telegram.org/bots/api#editmessagetext
+ * @link https://core.telegram.org/bots/api#editmessagetext
  */
 class EditMessageText extends BaseMethod
 {

@@ -12,7 +12,7 @@ use Klev\TelegramBotApi\Types\MessageEntity;
  * you can use input_message_content to send a message with the specified content instead of the file. Currently, only
  * .PDF and .ZIP files can be sent using this method.
  *
- * @see https://core.telegram.org/bots/api#inlinequeryresultdocument
+ * @link https://core.telegram.org/bots/api#inlinequeryresultdocument
  *
  * Class InlineQueryResultDocument
  * @package Klev\TelegramBotApi\Types\InlineMode

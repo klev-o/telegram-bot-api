@@ -12,7 +12,7 @@ use Klev\TelegramBotApi\Methods\BaseMethod;
  * On success, True is returned. Note: The Bot API must receive an answer within 10 seconds after the pre-checkout
  * query was sent.
  *
- * @see https://core.telegram.org/bots/api#answerprecheckoutquery
+ * @link https://core.telegram.org/bots/api#answerprecheckoutquery
  *
  * Class AnswerPreCheckoutQuery
  * @package Klev\TelegramBotApi\Methods\Payments

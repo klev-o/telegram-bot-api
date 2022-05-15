@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class Dice
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#dice
+ * @link https://core.telegram.org/bots/api#dice
  */
 class Dice extends BaseType
 {

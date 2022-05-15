@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class BotCommand
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#botcommand
+ * @link https://core.telegram.org/bots/api#botcommand
  */
 class BotCommand extends BaseType
 {

@@ -6,7 +6,7 @@ namespace Klev\TelegramBotApi\Methods;
 /**
  * Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
  *
- * @see https://core.telegram.org/bots/api#getuserprofilephotos
+ * @link https://core.telegram.org/bots/api#getuserprofilephotos
  *
  * Class GetUserProfilePhotos
  * @package Klev\TelegramBotApi\Methods

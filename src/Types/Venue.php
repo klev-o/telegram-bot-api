@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class Venue
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#venue
+ * @link https://core.telegram.org/bots/api#venue
  */
 class Venue extends BaseType
 {

@@ -10,7 +10,7 @@ namespace Klev\TelegramBotApi\Methods;
  * Class SendChatAction
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#sendchataction
+ * @link https://core.telegram.org/bots/api#sendchataction
  */
 class SendChatAction extends BaseMethod
 {

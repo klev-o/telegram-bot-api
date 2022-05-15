@@ -11,7 +11,7 @@ use Klev\TelegramBotApi\Types\InputMedia;
  * Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be
  * only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
  *
- * @see https://core.telegram.org/bots/api#sendmediagroup
+ * @link https://core.telegram.org/bots/api#sendmediagroup
  *
  * Class SendMediaGroup
  * @package Klev\TelegramBotApi\Methods

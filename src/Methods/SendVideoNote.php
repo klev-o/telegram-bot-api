@@ -11,7 +11,7 @@ use Klev\TelegramBotApi\Types\KeyboardInterface;
  * Class SendVideoNote
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#sendvideonote
+ * @link https://core.telegram.org/bots/api#sendvideonote
  */
 class SendVideoNote extends BaseMethod
 {

@@ -10,7 +10,7 @@ use Klev\TelegramBotApi\Methods\BaseMethod;
  * Use this method to get data for high score tables. Will return the score of the specified user and several of their
  * neighbors in a game. On success, returns an Array of GameHighScore objects.
  *
- * @see https://core.telegram.org/bots/api#getgamehighscores
+ * @link https://core.telegram.org/bots/api#getgamehighscores
  *
  * Class GetGameHighScores
  * @package Klev\TelegramBotApi\Methods\Games

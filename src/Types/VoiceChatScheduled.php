@@ -6,7 +6,7 @@ namespace Klev\TelegramBotApi\Types;
 /**
  * This object represents a service message about a voice chat scheduled in the chat.
  *
- * @see https://core.telegram.org/bots/api#voicechatscheduled
+ * @link https://core.telegram.org/bots/api#voicechatscheduled
  *
  * Class VoiceChatScheduled
  * @package Klev\TelegramBotApi\Types

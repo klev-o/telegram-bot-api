@@ -10,7 +10,7 @@ use Klev\TelegramBotApi\Types\KeyboardInterface;
  * Class SendVenue
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#sendvenue
+ * @link https://core.telegram.org/bots/api#sendvenue
  */
 class SendVenue extends BaseMethod
 {

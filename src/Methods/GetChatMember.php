@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Methods;
  * Class GetChatMember
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#getchatmember
+ * @link https://core.telegram.org/bots/api#getchatmember
  */
 class GetChatMember extends BaseMethod
 {

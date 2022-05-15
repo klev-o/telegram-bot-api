@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class Location
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#location
+ * @link https://core.telegram.org/bots/api#location
  */
 class Location extends BaseType
 {

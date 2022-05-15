@@ -10,7 +10,7 @@ use Klev\TelegramBotApi\Types\InlineKeyboardMarkup;
 /**
  * Use this method to send a game. On success, the sent Message is returned.
  *
- * @see https://core.telegram.org/bots/api#sendgame
+ * @link https://core.telegram.org/bots/api#sendgame
  *
  * Class SendGame
  * @package Klev\TelegramBotApi\Methods\Games

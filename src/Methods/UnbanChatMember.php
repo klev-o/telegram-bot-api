@@ -12,7 +12,7 @@ namespace Klev\TelegramBotApi\Methods;
  * Class UnbanChatMember
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#unbanchatmember
+ * @link https://core.telegram.org/bots/api#unbanchatmember
  */
 class UnbanChatMember extends BaseMethod
 {

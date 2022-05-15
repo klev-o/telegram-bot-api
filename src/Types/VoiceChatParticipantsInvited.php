@@ -6,7 +6,7 @@ namespace Klev\TelegramBotApi\Types;
 /**
  * This object represents a service message about new members invited to a voice chat.
  *
- * @see https://core.telegram.org/bots/api#voicechatparticipantsinvited
+ * @link https://core.telegram.org/bots/api#voicechatparticipantsinvited
  *
  * Class VoiceChatParticipantsInvited
  * @package Klev\TelegramBotApi\Types

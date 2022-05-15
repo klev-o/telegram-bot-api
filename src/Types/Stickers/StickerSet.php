@@ -10,7 +10,7 @@ use Klev\TelegramBotApi\Types\PhotoSize;
 /**
  * This object represents a sticker set.
  *
- * @see https://core.telegram.org/bots/api#stickerset
+ * @link https://core.telegram.org/bots/api#stickerset
  *
  * Class StickerSet
  * @package Klev\TelegramBotApi\Types\Stickers
@@ -35,7 +35,7 @@ class StickerSet extends BaseType
     /**
      * True, if the sticker set contains video stickers
      *
-     * @see https://telegram.org/blog/video-stickers-better-reactions
+     * @link https://telegram.org/blog/video-stickers-better-reactions
      * @var bool
      */
     public bool $is_video;

@@ -10,7 +10,7 @@ use Klev\TelegramBotApi\Methods\BaseMethod;
  * Use this method to upload a .PNG file with a sticker for later use in createNewStickerSet and addStickerToSet methods
  * (can be used multiple times). Returns the uploaded File on success.
  *
- * @see https://core.telegram.org/bots/api#uploadstickerfile
+ * @link https://core.telegram.org/bots/api#uploadstickerfile
  *
  * Class UploadStickerFile
  * @package Klev\TelegramBotApi\Methods\Stickers

@@ -10,7 +10,7 @@ use Klev\TelegramBotApi\Types\Payments\ShippingQuery;
 /**
  * Class Update
  *
- * @see https://core.telegram.org/bots/api#update
+ * @link https://core.telegram.org/bots/api#update
  */
 class Update extends BaseType
 {

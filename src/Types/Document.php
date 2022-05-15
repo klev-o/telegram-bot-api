@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class Document
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#document
+ * @link https://core.telegram.org/bots/api#document
  */
 class Document extends BaseType
 {

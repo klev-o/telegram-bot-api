@@ -11,7 +11,7 @@ use Klev\TelegramBotApi\Types\ChatPermissions;
  * Class SetChatPermissions
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#setchatpermissions
+ * @link https://core.telegram.org/bots/api#setchatpermissions
  */
 class SetChatPermissions extends BaseMethod
 {

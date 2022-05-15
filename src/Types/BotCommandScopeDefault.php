@@ -7,7 +7,7 @@ namespace Klev\TelegramBotApi\Types;
  * Represents the default scope of bot commands. Default commands are used if no commands with a narrower scope are
  * specified for the user.
  *
- * @see https://core.telegram.org/bots/api#botcommandscopedefault
+ * @link https://core.telegram.org/bots/api#botcommandscopedefault
  *
  * Class BotCommandScopeDefault
  * @package Klev\TelegramBotApi\Types

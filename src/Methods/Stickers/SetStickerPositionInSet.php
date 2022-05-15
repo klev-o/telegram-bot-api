@@ -9,7 +9,7 @@ use Klev\TelegramBotApi\Methods\BaseMethod;
 /**
  * Use this method to move a sticker in a set created by the bot to a specific position. Returns True on success.
  *
- * @see https://core.telegram.org/bots/api#setstickerpositioninset
+ * @link https://core.telegram.org/bots/api#setstickerpositioninset
  *
  * Class SetStickerPositionInSet
  * @package Klev\TelegramBotApi\Methods\Stickers

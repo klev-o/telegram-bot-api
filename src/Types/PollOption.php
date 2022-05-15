@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class PollOption
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#polloption
+ * @link https://core.telegram.org/bots/api#polloption
  */
 class PollOption extends BaseType
 {

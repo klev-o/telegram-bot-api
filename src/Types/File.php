@@ -9,7 +9,7 @@ namespace Klev\TelegramBotApi\Types;
  * 1 hour. When the link expires, a new one can be requested by calling getFile.
  * Maximum file size to download is 20 MB
  *
- * @see https://core.telegram.org/bots/api#file
+ * @link https://core.telegram.org/bots/api#file
  *
  * Class File
  * @package Klev\TelegramBotApi\Types

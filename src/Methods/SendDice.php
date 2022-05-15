@@ -9,7 +9,7 @@ use Klev\TelegramBotApi\Types\KeyboardInterface;
 /**
  * Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned.
  *
- * @see https://core.telegram.org/bots/api#senddice
+ * @link https://core.telegram.org/bots/api#senddice
  *
  * Class SendDice
  * @package Klev\TelegramBotApi\Methods

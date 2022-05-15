@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class ResponseParameters
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#responseparameters
+ * @link https://core.telegram.org/bots/api#responseparameters
  */
 class ResponseParameters extends BaseType
 {

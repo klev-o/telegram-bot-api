@@ -8,7 +8,7 @@ use Klev\TelegramBotApi\Types\BaseType;
 /**
  * A placeholder, currently holds no information. Use BotFather to set up your game.
  *
- * @see https://core.telegram.org/bots/api#callbackgame
+ * @link https://core.telegram.org/bots/api#callbackgame
  *
  * Class CallbackGame
  * @package Klev\TelegramBotApi\Types\Games

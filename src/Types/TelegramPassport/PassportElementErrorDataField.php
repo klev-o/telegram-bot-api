@@ -6,7 +6,7 @@ namespace Klev\TelegramBotApi\Types\TelegramPassport;
 /**
  * Represents an issue in one of the data fields that was provided by the user. The error is considered resolved when the field's value changes.
  *
- * @see https://core.telegram.org/bots/api#passportelementerrordatafield
+ * @link https://core.telegram.org/bots/api#passportelementerrordatafield
  *
  * Class PassportElementErrorDataField
  * @package Klev\TelegramBotApi\Types\TelegramPassport

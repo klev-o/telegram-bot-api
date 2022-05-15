@@ -12,7 +12,7 @@ use Klev\TelegramBotApi\Types\MessageEntity;
  * be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content
  * instead of the the voice message.
  *
- * @see https://core.telegram.org/bots/api#inlinequeryresultvoice
+ * @link https://core.telegram.org/bots/api#inlinequeryresultvoice
  *
  * Class InlineQueryResultVoice
  * @package Klev\TelegramBotApi\Types\InlineMode

@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Methods;
  * for this to work and must have the appropriate admin rights. Returns the edited invite link as a ChatInviteLink
  * object
  *
- * @see https://core.telegram.org/bots/api#editchatinvitelink
+ * @link https://core.telegram.org/bots/api#editchatinvitelink
  *
  * Class EditChatInviteLink
  * @package Klev\TelegramBotApi\Methods

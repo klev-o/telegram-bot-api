@@ -9,7 +9,7 @@ use Klev\TelegramBotApi\Types\MessageEntity;
 /**
  * Represents the content of a text message to be sent as the result of an inline query.
  *
- * @see https://core.telegram.org/bots/api#inputtextmessagecontent
+ * @link https://core.telegram.org/bots/api#inputtextmessagecontent
  *
  * Class InputTextMessageContent
  * @package Klev\TelegramBotApi\Types\InlineMode

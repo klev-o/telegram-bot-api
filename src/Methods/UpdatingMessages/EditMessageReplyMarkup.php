@@ -12,7 +12,7 @@ use Klev\TelegramBotApi\Types\InlineKeyboardMarkup;
  * Class EditMessageReplyMarkup
  * @package Klev\TelegramBotApi\Methods\UpdatingMessages
  *
- * @see https://core.telegram.org/bots/api#editmessagereplymarkup
+ * @link https://core.telegram.org/bots/api#editmessagereplymarkup
  */
 class EditMessageReplyMarkup extends BaseMethod
 {

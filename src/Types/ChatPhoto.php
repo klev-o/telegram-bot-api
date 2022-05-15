@@ -5,7 +5,7 @@ namespace Klev\TelegramBotApi\Types;
 /**
  * This object represents a chat photo.
  *
- * @see https://core.telegram.org/bots/api#chatphoto
+ * @link https://core.telegram.org/bots/api#chatphoto
  *
  * Class ChatPhoto
  * @package Klev\TelegramBotApi\Types

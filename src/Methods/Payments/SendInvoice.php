@@ -11,7 +11,7 @@ use Klev\TelegramBotApi\Types\Payments\LabeledPrice;
 /**
  * Use this method to send invoices. On success, the sent Message is returned.
  *
- * @see https://core.telegram.org/bots/api#sendinvoice
+ * @link https://core.telegram.org/bots/api#sendinvoice
  *
  * Class SendInvoice
  * @package Klev\TelegramBotApi\Methods\Payments

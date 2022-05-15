@@ -9,7 +9,7 @@ use Klev\TelegramBotApi\Types\BaseType;
 /**
  * This object describes the position on faces where a mask should be placed by default.
  *
- * @see https://core.telegram.org/bots/api#maskposition
+ * @link https://core.telegram.org/bots/api#maskposition
  *
  * Class MaskPosition
  * @package Klev\TelegramBotApi\Types\Stickers

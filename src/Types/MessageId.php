@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class MessageId
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#messageid
+ * @link https://core.telegram.org/bots/api#messageid
  */
 class MessageId extends BaseType
 {

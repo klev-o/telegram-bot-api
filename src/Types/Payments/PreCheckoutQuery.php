@@ -8,7 +8,7 @@ use Klev\TelegramBotApi\Types\User;
 /**
  * This object contains information about an incoming pre-checkout query.
  *
- * @see https://core.telegram.org/bots/api#precheckoutquery
+ * @link https://core.telegram.org/bots/api#precheckoutquery
  *
  * Class PreCheckoutQuery
  * @package Klev\TelegramBotApi\Types\Payments

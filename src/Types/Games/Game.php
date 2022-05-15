@@ -13,7 +13,7 @@ use Klev\TelegramBotApi\Types\PhotoSize;
  * This object represents a game. Use BotFather to create and edit games, their short names will act as unique
  * identifiers.
  *
- * @see https://core.telegram.org/bots/api#game
+ * @link https://core.telegram.org/bots/api#game
  *
  * Class Game
  * @package Klev\TelegramBotApi\Types\Games

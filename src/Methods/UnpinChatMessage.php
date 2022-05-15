@@ -7,7 +7,7 @@ namespace Klev\TelegramBotApi\Methods;
  * the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' admin right in a
  * supergroup or 'can_edit_messages' admin right in a channel. Returns True on success.
  *
- * @see https://core.telegram.org/bots/api#unpinchatmessage
+ * @link https://core.telegram.org/bots/api#unpinchatmessage
  *
  * Class UnpinChatMessage
  * @package Klev\TelegramBotApi\Methods

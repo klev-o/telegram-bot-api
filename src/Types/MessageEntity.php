@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class MessageEntity
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#messageentity
+ * @link https://core.telegram.org/bots/api#messageentity
  */
 class MessageEntity extends BaseType
 {
@@ -19,7 +19,7 @@ class MessageEntity extends BaseType
      * “strikethrough” (strikethrough text), “spoiler” (spoiler message), “code” (monowidth string),
      * “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames)
      *
-     * @see https://telegram.org/blog/edit#new-mentions
+     * @link https://telegram.org/blog/edit#new-mentions
      *
      * @var string
      */

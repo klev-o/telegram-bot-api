@@ -9,7 +9,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class KeyboardButtonPollType
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#keyboardbuttonpolltype
+ * @link https://core.telegram.org/bots/api#keyboardbuttonpolltype
  */
 class KeyboardButtonPollType
 {

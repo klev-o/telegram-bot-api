@@ -10,7 +10,7 @@ use Klev\TelegramBotApi\Types\User;
 /**
  * This object represents one row of the high scores table for a game.
  *
- * @see https://core.telegram.org/bots/api#gamehighscore
+ * @link https://core.telegram.org/bots/api#gamehighscore
  *
  * Class GameHighScore
  * @package Klev\TelegramBotApi\Types\Games

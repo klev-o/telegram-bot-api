@@ -11,7 +11,7 @@ use Klev\TelegramBotApi\Types\MessageEntity;
  * Class SendPhoto
  * @package Klev\TelegramBotApi\Methods
  *
- * @see https://core.telegram.org/bots/api#sendphoto
+ * @link https://core.telegram.org/bots/api#sendphoto
  */
 class SendPhoto extends BaseMethod
 {

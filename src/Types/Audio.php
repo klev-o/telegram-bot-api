@@ -8,7 +8,7 @@ namespace Klev\TelegramBotApi\Types;
  * Class Audio
  * @package Klev\TelegramBotApi\Types
  *
- * @see https://core.telegram.org/bots/api#audio
+ * @link https://core.telegram.org/bots/api#audio
  */
 class Audio extends BaseType
 {

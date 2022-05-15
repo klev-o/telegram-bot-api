@@ -6,7 +6,7 @@ namespace Klev\TelegramBotApi\Types;
 /**
  * Represents the scope of bot commands, covering all group and supergroup chats.
  *
- * @see https://core.telegram.org/bots/api#botcommandscopeallgroupchats
+ * @link https://core.telegram.org/bots/api#botcommandscopeallgroupchats
  *
  * Class BotCommandScopeAllGroupChats
  * @package Klev\TelegramBotApi\Types
