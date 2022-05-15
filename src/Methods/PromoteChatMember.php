@@ -30,10 +30,12 @@ class PromoteChatMember extends BaseMethod
      */
     public ?bool $is_anonymous;
     /**
-     * Pass True, if the administrator can change chat title, photo and other settings
+     * Pass True, if the administrator can access the chat event log, chat statistics, message statistics in channels,
+     * see channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other
+     * administrator privilege
      * @var bool|null
      */
-    public ?bool $can_change_info;
+    public ?bool $can_manage_chat;
     /**
      * Pass True, if the administrator can create channel posts, channels only
      * @var bool|null
@@ -50,20 +52,21 @@ class PromoteChatMember extends BaseMethod
      */
     public ?bool $can_delete_messages;
     /**
-     * Pass True, if the administrator can invite new users to the chat
+     * Pass True, if the administrator can manage video chats
      * @var bool|null
      */
-    public ?bool $can_invite_users;
+    public ?bool $can_manage_video_chats;
+    /**
+     * TODO: delete after delete in telegram api
+     * Pass True, if the administrator can manage voice chats
+     * @var bool|null
+     */
+    public ?bool $can_manage_voice_chats;
     /**
      * Pass True, if the administrator can restrict, ban or unban chat members
      * @var bool|null
      */
     public ?bool $can_restrict_members;
-    /**
-     * Pass True, if the administrator can pin messages, supergroups only
-     * @var bool|null
-     */
-    public ?bool $can_pin_messages;
     /**
      * Pass True, if the administrator can add new administrators with a subset of their own privileges or demote
      * administrators that he has promoted, directly or indirectly (promoted by administrators that were appointed
@@ -71,6 +74,21 @@ class PromoteChatMember extends BaseMethod
      * @var bool|null
      */
     public ?bool $can_promote_members;
+    /**
+     * Pass True, if the administrator can change chat title, photo and other settings
+     * @var bool|null
+     */
+    public ?bool $can_change_info;
+    /**
+     * Pass True, if the administrator can invite new users to the chat
+     * @var bool|null
+     */
+    public ?bool $can_invite_users;
+    /**
+     * Pass True, if the administrator can pin messages, supergroups only
+     * @var bool|null
+     */
+    public ?bool $can_pin_messages;
 
     public function __construct($chat_id, $user_id)
     {
