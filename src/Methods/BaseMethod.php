@@ -11,12 +11,16 @@ use Klev\TelegramBotApi\Methods\Stickers\SetStickerSetThumb;
 use Klev\TelegramBotApi\Methods\Stickers\UploadStickerFile;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageMedia;
 use Klev\TelegramBotApi\TelegramException;
+use Klev\TelegramBotApi\Types\InlineKeyboardButton;
+use Klev\TelegramBotApi\Types\InlineKeyboardMarkup;
 use Klev\TelegramBotApi\Types\InputMedia;
 use Klev\TelegramBotApi\Types\InputMediaAnimation;
 use Klev\TelegramBotApi\Types\InputMediaAudio;
 use Klev\TelegramBotApi\Types\InputMediaDocument;
 use Klev\TelegramBotApi\Types\InputMediaPhoto;
 use Klev\TelegramBotApi\Types\InputMediaVideo;
+use Klev\TelegramBotApi\Types\KeyboardButton;
+use Klev\TelegramBotApi\Types\ReplyKeyboardMarkup;
 
 /**
  * Class BaseMethod
@@ -50,6 +54,22 @@ abstract class BaseMethod
     public function preparation(): void
     {
         if (!empty($this->reply_markup)) {
+            if ($this->reply_markup instanceof ReplyKeyboardMarkup) {
+                foreach ($this->reply_markup->keyboard as $item) {
+                    /**@var KeyboardButton $btn*/
+                    foreach ($item as $btn) {
+                        $btn->removeNullableFields();
+                    }
+                }
+            }
+            if ($this->reply_markup instanceof InlineKeyboardMarkup) {
+                foreach ($this->reply_markup->inline_keyboard as $item) {
+                    /**@var InlineKeyboardButton $btn*/
+                    foreach ($item as $btn) {
+                        $btn->removeNullableFields();
+                    }
+                }
+            }
             $this->reply_markup = json_encode($this->reply_markup);
         }
 

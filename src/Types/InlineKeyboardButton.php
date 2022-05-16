@@ -25,12 +25,12 @@ class InlineKeyboardButton extends BaseType
      * Optional. HTTP or tg:// url to be opened when button is pressed
      * @var string|null
      */
-    public ?string $url = '';
+    public ?string $url = null;
     /**
      * Optional. Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes
      * @var string|null
      */
-    public ?string $callback_data = '';
+    public ?string $callback_data = null;
     /**
      * Optional. Description of the Web App that will be launched when the user presses the button. The Web App will be
      * able to send an arbitrary message on behalf of the user using the method answerWebAppQuery.
@@ -54,7 +54,7 @@ class InlineKeyboardButton extends BaseType
      * automatically returned to the chat they switched from, skipping the chat selection screen.
      * @var string|null
      */
-    public ?string $switch_inline_query = '';
+    public ?string $switch_inline_query = null;
     /**
      * Optional. If set, pressing the button will insert the bot's username and the specified inline query in
      * the current chat's input field. Can be empty, in which case only the bot's username will be inserted.
@@ -63,7 +63,7 @@ class InlineKeyboardButton extends BaseType
      * something from multiple options.
      * @var string|null
      */
-    public ?string $switch_inline_query_current_chat = '';
+    public ?string $switch_inline_query_current_chat = null;
     /**
      * Optional. Description of the game that will be launched when the user presses the button.
      * NOTE: This type of button must always be the first button in the first row.
@@ -75,7 +75,7 @@ class InlineKeyboardButton extends BaseType
      * NOTE: This type of button must always be the first button in the first row.
      * @var bool
      */
-    public ?bool $pay = false;
+    public ?bool $pay = null;
 
     public function bindObjects($key, $data)
     {

@@ -21,6 +21,25 @@ abstract class BaseType
         }
     }
 
+    public function getProperties(): array
+    {
+        $reflection = new \ReflectionObject($this);
+
+        return array_map(static function($item) {
+            return $item->name;
+        }, $reflection->getProperties(\ReflectionProperty::IS_PUBLIC));
+
+    }
+
+    public function removeNullableFields()
+    {
+        foreach ($this->getProperties() as $property) {
+            if ($this->$property === null) {
+                unset($this->$property);
+            }
+        }
+    }
+
     /**
      * @param $key
      * @param $data
