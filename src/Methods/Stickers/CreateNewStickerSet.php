@@ -56,6 +56,12 @@ class CreateNewStickerSet extends BaseMethod
      */
     public ?string $webm_sticker = null;
     /**
+     * Type of stickers in the set, pass “regular” or “mask”. Custom emoji sticker sets can't be created via the
+     * Bot API at the moment. By default, a regular sticker set is created.
+     * @var string|null
+     */
+    public ?string $sticker_type = null;
+    /**
      * One or more emoji corresponding to the sticker
      * @var string
      */
@@ -63,6 +69,9 @@ class CreateNewStickerSet extends BaseMethod
     /**
      * Pass True, if a set of mask stickers should be created
      * @var bool|null
+     * @deprecated 1.4.0 The parameter contains_masks has been removed from the documentation of the method
+     * createNewStickerSet. The parameter will still work for backward compatibility, but new bots should use the
+     * parameter sticker_type instead.
      */
     public ?bool $contains_masks = null;
     /**
