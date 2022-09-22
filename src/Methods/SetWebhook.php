@@ -45,6 +45,18 @@ class SetWebhook extends BaseMethod
      * @var string[]|null
      */
     public ?array $allowed_updates = null;
+    /**
+     * Pass True to drop all pending updates
+     * @var bool|null
+     */
+    public ?bool $drop_pending_updates = null;
+    /**
+     * A secret token to be sent in a header “X-Telegram-Bot-Api-Secret-Token” in every webhook request,
+     * 1-256 characters. Only characters A-Z, a-z, 0-9, _ and - are allowed. The header is useful to ensure that the
+     * request comes from a webhook set by you.
+     * @var string|null
+     */
+    public ?string $secret_token = null;
 
     /**
      * SetWebhook constructor.
