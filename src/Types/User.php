@@ -43,6 +43,11 @@ class User extends BaseType
      */
     public ?string $language_code = null;
     /**
+     * Optional. True, if this user is a Telegram Premium user
+     * @var bool|null
+     */
+    public ?bool $is_premium = null;
+    /**
      * Optional. True, if the bot can be invited to groups. Returned only in getMe.
      * @var bool|null
      */
