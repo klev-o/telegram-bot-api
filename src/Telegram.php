@@ -23,6 +23,7 @@ use Klev\TelegramBotApi\Methods\GetUserProfilePhotos;
 use Klev\TelegramBotApi\Methods\InlineMode\AnswerInlineQuery;
 use Klev\TelegramBotApi\Methods\Payments\AnswerPreCheckoutQuery;
 use Klev\TelegramBotApi\Methods\Payments\AnswerShippingQuery;
+use Klev\TelegramBotApi\Methods\Payments\CreateInvoiceLink;
 use Klev\TelegramBotApi\Methods\Payments\SendInvoice;
 use Klev\TelegramBotApi\Methods\PinChatMessage;
 use Klev\TelegramBotApi\Methods\PromoteChatMember;
@@ -1227,6 +1228,19 @@ class Telegram
 
         $out = $this->request('sendInvoice', ['json' => (array)$sendInvoice]);
         return new Message($out['result']);
+    }
+
+    /**
+     * @param CreateInvoiceLink $createInvoiceLink
+     * @return string
+     * @throws TelegramException
+     */
+    public function createInvoiceLink(CreateInvoiceLink $createInvoiceLink): string
+    {
+        $createInvoiceLink->preparation();
+
+        $out = $this->request('createInvoiceLink', ['json' => (array)$createInvoiceLink]);
+        return $out['result'];
     }
 
     /**
