@@ -47,6 +47,9 @@ class StickerSet extends BaseType
     /**
      * True, if the sticker set contains masks
      * @var bool
+     * @deprecated 1.4.0 The field contains_masks has been removed from the documentation of the class StickerSet.
+     * The field is still returned in the object for backward compatibility, but new bots should use the field
+     * sticker_type instead.
      */
     public bool $contains_masks;
     /**
