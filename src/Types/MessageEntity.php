@@ -13,11 +13,12 @@ namespace Klev\TelegramBotApi\Types;
 class MessageEntity extends BaseType
 {
     /**
-     * Type of the entity. Can be “mention” (@username), “hashtag” (#hashtag), “cashtag” ($USD), “bot_command”
-     * (/start@jobs_bot), “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number”
-     * (+1-212-555-0123), “bold” (bold text), “italic” (italic text), “underline” (underlined text),
+     * Type of the entity. Currently, can be “mention” (@username), “hashtag” (#hashtag), “cashtag” ($USD),
+     * “bot_command” (/start@jobs_bot), “url” (https://telegram.org), “email” (do-not-reply@telegram.org),
+     * “phone_number” (+1-212-555-0123), “bold” (bold text), “italic” (italic text), “underline” (underlined text),
      * “strikethrough” (strikethrough text), “spoiler” (spoiler message), “code” (monowidth string),
-     * “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames)
+     * “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames),
+     * “custom_emoji” (for inline custom emoji stickers)
      *
      * @link https://telegram.org/blog/edit#new-mentions
      *
@@ -38,17 +39,23 @@ class MessageEntity extends BaseType
      * Optional. For “text_link” only, url that will be opened after user taps on the text
      * @var string|null
      */
-    public ?string $url;
+    public ?string $url = null;
     /**
      * Optional. For “text_mention” only, the mentioned user
      * @var User|null
      */
-    public ?User $user;
+    public ?User $user = null;
     /**
      * Optional. For “pre” only, the programming language of the entity text
      * @var string|null
      */
-    public ?string $language;
+    public ?string $language = null;
+    /**
+     * Optional. For “custom_emoji” only, unique identifier of the custom emoji. Use getCustomEmojiStickers to get
+     * full information about the sticker
+     * @var string|null
+     */
+    public ?string $custom_emoji_id = null;
 
     protected function bindObjects($key, $data): ?object
     {
