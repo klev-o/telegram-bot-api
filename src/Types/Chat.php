@@ -61,6 +61,23 @@ class Chat extends BaseType
      */
     public ?bool $has_private_forwards = null;
     /**
+     * Optional. True, if the privacy settings of the other party restrict sending voice and video note messages in the
+     * private chat. Returned only in getChat.
+     * @var bool|null
+     */
+    public ?bool $has_restricted_voice_and_video_messages = null;
+    /**
+     * Optional. True, if users need to join the supergroup before they can send messages. Returned only in getChat.
+     * @var bool|null
+     */
+    public ?bool $join_to_send_messages = null;
+    /**
+     * Optional. True, if all users directly joining the supergroup need to be approved by supergroup administrators.
+     * Returned only in getChat
+     * @var bool|null
+     */
+    public ?bool $join_by_request = null;
+    /**
      * Optional. Description, for groups, supergroups and channel chats. Returned only in getChat.
      * @var string|null
      */
