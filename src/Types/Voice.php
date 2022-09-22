@@ -35,7 +35,7 @@ class Voice extends BaseType
     public ?string $mime_type;
     /**
      * Optional. File size
-     * @var int
+     * @var float|null
      */
-    public ?int $file_size;
+    public ?float $file_size = null;
 }

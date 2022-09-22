@@ -55,9 +55,9 @@ class Animation extends BaseType
     public ?string $mime_type = null;
     /**
      * Optional. File size
-     * @var int|null
+     * @var float|null
      */
-    public ?int $file_size = null;
+    public ?float $file_size = null;
 
     /**
      * @param $key

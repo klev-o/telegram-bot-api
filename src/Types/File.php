@@ -29,9 +29,9 @@ class File extends BaseType
     public string $file_unique_id;
     /**
      * Optional. File size, if known
-     * @var int|null
+     * @var float|null
      */
-    public ?int $file_size = null;
+    public ?float $file_size = null;
     /**
      * Optional. File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
      * @var string|null
