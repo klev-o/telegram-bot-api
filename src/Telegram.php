@@ -84,6 +84,7 @@ use Klev\TelegramBotApi\Types\MenuButtonWebApp;
 use Klev\TelegramBotApi\Types\Message;
 use Klev\TelegramBotApi\Types\MessageId;
 use Klev\TelegramBotApi\Types\Poll;
+use Klev\TelegramBotApi\Types\Stickers\Sticker;
 use Klev\TelegramBotApi\Types\Stickers\StickerSet;
 use Klev\TelegramBotApi\Types\Update;
 use Klev\TelegramBotApi\Types\User;
@@ -1115,6 +1116,28 @@ class Telegram
     {
         $out = $this->request('getStickerSet', ['json' => ['name' => $name]]);
         return new StickerSet($out['result']);
+    }
+
+    /**
+     * Use this method to get information about custom emoji stickers by their identifiers.
+     * Returns an Array of Sticker objects.
+     *
+     * @param string[] $custom_emoji_ids
+     * List of custom emoji identifiers. At most 200 custom emoji identifiers can be specified.
+     *
+     * @link https://core.telegram.org/bots/api#getcustomemojistickers
+     *
+     * @return Sticker[]
+     * @throws TelegramException
+     */
+    public function getCustomEmojiStickers(array $custom_emoji_ids): array
+    {
+        $out = $this->request('getCustomEmojiStickers', ['json' => ['custom_emoji_ids' => $custom_emoji_ids]]);
+        $result = [];
+        foreach ($out['result'] as $item) {
+            $result[] = new Sticker($item);
+        }
+        return $result;
     }
 
     /**
