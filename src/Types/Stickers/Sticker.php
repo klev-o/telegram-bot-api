@@ -30,6 +30,12 @@ class Sticker extends BaseType
      */
     public string $file_unique_id;
     /**
+     * Type of the sticker, currently one of “regular”, “mask”, “custom_emoji”. The type of the sticker is
+     * independent from its format, which is determined by the fields is_animated and is_video.
+     * @var string
+     */
+    public string $type;
+    /**
      * Sticker width
      * @var int
      */
@@ -75,7 +81,12 @@ class Sticker extends BaseType
      * Optional. For mask stickers, the position where the mask should be placed
      * @var MaskPosition|null
      */
-    public ?MaskPosition $mask_position;
+    public ?MaskPosition $mask_position = null;
+    /**
+     * 	Optional. For custom emoji stickers, unique identifier of the custom emoji
+     * @var string|null
+     */
+    public ?string $custom_emoji_id = null;
     /**
      * Optional. File size
      * @var int|null
