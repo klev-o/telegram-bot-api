@@ -28,6 +28,11 @@ class StickerSet extends BaseType
      */
     public string $title;
     /**
+     * Type of stickers in the set, currently one of “regular”, “mask”, “custom_emoji”
+     * @var string
+     */
+    public string $sticker_type;
+    /**
      * True, if the sticker set contains animated stickers
      * @var bool
      */
