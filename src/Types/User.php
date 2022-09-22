@@ -48,6 +48,11 @@ class User extends BaseType
      */
     public ?bool $is_premium = null;
     /**
+     * Optional. True, if this user added the bot to the attachment menu
+     * @var bool|null
+     */
+    public ?bool $added_to_attachment_menu = null;
+    /**
      * Optional. True, if the bot can be invited to groups. Returned only in getMe.
      * @var bool|null
      */
