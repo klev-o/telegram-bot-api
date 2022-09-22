@@ -5,6 +5,7 @@ namespace Klev\TelegramBotApi\Types\Stickers;
 
 
 use Klev\TelegramBotApi\Types\BaseType;
+use Klev\TelegramBotApi\Types\File;
 use Klev\TelegramBotApi\Types\PhotoSize;
 
 /**
@@ -65,6 +66,11 @@ class Sticker extends BaseType
      * @var string|null
      */
     public ?string $set_name = null;
+    /**
+     * Optional. For premium regular stickers, premium animation for the sticker
+     * @var File|null
+     */
+    public ?File $premium_animation = null;
     /**
      * Optional. For mask stickers, the position where the mask should be placed
      * @var MaskPosition|null
