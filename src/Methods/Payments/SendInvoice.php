@@ -24,6 +24,11 @@ class SendInvoice extends BaseMethod
      */
     public int $chat_id;
     /**
+     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     * @var int|null
+     */
+    public ?int $message_thread_id = null;
+    /**
      * Product name, 1-32 characters
      * @var string
      */

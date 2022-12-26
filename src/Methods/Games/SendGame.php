@@ -23,6 +23,11 @@ class SendGame extends BaseMethod
      */
     public int $chat_id;
     /**
+     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     * @var int|null
+     */
+    public ?int $message_thread_id = null;
+    /**
      * Short name of the game, serves as the unique identifier for the game. Set up your games via Botfather.
      * @var string
      */

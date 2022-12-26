@@ -22,6 +22,11 @@ class SendDice extends BaseMethod
      */
     public string $chat_id;
     /**
+     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     * @var int|null
+     */
+    public ?int $message_thread_id = null;
+    /**
      * Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, or “🎰”.
      * Dice can have values 1-6 for “🎲” and “🎯”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲”
      * @var string|null

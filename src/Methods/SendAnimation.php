@@ -22,6 +22,11 @@ class SendAnimation extends BaseMethod
      */
     public string $chat_id;
     /**
+     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     * @var int|null
+     */
+    public ?int $message_thread_id = null;
+    /**
      * Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers
      * (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a
      * new animation using multipart/form-data. More info on Sending Files »

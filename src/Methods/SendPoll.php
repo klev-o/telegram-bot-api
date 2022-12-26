@@ -23,6 +23,11 @@ class SendPoll extends BaseMethod
      */
     public string $chat_id;
     /**
+     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     * @var int|null
+     */
+    public ?int $message_thread_id = null;
+    /**
      * Poll question, 1-300 characters
      * @var string
      */

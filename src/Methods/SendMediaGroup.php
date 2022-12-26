@@ -24,6 +24,11 @@ class SendMediaGroup extends BaseMethod implements SendMedia
      */
     public string $chat_id;
     /**
+     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     * @var int|null
+     */
+    public ?int $message_thread_id = null;
+    /**
      * A JSON-serialized array describing messages to be sent, must include 2-10 items
      * @var InputMedia[]
      */

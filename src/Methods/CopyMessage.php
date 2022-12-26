@@ -22,6 +22,11 @@ class CopyMessage extends BaseMethod
      */
     public string $chat_id;
     /**
+     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     * @var int|null
+     */
+    public ?int $message_thread_id = null;
+    /**
      * Unique identifier for the chat where the original message was sent (or channel username in the format
      * @channelusername)
      * @var string

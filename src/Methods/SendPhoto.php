@@ -21,6 +21,11 @@ class SendPhoto extends BaseMethod
      */
     public string $chat_id;
     /**
+     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     * @var int|null
+     */
+    public ?int $message_thread_id = null;
+    /**
      * Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended),
      * pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using
      * multipart/form-data. More info on Sending Files »
