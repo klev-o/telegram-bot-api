@@ -8,11 +8,15 @@ use Klev\TelegramBotApi\Events\Event;
 use Klev\TelegramBotApi\Methods\AnswerCallbackQuery;
 use Klev\TelegramBotApi\Methods\BanChatMember;
 use Klev\TelegramBotApi\Methods\BaseMethod;
+use Klev\TelegramBotApi\Methods\CloseForumTopic;
 use Klev\TelegramBotApi\Methods\CopyMessage;
 use Klev\TelegramBotApi\Methods\CreateChatInviteLink;
+use Klev\TelegramBotApi\Methods\CreateForumTopic;
+use Klev\TelegramBotApi\Methods\DeleteForumTopic;
 use Klev\TelegramBotApi\Methods\DeleteMyCommands;
 use Klev\TelegramBotApi\Methods\DeleteWebhook;
 use Klev\TelegramBotApi\Methods\EditChatInviteLink;
+use Klev\TelegramBotApi\Methods\EditForumTopic;
 use Klev\TelegramBotApi\Methods\EditMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\ForwardMessage;
 use Klev\TelegramBotApi\Methods\Games\SendGame;
@@ -27,6 +31,7 @@ use Klev\TelegramBotApi\Methods\Payments\CreateInvoiceLink;
 use Klev\TelegramBotApi\Methods\Payments\SendInvoice;
 use Klev\TelegramBotApi\Methods\PinChatMessage;
 use Klev\TelegramBotApi\Methods\PromoteChatMember;
+use Klev\TelegramBotApi\Methods\ReopenForumTopic;
 use Klev\TelegramBotApi\Methods\RestrictChatMember;
 use Klev\TelegramBotApi\Methods\RevokeChatInviteLink;
 use Klev\TelegramBotApi\Methods\SendAnimation;
@@ -63,6 +68,7 @@ use Klev\TelegramBotApi\Methods\Stickers\UploadStickerFile;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\TelegramPassport\SetPassportDataErrors;
 use Klev\TelegramBotApi\Methods\UnbanChatMember;
+use Klev\TelegramBotApi\Methods\UnpinAllForumTopicMessages;
 use Klev\TelegramBotApi\Methods\UnpinChatMessage;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\DeleteMessage;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageCaption;
@@ -76,6 +82,7 @@ use Klev\TelegramBotApi\Types\ChatAdministratorRights;
 use Klev\TelegramBotApi\Types\ChatInviteLink;
 use Klev\TelegramBotApi\Types\ChatMember;
 use Klev\TelegramBotApi\Types\File;
+use Klev\TelegramBotApi\Types\ForumTopic;
 use Klev\TelegramBotApi\Types\Games\GameHighScore;
 use Klev\TelegramBotApi\Types\MenuButton;
 use Klev\TelegramBotApi\Types\MenuButtonCommands;
@@ -1468,6 +1475,91 @@ class Telegram
             'json' => ['chat_id' => $chat_id, 'sender_chat_id' => $sender_chat_id]
         ]);
         return $out['result'];
+    }
+
+    /**
+     * Use this method to get custom emoji stickers, which can be used as a forum topic icon by any user.
+     * Requires no parameters. Returns an Array of Sticker objects.
+     *
+     * @link https://core.telegram.org/bots/api#getforumtopiciconstickers
+     *
+     * @return Sticker[]
+     * @throws TelegramException
+     */
+    public function getForumTopicIconStickers(): array
+    {
+        $out = $this->request('getForumTopicIconStickers');
+        $result = [];
+        foreach ($out['result'] as $item) {
+            $result[] = new Sticker($item);
+        }
+        return $result;
+    }
+
+    /**
+     * @param CreateForumTopic $createForumTopic
+     * @return ForumTopic
+     * @throws TelegramException
+     */
+    public function createForumTopic(CreateForumTopic $createForumTopic): ForumTopic
+    {
+        $out = $this->request('createForumTopic', ['json' => (array)$createForumTopic]);
+        return new ForumTopic($out['result']);
+    }
+
+    /**
+     * @param EditForumTopic $editForumTopic
+     * @return bool
+     * @throws TelegramException
+     */
+    public function editForumTopic(EditForumTopic $editForumTopic): bool
+    {
+        $out = $this->request('editForumTopic', ['json' => (array)$editForumTopic]);
+        return new $out['result'];
+    }
+
+    /**
+     * @param CloseForumTopic $closeForumTopic
+     * @return bool
+     * @throws TelegramException
+     */
+    public function closeForumTopic(CloseForumTopic $closeForumTopic): bool
+    {
+        $out = $this->request('closeForumTopic', ['json' => (array)$closeForumTopic]);
+        return new $out['result'];
+    }
+
+    /**
+     * @param ReopenForumTopic $reopenForumTopic
+     * @return bool
+     * @throws TelegramException
+     */
+    public function reopenForumTopic(ReopenForumTopic $reopenForumTopic): bool
+    {
+        $out = $this->request('reopenForumTopic', ['json' => (array)$reopenForumTopic]);
+        return new $out['result'];
+    }
+
+    /**
+     * @param DeleteForumTopic $deleteForumTopic
+     * @return bool
+     * @throws TelegramException
+     */
+    public function deleteForumTopic(DeleteForumTopic $deleteForumTopic): bool
+    {
+        $out = $this->request('deleteForumTopic', ['json' => (array)$deleteForumTopic]);
+        return new $out['result'];
+    }
+
+    /**
+     * @param UnpinAllForumTopicMessages $unpinAllForumTopicMessages
+     * @return bool
+     * @throws TelegramException
+     */
+    public function unpinAllForumTopicMessages(UnpinAllForumTopicMessages $unpinAllForumTopicMessages): bool
+    {
+        $out = $this->request('unpinAllForumTopicMessages', ['json' => (array)$unpinAllForumTopicMessages]);
+        return new $out['result'];
     }
 
     /**
