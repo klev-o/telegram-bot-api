@@ -55,5 +55,11 @@ class ChatPermissions extends BaseType
      * @var bool|null
      */
     public ?bool $can_pin_messages;
+    /**
+     * Optional. True, if the user is allowed to create forum topics. If omitted defaults to the value of
+     * can_pin_messages
+     * @var bool|null
+     */
+    public ?bool $can_manage_topics = null;
 
 }

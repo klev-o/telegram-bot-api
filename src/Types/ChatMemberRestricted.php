@@ -39,6 +39,11 @@ class ChatMemberRestricted extends ChatMember
      */
     public bool $can_pin_messages;
     /**
+     * True, if the user is allowed to create forum topics
+     * @var bool|null
+     */
+    public ?bool $can_manage_topics = null;
+    /**
      * True, if the user is allowed to send text messages, contacts, locations and venues
      * @var bool
      */

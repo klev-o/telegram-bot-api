@@ -89,6 +89,11 @@ class ChatMemberAdministrator extends ChatMember
      */
     public ?bool $can_pin_messages = null;
     /**
+     * Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
+     * @var bool|null
+     */
+    public ?bool $can_manage_topics = null;
+    /**
      * Optional. Custom title for this user
      * @var string|null
      */
