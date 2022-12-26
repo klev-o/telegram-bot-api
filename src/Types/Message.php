@@ -24,6 +24,11 @@ class Message extends BaseType
      */
     public int $message_id;
     /**
+     * Optional. Unique identifier of a message thread to which the message belongs; for supergroups only
+     * @var int|null
+     */
+    public ?int $message_thread_id = null;
+    /**
      * Optional. Sender, empty for messages sent to channels
      * @var User|null
      */
@@ -76,6 +81,11 @@ class Message extends BaseType
      * @var int|null
      */
     public ?int $forward_date = null;
+    /**
+     * Optional. True, if the message is sent to a forum topic
+     * @var bool|null
+     */
+    public ?bool $is_topic_message = null;
     /**
      * Optional. True, if the message is a channel post that was automatically forwarded to the connected discussion
      * group

@@ -45,6 +45,11 @@ class Chat extends BaseType
      */
     public ?string $last_name = null;
     /**
+     * Optional. True, if the supergroup chat is a forum (has topics enabled)
+     * @var bool|null
+     */
+    public ?bool $is_forum = null;
+    /**
      * Optional. Chat photo. Returned only in getChat.
      * @var ChatPhoto|null
      */
