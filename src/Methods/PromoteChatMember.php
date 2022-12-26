@@ -89,6 +89,11 @@ class PromoteChatMember extends BaseMethod
      * @var bool|null
      */
     public ?bool $can_pin_messages;
+    /**
+     * Pass True if the user is allowed to create, rename, close, and reopen forum topics, supergroups only
+     * @var bool|null
+     */
+    public ?bool $can_manage_topics = null;
 
     public function __construct($chat_id, $user_id)
     {
