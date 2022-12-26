@@ -319,6 +319,21 @@ class Message extends BaseType
      */
     public ?ProximityAlertTriggered $proximity_alert_triggered = null;
     /**
+     * Optional. Service message: forum topic created
+     * @var ForumTopicCreated|null
+     */
+    public ?ForumTopicCreated $forum_topic_created = null;
+    /**
+     * Optional. Service message: forum topic closed
+     * @var ForumTopicClosed|null
+     */
+    public ?ForumTopicClosed $forum_topic_closed = null;
+    /**
+     * Optional. Service message: forum topic reopened
+     * @var ForumTopicReopened|null
+     */
+    public ?ForumTopicReopened $forum_topic_reopened = null;
+    /**
      * TODO: delete after delete in telegram api
      * Optional. Service message: voice chat scheduled
      * @var VideoChatScheduled|null
