@@ -55,6 +55,17 @@ class Chat extends BaseType
      */
     public ?ChatPhoto $photo = null;
     /**
+     * Optional. If non-empty, the list of all active chat usernames; for private chats, supergroups and channels.
+     * Returned only in getChat.
+     * @var string[]|null
+     */
+    public ?array $active_usernames = null;
+    /**
+     * Optional. Custom emoji identifier of emoji status of the other party in a private chat. Returned only in getChat.
+     * @var string|null
+     */
+    public ?string $emoji_status_custom_emoji_id = null;
+    /**
      * Optional. Bio of the other party in a private chat. Returned only in getChat.
      * @var string|null
      */
