@@ -49,6 +49,11 @@ class SendPhoto extends BaseMethod
      */
     public ?array $caption_entities = null;
     /**
+     * Pass True if the photo needs to be covered with a spoiler animation
+     * @var bool|null
+     */
+    public ?bool $has_spoiler = false;
+    /**
      * Sends the message silently. Users will receive a notification with no sound.
      * @var bool|null
      */

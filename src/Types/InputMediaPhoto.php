@@ -41,6 +41,11 @@ class InputMediaPhoto implements InputMedia
      * @var array|null
      */
     public ?array $caption_entities = null;
+    /**
+     * Optional. Pass True if the photo needs to be covered with a spoiler animation
+     * @var bool|null
+     */
+    public ?bool $has_spoiler = false;
 
     public function __construct(string $media)
     {

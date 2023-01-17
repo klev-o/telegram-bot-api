@@ -186,6 +186,11 @@ class Message extends BaseType
      */
     public ?array $caption_entities = null;
     /**
+     * Optional. True, if the message media is covered by a spoiler animation
+     * @var bool|null
+     */
+    public ?bool $has_media_spoiler = null;
+    /**
      * Optional. Message is a shared contact, information about the contact
      * @var Contact|null
      */

@@ -63,6 +63,11 @@ class InputMediaAnimation implements InputMedia
      * @var int|null
      */
     public ?int $duration = 0;
+    /**
+     * Optional. Pass True if the animation needs to be covered with a spoiler animation
+     * @var bool|null
+     */
+    public ?bool $has_spoiler = false;
 
     public function __construct(string $media)
     {

@@ -68,6 +68,11 @@ class InputMediaVideo implements InputMedia
      * @var bool|null
      */
     public ?bool $supports_streaming = false;
+    /**
+     * Optional. Pass True if the video needs to be covered with a spoiler animation
+     * @var bool|null
+     */
+    public ?bool $has_spoiler = false;
 
     public function __construct(string $media)
     {

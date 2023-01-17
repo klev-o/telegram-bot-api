@@ -73,6 +73,11 @@ class SendVideo extends BaseMethod
      */
     public ?array $caption_entities = null;
     /**
+     * 	Pass True if the video needs to be covered with a spoiler animation
+     * @var bool|null
+     */
+    public ?bool $has_spoiler = false;
+    /**
      * Pass True, if the uploaded video is suitable for streaming
      * @var bool|null
      */
