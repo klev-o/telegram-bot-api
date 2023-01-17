@@ -26,21 +26,19 @@ class EditForumTopic extends BaseMethod
     public int $message_thread_id;
     /**
      * Topic name, 1-128 characters
-     * @var string
+     * @var string|null
      */
-    public string $name;
+    public ?string $name = null;
     /**
      * New unique identifier of the custom emoji shown as the topic icon.
      * Use getForumTopicIconStickers to get all allowed custom emoji identifiers.
-     * @var string
+     * @var string|null
      */
-    public string $icon_custom_emoji_id;
+    public ?string $icon_custom_emoji_id = null;
 
-    public function __construct(string $chat_id, int $message_thread_id, string $name, string $icon_custom_emoji_id)
+    public function __construct(string $chat_id, int $message_thread_id)
     {
         $this->chat_id = $chat_id;
         $this->message_thread_id = $message_thread_id;
-        $this->name = $name;
-        $this->icon_custom_emoji_id = $icon_custom_emoji_id;
     }
 }
