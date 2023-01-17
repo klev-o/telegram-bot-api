@@ -314,6 +314,11 @@ class Message extends BaseType
      */
     public ?string $connected_website = null;
     /**
+     * Optional. Service message: the user allowed the bot added to the attachment menu to write messages
+     * @var WriteAccessAllowed|null
+     */
+    public ?WriteAccessAllowed $write_access_allowed = null;
+    /**
      * Optional. Telegram Passport data
      * @var PassportData|null
      */
@@ -329,6 +334,11 @@ class Message extends BaseType
      */
     public ?ForumTopicCreated $forum_topic_created = null;
     /**
+     * Optional. Service message: forum topic edited
+     * @var ForumTopicEdited|null
+     */
+    public ?ForumTopicEdited $forum_topic_edited = null;
+    /**
      * Optional. Service message: forum topic closed
      * @var ForumTopicClosed|null
      */
@@ -338,6 +348,16 @@ class Message extends BaseType
      * @var ForumTopicReopened|null
      */
     public ?ForumTopicReopened $forum_topic_reopened = null;
+    /**
+     * Optional. Service message: the 'General' forum topic hidden
+     * @var GeneralForumTopicHidden|null
+     */
+    public ?GeneralForumTopicHidden $general_forum_topic_hidden = null;
+    /**
+     * 	Optional. Service message: the 'General' forum topic unhidden
+     * @var GeneralForumTopicUnhidden|null
+     */
+    public ?GeneralForumTopicUnhidden $general_forum_topic_unhidden = null;
     /**
      * TODO: delete after delete in telegram api
      * Optional. Service message: voice chat scheduled
