@@ -149,10 +149,10 @@ class Telegram
      */
     private bool $enableEvents = false;
 
-    public function __construct(string $token)
+    public function __construct(string $token, ?TelegramHttpClientInterface $client = null)
     {
         $this->token = $token;
-        $this->apiClient = new Client();
+        $this->apiClient = $client ?? new Client();
     }
 
     /**
@@ -1709,7 +1709,7 @@ class Telegram
     /**
      * @param $method
      * @param array $data
-     * @return mixed
+     * @return array
      * @throws TelegramException
      */
     private function request($method, array $data = []): array
@@ -1725,8 +1725,8 @@ class Telegram
             if (isset($out['ok']) && $out['ok'] === true && isset($out['result'])) {
                 return $out;
             }
-            
-            throw new \Exception('Unexpected response: ' . $body);
+
+            throw new TelegramException('Unexpected response: ' . $body);
         } catch (GuzzleException $e) {
             throw new TelegramException('GuzzleException: ' . $e->getMessage());
         } catch (\Exception $e) {
