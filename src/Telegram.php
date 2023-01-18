@@ -17,6 +17,7 @@ use Klev\TelegramBotApi\Methods\DeleteMyCommands;
 use Klev\TelegramBotApi\Methods\DeleteWebhook;
 use Klev\TelegramBotApi\Methods\EditChatInviteLink;
 use Klev\TelegramBotApi\Methods\EditForumTopic;
+use Klev\TelegramBotApi\Methods\EditGeneralForumTopic;
 use Klev\TelegramBotApi\Methods\EditMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\ForwardMessage;
 use Klev\TelegramBotApi\Methods\Games\SendGame;
@@ -1560,6 +1561,91 @@ class Telegram
     {
         $out = $this->request('unpinAllForumTopicMessages', ['json' => (array)$unpinAllForumTopicMessages]);
         return new $out['result'];
+    }
+
+    /**
+     * @param EditGeneralForumTopic $editGeneralForumTopic
+     * @return bool
+     * @throws TelegramException
+     */
+    public function editGeneralForumTopic(EditGeneralForumTopic $editGeneralForumTopic): bool
+    {
+        $out = $this->request('editGeneralForumTopic', ['json' => (array)$editGeneralForumTopic]);
+        return new $out['result'];
+    }
+
+    /**
+     * Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an administrator in
+     * the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
+     *
+     * @link https://core.telegram.org/bots/api#closegeneralforumtopic
+     *
+     * @param string $chat_id
+     * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+     *
+     * @return bool
+     * @throws TelegramException
+     */
+    public function closeGeneralForumTopic(string $chat_id): bool
+    {
+        $out = $this->request('closeGeneralForumTopic', ['json' => ['chat_id' => $chat_id]]);
+        return $out['result'];
+    }
+
+    /**
+     * Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an administrator
+     * in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be
+     * automatically unhidden if it was hidden. Returns True on success.
+     *
+     * @link https://core.telegram.org/bots/api#reopengeneralforumtopic
+     *
+     * @param string $chat_id
+     * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+     *
+     * @return bool
+     * @throws TelegramException
+     */
+    public function reopenGeneralForumTopic(string $chat_id): bool
+    {
+        $out = $this->request('reopenGeneralForumTopic', ['json' => ['chat_id' => $chat_id]]);
+        return $out['result'];
+    }
+
+    /**
+     * Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the
+     * chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically
+     * closed if it was open. Returns True on success.
+     *
+     * @link https://core.telegram.org/bots/api#hidegeneralforumtopic
+     *
+     * @param string $chat_id
+     * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+     *
+     * @return bool
+     * @throws TelegramException
+     */
+    public function hideGeneralForumTopic(string $chat_id): bool
+    {
+        $out = $this->request('hideGeneralForumTopic', ['json' => ['chat_id' => $chat_id]]);
+        return $out['result'];
+    }
+
+    /**
+     * Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the
+     * chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
+     *
+     * @link https://core.telegram.org/bots/api#unhidegeneralforumtopic
+     *
+     * @param string $chat_id
+     * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+     *
+     * @return bool
+     * @throws TelegramException
+     */
+    public function unhideGeneralForumTopic(string $chat_id): bool
+    {
+        $out = $this->request('unhideGeneralForumTopic', ['json' => ['chat_id' => $chat_id]]);
+        return $out['result'];
     }
 
     /**
