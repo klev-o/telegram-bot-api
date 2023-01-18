@@ -20,6 +20,11 @@ class SendChatAction extends BaseMethod
      */
     public string $chat_id;
     /**
+     * Unique identifier for the target message thread; supergroups only
+     * @var int|null
+     */
+    public ?int $message_thread_id = null;
+    /**
      * Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text
      * messages, upload_photo for photos, record_video or upload_video for videos, record_voice or upload_voice for
      * voice notes, upload_document for general files, choose_sticker for stickers find_location for location data,
