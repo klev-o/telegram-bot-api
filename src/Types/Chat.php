@@ -128,6 +128,18 @@ class Chat extends BaseType
      */
     public ?int $message_auto_delete_time = null;
     /**
+     * Optional. True, if aggressive anti-spam checks are enabled in the supergroup. The field is only available to chat
+     * administrators. Returned only in getChat.
+     * @var bool|null
+     */
+    public ?bool $has_aggressive_anti_spam_enabled = null;
+    /**
+     * Optional. True, if non-administrators can only get the list of bots and administrators in the chat.
+     * Returned only in getChat.
+     * @var bool|null
+     */
+    public ?bool $has_hidden_members = null;
+    /**
      * Optional. True, if messages from the chat can't be forwarded to other chats. Returned only in getChat.
      * @var bool|null
      */
