@@ -18,11 +18,35 @@ class ChatPermissions extends BaseType
      */
     public ?bool $can_send_messages;
     /**
-     * Optional. True, if the user is allowed to send audios, documents, photos, videos, video notes and voice notes,
-     * implies can_send_messages
+     * Optional. True, if the user is allowed to send audios
      * @var bool|null
      */
-    public ?bool $can_send_media_messages;
+    public ?bool $can_send_audios;
+    /**
+     * Optional. True, if the user is allowed to send documents
+     * @var bool|null
+     */
+    public ?bool $can_send_documents;
+    /**
+     * Optional. True, if the user is allowed to send photos
+     * @var bool|null
+     */
+    public ?bool $can_send_photos;
+    /**
+     * Optional. True, if the user is allowed to send videos
+     * @var bool|null
+     */
+    public ?bool $can_send_videos;
+    /**
+     * Optional. True, if the user is allowed to send video notes
+     * @var bool|null
+     */
+    public ?bool $can_send_video_notes;
+    /**
+     * Optional. True, if the user is allowed to send voice notes
+     * @var bool|null
+     */
+    public ?bool $can_send_voice_notes;
     /**
      * Optional. True, if the user is allowed to send polls, implies can_send_messages
      * @var bool|null
@@ -61,5 +85,4 @@ class ChatPermissions extends BaseType
      * @var bool|null
      */
     public ?bool $can_manage_topics = null;
-
 }

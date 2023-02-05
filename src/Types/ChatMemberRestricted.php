@@ -24,6 +24,56 @@ class ChatMemberRestricted extends ChatMember
      */
     public bool $is_member;
     /**
+     * True, if the user is allowed to send text messages, contacts, locations and venues
+     * @var bool
+     */
+    public bool $can_send_messages;
+    /**
+     * True, if the user is allowed to send audios
+     * @var bool
+     */
+    public bool $can_send_audios;
+    /**
+     * True, if the user is allowed to send documents
+     * @var bool
+     */
+    public bool $can_send_documents;
+    /**
+     * True, if the user is allowed to send photos
+     * @var bool
+     */
+    public bool $can_send_photos;
+    /**
+     * True, if the user is allowed to send videos
+     * @var bool
+     */
+    public bool $can_send_videos;
+    /**
+     * 	True, if the user is allowed to send video note
+     * @var bool
+     */
+    public bool $can_send_video_notes;
+    /**
+     * True, if the user is allowed to send voice notes
+     * @var bool
+     */
+    public bool $can_send_voice_notes;
+    /**
+     * True, if the user is allowed to send polls
+     * @var bool
+     */
+    public bool $can_send_polls;
+    /**
+     * True, if the user is allowed to send animations, games, stickers and use inline bots
+     * @var bool
+     */
+    public bool $can_send_other_messages;
+    /**
+     * True, if the user is allowed to add web page previews to their messages
+     * @var bool
+     */
+    public bool $can_add_web_page_previews;
+    /**
      * True, if the user is allowed to change the chat title, photo and other settings
      * @var bool
      */
@@ -43,31 +93,6 @@ class ChatMemberRestricted extends ChatMember
      * @var bool|null
      */
     public ?bool $can_manage_topics = null;
-    /**
-     * True, if the user is allowed to send text messages, contacts, locations and venues
-     * @var bool
-     */
-    public bool $can_send_messages;
-    /**
-     * True, if the user is allowed to send audios, documents, photos, videos, video notes and voice notes
-     * @var bool
-     */
-    public bool $can_send_media_messages;
-    /**
-     * True, if the user is allowed to send polls
-     * @var bool
-     */
-    public bool $can_send_polls;
-    /**
-     * True, if the user is allowed to send animations, games, stickers and use inline bots
-     * @var bool
-     */
-    public bool $can_send_other_messages;
-    /**
-     * True, if the user is allowed to add web page previews to their messages
-     * @var bool
-     */
-    public bool $can_add_web_page_previews;
     /**
      * Date when restrictions will be lifted for this user; unix time. If 0, then the user is restricted forever
      * @var int
