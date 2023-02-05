@@ -308,6 +308,16 @@ class Message extends BaseType
      */
     public ?SuccessfulPayment $successful_payment = null;
     /**
+     * Optional. Service message: a user was shared with the bot
+     * @var UserShared|null
+     */
+    public ?UserShared $user_shared = null;
+    /**
+     * Optional. Service message: a chat was shared with the bot
+     * @var ChatShared|null
+     */
+    public ?ChatShared $chat_shared = null;
+    /**
      * Optional. The domain name of the website on which the user has logged in. More about Telegram Login »
      * @link https://core.telegram.org/widgets/login
      * @var string|null
