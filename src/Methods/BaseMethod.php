@@ -59,6 +59,18 @@ abstract class BaseMethod
                     /**@var KeyboardButton $btn*/
                     foreach ($item as $btn) {
                         $btn->removeNullableFields();
+                        if (isset($btn->request_chat)) {
+                            if (!empty($btn->request_chat->user_administrator_rights)) {
+                                $btn->request_chat->user_administrator_rights = json_encode(
+                                    $btn->request_chat->user_administrator_rights
+                                );
+                            }
+                            if (!empty($btn->request_chat->bot_administrator_rights)) {
+                                $btn->request_chat->bot_administrator_rights = json_encode(
+                                    $btn->request_chat->bot_administrator_rights
+                                );
+                            }
+                        }
                     }
                 }
             }

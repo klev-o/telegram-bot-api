@@ -26,6 +26,18 @@ class KeyboardButton extends BaseType
      */
     public string $text;
     /**
+     * Optional. If specified, pressing the button will open a list of suitable users. Tapping on any user will send
+     * their identifier to the bot in a “user_shared” service message. Available in private chats only.
+     * @var KeyboardButtonRequestUser|null
+     */
+    public ?KeyboardButtonRequestUser $request_user = null;
+    /**
+     * Optional. If specified, pressing the button will open a list of suitable chats. Tapping on a chat will send its
+     * identifier to the bot in a “chat_shared” service message. Available in private chats only.
+     * @var KeyboardButtonRequestChat|null
+     */
+    public ?KeyboardButtonRequestChat $request_chat = null;
+    /**
      * Optional. If True, the user's phone number will be sent as a contact when the button is pressed. Available
      * in private chats only
      * @var bool|null
