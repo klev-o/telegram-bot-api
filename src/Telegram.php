@@ -1649,6 +1649,18 @@ class Telegram
     }
 
     /**
+     * Allows you to create a request manually. Can be used for unrealized features.
+     * @param string $method
+     * @param array $data
+     * @return array
+     * @throws TelegramException
+     */
+    public function makeRequest(string $method, array $data = []): array
+    {
+        return $this->request($method, ['json' => $data]);
+    }
+
+    /**
      * @return string
      */
     public function getToken(): string
