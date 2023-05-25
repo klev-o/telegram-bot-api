@@ -61,7 +61,7 @@ class Sticker extends BaseType
      * Optional. Sticker thumbnail in the .WEBP or .JPG format
      * @var PhotoSize|null
      */
-    public ?PhotoSize $thumb = null;
+    public ?PhotoSize $thumbnail = null;
     /**
      * Optional. Emoji associated with the sticker
      * @var string|null
@@ -87,6 +87,12 @@ class Sticker extends BaseType
      * @var string|null
      */
     public ?string $custom_emoji_id = null;
+    /**
+     * Optional. True, if the sticker must be repainted to a text color in messages, the color of the Telegram
+     * Premium badge in emoji status, white color on chat photos, or another appropriate color in other places
+     * @var bool|null
+     */
+    public ?bool $needs_repainting = null;
     /**
      * Optional. File size
      * @var int|null
