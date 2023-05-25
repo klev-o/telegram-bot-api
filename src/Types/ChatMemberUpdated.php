@@ -45,6 +45,11 @@ class ChatMemberUpdated extends BaseType
      * @var ChatInviteLink|null
      */
     public ?ChatInviteLink $invite_link = null;
+    /**
+     * Optional. True, if the user joined the chat via a chat folder invite link
+     * @var bool|null
+     */
+    public ?bool $via_chat_folder_invite_link = null;
 
     protected function bindObjects($key, $data): ?object
     {
