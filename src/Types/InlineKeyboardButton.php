@@ -65,6 +65,12 @@ class InlineKeyboardButton extends BaseType
      */
     public ?string $switch_inline_query_current_chat = null;
     /**
+     * Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type,
+     * open that chat and insert the bot's username and the specified inline query in the input field
+     * @var SwitchInlineQueryChosenChat|null
+     */
+    public ?SwitchInlineQueryChosenChat $switch_inline_query_chosen_chat = null;
+    /**
      * Optional. Description of the game that will be launched when the user presses the button.
      * NOTE: This type of button must always be the first button in the first row.
      * @var CallbackGame|null
@@ -80,8 +86,12 @@ class InlineKeyboardButton extends BaseType
     public function bindObjects($key, $data)
     {
         switch ($key) {
+            case 'web_app':
+                return new WebAppInfo($data);
             case 'login_url':
                 return new LoginUrl($data);
+            case 'switch_inline_query_chosen_chat':
+                return new SwitchInlineQueryChosenChat($data);
             case 'callback_game':
                 return new CallbackGame($data);
         }
