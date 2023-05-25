@@ -5,7 +5,10 @@ namespace Klev\TelegramBotApi\Methods\Stickers;
 
 
 use Klev\TelegramBotApi\Methods\BaseMethod;
+use Klev\TelegramBotApi\TelegramException;
+use Klev\TelegramBotApi\Types\Stickers\InputSticker;
 use Klev\TelegramBotApi\Types\Stickers\MaskPosition;
+use Klev\TelegramBotApi\Types\Stickers\StickerInterface;
 
 /**
  * Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus
@@ -36,62 +39,53 @@ class CreateNewStickerSet extends BaseMethod
      */
     public string $title;
     /**
-     * PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either
-     * width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the
-     * Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new
-     * one using multipart/form-data. More info on Sending Files »
-     * @var string|null
+     * A JSON-serialized list of 1-50 initial stickers to be added to the sticker set
+     * @var InputSticker[]
      */
-    public ?string $png_sticker = null;
+    public $stickers = '';
     /**
-     * TGS animation with the sticker, uploaded using multipart/form-data.
-     * See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements
-     * @var string|null
+     * Format of stickers in the set, must be one of “static”, “animated”, “video”
+     * @var string
      */
-    public ?string $tgs_sticker = null;
+    public string $sticker_format;
     /**
-     * WEBM video with the sticker, uploaded using multipart/form-data.
-     * See https://core.telegram.org/stickers#video-sticker-requirements for technical requirements
-     * @var string|null
-     */
-    public ?string $webm_sticker = null;
-    /**
-     * Type of stickers in the set, pass “regular” or “mask”. Custom emoji sticker sets can't be created via the
-     * Bot API at the moment. By default, a regular sticker set is created.
+     * Type of stickers in the set, pass “regular”, “mask”, or “custom_emoji”. By default, a regular sticker
+     * set is created.
      * @var string|null
      */
     public ?string $sticker_type = null;
     /**
-     * One or more emoji corresponding to the sticker
-     * @var string
-     */
-    public string $emojis;
-    /**
-     * Pass True, if a set of mask stickers should be created
+     * Pass True if stickers in the sticker set must be repainted to the color of text when used in messages, the accent
+     * color if used as emoji status, white on chat photos, or another appropriate color based on context;
+     * for custom emoji sticker sets only
      * @var bool|null
-     * @deprecated 1.4.0 The parameter contains_masks has been removed from the documentation of the method
-     * createNewStickerSet. The parameter will still work for backward compatibility, but new bots should use the
-     * parameter sticker_type instead.
      */
-    public ?bool $contains_masks = null;
-    /**
-     * A JSON-serialized object for position where the mask should be placed on faces
-     * @var MaskPosition
-     */
-    public $mask_position = '';
+    public ?bool $needs_repainting = null;
 
-    public function __construct(int $user_id, string $name, string $title, string $emojis)
+    public function __construct(int $user_id, string $name, string $title, array $stickers, ?string $sticker_format)
     {
         $this->user_id = $user_id;
         $this->name = $name;
         $this->title = $title;
-        $this->emojis = $emojis;
+        $this->stickers = $stickers;
+        $this->sticker_format = $sticker_format ?? 'static';
     }
 
     public function preparation(): void
     {
-        if (!empty($this->contains_masks)) {
-            $this->contains_masks = json_encode($this->contains_masks);
+        if (!empty($this->stickers)) {
+            $this->stickers = json_encode($this->stickers);
+        }
+    }
+
+    /**
+     * @throws TelegramException
+     */
+    public function validation()
+    {
+        $amountStickers = count($this->stickers);
+        if ($amountStickers < 1 || $amountStickers > 50) {
+            throw new TelegramException('Parameter "stickers" must include 1 to 50 items. In fact: '. $amountStickers . ' items');
         }
     }
 }

@@ -1157,10 +1157,16 @@ class Telegram
      */
     public function createNewStickerSet(CreateNewStickerSet $createNewStickerSet): bool
     {
-        $createNewStickerSet->preparation();
+        $createNewStickerSet->validation();
 
-        $data = BaseMethod::getDataForMultipart($createNewStickerSet);
-        $requestData = !empty($data) ? ['multipart' => $data] : ['json' =>(array)$createNewStickerSet];
+        $data = BaseMethod::getDataForCreateNewSticker($createNewStickerSet);
+
+        if (!empty($data)) {
+            $requestData = ['multipart' => $data];
+        } else {
+            $createNewStickerSet->preparation();
+            $requestData = ['json' =>(array)$createNewStickerSet];
+        }
 
         $out = $this->request('createNewStickerSet', $requestData);
         return $out['result'];

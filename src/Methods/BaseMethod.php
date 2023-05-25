@@ -21,6 +21,7 @@ use Klev\TelegramBotApi\Types\InputMediaPhoto;
 use Klev\TelegramBotApi\Types\InputMediaVideo;
 use Klev\TelegramBotApi\Types\KeyboardButton;
 use Klev\TelegramBotApi\Types\ReplyKeyboardMarkup;
+use Klev\TelegramBotApi\Types\Stickers\InputSticker;
 
 /**
  * Class BaseMethod
@@ -45,10 +46,10 @@ abstract class BaseMethod
         SetChatPhoto::class =>'photo',
         EditMessageMedia::class =>'media',
         SendSticker::class => 'sticker',
-        CreateNewStickerSet::class => ['png_sticker', 'tgs_sticker', 'webm_sticker'],
         AddStickerToSet::class => ['png_sticker', 'tgs_sticker', 'webm_sticker'],
         SetStickerSetThumb::class => 'thumb',
         UploadStickerFile::class => 'png_sticker',
+        InputSticker::class => 'sticker',
     ];
 
     public function preparation(): void
@@ -115,7 +116,7 @@ abstract class BaseMethod
     {
         $data = [];
 
-        $fileField = self::getMappingFields($object);;
+        $fileField = self::getMappingFields($object);
 
         $isIssetLocalFiles = false;
 
@@ -131,6 +132,48 @@ abstract class BaseMethod
             foreach ($fileField as $field) {
                 $fields[$field] = !is_null($object->$field) ? fopen($object->$field, 'r') : $object->$field;
             }
+
+            foreach ($fields as $name => $value) {
+                $data[] = [
+                    'name' => $name,
+                    'contents' => $value
+                ];
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * @param CreateNewStickerSet $object
+     * @return array
+     * @throws TelegramException
+     */
+    public static function getDataForCreateNewSticker(CreateNewStickerSet $object): array
+    {
+        $stickers = $object->stickers;
+
+        $data = [];
+
+        /**@var InputSticker $sticker*/
+        foreach ($stickers as $sticker) {
+            $fileField = self::getMappingFields($sticker);
+
+            foreach ($fileField as $field) {
+                if (self::isLocalFile($sticker->$field)) {
+                    $name = basename($sticker->$field);
+                    $data[] = [
+                        'name' => $name,
+                        'contents' => fopen($sticker->$field, 'r'),
+                    ];
+                    $sticker->$field = "attach://" . $name;
+                }
+            }
+
+        }
+
+        if (!empty($data)) {
+            $fields = get_object_vars($object);
 
             foreach ($fields as $name => $value) {
                 $data[] = [
@@ -187,7 +230,6 @@ abstract class BaseMethod
         }
 
         return $data;
-
     }
 
     /**
