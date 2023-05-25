@@ -82,17 +82,17 @@ class InlineQueryResultVenue implements InlineQueryResult
      * Optional. Url of the thumbnail for the result
      * @var string|null
      */
-    public ?string $thumb_url;
+    public ?string $thumbnail_url;
     /**
      * Optional. Thumbnail width
      * @var int|null
      */
-    public ?int $thumb_width;
+    public ?int $thumbnail_width;
     /**
      * Optional. Thumbnail height
      * @var int|null
      */
-    public ?int $thumb_height;
+    public ?int $thumbnail_height;
 
     public function __construct(string $id, float $latitude, float $longitude, string $title, string $address)
     {
