@@ -1782,6 +1782,29 @@ class Telegram
     }
 
     /**
+     * Use this method to set the title of a created sticker set. Returns True on success.
+     *
+     * @link https://core.telegram.org/bots/api#setstickersettitle
+     *
+     * @param string $name
+     * Sticker set name
+     *
+     * @param string $title
+     * Sticker set title, 1-64 characters
+     *
+     * @return bool
+     * @throws TelegramException
+     */
+    public function setStickerSetTitle(string $name, string $title): bool
+    {
+        $out = $this->request('setStickerSetTitle', ['json' => [
+            'name' => $name,
+            'title' => $title,
+        ]]);
+        return $out['result'];
+    }
+
+    /**
      * Allows you to create a request manually. Can be used for unrealized features.
      * @param string $method
      * @param array $data
