@@ -12,10 +12,10 @@ use Klev\TelegramBotApi\Methods\BaseMethod;
  *
  * @link https://core.telegram.org/bots/api#deletestickerfromset
  *
- * Class SetStickerSetThumb
+ * Class SetStickerSetThumbnail
  * @package Klev\TelegramBotApi\Methods\Stickers
  */
-class SetStickerSetThumb extends BaseMethod
+class SetStickerSetThumbnail extends BaseMethod
 {
     /**
      * Sticker set name
@@ -37,7 +37,7 @@ class SetStickerSetThumb extends BaseMethod
      *
      * @var string|null
      */
-    public ?string $thumb = null;
+    public ?string $thumbnail = null;
 
     public function __construct(string $name, int $user_id)
     {

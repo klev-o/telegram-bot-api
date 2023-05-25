@@ -7,13 +7,12 @@ namespace Klev\TelegramBotApi\Methods;
 use Klev\TelegramBotApi\Methods\Stickers\AddStickerToSet;
 use Klev\TelegramBotApi\Methods\Stickers\CreateNewStickerSet;
 use Klev\TelegramBotApi\Methods\Stickers\SendSticker;
-use Klev\TelegramBotApi\Methods\Stickers\SetStickerSetThumb;
+use Klev\TelegramBotApi\Methods\Stickers\SetStickerSetThumbnail;
 use Klev\TelegramBotApi\Methods\Stickers\UploadStickerFile;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageMedia;
 use Klev\TelegramBotApi\TelegramException;
 use Klev\TelegramBotApi\Types\InlineKeyboardButton;
 use Klev\TelegramBotApi\Types\InlineKeyboardMarkup;
-use Klev\TelegramBotApi\Types\InputMedia;
 use Klev\TelegramBotApi\Types\InputMediaAnimation;
 use Klev\TelegramBotApi\Types\InputMediaAudio;
 use Klev\TelegramBotApi\Types\InputMediaDocument;
@@ -46,7 +45,7 @@ abstract class BaseMethod
         SetChatPhoto::class =>'photo',
         EditMessageMedia::class =>'media',
         SendSticker::class => 'sticker',
-        SetStickerSetThumb::class => 'thumbnail',
+        SetStickerSetThumbnail::class => 'thumbnail',
         InputSticker::class => 'sticker',
     ];
 

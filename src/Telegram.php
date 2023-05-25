@@ -67,7 +67,7 @@ use Klev\TelegramBotApi\Methods\Stickers\SetStickerEmojiList;
 use Klev\TelegramBotApi\Methods\Stickers\SetStickerKeywords;
 use Klev\TelegramBotApi\Methods\Stickers\SetStickerMaskPosition;
 use Klev\TelegramBotApi\Methods\Stickers\SetStickerPositionInSet;
-use Klev\TelegramBotApi\Methods\Stickers\SetStickerSetThumb;
+use Klev\TelegramBotApi\Methods\Stickers\SetStickerSetThumbnail;
 use Klev\TelegramBotApi\Methods\Stickers\UploadStickerFile;
 use Klev\TelegramBotApi\Methods\StopMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\TelegramPassport\SetPassportDataErrors;
@@ -1224,16 +1224,16 @@ class Telegram
     }
 
     /**
-     * @param SetStickerSetThumb $setStickerSetThumb
+     * @param SetStickerSetThumbnail $setStickerSetThumbnail
      * @return bool
      * @throws TelegramException
      */
-    public function setStickerSetThumb(SetStickerSetThumb $setStickerSetThumb): bool
+    public function setStickerSetThumbnail(SetStickerSetThumbnail $setStickerSetThumbnail): bool
     {
-        $data = BaseMethod::getDataForMultipart($setStickerSetThumb);
-        $requestData = !empty($data) ? ['multipart' => $data] : ['json' =>(array)$setStickerSetThumb];
+        $data = BaseMethod::getDataForMultipart($setStickerSetThumbnail);
+        $requestData = !empty($data) ? ['multipart' => $data] : ['json' =>(array)$setStickerSetThumbnail];
 
-        $out = $this->request('setStickerSetThumb', $requestData);
+        $out = $this->request('setStickerSetThumbnail', $requestData);
         return $out['result'];
     }
 
