@@ -46,7 +46,6 @@ abstract class BaseMethod
         SetChatPhoto::class =>'photo',
         EditMessageMedia::class =>'media',
         SendSticker::class => 'sticker',
-        AddStickerToSet::class => ['png_sticker', 'tgs_sticker', 'webm_sticker'],
         SetStickerSetThumb::class => 'thumb',
         UploadStickerFile::class => 'png_sticker',
         InputSticker::class => 'sticker',
@@ -145,45 +144,23 @@ abstract class BaseMethod
     }
 
     /**
+     * @param AddStickerToSet $object
+     * @return array
+     * @throws TelegramException
+     */
+    public static function getDataForAddStickerToSet(AddStickerToSet $object): array
+    {
+        return self::getData($object, [$object->sticker], 'sticker');
+    }
+
+    /**
      * @param CreateNewStickerSet $object
      * @return array
      * @throws TelegramException
      */
     public static function getDataForCreateNewSticker(CreateNewStickerSet $object): array
     {
-        $stickers = $object->stickers;
-
-        $data = [];
-
-        /**@var InputSticker $sticker*/
-        foreach ($stickers as $sticker) {
-            $fileField = self::getMappingFields($sticker);
-
-            foreach ($fileField as $field) {
-                if (self::isLocalFile($sticker->$field)) {
-                    $name = basename($sticker->$field);
-                    $data[] = [
-                        'name' => $name,
-                        'contents' => fopen($sticker->$field, 'r'),
-                    ];
-                    $sticker->$field = "attach://" . $name;
-                }
-            }
-
-        }
-
-        if (!empty($data)) {
-            $fields = get_object_vars($object);
-
-            foreach ($fields as $name => $value) {
-                $data[] = [
-                    'name' => $name,
-                    'contents' => $value
-                ];
-            }
-        }
-
-        return $data;
+        return self::getData($object, $object->stickers, 'stickers');
     }
 
     /**
@@ -194,37 +171,46 @@ abstract class BaseMethod
     public static function getDataForMediaGroup(SendMedia $object): array
     {
         $medias = $object->media;
-
-        $data = [];
-
         if (!is_array($medias)) {
             $medias = [$medias];
         }
+        return self::getData($object, $medias, 'media');
+    }
 
-        /**@var InputMedia $media*/
-        foreach ($medias as $media) {
-            $fileField = self::getMappingFields($media);
+    /**
+     * @param object $mainObject
+     * @param array $objects
+     * @param string $namePreparingField
+     * @return array
+     * @throws TelegramException
+     */
+    private static function getData(object $mainObject, array $objects, string $namePreparingField): array
+    {
+        $data = [];
+
+        foreach ($objects as $object) {
+            $fileField = self::getMappingFields($object);
 
             foreach ($fileField as $field) {
-                if (self::isLocalFile($media->$field)) {
-                    $name = basename($media->$field);
+                if (self::isLocalFile($object->$field)) {
+                    $name = basename($object->$field);
                     $data[] = [
                         'name' => $name,
-                        'contents' => fopen($media->$field, 'r'),
+                        'contents' => fopen($object->$field, 'r'),
                     ];
-                    $media->$field = "attach://" . $name;
+                    $object->$field = "attach://" . $name;
                 }
             }
 
         }
 
         if (!empty($data)) {
-            $fields = get_object_vars($object);
+            $fields = get_object_vars($mainObject);
 
             foreach ($fields as $name => $value) {
                 $data[] = [
                     'name' => $name,
-                    'contents' => $name === 'media' ? json_encode($value) : $value
+                    'contents' => $name === $namePreparingField ? json_encode($value) : $value
                 ];
             }
         }

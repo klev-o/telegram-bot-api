@@ -1179,10 +1179,14 @@ class Telegram
      */
     public function addStickerToSet(AddStickerToSet $addStickerToSet): bool
     {
-        $addStickerToSet->preparation();
+        $data = BaseMethod::getDataForAddStickerToSet($addStickerToSet);
 
-        $data = BaseMethod::getDataForMultipart($addStickerToSet);
-        $requestData = !empty($data) ? ['multipart' => $data] : ['json' =>(array)$addStickerToSet];
+        if (!empty($data)) {
+            $requestData = ['multipart' => $data];
+        } else {
+            $addStickerToSet->preparation();
+            $requestData = ['json' =>(array)$addStickerToSet];
+        }
 
         $out = $this->request('addStickerToSet', $requestData);
         return $out['result'];
