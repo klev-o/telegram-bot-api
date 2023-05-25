@@ -1866,6 +1866,30 @@ class Telegram
     }
 
     /**
+     * Use this method to change the bot's name. Returns True on success.
+     *
+     * @link https://core.telegram.org/bots/api#setmyname
+     *
+     * @param string|null $name
+     * New bot name; 0-64 characters. Pass an empty string to remove the dedicated name for the given language.
+     *
+     * @param string|null $language_code
+     * A two-letter ISO 639-1 language code. If empty, the name will be shown to all users for whose language there is
+     * no dedicated name.
+     *
+     * @return bool
+     * @throws TelegramException
+     */
+    public function setMyName(?string $name, ?string $language_code): bool
+    {
+        $out = $this->request('setMyName', ['json' => [
+            'name' => $name,
+            'language_code' => $language_code,
+        ]]);
+        return $out['result'];
+    }
+
+    /**
      * Allows you to create a request manually. Can be used for unrealized features.
      * @param string $method
      * @param array $data
