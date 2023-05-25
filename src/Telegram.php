@@ -78,6 +78,8 @@ use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageReplyMarkup;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageText;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\StopPoll;
 use Klev\TelegramBotApi\Types\BotCommand;
+use Klev\TelegramBotApi\Types\BotDescription;
+use Klev\TelegramBotApi\Types\BotShortDescription;
 use Klev\TelegramBotApi\Types\Chat;
 use Klev\TelegramBotApi\Types\ChatAdministratorRights;
 use Klev\TelegramBotApi\Types\ChatInviteLink;
@@ -1646,6 +1648,97 @@ class Telegram
     {
         $out = $this->request('unhideGeneralForumTopic', ['json' => ['chat_id' => $chat_id]]);
         return $out['result'];
+    }
+
+    /**
+     * Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty.
+     * Returns True on success.
+     *
+     * @link https://core.telegram.org/bots/api#setmydescription
+     *
+     * @param ?string $description
+     * New bot description; 0-512 characters. Pass an empty string to remove the dedicated description for the given
+     * language.
+     *
+     * @param ?string $language_code
+     * A two-letter ISO 639-1 language code. If empty, the description will be applied to all users for whose language
+     * there is no dedicated description.
+     *
+     * @return bool
+     * @throws TelegramException
+     */
+    public function setMyDescription(?string $description, ?string $language_code): bool
+    {
+        $out = $this->request('setMyDescription', ['json' => [
+            'description' => $description,
+            'language_code' => $language_code,
+        ]]);
+        return $out['result'];
+    }
+
+    /**
+     * Use this method to get the current bot description for the given user language.Returns BotDescription on success.
+     *
+     * @link https://core.telegram.org/bots/api#getmydescription
+     *
+     * @param ?string $language_code
+     * A two-letter ISO 639-1 language code or an empty string
+     *
+     * @return BotDescription
+     * @throws TelegramException
+     */
+    public function getMyDescription(?string $language_code): BotDescription
+    {
+        $out = $this->request('getMyDescription', ['json' => [
+            'language_code' => $language_code,
+        ]]);
+        return new BotDescription($out['result']);
+    }
+
+    /**
+     * Use this method to change the bot's short description, which is shown on the bot's profile page and is sent
+     * together with the link when users share the bot. Returns True on success.
+     *
+     * @link https://core.telegram.org/bots/api#setmyshortdescription
+     *
+     * @param ?string $short_description
+     * New short description for the bot; 0-120 characters. Pass an empty string to remove the dedicated short
+     * description for the given language.
+     *
+     * @param ?string $language_code
+     * A two-letter ISO 639-1 language code. If empty, the short description will be applied to all users for whose
+     * language there is no dedicated short description.
+     *
+     * @return bool
+     * @throws TelegramException
+     */
+    public function setMyShortDescription(?string $short_description, ?string $language_code): bool
+    {
+        $out = $this->request('setMyShortDescription', ['json' => [
+            'short_description' => $short_description,
+            'language_code' => $language_code,
+        ]]);
+        return $out['result'];
+    }
+
+    /**
+     * Use this method to get the current bot short description for the given user language.
+     * Returns BotShortDescription on success.
+     *
+     * @link A two-letter ISO 639-1 language code or an empty string
+     *
+     * @param ?string $language_code
+     * A two-letter ISO 639-1 language code or an empty string
+     *
+     * @return BotShortDescription
+     * @throws TelegramException
+     */
+    public function getMyShortDescription(?string $language_code): BotShortDescription
+    {
+        $out = $this->request('getMyShortDescription', ['json' => [
+            'language_code' => $language_code,
+        ]]);
+        return new BotShortDescription($out['result']);
     }
 
     /**
