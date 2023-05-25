@@ -1805,6 +1805,25 @@ class Telegram
     }
 
     /**
+     * Use this method to delete a sticker set that was created by the bot. Returns True on success.
+     *
+     * @link https://core.telegram.org/bots/api#deletestickerset
+     *
+     * @param string $name
+     * Sticker set name
+     *
+     * @return bool
+     * @throws TelegramException
+     */
+    public function deleteStickerSet(string $name): bool
+    {
+        $out = $this->request('deleteStickerSet', ['json' => [
+            'name' => $name,
+        ]]);
+        return $out['result'];
+    }
+
+    /**
      * Allows you to create a request manually. Can be used for unrealized features.
      * @param string $method
      * @param array $data
