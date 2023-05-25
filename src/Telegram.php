@@ -65,6 +65,7 @@ use Klev\TelegramBotApi\Methods\Stickers\CreateNewStickerSet;
 use Klev\TelegramBotApi\Methods\Stickers\SendSticker;
 use Klev\TelegramBotApi\Methods\Stickers\SetStickerEmojiList;
 use Klev\TelegramBotApi\Methods\Stickers\SetStickerKeywords;
+use Klev\TelegramBotApi\Methods\Stickers\SetStickerMaskPosition;
 use Klev\TelegramBotApi\Methods\Stickers\SetStickerPositionInSet;
 use Klev\TelegramBotApi\Methods\Stickers\SetStickerSetThumb;
 use Klev\TelegramBotApi\Methods\Stickers\UploadStickerFile;
@@ -1847,7 +1848,20 @@ class Telegram
     {
         $setStickerKeywords->preparation();
 
-        $out = $this->request('setStickerEmojiList', ['json' => (array)$setStickerKeywords]);
+        $out = $this->request('setStickerKeywords', ['json' => (array)$setStickerKeywords]);
+        return $out['result'];
+    }
+
+    /**
+     * @param SetStickerMaskPosition $setStickerMaskPosition
+     * @return bool
+     * @throws TelegramException
+     */
+    public function setStickerMaskPosition(SetStickerMaskPosition $setStickerMaskPosition): bool
+    {
+        $setStickerMaskPosition->preparation();
+
+        $out = $this->request('setStickerMaskPosition', ['json' => (array)$setStickerMaskPosition]);
         return $out['result'];
     }
 
