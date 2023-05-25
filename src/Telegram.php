@@ -82,6 +82,7 @@ use Klev\TelegramBotApi\Methods\UpdatingMessages\EditMessageText;
 use Klev\TelegramBotApi\Methods\UpdatingMessages\StopPoll;
 use Klev\TelegramBotApi\Types\BotCommand;
 use Klev\TelegramBotApi\Types\BotDescription;
+use Klev\TelegramBotApi\Types\BotName;
 use Klev\TelegramBotApi\Types\BotShortDescription;
 use Klev\TelegramBotApi\Types\Chat;
 use Klev\TelegramBotApi\Types\ChatAdministratorRights;
@@ -1887,6 +1888,25 @@ class Telegram
             'language_code' => $language_code,
         ]]);
         return $out['result'];
+    }
+
+    /**
+     * Use this method to get the current bot name for the given user language. Returns BotName on success.
+     *
+     * @link https://core.telegram.org/bots/api#getmyname
+     *
+     * @param string|null $language_code
+     * A two-letter ISO 639-1 language code or an empty string
+     *
+     * @return BotName
+     * @throws TelegramException
+     */
+    public function getMyName(?string $language_code): BotName
+    {
+        $out = $this->request('getMyName', ['json' => [
+            'language_code' => $language_code,
+        ]]);
+        return new BotName($out['result']);
     }
 
     /**
