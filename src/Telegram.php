@@ -1758,6 +1758,30 @@ class Telegram
     }
 
     /**
+     * Use this method to set the thumbnail of a custom emoji sticker set. Returns True on success.
+     *
+     * @link https://core.telegram.org/bots/api#setcustomemojistickersetthumbnail
+     *
+     * @param string $name
+     * Sticker set name
+     *
+     * @param string|null $custom_emoji_id
+     * Custom emoji identifier of a sticker from the sticker set; pass an empty string to drop the thumbnail and use
+     * the first sticker as the thumbnail.
+     *
+     * @return bool
+     * @throws TelegramException
+     */
+    public function setCustomEmojiStickerSetThumbnail(string $name, ?string $custom_emoji_id): bool
+    {
+        $out = $this->request('setCustomEmojiStickerSetThumbnail', ['json' => [
+            'name' => $name,
+            'custom_emoji_id' => $custom_emoji_id,
+        ]]);
+        return $out['result'];
+    }
+
+    /**
      * Allows you to create a request manually. Can be used for unrealized features.
      * @param string $method
      * @param array $data
