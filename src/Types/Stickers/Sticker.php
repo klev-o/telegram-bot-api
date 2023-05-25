@@ -102,7 +102,7 @@ class Sticker extends BaseType
     protected function bindObjects($key, $data): ?object
     {
         switch ($key) {
-            case 'thumb':
+            case 'thumbnail':
                 return new PhotoSize($data);
             case 'mask_position':
                 return new MaskPosition($data);

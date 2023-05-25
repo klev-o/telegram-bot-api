@@ -32,7 +32,7 @@ class InputMediaAnimation implements InputMedia
      * uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files »
      * @var string|null
      */
-    public ?string $thumb = '';
+    public ?string $thumbnail = '';
     /**
      * Optional. Caption of the animation to be sent, 0-1024 characters after entities parsing
      * @var string|null

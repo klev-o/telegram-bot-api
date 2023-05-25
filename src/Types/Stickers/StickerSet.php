@@ -61,7 +61,7 @@ class StickerSet extends BaseType
      * Optional. Sticker set thumbnail in the .WEBP or .TGS format
      * @var PhotoSize|null
      */
-    public ?PhotoSize $thumb = null;
+    public ?PhotoSize $thumbnail = null;
 
     protected function bindObjects($key, $data)
     {
@@ -72,7 +72,7 @@ class StickerSet extends BaseType
                     $result[] = new Sticker($entity);
                 }
                 return $result;
-            case 'thumb':
+            case 'thumbnail':
                 return new PhotoSize($data);
         }
 

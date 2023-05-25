@@ -52,12 +52,12 @@ class Audio extends BaseType
      * Optional. Thumbnail of the album cover to which the music file belongs
      * @var PhotoSize|null
      */
-    public ?PhotoSize $thumb = null;
+    public ?PhotoSize $thumbnail = null;
 
     protected function bindObjects($key, $data): ?object
     {
         switch ($key) {
-            case 'thumb':
+            case 'thumbnail':
                 return new PhotoSize($data);
         }
 

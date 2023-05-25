@@ -27,7 +27,7 @@ class Document extends BaseType
      * Optional. Document thumbnail as defined by sender
      * @var PhotoSize|null
      */
-    public ?PhotoSize $thumb = null;
+    public ?PhotoSize $thumbnail = null;
     /**
      * Optional. Original filename as defined by sender
      * @var string|null
@@ -47,7 +47,7 @@ class Document extends BaseType
     protected function bindObjects($key, $data): ?object
     {
         switch ($key) {
-            case 'thumb':
+            case 'thumbnail':
                 return new PhotoSize($data);
         }
 

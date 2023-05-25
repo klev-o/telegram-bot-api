@@ -42,7 +42,7 @@ class Video extends BaseType
      * Optional. Video thumbnail
      * @var PhotoSize|null
      */
-    public ?PhotoSize $thumb = null;
+    public ?PhotoSize $thumbnail = null;
     /**
      * Optional. Mime type of a file as defined by sender
      * @var string|null
@@ -57,7 +57,7 @@ class Video extends BaseType
     protected function bindObjects($key, $data): ?object
     {
         switch ($key) {
-            case 'thumb':
+            case 'thumbnail':
                 return new PhotoSize($data);
         }
 

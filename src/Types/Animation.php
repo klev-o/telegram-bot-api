@@ -42,7 +42,7 @@ class Animation extends BaseType
      * Optional. Animation thumbnail as defined by sender
      * @var PhotoSize|null
      */
-    public ?PhotoSize $thumb = null;
+    public ?PhotoSize $thumbnail = null;
     /**
      * Optional. Original animation filename as defined by sender
      * @var string|null
@@ -67,7 +67,7 @@ class Animation extends BaseType
     protected function bindObjects($key, $data)
     {
         switch ($key) {
-            case 'thumb':
+            case 'thumbnail':
                 return new PhotoSize($data);
         }
 

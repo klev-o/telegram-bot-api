@@ -37,7 +37,7 @@ class VideoNote extends BaseType
      * Optional. Video thumbnail
      * @var PhotoSize|null
      */
-    public ?PhotoSize $thumb = null;
+    public ?PhotoSize $thumbnail = null;
     /**
      * Optional. File size
      * @var int|null
@@ -47,7 +47,7 @@ class VideoNote extends BaseType
     protected function bindObjects($key, $data): ?object
     {
         switch ($key) {
-            case 'thumb':
+            case 'thumbnail':
                 return new PhotoSize($data);
         }
 
