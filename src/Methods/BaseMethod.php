@@ -83,10 +83,6 @@ abstract class BaseMethod
             $this->reply_markup = json_encode($this->reply_markup);
         }
 
-        if (!empty($this->results)) {
-            $this->results = json_encode($this->results);
-        }
-
         if (!empty($this->prices)) {
             $this->prices = json_encode($this->prices);
         }
