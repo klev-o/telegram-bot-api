@@ -40,7 +40,7 @@ class SendDocument extends BaseMethod
      * using multipart/form-data under <file_attach_name>. More info on Sending Files »
      * @var string|null
      */
-    public ?string $thumb = null;
+    public ?string $thumbnail = null;
     /**
      * Document caption (may also be used when resending documents by file_id), 0-1024 characters after entities parsing
      * @var string|null

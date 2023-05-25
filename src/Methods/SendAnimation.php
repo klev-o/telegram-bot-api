@@ -56,7 +56,7 @@ class SendAnimation extends BaseMethod
      * multipart/form-data under <file_attach_name>. More info on Sending Files »
      * @var string|null
      */
-    public ?string $thumb = null;
+    public ?string $thumbnail = null;
     /**
      * Animation caption (may also be used when resending animation by file_id), 0-1024 characters after entities parsing
      * @var string|null
