@@ -5,6 +5,7 @@ namespace Klev\TelegramBotApi\Methods\Stickers;
 
 
 use Klev\TelegramBotApi\Methods\BaseMethod;
+use Klev\TelegramBotApi\Types\Stickers\InputSticker;
 
 /**
  * Use this method to upload a .PNG file with a sticker for later use in createNewStickerSet and addStickerToSet methods
@@ -23,15 +24,27 @@ class UploadStickerFile extends BaseMethod
      */
     public int $user_id;
     /**
-     * PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either
-     * width or height must be exactly 512px. More info on Sending Files »
+     * A file with the sticker in .WEBP, .PNG, .TGS, or .WEBM format. See https://core.telegram.org/stickers for technical requirements.
+     * @var InputSticker
+     */
+    public $sticker;
+    /**
+     * Format of stickers in the set, must be one of “static”, “animated”, “video”
      * @var string
      */
-    public string $png_sticker;
+    public string $sticker_format;
 
-    public function __construct(int $user_id, string $png_sticker)
+    public function __construct(int $user_id, InputSticker $sticker, string $sticker_format)
     {
         $this->user_id = $user_id;
-        $this->png_sticker = $png_sticker;
+        $this->sticker = $sticker;
+        $this->sticker_format = $sticker_format;
+    }
+
+    public function preparation(): void
+    {
+        if (!empty($this->sticker)) {
+            $this->sticker = json_encode($this->sticker);
+        }
     }
 }

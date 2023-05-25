@@ -144,6 +144,16 @@ abstract class BaseMethod
     }
 
     /**
+     * @param UploadStickerFile $object
+     * @return array
+     * @throws TelegramException
+     */
+    public static function getDataForUploadStickerFile(UploadStickerFile $object): array
+    {
+        return self::getData($object, [$object->sticker], 'sticker');
+    }
+
+    /**
      * @param AddStickerToSet $object
      * @return array
      * @throws TelegramException

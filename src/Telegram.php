@@ -1241,8 +1241,14 @@ class Telegram
      */
     public function uploadStickerFile(UploadStickerFile $uploadStickerFile): File
     {
-        $data = BaseMethod::getDataForMultipart($uploadStickerFile);
-        $requestData = !empty($data) ? ['multipart' => $data] : ['json' =>(array)$uploadStickerFile];
+        $data = BaseMethod::getDataForUploadStickerFile($uploadStickerFile);
+
+        if (!empty($data)) {
+            $requestData = ['multipart' => $data];
+        } else {
+            $uploadStickerFile->preparation();
+            $requestData = ['json' =>(array)$uploadStickerFile];
+        }
 
         $out = $this->request('uploadStickerFile', $requestData);
         return new File($out['result']);
