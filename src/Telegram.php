@@ -1518,7 +1518,7 @@ class Telegram
     public function editForumTopic(EditForumTopic $editForumTopic): bool
     {
         $out = $this->request('editForumTopic', ['json' => (array)$editForumTopic]);
-        return new $out['result'];
+        return $out['result'];
     }
 
     /**
@@ -1529,7 +1529,7 @@ class Telegram
     public function closeForumTopic(CloseForumTopic $closeForumTopic): bool
     {
         $out = $this->request('closeForumTopic', ['json' => (array)$closeForumTopic]);
-        return new $out['result'];
+        return $out['result'];
     }
 
     /**
@@ -1540,7 +1540,7 @@ class Telegram
     public function reopenForumTopic(ReopenForumTopic $reopenForumTopic): bool
     {
         $out = $this->request('reopenForumTopic', ['json' => (array)$reopenForumTopic]);
-        return new $out['result'];
+        return $out['result'];
     }
 
     /**
@@ -1551,7 +1551,7 @@ class Telegram
     public function deleteForumTopic(DeleteForumTopic $deleteForumTopic): bool
     {
         $out = $this->request('deleteForumTopic', ['json' => (array)$deleteForumTopic]);
-        return new $out['result'];
+        return $out['result'];
     }
 
     /**
@@ -1562,7 +1562,7 @@ class Telegram
     public function unpinAllForumTopicMessages(UnpinAllForumTopicMessages $unpinAllForumTopicMessages): bool
     {
         $out = $this->request('unpinAllForumTopicMessages', ['json' => (array)$unpinAllForumTopicMessages]);
-        return new $out['result'];
+        return $out['result'];
     }
 
     /**
@@ -1573,7 +1573,7 @@ class Telegram
     public function editGeneralForumTopic(EditGeneralForumTopic $editGeneralForumTopic): bool
     {
         $out = $this->request('editGeneralForumTopic', ['json' => (array)$editGeneralForumTopic]);
-        return new $out['result'];
+        return $out['result'];
     }
 
     /**
