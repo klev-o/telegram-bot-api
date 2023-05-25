@@ -53,13 +53,13 @@ class InlineQueryResultMpeg4Gif implements InlineQueryResult
      * URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
      * @var string
      */
-    public string $thumb_url;
+    public string $thumbnail_url;
     /**
      * Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”.
      * Defaults to “image/jpeg”
      * @var string|null
      */
-    public ?string $thumb_mime_type;
+    public ?string $thumbnail_mime_type;
     /**
      * Optional. Title for the result
      * @var string|null
@@ -92,10 +92,10 @@ class InlineQueryResultMpeg4Gif implements InlineQueryResult
      */
     public ?InputMessageContent $input_message_content;
 
-    public function __construct(string $id, string $mpeg4_url, string $thumb_url)
+    public function __construct(string $id, string $mpeg4_url, string $thumbnail_url)
     {
         $this->id = $id;
         $this->mpeg4_url = $mpeg4_url;
-        $this->thumb_url = $thumb_url;
+        $this->thumbnail_url  = $thumbnail_url;
     }
 }
