@@ -37,7 +37,7 @@ class InlineQueryResultPhoto implements InlineQueryResult
      * URL of the thumbnail for the photo
      * @var string
      */
-    public string $thumb_url;
+    public string $thumbnail_url;
     /**
      * Optional. Width of the photo
      * @var int|null
@@ -84,10 +84,10 @@ class InlineQueryResultPhoto implements InlineQueryResult
      */
     public ?InputMessageContent $input_message_content;
 
-    public function __construct(string $id, string $photo_url, string $thumb_url)
+    public function __construct(string $id, string $photo_url, string $thumbnail_url)
     {
         $this->id = $id;
         $this->photo_url = $photo_url;
-        $this->thumb_url = $thumb_url;
+        $this->thumbnail_url = $thumbnail_url;
     }
 }

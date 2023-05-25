@@ -43,7 +43,7 @@ class InlineQueryResultVideo implements InlineQueryResult
      * URL of the thumbnail (jpeg only) for the video
      * @var string
      */
-    public string $thumb_url;
+    public string $thumbnail_url;
     /**
      * Title for the result
      * @var string
@@ -96,12 +96,12 @@ class InlineQueryResultVideo implements InlineQueryResult
      */
     public ?InputMessageContent $input_message_content;
 
-    public function __construct(string $id, string $video_url, string $mime_type, string $thumb_url, string $title)
+    public function __construct(string $id, string $video_url, string $mime_type, string $thumbnail_url, string $title)
     {
         $this->id = $id;
         $this->video_url = $video_url;
         $this->mime_type = $mime_type;
-        $this->thumb_url = $thumb_url;
+        $this->thumbnail_url = $thumbnail_url;
         $this->title = $title;
     }
 }
