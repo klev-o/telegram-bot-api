@@ -63,6 +63,7 @@ use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\Stickers\AddStickerToSet;
 use Klev\TelegramBotApi\Methods\Stickers\CreateNewStickerSet;
 use Klev\TelegramBotApi\Methods\Stickers\SendSticker;
+use Klev\TelegramBotApi\Methods\Stickers\SetStickerEmojiList;
 use Klev\TelegramBotApi\Methods\Stickers\SetStickerPositionInSet;
 use Klev\TelegramBotApi\Methods\Stickers\SetStickerSetThumb;
 use Klev\TelegramBotApi\Methods\Stickers\UploadStickerFile;
@@ -1820,6 +1821,19 @@ class Telegram
         $out = $this->request('deleteStickerSet', ['json' => [
             'name' => $name,
         ]]);
+        return $out['result'];
+    }
+
+    /**
+     * @param SetStickerEmojiList $setStickerEmojiList
+     * @return bool
+     * @throws TelegramException
+     */
+    public function setStickerEmojiList(SetStickerEmojiList $setStickerEmojiList): bool
+    {
+        $setStickerEmojiList->preparation();
+
+        $out = $this->request('setStickerEmojiList', ['json' => (array)$setStickerEmojiList]);
         return $out['result'];
     }
 
