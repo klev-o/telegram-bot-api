@@ -35,6 +35,11 @@ class SendSticker extends BaseMethod
      */
     public string $sticker;
     /**
+     * Emoji associated with the sticker; only for just uploaded stickers
+     * @var string|null
+     */
+    public ?string $emoji = null;
+    /**
      * Sends the message silently. Users will receive a notification with no sound.
      * @var bool|null
      */
