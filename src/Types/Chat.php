@@ -66,6 +66,12 @@ class Chat extends BaseType
      */
     public ?string $emoji_status_custom_emoji_id = null;
     /**
+     * Optional. Expiration date of the emoji status of the other party in a private chat in Unix time, if any.
+     * Returned only in getChat.
+     * @var int|null
+     */
+    public ?int $emoji_status_expiration_date = null;
+    /**
      * Optional. Bio of the other party in a private chat. Returned only in getChat.
      * @var string|null
      */
