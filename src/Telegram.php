@@ -1910,6 +1910,27 @@ class Telegram
     }
 
     /**
+     * Use this method to clear the list of pinned messages in a General forum topic. The bot must be an administrator
+     * in the chat for this to work and must have the can_pin_messages administrator right in the supergroup.
+     * Returns True on success.
+     *
+     * @link https://core.telegram.org/bots/api#unpinallgeneralforumtopicmessages
+     *
+     * @param string $chat_id
+     * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+     *
+     * @return bool
+     * @throws TelegramException
+     */
+    public function unpinAllGeneralForumTopicMessages(string $chat_id): bool
+    {
+        $out = $this->request('unpinAllGeneralForumTopicMessages', ['json' => [
+            'chat_id' => $chat_id,
+        ]]);
+        return $out['result'];
+    }
+
+    /**
      * Allows you to create a request manually. Can be used for unrealized features.
      * @param string $method
      * @param array $data
