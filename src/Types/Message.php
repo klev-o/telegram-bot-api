@@ -160,6 +160,11 @@ class Message extends BaseType
      */
     public ?Sticker $sticker = null;
     /**
+     * Optional. Message is a forwarded story
+     * @var Story|null
+     */
+    public ?Story $story = null;
+    /**
      * Optional. Message is a video, information about the video
      * @var Video|null
      */
