@@ -18,15 +18,20 @@ class PollAnswer extends BaseType
      */
     public string $poll_id;
     /**
-     * The user, who changed the answer to the poll
-     * @var User
+     * Optional. The chat that changed the answer to the poll, if the voter is anonymous
+     * @var Chat|null
      */
-    public User $user;
+    public ?Chat $voter_chat = null;
+    /**
+     * The user, who changed the answer to the poll
+     * @var User|null
+     */
+    public ?User $user = null;
     /**
      * 0-based identifiers of answer options, chosen by the user. May be empty if the user retracted their vote.
      * @var int[]
      */
-    public array $option_ids;
+    public array $option_ids = [];
 
     protected function bindObjects($key, $data): ?object
     {
