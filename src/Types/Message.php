@@ -99,6 +99,11 @@ class Message extends BaseType
      */
     public ?Message $reply_to_message = null;
     /**
+     * Optional. Information about the message that is being replied to, which may come from another chat or forum topic
+     * @var ExternalReplyInfo|null
+     */
+    public ?ExternalReplyInfo $external_reply = null;
+    /**
      * Optional. Bot through which the message was sent
      * @var User|null
      */
@@ -513,6 +518,8 @@ class Message extends BaseType
                 return new WebAppData($data);
             case 'reply_markup':
                 return new InlineKeyboardMarkup($data);
+            case 'external_reply':
+                return new ExternalReplyInfo($data);
         }
 
         return parent::bindObjects($key, $data);
