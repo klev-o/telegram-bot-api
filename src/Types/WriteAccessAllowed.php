@@ -14,8 +14,19 @@ namespace Klev\TelegramBotApi\Types;
 class WriteAccessAllowed extends BaseType
 {
     /**
+     * Optional. True, if the access was granted after the user accepted an explicit request from a Web App sent by the
+     * method requestWriteAccess
+     * @var bool|null
+     */
+    public ?bool $from_request = null;
+    /**
      * Optional. Name of the Web App which was launched from a link
      * @var string|null
      */
-   public ?string $web_app_name = null;
+    public ?string $web_app_name = null;
+    /**
+     * Optional. True, if the access was granted when the bot was added to the attachment or side menu
+     * @var bool|null
+     */
+    public ?bool $from_attachment_menu = null;
 }
