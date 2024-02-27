@@ -85,6 +85,21 @@ class PromoteChatMember extends BaseMethod
      */
     public ?bool $can_invite_users;
     /**
+     * Pass True if the administrator can post stories to the chat
+     * @var bool|null
+     */
+    public ?bool $can_post_stories;
+    /**
+     * Pass True if the administrator can edit stories posted by other users
+     * @var bool|null
+     */
+    public ?bool $can_edit_stories;
+    /**
+     * Pass True if the administrator can delete stories posted by other users
+     * @var bool|null
+     */
+    public ?bool $can_delete_stories;
+    /**
      * Pass True, if the administrator can pin messages, supergroups only
      * @var bool|null
      */
