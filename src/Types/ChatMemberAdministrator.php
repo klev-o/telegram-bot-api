@@ -74,6 +74,21 @@ class ChatMemberAdministrator extends ChatMember
      */
     public bool $can_invite_users;
     /**
+     * True, if the administrator can post stories to the chat
+     * @var bool
+     */
+    public bool $can_post_stories;
+    /**
+     * True, if the administrator can edit stories posted by other users
+     * @var bool
+     */
+    public bool $can_edit_stories;
+    /**
+     * True, if the administrator can delete stories posted by other users
+     * @var bool
+     */
+    public bool $can_delete_stories;
+    /**
      * Optional. True, if the administrator can post in the channel; channels only
      * @var bool|null
      */
