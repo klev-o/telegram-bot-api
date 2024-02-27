@@ -43,6 +43,20 @@ class Update extends BaseType
      */
     public ?Message $edited_channel_post = null;
     /**
+     * Optional. A reaction to a message was changed by a user. The bot must be an administrator in the chat and must
+     * explicitly specify "message_reaction" in the list of allowed_updates to receive these updates. The update isn't
+     * received for reactions set by bots.
+     * @var MessageReactionUpdated|null
+     */
+    public ?MessageReactionUpdated $message_reaction = null;
+    /**
+     * Optional. Reactions to a message with anonymous reactions were changed. The bot must be an administrator in the
+     * chat and must explicitly specify "message_reaction_count" in the list of allowed_updates to receive these
+     * updates. The updates are grouped and can be sent with delay up to a few minutes.
+     * @var MessageReactionCountUpdated|null
+     */
+    public ?MessageReactionCountUpdated $message_reaction_count = null;
+    /**
      * Optional. New incoming inline query
      * @var InlineQuery|null
      */
@@ -125,6 +139,10 @@ class Update extends BaseType
                 return new ChatMemberUpdated($data);
             case 'chat_join_request':
                 return new ChatJoinRequest($data);
+            case 'message_reaction':
+                return new MessageReactionUpdated($data);
+            case 'message_reaction_count':
+                return new MessageReactionCountUpdated($data);
         }
 
         return null;

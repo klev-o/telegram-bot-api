@@ -57,6 +57,7 @@ use Klev\TelegramBotApi\Methods\SetChatPermissions;
 use Klev\TelegramBotApi\Methods\SetChatPhoto;
 use Klev\TelegramBotApi\Methods\SetChatStickerSet;
 use Klev\TelegramBotApi\Methods\SetChatTitle;
+use Klev\TelegramBotApi\Methods\SetMessageReaction;
 use Klev\TelegramBotApi\Methods\SetMyCommands;
 use Klev\TelegramBotApi\Methods\SetMyDefaultAdministratorRights;
 use Klev\TelegramBotApi\Methods\SetWebhook;
@@ -1927,6 +1928,14 @@ class Telegram
         $out = $this->request('unpinAllGeneralForumTopicMessages', ['json' => [
             'chat_id' => $chat_id,
         ]]);
+        return $out['result'];
+    }
+
+    public function setMessageReaction(SetMessageReaction $setMessageReaction): bool
+    {
+        $setMessageReaction->preparation();
+
+        $out = $this->request('setMessageReaction', ['json' => (array)$setMessageReaction]);
         return $out['result'];
     }
 

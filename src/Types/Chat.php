@@ -61,6 +61,12 @@ class Chat extends BaseType
      */
     public ?array $active_usernames = null;
     /**
+     * Optional. List of available reactions allowed in the chat. If omitted, then all emoji reactions are allowed.
+     * Returned only in getChat.
+     * @var ReactionType[]|null
+     */
+    public ?array $available_reactions = null;
+    /**
      * Optional. Custom emoji identifier of emoji status of the other party in a private chat. Returned only in getChat.
      * @var string|null
      */
@@ -191,6 +197,16 @@ class Chat extends BaseType
                 return new ChatPermissions($data);
             case 'location':
                 return new ChatLocation($data);
+            case 'available_reactions':
+                $result = [];
+                foreach ($data as $reaction) {
+                    if(isset($reaction['custom_emoji_id'])){
+                        $result[] = new ReactionTypeCustomEmoji($data);
+                    } else {
+                        $result[] = new ReactionTypeEmoji($data);
+                    }
+                }
+                return $result;
         }
 
         return null;
