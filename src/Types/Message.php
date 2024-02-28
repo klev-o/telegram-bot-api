@@ -41,6 +41,11 @@ class Message extends BaseType implements MaybeInaccessibleMessage
      */
     public ?Chat $sender_chat = null;
     /**
+     * Optional. If the sender of the message boosted the chat, the number of boosts added by the user
+     * @var int|null
+     */
+    public ?int $sender_boost_count = null;
+    /**
      * Date the message was sent in Unix time
      * @var int
      */
@@ -82,6 +87,11 @@ class Message extends BaseType implements MaybeInaccessibleMessage
      * @var TextQuote|null
      */
     public ?TextQuote $quote = null;
+    /**
+     * Optional. For replies to a story, the original story
+     * @var Story|null
+     */
+    public ?Story $reply_to_story = null;
     /**
      * Optional. Bot through which the message was sent
      * @var User|null
@@ -560,6 +570,9 @@ class Message extends BaseType implements MaybeInaccessibleMessage
                 break;
             case 'boost_added':
                 return new ChatBoostAdded($data);
+            case 'story':
+            case 'reply_to_story':
+                return new Story($data);
         }
 
         return parent::bindObjects($key, $data);
