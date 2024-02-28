@@ -330,9 +330,9 @@ class Message extends BaseType
     public ?SuccessfulPayment $successful_payment = null;
     /**
      * Optional. Service message: a user was shared with the bot
-     * @var UserShared|null
+     * @var UsersShared|null
      */
-    public ?UserShared $user_shared = null;
+    public ?UsersShared $users_shared = null;
     /**
      * Optional. Service message: a chat was shared with the bot
      * @var ChatShared|null
@@ -535,6 +535,8 @@ class Message extends BaseType
                 return new TextQuote($data);
             case 'link_preview_options':
                 return new LinkPreviewOptions($data);
+            case 'users_shared':
+                return new UsersShared($data);
         }
 
         return parent::bindObjects($key, $data);
