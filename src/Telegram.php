@@ -10,6 +10,7 @@ use Klev\TelegramBotApi\Methods\BanChatMember;
 use Klev\TelegramBotApi\Methods\BaseMethod;
 use Klev\TelegramBotApi\Methods\CloseForumTopic;
 use Klev\TelegramBotApi\Methods\CopyMessage;
+use Klev\TelegramBotApi\Methods\CopyMessages;
 use Klev\TelegramBotApi\Methods\CreateChatInviteLink;
 use Klev\TelegramBotApi\Methods\CreateForumTopic;
 use Klev\TelegramBotApi\Methods\DeleteForumTopic;
@@ -20,6 +21,7 @@ use Klev\TelegramBotApi\Methods\EditForumTopic;
 use Klev\TelegramBotApi\Methods\EditGeneralForumTopic;
 use Klev\TelegramBotApi\Methods\EditMessageLiveLocation;
 use Klev\TelegramBotApi\Methods\ForwardMessage;
+use Klev\TelegramBotApi\Methods\ForwardMessages;
 use Klev\TelegramBotApi\Methods\Games\SendGame;
 use Klev\TelegramBotApi\Methods\Games\SetGameScore;
 use Klev\TelegramBotApi\Methods\GetChatMember;
@@ -1938,6 +1940,57 @@ class Telegram
         $out = $this->request('setMessageReaction', ['json' => (array)$setMessageReaction]);
         return $out['result'];
     }
+
+    /**
+     * Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found,
+     * they are skipped. Returns True on success.
+     *
+     * @param string $chat_id
+     * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     *
+     * @param int[] $message_ids
+     * Identifiers of 1-100 messages to delete. See deleteMessage for limitations on which messages can be deleted
+     *
+     * @return bool
+     * @throws TelegramException
+     *
+     * @link https://core.telegram.org/bots/api#deletemessages
+     */
+    public function deleteMessages(string $chat_id, array $message_ids): bool
+    {
+        $out = $this->request('deleteMessages', ['json' => [
+            'chat_id' => $chat_id,
+            'message_ids' => $message_ids,
+        ]]);
+        return $out['result'];
+    }
+
+    /**
+     * @param ForwardMessages $forwardMessages
+     * @return Message
+     * @throws TelegramException
+     */
+    public function forwardMessages(ForwardMessages $forwardMessages): Message
+    {
+        $out = $this->request('forwardMessages', ['json' => (array)$forwardMessages]);
+        return new Message($out['result']);
+    }
+
+    /**
+     * @param CopyMessages $copyMessages
+     * @return MessageId[]
+     * @throws TelegramException
+     */
+    public function copyMessages(CopyMessages $copyMessages): array
+    {
+        $out = $this->request('copyMessages', ['json' => (array)$copyMessages]);
+        $result = [];
+        foreach ($out['result'] as $item) {
+            $result[] = new MessageId($item);
+        }
+        return $result;
+    }
+
 
     /**
      * Allows you to create a request manually. Can be used for unrealized features.
