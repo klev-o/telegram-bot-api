@@ -104,6 +104,11 @@ class Message extends BaseType
      */
     public ?ExternalReplyInfo $external_reply = null;
     /**
+     * Optional. For replies that quote part of the original message, the quoted part of the message
+     * @var TextQuote|null
+     */
+    public ?TextQuote $quote = null;
+    /**
      * Optional. Bot through which the message was sent
      * @var User|null
      */
@@ -520,6 +525,8 @@ class Message extends BaseType
                 return new InlineKeyboardMarkup($data);
             case 'external_reply':
                 return new ExternalReplyInfo($data);
+            case 'quote':
+                return new TextQuote($data);
         }
 
         return parent::bindObjects($key, $data);

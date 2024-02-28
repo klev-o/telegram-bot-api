@@ -4,6 +4,7 @@ namespace Klev\TelegramBotApi\Methods;
 
 use Klev\TelegramBotApi\Types\KeyboardInterface;
 use Klev\TelegramBotApi\Types\MessageEntity;
+use Klev\TelegramBotApi\Types\ReplyParameters;
 
 /**
  * Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio
@@ -86,15 +87,10 @@ class SendAudio extends BaseMethod
      */
     public ?bool $protect_content = null;
     /**
-     * If the message is a reply, ID of the original message
-     * @var int|null
+     * Description of the message to reply to
+     * @var ReplyParameters|null
      */
-    public ?int $reply_to_message_id = null;
-    /**
-     * Pass True, if the message should be sent even if the specified replied-to message is not found
-     * @var bool|null
-     */
-    public ?bool $allow_sending_without_reply = null;
+    public ?ReplyParameters $reply_parameters = null;
     /**
      * Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard,
      * instructions to remove reply keyboard or to force a reply from the user.

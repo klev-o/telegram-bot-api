@@ -6,6 +6,7 @@ namespace Klev\TelegramBotApi\Methods;
 
 use Klev\TelegramBotApi\TelegramException;
 use Klev\TelegramBotApi\Types\InputMedia;
+use Klev\TelegramBotApi\Types\ReplyParameters;
 
 /**
  * Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be
@@ -44,15 +45,10 @@ class SendMediaGroup extends BaseMethod implements SendMedia
      */
     public ?bool $protect_content = null;
     /**
-     * If the messages are a reply, ID of the original message
-     * @var int|null
+     * Description of the message to reply to
+     * @var ReplyParameters|null
      */
-    public ?int $reply_to_message_id = null;
-    /**
-     * Pass True, if the message should be sent even if the specified replied-to message is not found
-     * @var bool|null
-     */
-    public ?bool $allow_sending_without_reply = null;
+    public ?ReplyParameters $reply_parameters = null;
 
     public function __construct(string $chat_id, array $media)
     {

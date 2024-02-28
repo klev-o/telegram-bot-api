@@ -6,6 +6,7 @@ namespace Klev\TelegramBotApi\Methods\Games;
 
 use Klev\TelegramBotApi\Methods\BaseMethod;
 use Klev\TelegramBotApi\Types\InlineKeyboardMarkup;
+use Klev\TelegramBotApi\Types\ReplyParameters;
 
 /**
  * Use this method to send a game. On success, the sent Message is returned.
@@ -43,15 +44,10 @@ class SendGame extends BaseMethod
      */
     public ?bool $protect_content = null;
     /**
-     * If the message is a reply, ID of the original message
-     * @var int|null
+     * Description of the message to reply to
+     * @var ReplyParameters|null
      */
-    public ?int $reply_to_message_id = null;
-    /**
-     * Pass True, if the message should be sent even if the specified replied-to message is not found
-     * @var bool|null
-     */
-    public ?bool $allow_sending_without_reply = null;
+    public ?ReplyParameters $reply_parameters = null;
     /**
      * A JSON-serialized object for an inline keyboard. If empty, one 'Play game_title' button will be shown. If not
      * empty, the first button must launch the game.
