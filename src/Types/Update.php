@@ -111,6 +111,17 @@ class Update extends BaseType
      * @var ChatJoinRequest|null
      */
     public ?ChatJoinRequest $chat_join_request = null;
+    /**
+     * Optional. A chat boost was added or changed. The bot must be an administrator in the chat to receive these
+     * updates.
+     * @var ChatBoostUpdated|null
+     */
+    public ?ChatBoostUpdated $chat_boost = null;
+    /**
+     * Optional. A boost was removed from a chat. The bot must be an administrator in the chat to receive these updates.
+     * @var ChatBoostRemoved|null
+     */
+    public ?ChatBoostRemoved $removed_chat_boost = null;
 
     protected function bindObjects($key, $data): ?object
     {
@@ -143,6 +154,10 @@ class Update extends BaseType
                 return new MessageReactionUpdated($data);
             case 'message_reaction_count':
                 return new MessageReactionCountUpdated($data);
+            case 'chat_boost':
+                return new ChatBoostUpdated($data);
+            case 'removed_chat_boost':
+                return new ChatBoostRemoved($data);
         }
 
         return null;

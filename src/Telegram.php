@@ -105,6 +105,7 @@ use Klev\TelegramBotApi\Types\Stickers\Sticker;
 use Klev\TelegramBotApi\Types\Stickers\StickerSet;
 use Klev\TelegramBotApi\Types\Update;
 use Klev\TelegramBotApi\Types\User;
+use Klev\TelegramBotApi\Types\UserChatBoosts;
 use Klev\TelegramBotApi\Types\UserProfilePhotos;
 use Klev\TelegramBotApi\Types\WebhookInfo;
 use Psr\Http\Client\ClientInterface;
@@ -1989,6 +1990,30 @@ class Telegram
             $result[] = new MessageId($item);
         }
         return $result;
+    }
+
+    /**
+     * Use this method to get the list of boosts added to a chat by a user. Requires administrator rights in the chat.
+     * Returns a UserChatBoosts object.
+     *
+     * @param string $chat_id
+     * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     *
+     * @param int $user_id
+     * Unique identifier of the target user
+     *
+     * @return UserChatBoosts
+     * @throws TelegramException
+     *
+     * @link https://core.telegram.org/bots/api#getuserchatboosts
+     */
+    public function getUserChatBoosts(string $chat_id, int $user_id): UserChatBoosts
+    {
+        $out = $this->request('getUserChatBoosts', ['json' => [
+            'chat_id' => $chat_id,
+            'user_id' => $user_id,
+        ]]);
+        return new UserChatBoosts($out['result']);
     }
 
 
