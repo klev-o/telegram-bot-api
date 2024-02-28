@@ -1072,7 +1072,7 @@ class Telegram
     public function editMessageReplyMarkup(EditMessageReplyMarkup $editMessageReplyMarkup)
     {
         $editMessageReplyMarkup->preparation();
-        $out = $this->request('editMessageText', ['json' => (array)$editMessageReplyMarkup]);
+        $out = $this->request('editMessageReplyMarkup', ['json' => (array)$editMessageReplyMarkup]);
         if ($editMessageReplyMarkup->inline_message_id === null) {
             return new Message($out['result']);
         } else {
