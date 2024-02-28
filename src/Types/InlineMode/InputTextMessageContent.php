@@ -4,6 +4,7 @@
 namespace Klev\TelegramBotApi\Types\InlineMode;
 
 
+use Klev\TelegramBotApi\Types\LinkPreviewOptions;
 use Klev\TelegramBotApi\Types\MessageEntity;
 
 /**
@@ -32,10 +33,10 @@ class InputTextMessageContent implements InputMessageContent
      */
     public ?array $entities;
     /**
-     * Optional. Disables link previews for links in the sent message
-     * @var bool|null
+     * Link preview generation options for the message
+     * @var LinkPreviewOptions|null
      */
-    public ?bool $disable_web_page_preview;
+    public ?LinkPreviewOptions $link_preview_options = null;
 
     public function __construct(string $message_text)
     {

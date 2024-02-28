@@ -4,6 +4,7 @@ namespace Klev\TelegramBotApi\Methods\UpdatingMessages;
 
 use Klev\TelegramBotApi\Methods\BaseMethod;
 use Klev\TelegramBotApi\Types\InlineKeyboardMarkup;
+use Klev\TelegramBotApi\Types\LinkPreviewOptions;
 use Klev\TelegramBotApi\Types\MessageEntity;
 
 /**
@@ -49,10 +50,10 @@ class EditMessageText extends BaseMethod
      */
     public ?array $entities = null;
     /**
-     * Disables link previews for links in this message
-     * @var bool
+     * Link preview generation options for the message
+     * @var LinkPreviewOptions|null
      */
-    public ?bool $disable_web_page_preview = null;
+    public ?LinkPreviewOptions $link_preview_options = null;
     /**
      * A JSON-serialized object for an inline keyboard.
      * @var InlineKeyboardMarkup|null

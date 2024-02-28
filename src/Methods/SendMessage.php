@@ -3,6 +3,7 @@
 namespace Klev\TelegramBotApi\Methods;
 
 use Klev\TelegramBotApi\Types\KeyboardInterface;
+use Klev\TelegramBotApi\Types\LinkPreviewOptions;
 use Klev\TelegramBotApi\Types\MessageEntity;
 use Klev\TelegramBotApi\Types\ReplyParameters;
 
@@ -44,10 +45,10 @@ class SendMessage extends BaseMethod
      */
     public ?array $entities = null;
     /**
-     * Disables link previews for links in this message
-     * @var bool
+     * Link preview generation options for the message
+     * @var LinkPreviewOptions|null
      */
-    public ?bool $disable_web_page_preview = false;
+    public ?LinkPreviewOptions $link_preview_options = null;
     /**
      * Sends the message silently. Users will receive a notification with no sound.
      * @var bool

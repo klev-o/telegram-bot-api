@@ -144,6 +144,12 @@ class Message extends BaseType
      */
     public ?array $entities = null;
     /**
+     * Optional. Options used for link preview generation for the message, if it is a text message and link preview
+     * options were changed
+     * @var LinkPreviewOptions|null
+     */
+    public ?LinkPreviewOptions $link_preview_options = null;
+    /**
      * Optional. Message is an animation, information about the animation. For backward compatibility, when this
      * field is set, the document field will also be set
      * @var Animation|null
@@ -527,6 +533,8 @@ class Message extends BaseType
                 return new ExternalReplyInfo($data);
             case 'quote':
                 return new TextQuote($data);
+            case 'link_preview_options':
+                return new LinkPreviewOptions($data);
         }
 
         return parent::bindObjects($key, $data);
