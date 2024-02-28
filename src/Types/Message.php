@@ -390,6 +390,26 @@ class Message extends BaseType
      */
     public ?GeneralForumTopicUnhidden $general_forum_topic_unhidden = null;
     /**
+     * Optional. Service message: a scheduled giveaway was created
+     * @var GiveawayCreated|null
+     */
+    public ?GiveawayCreated $giveaway_created = null;
+    /**
+     * Optional. The message is a scheduled giveaway message
+     * @var Giveaway|null
+     */
+    public ?Giveaway $giveaway = null;
+    /**
+     * Optional. A giveaway with public winners was completed
+     * @var GiveawayWinners|null
+     */
+    public ?GiveawayWinners $giveaway_winners = null;
+    /**
+     * Optional. Service message: a giveaway without public winners was completed
+     * @var GiveawayCompleted|null
+     */
+    public ?GiveawayCompleted $giveaway_completed = null;
+    /**
      * TODO: delete after delete in telegram api
      * Optional. Service message: voice chat scheduled
      * @var VideoChatScheduled|null
@@ -537,6 +557,14 @@ class Message extends BaseType
                 return new LinkPreviewOptions($data);
             case 'users_shared':
                 return new UsersShared($data);
+            case 'giveaway_created':
+                return new GiveawayCreated($data);
+            case 'giveaway':
+                return new Giveaway($data);
+            case 'giveaway_winners':
+                return new GiveawayWinners($data);
+            case 'giveaway_completed':
+                return new GiveawayCompleted($data);
         }
 
         return parent::bindObjects($key, $data);
