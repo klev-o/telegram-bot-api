@@ -334,6 +334,11 @@ class Message extends BaseType implements MaybeInaccessibleMessage
      */
     public ?ProximityAlertTriggered $proximity_alert_triggered = null;
     /**
+     * Optional. Service message: user boosted the chat
+     * @var ChatBoostAdded|null
+     */
+    public ?ChatBoostAdded $boost_added = null;
+    /**
      * Optional. Service message: forum topic created
      * @var ForumTopicCreated|null
      */
@@ -552,6 +557,9 @@ class Message extends BaseType implements MaybeInaccessibleMessage
                     case MessageOrigin::TYPE_CHANNEL:
                         return new MessageOriginChannel($data);
                 }
+                break;
+            case 'boost_added':
+                return new ChatBoostAdded($data);
         }
 
         return parent::bindObjects($key, $data);
