@@ -67,6 +67,30 @@ class Chat extends BaseType
      */
     public ?array $available_reactions = null;
     /**
+     * Optional. Identifier of the accent color for the chat name and backgrounds of the chat photo, reply header, and
+     * link preview. See accent colors for more details. Returned only in getChat. Always returned in getChat.
+     * @var int|null
+     */
+    public ?int $accent_color_id = null;
+    /**
+     * Optional. Custom emoji identifier of emoji chosen by the chat for the reply header and link preview background.
+     * Returned only in getChat.
+     * @var string|null
+     */
+    public ?string $background_custom_emoji_id = null;
+    /**
+     * Optional. Identifier of the accent color for the chat's profile background. See profile accent colors for more
+     * details. Returned only in getChat.
+     * @var int|null
+     */
+    public ?int $profile_accent_color_id = null;
+    /**
+     * Optional. Custom emoji identifier of the emoji chosen by the chat for its profile background.
+     * Returned only in getChat.
+     * @var string|null
+     */
+    public ?string $profile_background_custom_emoji_id = null;
+    /**
      * Optional. Custom emoji identifier of emoji status of the other party in a private chat. Returned only in getChat.
      * @var string|null
      */
@@ -134,6 +158,12 @@ class Chat extends BaseType
      */
     public ?int $slow_mode_delay = null;
     /**
+     * Optional. For supergroups, the minimum number of boosts that a non-administrator user needs to add in order to
+     * ignore slow mode and chat permissions. Returned only in getChat.
+     * @var int|null
+     */
+    public ?int $unrestrict_boost_count = null;
+    /**
      * Optional. The time after which all messages sent to the chat will be automatically deleted; in seconds.
      * Returned only in getChat.
      * @var int|null
@@ -157,6 +187,12 @@ class Chat extends BaseType
      */
     public ?bool $has_protected_content = null;
     /**
+     * Optional. True, if new chat members will have access to old messages; available only to chat administrators.
+     * Returned only in getChat.
+     * @var bool|null
+     */
+    public ?bool $has_visible_history = null;
+    /**
      * Optional. For supergroups, name of group sticker set. Returned only in getChat.
      * @var string|null
      */
@@ -166,6 +202,12 @@ class Chat extends BaseType
      * @var bool|null
      */
     public ?bool $can_set_sticker_set = null;
+    /**
+     * Optional. For supergroups, the name of the group's custom emoji sticker set. Custom emoji from this set can be
+     * used by all users and bots in the group. Returned only in getChat.
+     * @var string|null
+     */
+    public ?string $custom_emoji_sticker_set_name = null;
     /**
      * Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice
      * versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming

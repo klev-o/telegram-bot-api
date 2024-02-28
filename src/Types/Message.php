@@ -16,7 +16,7 @@ use Klev\TelegramBotApi\Types\TelegramPassport\PassportData;
  *
  * @link https://core.telegram.org/bots/api#message
  */
-class Message extends BaseType
+class Message extends BaseType implements MaybeInaccessibleMessage
 {
     /**
      * Unique message identifier inside this chat
@@ -51,36 +51,10 @@ class Message extends BaseType
      */
     public Chat $chat;
     /**
-     * Optional. For forwarded messages, sender of the original message
-     * @var User|null
+     * Optional. Information about the original message for forwarded messages
+     * @var MessageOrigin|null
      */
-    public ?User $forward_from = null;
-    /**
-     * Optional. For messages forwarded from channels, information about the original channel
-     * @var Chat|null
-     */
-    public ?Chat $forward_from_chat = null;
-    /**
-     * Optional. For messages forwarded from channels, identifier of the original message in the channel
-     * @var int|null
-     */
-    public ?int $forward_from_message_id = null;
-    /**
-     * Optional. For messages forwarded from channels, signature of the post author if present
-     * @var string|null
-     */
-    public ?string $forward_signature = null;
-    /**
-     * Optional. Sender's name for messages forwarded from users who disallow adding a link to their account in
-     * forwarded messages
-     * @var string|null
-     */
-    public ?string $forward_sender_name = null;
-    /**
-     * Optional. For forwarded messages, date the original message was sent in Unix time
-     * @var int|null
-     */
-    public ?int $forward_date = null;
+    public ?MessageOrigin $forward_origin = null;
     /**
      * Optional. True, if the message is sent to a forum topic
      * @var bool|null
@@ -314,7 +288,7 @@ class Message extends BaseType
      * reply_to_message fields even if it is itself a reply.
      * @var Message|null
      */
-    public ?Message $pinned_message = null;
+    public ?MaybeInaccessibleMessage $pinned_message = null;
     /**
      * Optional. Message is an invoice for a payment, information about the invoice. More about payments »
      * @link https://core.telegram.org/bots/api#payments
@@ -468,17 +442,19 @@ class Message extends BaseType
     {
         switch ($key) {
             case 'from':
-            case 'forward_from':
             case 'via_bot':
             case 'left_chat_member':
                 return new User($data);
             case 'chat':
-            case 'forward_from_chat':
             case 'sender_chat':
                 return new Chat($data);
             case 'reply_to_message':
             case 'pinned_message':
-                return new self($data);
+                if ($data['date'] == 0) {
+                    return new InaccessibleMessage($data);
+                } else {
+                    return new self($data);
+                }
             case 'animation':
                 return new Animation($data);
             case 'audio':
@@ -565,6 +541,17 @@ class Message extends BaseType
                 return new GiveawayWinners($data);
             case 'giveaway_completed':
                 return new GiveawayCompleted($data);
+            case 'forward_origin':
+                switch ($data['type']) {
+                    case MessageOrigin::TYPE_USER:
+                        return new MessageOriginUser($data);
+                    case MessageOrigin::TYPE_HIDDEN_USER:
+                        return new MessageOriginHiddenUser($data);
+                    case MessageOrigin::TYPE_CHAT:
+                        return new MessageOriginChat($data);
+                    case MessageOrigin::TYPE_CHANNEL:
+                        return new MessageOriginChannel($data);
+                }
         }
 
         return parent::bindObjects($key, $data);
