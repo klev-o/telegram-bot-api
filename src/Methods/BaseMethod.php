@@ -19,7 +19,9 @@ use Klev\TelegramBotApi\Types\InputMediaDocument;
 use Klev\TelegramBotApi\Types\InputMediaPhoto;
 use Klev\TelegramBotApi\Types\InputMediaVideo;
 use Klev\TelegramBotApi\Types\KeyboardButton;
+use Klev\TelegramBotApi\Types\LinkPreviewOptions;
 use Klev\TelegramBotApi\Types\ReplyKeyboardMarkup;
+use Klev\TelegramBotApi\Types\ReplyParameters;
 use Klev\TelegramBotApi\Types\Stickers\InputSticker;
 
 /**
@@ -97,6 +99,14 @@ abstract class BaseMethod
 
         if (!empty($this->errors)) {
             $this->errors = json_encode($this->errors);
+        }
+
+        if (empty($this->link_preview_options)) {
+            $this->link_preview_options = new LinkPreviewOptions();
+        }
+
+        if (empty($this->reply_parameters)) {
+            $this->reply_parameters = new ReplyParameters();
         }
     }
 
