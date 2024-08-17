@@ -56,8 +56,14 @@ class RestrictChatMember extends BaseMethod
 
     public function preparation(): void
     {
+        if ($this->isPrepared()) {
+            return;
+        }
+
         if (!empty($this->permissions)) {
             $this->permissions = json_encode($this->permissions);
         }
+
+        $this->setIsPrepared(true);
     }
 }

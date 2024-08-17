@@ -31,7 +31,13 @@ class GetMyCommands extends BaseMethod
 
     public function preparation(): void
     {
+        if ($this->isPrepared()) {
+            return;
+        }
+
         $this->scope = $this->scope ?? new BotCommandScopeDefault();
         $this->scope = json_encode($this->scope);
+
+        $this->setIsPrepared(true);
     }
 }

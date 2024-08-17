@@ -30,6 +30,7 @@ use Klev\TelegramBotApi\Types\Stickers\InputSticker;
  */
 abstract class BaseMethod
 {
+    protected bool $isPrepared = false;
     private static array $mapClassFileFields = [
         SetWebhook::class => 'certificate',
         SendPhoto::class => 'photo',
@@ -53,6 +54,10 @@ abstract class BaseMethod
 
     public function preparation(): void
     {
+        if ($this->isPrepared()) {
+            return;
+        }
+
         if (!empty($this->reply_markup)) {
             if ($this->reply_markup instanceof ReplyKeyboardMarkup) {
                 foreach ($this->reply_markup->keyboard as $item) {
@@ -108,6 +113,8 @@ abstract class BaseMethod
         if (empty($this->reply_parameters)) {
             $this->reply_parameters = new ReplyParameters();
         }
+
+        $this->setIsPrepared(true);
     }
 
     /**
@@ -264,5 +271,15 @@ abstract class BaseMethod
             }
         }
         return false;
+    }
+
+    public function isPrepared(): bool
+    {
+        return $this->isPrepared;
+    }
+
+    protected function setIsPrepared(bool $isPrepared): void
+    {
+        $this->isPrepared = $isPrepared;
     }
 }

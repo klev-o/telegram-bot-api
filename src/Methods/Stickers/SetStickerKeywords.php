@@ -35,8 +35,14 @@ class SetStickerKeywords extends BaseMethod
 
     public function preparation(): void
     {
+        if ($this->isPrepared()) {
+            return;
+        }
+
         if (!empty($this->keywords)) {
             $this->keywords = json_encode($this->keywords);
         }
+
+        $this->setIsPrepared(true);
     }
 }

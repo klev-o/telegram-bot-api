@@ -37,8 +37,14 @@ class SetStickerMaskPosition extends BaseMethod
 
     public function preparation(): void
     {
+        if ($this->isPrepared()) {
+            return;
+        }
+
         if (!empty($this->mask_position)) {
             $this->mask_position = json_encode($this->mask_position);
         }
+
+        $this->setIsPrepared(true);
     }
 }

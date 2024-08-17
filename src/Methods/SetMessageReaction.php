@@ -49,8 +49,14 @@ class SetMessageReaction extends BaseMethod
 
     public function preparation(): void
     {
+        if ($this->isPrepared()) {
+            return;
+        }
+
         if (!empty($this->reaction) && is_array($this->reaction)) {
             $this->reaction = json_encode($this->reaction);
         }
+
+        $this->setIsPrepared(true);
     }
 }

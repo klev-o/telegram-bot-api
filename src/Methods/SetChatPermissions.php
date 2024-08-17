@@ -42,8 +42,14 @@ class SetChatPermissions extends BaseMethod
 
     public function preparation(): void
     {
+        if ($this->isPrepared()) {
+            return;
+        }
+
         if (!empty($this->permissions)) {
             $this->$this->permissions = json_encode($this->permissions);
         }
+
+        $this->setIsPrepared(true);
     }
 }

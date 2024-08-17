@@ -29,7 +29,13 @@ class SetChatMenuButton extends BaseMethod
 
     public function preparation(): void
     {
+        if ($this->isPrepared()) {
+            return;
+        }
+
         $this->menu_button = $this->menu_button ?? new MenuButtonDefault();
         $this->menu_button = json_encode($this->menu_button);
+
+        $this->setIsPrepared(true);
     }
 }

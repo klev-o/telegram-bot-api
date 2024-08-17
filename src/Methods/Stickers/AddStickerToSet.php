@@ -46,9 +46,15 @@ class AddStickerToSet extends BaseMethod
 
     public function preparation(): void
     {
+        if ($this->isPrepared()) {
+            return;
+        }
+
         if (!empty($this->sticker)) {
             $this->sticker = json_encode($this->sticker);
         }
+
+        $this->setIsPrepared(true);
     }
 
 }

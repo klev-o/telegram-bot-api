@@ -121,10 +121,14 @@ class SendPoll extends BaseMethod
 
     public function preparation(): void
     {
-        parent::preparation();
+        if ($this->isPrepared()) {
+            return;
+        }
 
         if (is_array($this->options)) {
             $this->options = json_encode($this->options);
         }
+
+        parent::preparation();
     }
 }

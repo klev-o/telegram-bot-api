@@ -35,8 +35,14 @@ class SetStickerEmojiList extends BaseMethod
 
     public function preparation(): void
     {
+        if ($this->isPrepared()) {
+            return;
+        }
+
         if (!empty($this->emoji_list)) {
             $this->emoji_list = json_encode($this->emoji_list);
         }
+
+        $this->setIsPrepared(true);
     }
 }

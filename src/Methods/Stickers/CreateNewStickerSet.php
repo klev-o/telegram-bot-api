@@ -83,9 +83,15 @@ class CreateNewStickerSet extends BaseMethod
      */
     public function validation()
     {
+        if ($this->isPrepared()) {
+            return;
+        }
+
         $amountStickers = count($this->stickers);
         if ($amountStickers < 1 || $amountStickers > 50) {
             throw new TelegramException('Parameter "stickers" must include 1 to 50 items. In fact: '. $amountStickers . ' items');
         }
+
+        $this->setIsPrepared(true);
     }
 }

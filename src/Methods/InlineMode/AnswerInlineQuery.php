@@ -61,11 +61,17 @@ class AnswerInlineQuery extends BaseMethod
 
     public function preparation(): void
     {
+        if ($this->isPrepared()) {
+            return;
+        }
+
         if (!empty($this->results)) {
             $this->results = json_encode($this->results);
         }
         if (!empty($this->button)) {
             $this->button = json_encode($this->button);
         }
+
+        $this->setIsPrepared(true);
     }
 }

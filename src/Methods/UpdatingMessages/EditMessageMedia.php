@@ -58,7 +58,11 @@ class EditMessageMedia extends BaseMethod implements SendMedia
 
     public function preparation(): void
     {
-        parent::preparation();
+        if ($this->isPrepared()) {
+            return;
+        }
+
         $this->media = json_encode($this->media);
+        parent::preparation();
     }
 }

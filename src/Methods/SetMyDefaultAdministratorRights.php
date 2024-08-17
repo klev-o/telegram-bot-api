@@ -30,6 +30,12 @@ class SetMyDefaultAdministratorRights extends BaseMethod
 
     public function preparation(): void
     {
+        if ($this->isPrepared()) {
+            return;
+        }
+
         $this->rights = $this->rights ?? json_encode($this->rights);
+
+        $this->setIsPrepared(true);
     }
 }
