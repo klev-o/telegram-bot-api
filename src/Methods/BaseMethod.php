@@ -106,11 +106,11 @@ abstract class BaseMethod
             $this->errors = json_encode($this->errors);
         }
 
-        if (empty($this->link_preview_options)) {
+        if (property_exists($this, 'link_preview_options') && is_null($this->link_preview_options)) {
             $this->link_preview_options = new LinkPreviewOptions();
         }
 
-        if (empty($this->reply_parameters)) {
+        if (property_exists($this, 'reply_parameters') && is_null($this->reply_parameters)) {
             $this->reply_parameters = new ReplyParameters();
         }
 
@@ -146,7 +146,7 @@ abstract class BaseMethod
             foreach ($fields as $name => $value) {
                 $data[] = [
                     'name' => $name,
-                    'contents' => $value
+                    'contents' => is_object($value) ? json_encode($value) : $value
                 ];
             }
         }
