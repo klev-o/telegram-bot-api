@@ -159,7 +159,7 @@ class Telegram
      */
     private bool $enableEvents = false;
 
-    public function __construct(string $token, ?TelegramHttpClientInterface $client = null)
+    public function __construct(string $token, ?ClientInterface $client = null)
     {
         $this->token = $token;
         $this->apiClient = $client ?? new Client();
