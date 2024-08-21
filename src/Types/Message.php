@@ -235,9 +235,9 @@ class Message extends BaseType implements MaybeInaccessibleMessage
     public ?array $new_chat_members = null;
     /**
      * Optional. A member was removed from the group, information about them (this member may be the bot itself)
-     * @var user|null
+     * @var User|null
      */
-    public ?user $left_chat_member = null;
+    public ?User $left_chat_member = null;
     /**
      * Optional. A chat title was changed to this value
      * @var string|null
