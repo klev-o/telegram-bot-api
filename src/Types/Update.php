@@ -49,6 +49,11 @@ class Update extends BaseType
      */
     public ?BusinessConnection $business_connection = null;
     /**
+     * Optional. New message from a connected business account
+     * @var Message|null
+     */
+    public ?Message $business_message = null;
+    /**
      * Optional. A reaction to a message was changed by a user. The bot must be an administrator in the chat and must
      * explicitly specify "message_reaction" in the list of allowed_updates to receive these updates. The update isn't
      * received for reactions set by bots.
