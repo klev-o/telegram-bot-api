@@ -87,6 +87,7 @@ use Klev\TelegramBotApi\Types\BotCommand;
 use Klev\TelegramBotApi\Types\BotDescription;
 use Klev\TelegramBotApi\Types\BotName;
 use Klev\TelegramBotApi\Types\BotShortDescription;
+use Klev\TelegramBotApi\Types\BusinessConnection;
 use Klev\TelegramBotApi\Types\Chat;
 use Klev\TelegramBotApi\Types\ChatAdministratorRights;
 use Klev\TelegramBotApi\Types\ChatInviteLink;
@@ -2014,6 +2015,26 @@ class Telegram
             'user_id' => $user_id,
         ]]);
         return new UserChatBoosts($out['result']);
+    }
+
+    /**
+     * Use this method to get information about the connection of the bot with a business account.
+     * Returns a BusinessConnection object on success.
+     *
+     * @param string $business_connection_id
+     * Unique identifier of the business connection
+     *
+     * @return BusinessConnection
+     * @throws TelegramException
+     *
+     * @link https://core.telegram.org/bots/api#getbusinessconnection
+     */
+    public function getBusinessConnection(string $business_connection_id): BusinessConnection
+    {
+        $out = $this->request('getBusinessConnection', ['json' => [
+            'business_connection_id' => $business_connection_id,
+        ]]);
+        return new BusinessConnection($out['result']);
     }
 
 
