@@ -15,6 +15,11 @@ namespace Klev\TelegramBotApi\Methods;
 class SendChatAction extends BaseMethod
 {
     /**
+     * Unique identifier of the business connection on behalf of which the message will be sent
+     * @var string|null
+     */
+    public ?string $business_connection_id = null;
+    /**
      * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
      * @var string
      */
