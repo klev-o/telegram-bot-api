@@ -19,6 +19,11 @@ use Klev\TelegramBotApi\Types\ReplyParameters;
 class SendGame extends BaseMethod
 {
     /**
+     * Unique identifier of the business connection on behalf of which the message will be sent
+     * @var string|null
+     */
+    public ?string $business_connection_id = null;
+    /**
      * Unique identifier for the target chat
      * @var int
      */
