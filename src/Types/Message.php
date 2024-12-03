@@ -46,6 +46,12 @@ class Message extends BaseType implements MaybeInaccessibleMessage
      */
     public ?int $sender_boost_count = null;
     /**
+     * Optional. The bot that actually sent the message on behalf of the business account. Available only for outgoing
+     * messages sent on behalf of the connected business account.
+     * @var User|null
+     */
+    public ?User $sender_business_bot;
+    /**
      * Date the message was sent in Unix time
      * @var int
      */
