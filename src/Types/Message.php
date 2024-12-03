@@ -51,6 +51,13 @@ class Message extends BaseType implements MaybeInaccessibleMessage
      */
     public int $date;
     /**
+     * Optional. Unique identifier of the business connection from which the message was received. If non-empty,
+     * the message belongs to a chat of the corresponding business account that is independent from any potential
+     * bot chat which might share the same identifier.
+     * @var string|null
+     */
+    public ?string $business_connection_id = null;
+    /**
      * Conversation the message belongs to
      * @var Chat
      */
