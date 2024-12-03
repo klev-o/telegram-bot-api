@@ -43,6 +43,12 @@ class Update extends BaseType
      */
     public ?Message $edited_channel_post = null;
     /**
+     * Optional. The bot was connected to or disconnected from a business account, or a user edited an existing
+     * connection with the bot
+     * @var BusinessConnection|null
+     */
+    public ?BusinessConnection $business_connection = null;
+    /**
      * Optional. A reaction to a message was changed by a user. The bot must be an administrator in the chat and must
      * explicitly specify "message_reaction" in the list of allowed_updates to receive these updates. The update isn't
      * received for reactions set by bots.
