@@ -43,6 +43,14 @@ class EditMessageLiveLocation extends BaseMethod
      */
     public float $longitude;
     /**
+     * New period in seconds during which the location can be updated, starting from the message send date.
+     * If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed
+     * the current live_period by more than a day, and the live location expiration date must remain within the next
+     * 90 days. If not specified, then live_period remains unchanged
+     * @var int|null
+     */
+    public ?int $live_period = null;
+    /**
      * The radius of uncertainty for the location, measured in meters; 0-1500
      * @var float|null
      */
