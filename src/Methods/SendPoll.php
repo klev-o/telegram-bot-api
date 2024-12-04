@@ -4,6 +4,7 @@
 namespace Klev\TelegramBotApi\Methods;
 
 
+use Klev\TelegramBotApi\Types\InputPollOption;
 use Klev\TelegramBotApi\Types\KeyboardInterface;
 use Klev\TelegramBotApi\Types\MessageEntity;
 use Klev\TelegramBotApi\Types\ReplyParameters;
@@ -39,8 +40,20 @@ class SendPoll extends BaseMethod
      */
     public string $question;
     /**
-     * A JSON-serialized list of answer options, 2-10 strings 1-100 characters each
-     * @var string[]|string
+     * Mode for parsing entities in the question. See formatting options for more details. Currently, only custom
+     * emoji entities are allowed
+     * @var string|null
+     */
+    public ?string $question_parse_mode = null;
+    /**
+     * A JSON-serialized list of special entities that appear in the poll question. It can be specified instead of
+     * question_parse_mode
+     * @var MessageEntity[]|null
+     */
+    public $question_entities = '';
+    /**
+     * A JSON-serialized list of 2-10 answer options
+     * @var InputPollOption[]|string
      */
     public $options;
     /**
@@ -132,6 +145,10 @@ class SendPoll extends BaseMethod
 
         if (is_array($this->options)) {
             $this->options = json_encode($this->options);
+        }
+
+        if (is_array($this->question_entities)) {
+            $this->question_entities = json_encode($this->question_entities);
         }
 
         parent::preparation();

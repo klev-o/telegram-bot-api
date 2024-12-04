@@ -38,6 +38,8 @@ class PollAnswer extends BaseType
         switch ($key) {
             case 'user':
                 return new User($data);
+            case 'voter_chat':
+                return new Chat($data);
         }
 
         return null;
