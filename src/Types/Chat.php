@@ -55,6 +55,11 @@ class Chat extends BaseType
      */
     public ?ChatPhoto $photo = null;
     /**
+     * Optional. For private chats with business accounts, the intro of the business
+     * @var BusinessIntro|null
+     */
+    public ?BusinessIntro $business_intro = null;
+    /**
      * Optional. If non-empty, the list of all active chat usernames; for private chats, supergroups and channels.
      * Returned only in getChat.
      * @var string[]|null
