@@ -18,6 +18,12 @@ class PollOption extends BaseType
      */
     public string $text;
     /**
+     * Optional. Special entities that appear in the option text. Currently, only custom emoji entities are allowed
+     * in poll option texts
+     * @var MessageEntity[]
+     */
+    public ?array $text_entities = null;
+    /**
      * Number of users that voted for this option
      * @var string
      */
