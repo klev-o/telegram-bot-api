@@ -121,6 +121,12 @@ class Message extends BaseType implements MaybeInaccessibleMessage
      */
     public ?bool $has_protected_content = null;
     /**
+     * Optional. True, if the message was sent by an implicit action, for example, as an away or a greeting business
+     * message, or as a scheduled message
+     * @var bool|null
+     */
+    public ?bool $is_from_offline = null;
+    /**
      * Optional. The unique identifier of a media message group this message belongs to
      * @var string|null
      */
