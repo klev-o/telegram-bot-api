@@ -44,4 +44,8 @@ class InputSticker extends BaseType
      * @var string[]
      */
     public ?array $keywords;
+
+    public const FORMAT_STATIC = 'static';
+    public const FORMAT_ANIMATED = 'animated';
+    public const FORMAT_VIDEO = 'video';
 }

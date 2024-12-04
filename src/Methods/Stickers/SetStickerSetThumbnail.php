@@ -38,6 +38,12 @@ class SetStickerSetThumbnail extends BaseMethod
      * @var string|null
      */
     public ?string $thumbnail = null;
+    /**
+     * Format of the thumbnail, must be one of “static” for a .WEBP or .PNG image, “animated” for a .TGS animation,
+     * or “video” for a WEBM video
+     * @var string
+     */
+    public string $format;
 
     public function __construct(string $name, int $user_id)
     {
