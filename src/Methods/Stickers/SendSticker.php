@@ -35,8 +35,9 @@ class SendSticker extends BaseMethod
     public ?int $message_thread_id = null;
     /**
      * Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended),
-     * pass an HTTP URL as a String for Telegram to get a .WEBP file from the Internet, or upload a new one using
-     * multipart/form-data. More info on Sending Files »
+     * pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP, .TGS,
+     * or .WEBM sticker using multipart/form-data. More information on Sending Files ». Video and animated stickers
+     * can't be sent via an HTTP URL
      * @var string
      */
     public string $sticker;
