@@ -236,6 +236,11 @@ class Chat extends BaseType
      * @var Chat|null
      */
     public ?Chat $personal_chat = null;
+    /**
+     * Optional. For private chats, the date of birth of the user
+     * @var Birthdate|null
+     */
+    public ?Birthdate $birthdate = null;
 
     /**
      * Optional. For supergroups, the location to which the supergroup is connected. Returned only in getChat.
