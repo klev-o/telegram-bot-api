@@ -23,6 +23,12 @@ class Poll extends BaseType
      */
     public string $question;
     /**
+     * Optional. Special entities that appear in the question. Currently, only custom emoji entities are allowed in
+     * poll questions
+     * @var MessageEntity[]
+     */
+    public ?array $question_entities = null;
+    /**
      * List of poll options
      * @var PollOption[]
      */
@@ -90,6 +96,7 @@ class Poll extends BaseType
                 }
                 return $result;
             case 'explanation_entities':
+            case 'question_entities':
                 $result = [];
                 foreach ($data as $entity) {
                     $result[] = new MessageEntity($entity);
