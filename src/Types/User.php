@@ -67,4 +67,10 @@ class User extends BaseType
      * @var bool|null
      */
     public ?bool $supports_inline_queries = null;
+    /**
+     * Optional. True, if the bot can be connected to a Telegram Business account to receive its messages.
+     * Returned only in getMe.
+     * @var bool|null
+     */
+    public ?bool $can_connect_to_business = null;
 }
