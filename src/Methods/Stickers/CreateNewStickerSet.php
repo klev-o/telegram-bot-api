@@ -85,7 +85,7 @@ class CreateNewStickerSet extends BaseMethod
         }
 
         $amountStickers = count($this->stickers);
-        if ($amountStickers < 1 || $amountStickers > 50) {
+        if ($amountStickers < 1 || $amountStickers > 120) {
             throw new TelegramException('Parameter "stickers" must include 1 to 50 items. In fact: '. $amountStickers . ' items');
         }
 
