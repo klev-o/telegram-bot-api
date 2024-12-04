@@ -65,6 +65,11 @@ class Chat extends BaseType
      */
     public ?BusinessLocation $business_location = null;
     /**
+     * Optional. For private chats with business accounts, the opening hours of the business
+     * @var BusinessOpeningHours|null
+     */
+    public ?BusinessOpeningHours $business_opening_hours  = null;
+    /**
      * Optional. If non-empty, the list of all active chat usernames; for private chats, supergroups and channels.
      * Returned only in getChat.
      * @var string[]|null

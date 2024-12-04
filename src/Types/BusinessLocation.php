@@ -5,7 +5,7 @@ namespace Klev\TelegramBotApi\Types;
 /**
  * Contains information about the location of a Telegram Business account.
  *
- * Class BusinessIntro
+ * Class BusinessLocation
  * @package Klev\TelegramBotApi\Types
  *
  * @link https://core.telegram.org/bots/api#businesslocation
