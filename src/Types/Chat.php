@@ -231,6 +231,11 @@ class Chat extends BaseType
      * @var int|null
      */
     public ?int $linked_chat_id = null;
+    /**
+     * Optional. For private chats, the personal channel of the user
+     * @var Chat|null
+     */
+    public ?Chat $personal_chat = null;
 
     /**
      * Optional. For supergroups, the location to which the supergroup is connected. Returned only in getChat.
