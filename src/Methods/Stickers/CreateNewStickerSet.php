@@ -7,8 +7,6 @@ namespace Klev\TelegramBotApi\Methods\Stickers;
 use Klev\TelegramBotApi\Methods\BaseMethod;
 use Klev\TelegramBotApi\TelegramException;
 use Klev\TelegramBotApi\Types\Stickers\InputSticker;
-use Klev\TelegramBotApi\Types\Stickers\MaskPosition;
-use Klev\TelegramBotApi\Types\Stickers\StickerInterface;
 
 /**
  * Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus
@@ -44,11 +42,6 @@ class CreateNewStickerSet extends BaseMethod
      */
     public $stickers = '';
     /**
-     * Format of stickers in the set, must be one of “static”, “animated”, “video”
-     * @var string
-     */
-    public string $sticker_format;
-    /**
      * Type of stickers in the set, pass “regular”, “mask”, or “custom_emoji”. By default, a regular sticker
      * set is created.
      * @var string|null
@@ -62,19 +55,23 @@ class CreateNewStickerSet extends BaseMethod
      */
     public ?bool $needs_repainting = null;
 
-    public function __construct(int $user_id, string $name, string $title, array $stickers, ?string $sticker_format)
+    public function __construct(int $user_id, string $name, string $title, array $stickers)
     {
         $this->user_id = $user_id;
         $this->name = $name;
         $this->title = $title;
         $this->stickers = $stickers;
-        $this->sticker_format = $sticker_format ?? 'static';
     }
 
     public function preparation(): void
     {
+        if ($this->isPrepared()) {
+            return;
+        }
+
         if (!empty($this->stickers)) {
             $this->stickers = json_encode($this->stickers);
+            $this->setIsPrepared(true);
         }
     }
 
