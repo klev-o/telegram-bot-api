@@ -26,4 +26,33 @@ class ChatShared extends BaseType
      * @var int
      */
     public int $chat_id;
+    /**
+     * Optional. Title of the chat, if the title was requested by the bot.
+     * @var string|null
+     */
+    public ?string $title = null;
+    /**
+     * Optional. Username of the chat, if the username was requested by the bot and available.
+     * @var string|null
+     */
+    public ?string $username = null;
+    /**
+     * Optional. Available sizes of the chat photo, if the photo was requested by the bot
+     * @var PhotoSize[]|null
+     */
+    public ?array $photo = null;
+
+    protected function bindObjects($key, $data)
+    {
+        switch ($key) {
+            case 'photo':
+                $result = [];
+                foreach ($data as $entity) {
+                    $result[] = new PhotoSize($entity);
+                }
+                return $result;
+        }
+
+        return null;
+    }
 }
