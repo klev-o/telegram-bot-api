@@ -65,6 +65,7 @@ use Klev\TelegramBotApi\Methods\SetMyDefaultAdministratorRights;
 use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\Stickers\AddStickerToSet;
 use Klev\TelegramBotApi\Methods\Stickers\CreateNewStickerSet;
+use Klev\TelegramBotApi\Methods\Stickers\ReplaceStickerInSet;
 use Klev\TelegramBotApi\Methods\Stickers\SendSticker;
 use Klev\TelegramBotApi\Methods\Stickers\SetStickerEmojiList;
 use Klev\TelegramBotApi\Methods\Stickers\SetStickerKeywords;
@@ -1829,6 +1830,19 @@ class Telegram
         $out = $this->request('deleteStickerSet', ['json' => [
             'name' => $name,
         ]]);
+        return $out['result'];
+    }
+
+    /**
+     * @param ReplaceStickerInSet $replaceStickerInSet
+     * @return bool
+     * @throws TelegramException
+     */
+    public function replaceStickerInSet(ReplaceStickerInSet $replaceStickerInSet): bool
+    {
+        $replaceStickerInSet->preparation();
+
+        $out = $this->request('replaceStickerInSet', ['json' => (array)$replaceStickerInSet]);
         return $out['result'];
     }
 
