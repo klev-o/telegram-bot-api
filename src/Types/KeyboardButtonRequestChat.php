@@ -59,4 +59,19 @@ class KeyboardButtonRequestChat
      * @var bool|null
      */
     public ?bool $bot_is_member;
+    /**
+     * Optional. Pass True to request the users' first and last names
+     * @var bool|null
+     */
+    public ?bool $request_name = null;
+    /**
+     * Optional. Pass True to request the users' usernames
+     * @var bool|null
+     */
+    public ?bool $request_username = null;
+    /**
+     * Optional. Pass True to request the users' photos
+     * @var bool|null
+     */
+    public ?bool $request_photo = null;
 }
