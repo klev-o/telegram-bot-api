@@ -50,6 +50,11 @@ class ChatFullInfo extends BaseType
      */
     public ?bool $is_forum = null;
     /**
+     * The maximum number of reactions that can be set on a message in the chat
+     * @var int
+     */
+    public int $max_reaction_count;
+    /**
      * Optional. Chat photo. Returned only in getChat.
      * @var ChatPhoto|null
      */
