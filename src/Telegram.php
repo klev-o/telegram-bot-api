@@ -2052,6 +2052,29 @@ class Telegram
         return new BusinessConnection($out['result']);
     }
 
+    /**
+     * Refunds a successful payment in Telegram Stars. Returns True on success.
+     *
+     * @param int $user_id
+     * Identifier of the user whose payment will be refunded
+     *
+     * @param string $telegram_payment_charge_id
+     * Telegram payment identifier
+     *
+     * @return bool
+     * @throws TelegramException
+     *
+     * @link https://core.telegram.org/bots/api#refundstarpayment
+     */
+    public function refundStarPayment(int $user_id, string $telegram_payment_charge_id): bool
+    {
+        $out = $this->request('refundStarPayment', ['json' => [
+            'user_id' => $user_id,
+            'telegram_payment_charge_id' => $telegram_payment_charge_id,
+        ]]);
+        return $out['result'];
+    }
+
 
     /**
      * Allows you to create a request manually. Can be used for unrealized features.
