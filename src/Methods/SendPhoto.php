@@ -20,7 +20,7 @@ class SendPhoto extends BaseMethod
      * Unique identifier of the business connection on behalf of which the message will be sent
      * @var string|null
      */
-    public ?string $business_connection_id = null;
+    public ?string $business_connection_id;
     /**
      * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
      * @var string
@@ -43,7 +43,7 @@ class SendPhoto extends BaseMethod
      * Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing
      * @var string|null
      */
-    public ?string $caption = null;
+    public ?string $caption;
     /**
      * Mode for parsing entities in the photo caption. See formatting options for more details.
      * @var string|null
