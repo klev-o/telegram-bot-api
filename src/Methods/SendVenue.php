@@ -82,6 +82,11 @@ class SendVenue extends BaseMethod
      */
     public ?bool $protect_content = null;
     /**
+     * Unique identifier of the message effect to be added to the message; for private chats only
+     * @var string|null
+     */
+    public ?string $message_effect_id = null;
+    /**
      * Description of the message to reply to
      * @var ReplyParameters|null
      */
