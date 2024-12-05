@@ -63,6 +63,11 @@ class EditMessageCaption extends BaseMethod
      */
     public ?array $caption_entities = null;
     /**
+     * Pass True, if the caption must be shown above the message media
+     * @var bool|null
+     */
+    public ?bool $show_caption_above_media = null;
+    /**
      * Disables link previews for links in this message
      * @var bool
      */
