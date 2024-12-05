@@ -103,6 +103,7 @@ use Klev\TelegramBotApi\Types\MenuButtonDefault;
 use Klev\TelegramBotApi\Types\MenuButtonWebApp;
 use Klev\TelegramBotApi\Types\Message;
 use Klev\TelegramBotApi\Types\MessageId;
+use Klev\TelegramBotApi\Types\Payments\StarTransactions;
 use Klev\TelegramBotApi\Types\Poll;
 use Klev\TelegramBotApi\Types\Stickers\Sticker;
 use Klev\TelegramBotApi\Types\Stickers\StickerSet;
@@ -2073,6 +2074,29 @@ class Telegram
             'telegram_payment_charge_id' => $telegram_payment_charge_id,
         ]]);
         return $out['result'];
+    }
+
+    /**
+     * Returns the bot's Telegram Star transactions in chronological order. On success, returns a StarTransactions object
+     *
+     * @param int|null $offset
+     * Number of transactions to skip in the response
+     *
+     * @param int|null $limit
+     * The maximum number of transactions to be retrieved. Values between 1-100 are accepted. Defaults to 100.
+     *
+     * @return StarTransactions
+     * @throws TelegramException
+     *
+     * @link https://core.telegram.org/bots/api#getstartransactions
+     */
+    public function getStarTransactions(?int $offset = null, ?int $limit = null): StarTransactions
+    {
+        $out = $this->request('getStarTransactions', ['json' => [
+            'offset' => $offset,
+            'limit' => $limit,
+        ]]);
+        return new StarTransactions($out['result']);
     }
 
 
