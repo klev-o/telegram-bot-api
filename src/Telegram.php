@@ -91,6 +91,7 @@ use Klev\TelegramBotApi\Types\BotShortDescription;
 use Klev\TelegramBotApi\Types\BusinessConnection;
 use Klev\TelegramBotApi\Types\Chat;
 use Klev\TelegramBotApi\Types\ChatAdministratorRights;
+use Klev\TelegramBotApi\Types\ChatFullInfo;
 use Klev\TelegramBotApi\Types\ChatInviteLink;
 use Klev\TelegramBotApi\Types\ChatMember;
 use Klev\TelegramBotApi\Types\File;
@@ -809,13 +810,13 @@ class Telegram
      *
      * @link https://core.telegram.org/bots/api#getchat
      *
-     * @return Chat
+     * @return ChatFullInfo
      * @throws TelegramException
      */
-    public function getChat(string $chat_id): Chat
+    public function getChat(string $chat_id): ChatFullInfo
     {
         $out = $this->request('getChat',  ['json' => ['chat_id' => $chat_id]]);
-        return new Chat($out['result']);
+        return new ChatFullInfo($out['result']);
     }
 
     /**
