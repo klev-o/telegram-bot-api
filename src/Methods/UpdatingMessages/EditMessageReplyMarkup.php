@@ -17,6 +17,11 @@ use Klev\TelegramBotApi\Types\InlineKeyboardMarkup;
 class EditMessageReplyMarkup extends BaseMethod
 {
     /**
+     * Unique identifier of the business connection on behalf of which the message to be edited was sent
+     * @var string|null
+     */
+    public ?string $business_connection_id;
+    /**
      * Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target
      * channel (in the format @channelusername)
      * @var string|null

@@ -20,6 +20,11 @@ use Klev\TelegramBotApi\Types\MessageEntity;
 class EditMessageCaption extends BaseMethod
 {
     /**
+     * Unique identifier of the business connection on behalf of which the message to be edited was sent
+     * @var string|null
+     */
+    public ?string $business_connection_id;
+    /**
      * Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target
      * channel (in the format @channelusername)
      * @var string|null
@@ -36,12 +41,6 @@ class EditMessageCaption extends BaseMethod
      */
     public ?string $inline_message_id = null;
     /**
-     * TODO remove in future versions
-     * New caption of the message, 0-1024 characters after entities parsing
-     * @var string|null
-     */
-    public ?string $text = '';
-    /**
      * New caption of the message, 0-1024 characters after entities parsing
      * @var string|null
      */
@@ -51,12 +50,6 @@ class EditMessageCaption extends BaseMethod
      * @var string
      */
     public string $parse_mode = 'html';
-    /**
-     * TODO remove in future versions
-     * List of special entities that appear in message text, which can be specified instead of parse_mode
-     * @var MessageEntity[]|null
-     */
-    public ?array $entities = null;
     /**
      * List of special entities that appear in message text, which can be specified instead of parse_mode
      * @var MessageEntity[]|null
