@@ -153,6 +153,11 @@ class Message extends BaseType implements MaybeInaccessibleMessage
      */
     public ?LinkPreviewOptions $link_preview_options = null;
     /**
+     * Optional. Unique identifier of the message effect added to the message
+     * @var string|null
+     */
+    public ?string $effect_id = null;
+    /**
      * Optional. Message is an animation, information about the animation. For backward compatibility, when this
      * field is set, the document field will also be set
      * @var Animation|null
