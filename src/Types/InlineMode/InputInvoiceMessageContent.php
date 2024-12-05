@@ -31,18 +31,18 @@ class InputInvoiceMessageContent implements InputMessageContent
      */
     public string $payload;
     /**
-     * Payment provider token, obtained via Botfather
-     * @var string
+     * Optional. Payment provider token, obtained via @BotFather. Pass an empty string for payments in Telegram Stars.
+     * @var string|null
      */
-    public string $provider_token;
+    public ?string $provider_token;
     /**
-     * Three-letter ISO 4217 currency code, see more on currencies
+     * Three-letter ISO 4217 currency code, see more on currencies. Pass “XTR” for payments in Telegram Stars.
      * @var string
      */
     public string $currency;
     /**
      * Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost,
-     * delivery tax, bonus, etc.)
+     * delivery tax, bonus, etc.). Must contain exactly one item for payments in Telegram Stars.
      * @var LabeledPrice[]
      */
     public array $prices;
@@ -50,7 +50,7 @@ class InputInvoiceMessageContent implements InputMessageContent
      * Optional. The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double).
      * For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json,
      * it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
-     * Defaults to 0
+     * Defaults to 0. Not supported for payments in Telegram Stars.
      * @var int|null
      */
     public ?int $max_tip_amount;
@@ -89,37 +89,37 @@ class InputInvoiceMessageContent implements InputMessageContent
      */
     public ?int $photo_height;
     /**
-     * Optional. Pass True, if you require the user's full name to complete the order
+     * Optional. Pass True, if you require the user's full name to complete the order. Ignored for payments in Telegram Stars.
      * @var bool|null
      */
     public ?bool $need_name;
     /**
-     * Optional. Pass True, if you require the user's phone number to complete the order
+     * Optional. Pass True, if you require the user's phone number to complete the order. Ignored for payments in Telegram Stars.
      * @var bool|null
      */
     public ?bool $need_phone_number;
     /**
-     * Optional. Pass True, if you require the user's email address to complete the order
+     * Optional. Pass True, if you require the user's email address to complete the order. Ignored for payments in Telegram Stars.
      * @var bool|null
      */
     public ?bool $need_email;
     /**
-     * Optional. Pass True, if you require the user's shipping address to complete the order
+     * Optional. Pass True, if you require the user's shipping address to complete the order. Ignored for payments in Telegram Stars.
      * @var bool|null
      */
     public ?bool $need_shipping_address;
     /**
-     * Optional. Pass True, if user's phone number should be sent to provider
+     * Optional. Pass True, if user's phone number should be sent to provider. Ignored for payments in Telegram Stars.
      * @var bool|null
      */
     public ?bool $send_phone_number_to_provider;
     /**
-     * Optional. Pass True, if user's email address should be sent to provider
+     * Optional. Pass True, if user's email address should be sent to provider. Ignored for payments in Telegram Stars.
      * @var bool|null
      */
     public ?bool $send_email_to_provider;
     /**
-     * Optional. Pass True, if the final price depends on the shipping method
+     * Optional. Pass True, if the final price depends on the shipping method. Ignored for payments in Telegram Stars.
      * @var bool|null
      */
     public ?bool $is_flexible;
