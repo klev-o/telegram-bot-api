@@ -368,6 +368,11 @@ class Message extends BaseType implements MaybeInaccessibleMessage
      */
     public ?ChatBoostAdded $boost_added = null;
     /**
+     * Optional. Service message: chat background set
+     * @var ChatBackground|null
+     */
+    public ?ChatBackground $chat_background_set = null;
+    /**
      * Optional. Service message: forum topic created
      * @var ForumTopicCreated|null
      */
