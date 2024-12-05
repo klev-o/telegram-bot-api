@@ -42,6 +42,11 @@ class InputMediaPhoto implements InputMedia
      */
     public ?array $caption_entities = null;
     /**
+     * Optional. Pass True, if the caption must be shown above the message media
+     * @var bool|null
+     */
+    public ?bool $show_caption_above_media = null;
+    /**
      * Optional. Pass True if the photo needs to be covered with a spoiler animation
      * @var bool|null
      */

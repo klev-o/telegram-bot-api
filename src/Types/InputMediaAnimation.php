@@ -49,6 +49,11 @@ class InputMediaAnimation implements InputMedia
      */
     public ?array $caption_entities = null;
     /**
+     * Optional. Pass True, if the caption must be shown above the message media
+     * @var bool|null
+     */
+    public ?bool $show_caption_above_media = null;
+    /**
      * Optional. Animation width
      * @var int|null
      */

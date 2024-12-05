@@ -215,6 +215,11 @@ class Message extends BaseType implements MaybeInaccessibleMessage
      */
     public ?array $caption_entities = null;
     /**
+     * Optional. True, if the caption must be shown above the message media
+     * @var bool|null
+     */
+    public ?bool $show_caption_above_media = null;
+    /**
      * Optional. True, if the message media is covered by a spoiler animation
      * @var bool|null
      */

@@ -60,6 +60,11 @@ class InlineQueryResultCachedPhoto implements InlineQueryResult
      */
     public ?array $caption_entities;
     /**
+     * Optional. Pass True, if the caption must be shown above the message media
+     * @var bool|null
+     */
+    public ?bool $show_caption_above_media = null;
+    /**
      * Optional. Inline keyboard attached to the message
      * @var InlineKeyboardMarkup|null
      */
