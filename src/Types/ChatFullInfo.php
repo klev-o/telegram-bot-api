@@ -172,6 +172,12 @@ class ChatFullInfo extends BaseType
      */
     public ?ChatPermissions $permissions = null;
     /**
+     * Optional. True, if paid media messages can be sent or forwarded to the channel chat.
+     * The field is available only for channel chats.
+     * @var bool|null
+     */
+    public ?bool $can_send_paid_media = null;
+    /**
      * Optional. For supergroups, the minimum allowed delay between consecutive messages sent by each
      * unpriviledged user. Returned only in getChat.
      * @var int|null
