@@ -43,6 +43,11 @@ final class GiveawayWinners extends BaseType
      */
     public ?int $additional_chat_count = null;
     /**
+     * Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram Star giveaways only
+     * @var int|null
+     */
+    public ?int $prize_star_count = null;
+    /**
      * Optional. The number of months the Telegram Premium subscription won from the giveaway will be active for
      * @var int|null
      */

@@ -12,5 +12,9 @@ namespace Klev\TelegramBotApi\Types;
  */
 final class GiveawayCreated extends BaseType
 {
-
+    /**
+     * Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram Star giveaways only
+     * @var int|null
+     */
+    public ?int $prize_star_count = null;
 }
