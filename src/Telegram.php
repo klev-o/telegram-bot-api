@@ -18,6 +18,7 @@ use Klev\TelegramBotApi\Methods\DeleteForumTopic;
 use Klev\TelegramBotApi\Methods\DeleteMyCommands;
 use Klev\TelegramBotApi\Methods\DeleteWebhook;
 use Klev\TelegramBotApi\Methods\EditChatInviteLink;
+use Klev\TelegramBotApi\Methods\EditChatSubscriptionInviteLink;
 use Klev\TelegramBotApi\Methods\EditForumTopic;
 use Klev\TelegramBotApi\Methods\EditGeneralForumTopic;
 use Klev\TelegramBotApi\Methods\EditMessageLiveLocation;
@@ -2032,7 +2033,20 @@ class Telegram
         $out = $this->request('createChatSubscriptionInviteLink', [
             'json' => (array)$createChatSubscriptionInviteLink
         ]);
-        return new ChatInviteLink ($out['result']);
+        return new ChatInviteLink($out['result']);
+    }
+    /**
+     * @param EditChatSubscriptionInviteLink $editChatSubscriptionInviteLink
+     * @return ChatInviteLink
+     * @throws TelegramException
+     */
+    public function editChatSubscriptionInviteLink(EditChatSubscriptionInviteLink $editChatSubscriptionInviteLink): ChatInviteLink
+    {
+        $editChatSubscriptionInviteLink->preparation();
+        $out = $this->request('editChatSubscriptionInviteLink', [
+            'json' => (array)$editChatSubscriptionInviteLink
+        ]);
+        return new ChatInviteLink($out['result']);
     }
 
     /**
