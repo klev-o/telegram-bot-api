@@ -174,6 +174,11 @@ class Message extends BaseType implements MaybeInaccessibleMessage
      */
     public ?Document $document = null;
     /**
+     * Optional. Message contains paid media; information about the paid media
+     * @var PaidMediaInfo|null
+     */
+    public ?PaidMediaInfo $paid_media = null;
+    /**
      * Optional. Message is a photo, available sizes of the photo
      * @var PhotoSize[]|null
      */
@@ -607,6 +612,8 @@ class Message extends BaseType implements MaybeInaccessibleMessage
             case 'story':
             case 'reply_to_story':
                 return new Story($data);
+            case 'paid_media':
+                return new PaidMediaInfo($data);
         }
 
         return parent::bindObjects($key, $data);

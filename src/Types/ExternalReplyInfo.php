@@ -54,6 +54,11 @@ class ExternalReplyInfo extends BaseType
      */
     public ?Document $document = null;
     /**
+     * Optional. Message contains paid media; information about the paid media
+     * @var PaidMediaInfo|null
+     */
+    public ?PaidMediaInfo $paid_media = null;
+    /**
      * Optional. Message is a photo, available sizes of the photo
      * @var PhotoSize[] $photo
      */
@@ -193,6 +198,8 @@ class ExternalReplyInfo extends BaseType
                 return new Poll($data);
             case 'venue':
                 return new Venue($data);
+            case 'paid_media':
+                return new PaidMediaInfo($data);
         }
 
         return null;
