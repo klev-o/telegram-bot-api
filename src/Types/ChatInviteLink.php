@@ -60,6 +60,17 @@ class ChatInviteLink extends BaseType
      * @var int|null
      */
     public ?int $pending_join_request_count = null;
+    /**
+     * Optional. The number of seconds the subscription will be active for before the next payment
+     * @var int|null
+     */
+    public ?int $subscription_period = null;
+    /**
+     * Optional. The amount of Telegram Stars a user must pay initially and after each subsequent subscription period
+     * to be a member of the chat using the link
+     * @var int|null
+     */
+    public ?int $subscription_price = null;
 
     protected function bindObjects($key, $data): ?User
     {
