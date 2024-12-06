@@ -73,4 +73,9 @@ class User extends BaseType
      * @var bool|null
      */
     public ?bool $can_connect_to_business = null;
+    /**
+     * Optional. True, if the bot has a main Web App. Returned only in getMe.
+     * @var bool|null
+     */
+    public ?bool $has_main_web_app  = null;
 }
