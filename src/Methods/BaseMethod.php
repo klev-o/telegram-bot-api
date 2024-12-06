@@ -18,6 +18,8 @@ use Klev\TelegramBotApi\Types\InputMediaAudio;
 use Klev\TelegramBotApi\Types\InputMediaDocument;
 use Klev\TelegramBotApi\Types\InputMediaPhoto;
 use Klev\TelegramBotApi\Types\InputMediaVideo;
+use Klev\TelegramBotApi\Types\InputPaidMediaPhoto;
+use Klev\TelegramBotApi\Types\InputPaidMediaVideo;
 use Klev\TelegramBotApi\Types\KeyboardButton;
 use Klev\TelegramBotApi\Types\LinkPreviewOptions;
 use Klev\TelegramBotApi\Types\ReplyKeyboardMarkup;
@@ -50,6 +52,8 @@ abstract class BaseMethod
         SendSticker::class => 'sticker',
         SetStickerSetThumbnail::class => 'thumbnail',
         InputSticker::class => 'sticker',
+        InputPaidMediaVideo::class => ['media', 'thumbnail'],
+        InputPaidMediaPhoto::class => 'media',
     ];
 
     public function preparation(): void

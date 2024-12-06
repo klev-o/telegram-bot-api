@@ -46,6 +46,7 @@ use Klev\TelegramBotApi\Methods\SendDocument;
 use Klev\TelegramBotApi\Methods\SendLocation;
 use Klev\TelegramBotApi\Methods\SendMediaGroup;
 use Klev\TelegramBotApi\Methods\SendMessage;
+use Klev\TelegramBotApi\Methods\SendPaidMedia;
 use Klev\TelegramBotApi\Methods\SendPhoto;
 use Klev\TelegramBotApi\Methods\SendPoll;
 use Klev\TelegramBotApi\Methods\SendVenue;
@@ -2007,6 +2008,17 @@ class Telegram
             $result[] = new MessageId($item);
         }
         return $result;
+    }
+    /**
+     * @param SendPaidMedia $sendPaidMedia
+     * @return Message
+     * @throws TelegramException
+     */
+    public function sendPaidMedia(SendPaidMedia $sendPaidMedia): Message
+    {
+        $sendPaidMedia->preparation();
+        $out = $this->request('sendPaidMedia', ['json' => (array)$sendPaidMedia]);
+        return new Message($out['result']);
     }
 
     /**
