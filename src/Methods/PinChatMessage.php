@@ -17,6 +17,11 @@ namespace Klev\TelegramBotApi\Methods;
 class PinChatMessage extends BaseMethod
 {
     /**
+     * Unique identifier of the business connection on behalf of which the message will be pinned
+     * @var string|null
+     */
+    public ?string $business_connection_id;
+    /**
      * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
      * @var string|int
      */
