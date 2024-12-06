@@ -18,4 +18,9 @@ class ChatMemberMember extends ChatMember
      * @var string
      */
     public string $status = self::TYPE_MEMBER;
+    /**
+     * Optional. Date when the user's subscription will expire; Unix time
+     * @var int|null
+     */
+    public ?int $until_date = null;
 }
