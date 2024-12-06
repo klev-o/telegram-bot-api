@@ -27,6 +27,12 @@ final class GiveawayCompleted extends BaseType
      * @var Message|null
      */
     public ?Message $giveaway_message = null;
+    /**
+     * Optional. True, if the giveaway is a Telegram Star giveaway. Otherwise, currently, the giveaway is a Telegram
+     * Premium giveaway.
+     * @var bool|null
+     */
+    public ?bool $is_star_giveaway = null;
 
     protected function bindObjects($key, $data)
     {
