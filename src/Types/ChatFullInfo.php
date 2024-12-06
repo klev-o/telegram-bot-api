@@ -273,10 +273,16 @@ class ChatFullInfo extends BaseType
             case 'available_reactions':
                 $result = [];
                 foreach ($data as $reaction) {
-                    if(isset($reaction['custom_emoji_id'])){
-                        $result[] = new ReactionTypeCustomEmoji($data);
-                    } else {
-                        $result[] = new ReactionTypeEmoji($data);
+                    switch ($reaction['type']) {
+                        case ReactionType::TYPE_EMOJI:
+                            $result[] = new ReactionTypeEmoji($data);
+                            break;
+                        case ReactionType::TYPE_CUSTOM_EMOJI:
+                            $result[] = new ReactionTypeCustomEmoji($data);
+                            break;
+                        case ReactionType::TYPE_PAID:
+                            $result[] = new ReactionTypePaid($data);
+                            break;
                     }
                 }
                 return $result;

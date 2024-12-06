@@ -10,13 +10,13 @@ namespace Klev\TelegramBotApi\Types;
  *
  * @link https://core.telegram.org/bots/api#reactiontypecustomemoji
  */
-final class ReactionTypeCustomEmoji extends BaseType implements ReactionType
+final class ReactionTypeCustomEmoji extends ReactionType
 {
     /**
      * Type of the reaction, always “custom_emoji”
      * @var string
      */
-    public string $type = 'custom_emoji';
+    public string $type = self::TYPE_CUSTOM_EMOJI;
     /**
      * Custom emoji identifier
      * @var string

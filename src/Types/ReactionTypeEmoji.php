@@ -10,13 +10,13 @@ namespace Klev\TelegramBotApi\Types;
  *
  * @link https://core.telegram.org/bots/api#reactiontypeemoji
  */
-final class ReactionTypeEmoji extends BaseType implements ReactionType
+final class ReactionTypeEmoji extends ReactionType
 {
     /**
      * Type of the reaction, always “emoji”
      * @var string
      */
-    public string $type = 'emoji';
+    public string $type = self::TYPE_EMOJI;
     /**
      * Reaction emoji. Currently, it can be one of "👍", "👎", "❤", "🔥", "🥰", "👏", "😁", "🤔", "🤯", "😱", "🤬",
      * "😢", "🎉", "🤩", "🤮", "💩", "🙏", "👌", "🕊", "🤡", "🥱", "🥴", "😍", "🐳", "❤‍🔥", "🌚", "🌭", "💯", "🤣",
