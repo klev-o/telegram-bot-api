@@ -4,6 +4,7 @@ namespace Klev\TelegramBotApi\Types;
 
 use Klev\TelegramBotApi\Types\InlineMode\ChosenInlineResult;
 use Klev\TelegramBotApi\Types\InlineMode\InlineQuery;
+use Klev\TelegramBotApi\Types\Payments\PaidMediaPurchased;
 use Klev\TelegramBotApi\Types\Payments\PreCheckoutQuery;
 use Klev\TelegramBotApi\Types\Payments\ShippingQuery;
 
@@ -104,6 +105,11 @@ class Update extends BaseType
      */
     public ?PreCheckoutQuery $pre_checkout_query = null;
     /**
+     * Optional. A user purchased paid media with a non-empty payload sent by the bot in a non-channel chat
+     * @var PaidMediaPurchased|null
+     */
+    public ?PaidMediaPurchased $purchased_paid_media = null;
+    /**
      * Optional. New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot
      * @var Poll|null
      */
@@ -162,6 +168,8 @@ class Update extends BaseType
                 return new ShippingQuery($data);
             case 'pre_checkout_query':
                 return new PreCheckoutQuery($data);
+            case 'purchased_paid_media':
+                return new PaidMediaPurchased($data);
             case 'poll':
                 return new Poll($data);
             case 'poll_answer':
