@@ -69,6 +69,11 @@ class InlineKeyboardButton extends BaseType
      */
     public ?SwitchInlineQueryChosenChat $switch_inline_query_chosen_chat = null;
     /**
+     * Optional. Description of the button that copies the specified text to the clipboard.
+     * @var CopyTextButton|null
+     */
+    public ?CopyTextButton $copy_text = null;
+    /**
      * Optional. Description of the game that will be launched when the user presses the button.
      * NOTE: This type of button must always be the first button in the first row.
      * @var CallbackGame|null
@@ -91,6 +96,8 @@ class InlineKeyboardButton extends BaseType
                 return new LoginUrl($data);
             case 'switch_inline_query_chosen_chat':
                 return new SwitchInlineQueryChosenChat($data);
+            case 'copy_text':
+                return new CopyTextButton($data);
             case 'callback_game':
                 return new CallbackGame($data);
         }
