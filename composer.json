@@ -14,7 +14,7 @@
         "php": "^7.4.0 || ^8.0",
         "ext-json": "*",
         "ext-curl": "*",
-        "guzzlehttp/guzzle": "^7.2"
+        "guzzlehttp/guzzle": "*"
     },
     "autoload": {
         "psr-4": {
