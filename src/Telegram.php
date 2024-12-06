@@ -12,6 +12,7 @@ use Klev\TelegramBotApi\Methods\CloseForumTopic;
 use Klev\TelegramBotApi\Methods\CopyMessage;
 use Klev\TelegramBotApi\Methods\CopyMessages;
 use Klev\TelegramBotApi\Methods\CreateChatInviteLink;
+use Klev\TelegramBotApi\Methods\CreateChatSubscriptionInviteLink;
 use Klev\TelegramBotApi\Methods\CreateForumTopic;
 use Klev\TelegramBotApi\Methods\DeleteForumTopic;
 use Klev\TelegramBotApi\Methods\DeleteMyCommands;
@@ -2019,6 +2020,19 @@ class Telegram
         $sendPaidMedia->preparation();
         $out = $this->request('sendPaidMedia', ['json' => (array)$sendPaidMedia]);
         return new Message($out['result']);
+    }
+    /**
+     * @param CreateChatSubscriptionInviteLink $createChatSubscriptionInviteLink
+     * @return ChatInviteLink
+     * @throws TelegramException
+     */
+    public function createChatSubscriptionInviteLink(CreateChatSubscriptionInviteLink $createChatSubscriptionInviteLink): ChatInviteLink
+    {
+        $createChatSubscriptionInviteLink->preparation();
+        $out = $this->request('createChatSubscriptionInviteLink', [
+            'json' => (array)$createChatSubscriptionInviteLink
+        ]);
+        return new ChatInviteLink ($out['result']);
     }
 
     /**
