@@ -69,6 +69,12 @@ class CopyMessage extends BaseMethod
      */
     public ?bool $protect_content = null;
     /**
+     * Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars
+     * per message. The relevant Stars will be withdrawn from the bot's balance
+     * @var bool|null
+     */
+    public ?bool $allow_paid_broadcast = null;
+    /**
      * Description of the message to reply to
      * @var ReplyParameters|null
      */

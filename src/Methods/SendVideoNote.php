@@ -68,6 +68,12 @@ class SendVideoNote extends BaseMethod
      */
     public ?bool $protect_content = null;
     /**
+     * Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars
+     * per message. The relevant Stars will be withdrawn from the bot's balance
+     * @var bool|null
+     */
+    public ?bool $allow_paid_broadcast = null;
+    /**
      * Unique identifier of the message effect to be added to the message; for private chats only
      * @var string|null
      */
