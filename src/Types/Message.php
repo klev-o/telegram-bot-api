@@ -4,6 +4,7 @@ namespace Klev\TelegramBotApi\Types;
 
 use Klev\TelegramBotApi\Types\Games\Game;
 use Klev\TelegramBotApi\Types\Payments\Invoice;
+use Klev\TelegramBotApi\Types\Payments\RefundedPayment;
 use Klev\TelegramBotApi\Types\Payments\SuccessfulPayment;
 use Klev\TelegramBotApi\Types\Stickers\Sticker;
 use Klev\TelegramBotApi\Types\TelegramPassport\PassportData;
@@ -347,6 +348,12 @@ class Message extends BaseType implements MaybeInaccessibleMessage
      */
     public ?SuccessfulPayment $successful_payment = null;
     /**
+     * Optional. Message is a service message about a refunded payment, information about the payment.
+     * More about payments »
+     * @var RefundedPayment|null
+     */
+    public ?RefundedPayment $refunded_payment = null;
+    /**
      * Optional. Service message: a user was shared with the bot
      * @var UsersShared|null
      */
@@ -539,6 +546,8 @@ class Message extends BaseType implements MaybeInaccessibleMessage
                 return new Invoice($data);
             case 'successful_payment':
                 return new SuccessfulPayment($data);
+            case 'refunded_payment':
+                return new RefundedPayment($data);
             case 'passport_data':
                 return new PassportData($data);
             case 'new_chat_members':
