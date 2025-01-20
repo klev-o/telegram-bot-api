@@ -2205,6 +2205,96 @@ class Telegram
         return new Gifts($out['result']);
     }
 
+    /**
+     * Verifies a user on behalf of the organization which is represented by the bot. Returns True on success.
+     *
+     * @param int $user_id
+     * Unique identifier of the target user
+     *
+     * @param string|null $custom_description
+     * Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to
+     * provide a custom verification description.
+     *
+     * @return bool
+     * @throws TelegramException
+     *
+     * @link https://core.telegram.org/bots/api#verifyuser
+     */
+    public function verifyUser(int $user_id, ?string $custom_description = null): bool
+    {
+        $out = $this->request('verifyUser', ['json' => [
+            'user_id' => $user_id,
+            'custom_description' => $custom_description,
+        ]]);
+        return new $out['result'];
+    }
+
+    /**
+     * Verifies a chat on behalf of the organization which is represented by the bot. Returns True on success
+     *
+     * @param string $chat_id
+     * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     *
+     * @param string|null $custom_description
+     * Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to
+     * provide a custom verification description.
+     *
+     * @return bool
+     * @throws TelegramException
+     *
+     * @link https://core.telegram.org/bots/api#verifychat
+     */
+    public function verifyChat(string $chat_id, ?string $custom_description = null): bool
+    {
+        $out = $this->request('verifyChat', ['json' => [
+            'chat_id' => $chat_id,
+            'custom_description' => $custom_description,
+        ]]);
+        return new $out['result'];
+    }
+
+    /**
+     * Removes verification from a user who is currently verified on behalf of the organization represented by the bot.
+     * Returns True on success.
+     *
+     * @param int $user_id
+     * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     *
+     * @return bool
+     * @throws TelegramException
+     *
+     * @link https://core.telegram.org/bots/api#removeuserverification
+     */
+    public function removeUserVerification(int $user_id): bool
+    {
+        $out = $this->request('removeUserVerification', ['json' => [
+            'user_id' => $user_id
+        ]]);
+        return new $out['result'];
+    }
+
+    /**
+     * Removes verification from a chat that is currently verified on behalf of the organization represented by the bot.
+     * Returns True on success.
+     *
+     * @param string $chat_id
+     * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     *
+     * @return bool
+     * @throws TelegramException
+     *
+     * @link https://core.telegram.org/bots/api#removeuserverification
+     */
+    public function removeChatVerification(string $chat_id): bool
+    {
+        $out = $this->request('removeChatVerification', ['json' => [
+            'chat_id' => $chat_id
+        ]]);
+        return new $out['result'];
+    }
+
+    /******************************************************************************************************************/
+
 
     /**
      * Allows you to create a request manually. Can be used for unrealized features.
