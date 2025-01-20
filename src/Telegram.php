@@ -112,6 +112,7 @@ use Klev\TelegramBotApi\Types\Message;
 use Klev\TelegramBotApi\Types\MessageId;
 use Klev\TelegramBotApi\Types\Payments\StarTransactions;
 use Klev\TelegramBotApi\Types\Poll;
+use Klev\TelegramBotApi\Types\Stickers\Gifts;
 use Klev\TelegramBotApi\Types\Stickers\Sticker;
 use Klev\TelegramBotApi\Types\Stickers\StickerSet;
 use Klev\TelegramBotApi\Types\Update;
@@ -2178,6 +2179,20 @@ class Telegram
             'limit' => $limit,
         ]]);
         return new StarTransactions($out['result']);
+    }
+
+    /**
+     * Returns the list of gifts that can be sent by the bot to users. Requires no parameters. Returns a Gifts object.
+     *
+     * @return Gifts
+     * @throws TelegramException
+     *
+     * @link https://core.telegram.org/bots/api#getavailablegifts
+     */
+    public function getAvailableGifts(): Gifts
+    {
+        $out = $this->request('getAvailableGifts');
+        return new Gifts($out['result']);
     }
 
 
