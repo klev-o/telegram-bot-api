@@ -72,6 +72,7 @@ use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\Stickers\AddStickerToSet;
 use Klev\TelegramBotApi\Methods\Stickers\CreateNewStickerSet;
 use Klev\TelegramBotApi\Methods\Stickers\ReplaceStickerInSet;
+use Klev\TelegramBotApi\Methods\Stickers\SendGift;
 use Klev\TelegramBotApi\Methods\Stickers\SendSticker;
 use Klev\TelegramBotApi\Methods\Stickers\SetStickerEmojiList;
 use Klev\TelegramBotApi\Methods\Stickers\SetStickerKeywords;
@@ -2087,6 +2088,15 @@ class Telegram
             'json' => (array)$message
         ]);
         return new PreparedInlineMessage($out['result']);
+    }
+
+    public function sendGift(SendGift $sendGift): bool
+    {
+        $sendGift->preparation();
+        $out = $this->request('sendGift', [
+            'json' => (array)$sendGift
+        ]);
+        return $out['result'];
     }
 
     /******************************************************************************************************************/
