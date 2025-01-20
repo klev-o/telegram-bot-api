@@ -33,6 +33,7 @@ use Klev\TelegramBotApi\Methods\InlineMode\AnswerInlineQuery;
 use Klev\TelegramBotApi\Methods\Payments\AnswerPreCheckoutQuery;
 use Klev\TelegramBotApi\Methods\Payments\AnswerShippingQuery;
 use Klev\TelegramBotApi\Methods\Payments\CreateInvoiceLink;
+use Klev\TelegramBotApi\Methods\Payments\EditUserStarSubscription;
 use Klev\TelegramBotApi\Methods\Payments\SendInvoice;
 use Klev\TelegramBotApi\Methods\PinChatMessage;
 use Klev\TelegramBotApi\Methods\PromoteChatMember;
@@ -2048,6 +2049,17 @@ class Telegram
         ]);
         return new ChatInviteLink($out['result']);
     }
+
+    public function editUserStarSubscription(EditUserStarSubscription $editUserStarSubscription): bool
+    {
+        $editUserStarSubscription->preparation();
+        $out = $this->request('editUserStarSubscription', [
+            'json' => (array)$editUserStarSubscription
+        ]);
+        return $out['result'];
+    }
+
+    /******************************************************************************************************************/
 
     /**
      * Use this method to get the list of boosts added to a chat by a user. Requires administrator rights in the chat.
