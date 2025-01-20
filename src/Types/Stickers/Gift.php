@@ -31,6 +31,11 @@ class Gift extends BaseType
      */
     public int $star_count;
     /**
+     * Optional. The number of Telegram Stars that must be paid to upgrade the gift to a unique one
+     * @var int|null
+     */
+    public ?int $upgrade_star_count;
+    /**
      * Optional. The total number of the gifts of this type that can be sent; for limited gifts only
      * @var int|null
      */
