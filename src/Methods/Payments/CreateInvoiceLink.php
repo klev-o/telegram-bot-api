@@ -16,6 +16,12 @@ use Klev\TelegramBotApi\Types\Payments\LabeledPrice;
 final class CreateInvoiceLink extends BaseMethod
 {
     /**
+     * Unique identifier of the business connection on behalf of which the link will be created. For payments in
+     * Telegram Stars only.
+     * @var string|null
+     */
+    public ?string $business_connection_id;
+    /**
      * Product name, 1-32 characters
      * @var string
      */
