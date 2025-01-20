@@ -66,6 +66,7 @@ use Klev\TelegramBotApi\Methods\SetChatTitle;
 use Klev\TelegramBotApi\Methods\SetMessageReaction;
 use Klev\TelegramBotApi\Methods\SetMyCommands;
 use Klev\TelegramBotApi\Methods\SetMyDefaultAdministratorRights;
+use Klev\TelegramBotApi\Methods\SetUserEmojiStatus;
 use Klev\TelegramBotApi\Methods\SetWebhook;
 use Klev\TelegramBotApi\Methods\Stickers\AddStickerToSet;
 use Klev\TelegramBotApi\Methods\Stickers\CreateNewStickerSet;
@@ -2049,12 +2050,29 @@ class Telegram
         ]);
         return new ChatInviteLink($out['result']);
     }
-
+    /**
+     * @param EditUserStarSubscription $editUserStarSubscription
+     * @return bool
+     * @throws TelegramException
+     */
     public function editUserStarSubscription(EditUserStarSubscription $editUserStarSubscription): bool
     {
         $editUserStarSubscription->preparation();
         $out = $this->request('editUserStarSubscription', [
             'json' => (array)$editUserStarSubscription
+        ]);
+        return $out['result'];
+    }
+    /**
+     * @param SetUserEmojiStatus $setUserEmojiStatus
+     * @return bool
+     * @throws TelegramException
+     */
+    public function setUserEmojiStatus(SetUserEmojiStatus $setUserEmojiStatus): bool
+    {
+        $setUserEmojiStatus->preparation();
+        $out = $this->request('setUserEmojiStatus', [
+            'json' => (array)$setUserEmojiStatus
         ]);
         return $out['result'];
     }
