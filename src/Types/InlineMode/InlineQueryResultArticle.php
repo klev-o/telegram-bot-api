@@ -47,11 +47,6 @@ class InlineQueryResultArticle implements InlineQueryResult
      */
     public ?string $url;
     /**
-     * Optional. Pass True, if you don't want the URL to be shown in the message
-     * @var bool|null
-     */
-    public ?bool $hide_url;
-    /**
      * Optional. Short description of the result
      * @var string|null
      */
