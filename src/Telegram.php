@@ -30,6 +30,7 @@ use Klev\TelegramBotApi\Methods\GetChatMember;
 use Klev\TelegramBotApi\Methods\GetMyCommands;
 use Klev\TelegramBotApi\Methods\GetUserProfilePhotos;
 use Klev\TelegramBotApi\Methods\InlineMode\AnswerInlineQuery;
+use Klev\TelegramBotApi\Methods\InlineMode\SavePreparedInlineMessage;
 use Klev\TelegramBotApi\Methods\Payments\AnswerPreCheckoutQuery;
 use Klev\TelegramBotApi\Methods\Payments\AnswerShippingQuery;
 use Klev\TelegramBotApi\Methods\Payments\CreateInvoiceLink;
@@ -102,6 +103,7 @@ use Klev\TelegramBotApi\Types\ChatMember;
 use Klev\TelegramBotApi\Types\File;
 use Klev\TelegramBotApi\Types\ForumTopic;
 use Klev\TelegramBotApi\Types\Games\GameHighScore;
+use Klev\TelegramBotApi\Types\InlineMode\PreparedInlineMessage;
 use Klev\TelegramBotApi\Types\MenuButton;
 use Klev\TelegramBotApi\Types\MenuButtonCommands;
 use Klev\TelegramBotApi\Types\MenuButtonDefault;
@@ -2075,6 +2077,15 @@ class Telegram
             'json' => (array)$setUserEmojiStatus
         ]);
         return $out['result'];
+    }
+
+    public function savePreparedInlineMessage(SavePreparedInlineMessage $message): PreparedInlineMessage
+    {
+        $message->preparation();
+        $out = $this->request('savePreparedInlineMessage', [
+            'json' => (array)$message
+        ]);
+        return new PreparedInlineMessage($out['result']);
     }
 
     /******************************************************************************************************************/
